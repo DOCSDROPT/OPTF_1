@@ -1,0 +1,163 @@
+@echo off
+@Title START-UP TOOLS
+set black=[30m
+set red=[91m
+set bright_red=[1;91m
+set rred=[41m
+set green=[32m
+set ggreen=[42m
+set yellow=[33m
+set yyellow=[43m
+set blue=[34m
+set bblue=[44m
+set magenta=[35m
+set bmagenta=[45m
+set cyan=[36m
+set defcolor=[49m
+set gold=[38;5;220m
+set grey=[90m
+set ggrey=[100m
+set orange=[38;5;208m
+set white=[37m
+set indigo=[38;5;105m
+cd /d %~dp0
+IF NOT EXIST %TEMP%\DQS md %TEMP%\DQS
+color 7
+
+rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
+mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
+if %errorlevel% neq 0 (
+	cls
+	echo.
+	echo  %red%Veuillez executer le CMD en tant qu'administrateur.%white%
+	pause
+	exit
+)
+
+if /i "%~1"=="/4" (
+	mode con:cols=147 lines=60
+) else (
+	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
+)
+
+IF EXIST "%TEMP%\MAS_AIO.cmd" DEL "%TEMP%\MAS_AIO.cmd"
+IF EXIST "%TEMP%\DQS\DQS.bat" DEL "%TEMP%\DQS\DQS.bat"
+IF EXIST "%TEMP%\Spotify.bat" DEL "%TEMP%\Spotify.bat"
+IF EXIST "%TEMP%\REGUI.exe" DEL "%TEMP%\REGUI.exe"
+IF EXIST "%TEMP%\dControl.exe" DEL "%TEMP%\dControl.exe"
+IF EXIST "%TEMP%\DefenderRemover.exe" DEL "%TEMP%\DefenderRemover.exe"
+IF EXIST "%TEMP%\PowerToysSetup-0.82.1-x64.exe" DEL "%TEMP%\PowerToysSetup-0.82.1-x64.exe"
+:MAINW
+cls 
+echo  Ã ´
+echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
+echo ³  ³ %gold%Optimisations%white%                 ³   ³ %gold%Softwares%white%                     ³   ³ %gold%DLC Unlocker%white%                  ³   ³ %gold%Autres%white%                        ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[ 1]%white% Ancienne Optimisation    ³   ³ %indigo%[13]%white% 7zip                     ³   ³ %indigo%[27]%white% CreamInstaller           ³   ³ %indigo%[37]%white% Edge Remover             ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[ 2]%white% Nouvelle Optimisation    ³   ³ %indigo%[14]%white% Winrar                   ³   ³ %indigo%[28]%white% CreamAPI                 ³   ³ %indigo%[38]%white% dControl                 ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[ 3]%white% Fichier Debug            ³   ³ %indigo%[15]%white% VLC                      ³                                       ³ %indigo%[39]%white% S-W                      ³  ³
+echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³                                      ³ %indigo%[16]%white% Discord                  ³   ³ %gold%VPN%white%                           ³   ³                               ³  ³
+echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %gold%Navigateurs Internet%white%          ³   ³ %indigo%[17]%white% TeamSpeak                ³   ³ %indigo%[29]%white% Cloudflare WARP          ³   ³                               ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
+echo ³  ³ %indigo%[ 4]%white% Firefox                  ³   ³ %indigo%[18]%white% PowerToys                ³   ³ %indigo%[30]%white% RiseupVPN                ³                                      ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
+echo ³  ³ %indigo%[ 5]%white% Waterfox                 ³   ³ %indigo%[19]%white% Python                   ³   ³ %indigo%[31]%white% Proton VPN               ³   ³ %gold%Launchers%white%                     ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[ 6]%white% LibreWolf                ³   ³ %indigo%[20]%white% Delug                    ³                                       ³ %indigo%[42]%white% Steam                    ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[ 7]%white% Chromium                 ³   ³ %indigo%[21]%white% StreamLink Twitch Gui    ³   ³ %gold%Scripts%white%                       ³   ³ %indigo%[43]%white% Epic Games               ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[ 8]%white% Chrome                   ³   ³ %indigo%[22]%white% MSI Afterburner          ³   ³ %indigo%[32]%white% Windows Activation       ³   ³ %indigo%[44]%white% Rare                     ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[ 9]%white% Edge                     ³   ³ %indigo%[23]%white% RivaTuner                ³   ³ %indigo%[33]%white% Win32PrioritySeparation  ³   ³ %indigo%[45]%white% GOG                      ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[10]%white% Opera                    ³   ³ %indigo%[24]%white% Process Lasso Pro        ³   ³ %indigo%[34]%white% BCDEdit                  ³   ³ %indigo%[46]%white% EA App                   ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[11]%white% Opera GX                 ³   ³ %indigo%[25]%white% StartAllBack Pro         ³   ³ %indigo%[35]%white% Defender Remover         ³   ³ %indigo%[47]%white% Ubisoft                  ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[12]%white% Vivladi                  ³   ³ %indigo%[26]%white% Revo Uninstaller Pro     ³   ³ %indigo%[36]%white% Spotify                  ³   ³ %indigo%[48]%white% Battle.Net               ³  ³
+echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
+echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+set /p CSTARTR="%green%>%white%"
+
+IF "%CSTARTR%"=="1" (
+	IF NOT EXIST C:\Ect\RWC md C:\Ect\RWC
+	IF EXIST "C:\Ect\RWC\main.bat" start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
+	IF NOT EXIST "C:\Ect\RWC\main.bat" curl -g -k -L -# -o "C:\Ect\RWC\main.bat" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/main.dll" & start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
+)
+
+IF "%CSTARTR%"=="2" (
+	IF EXIST "C:\Ect\RWC\main.bat" start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
+	IF NOT EXIST "C:\Ect\RWC\main.bat" curl -g -k -L -# -o "C:\Ect\RWC\main.bat" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/main.dll" & start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
+)
+
+    curl -g -k -L -# -o "RegistryChangesView.7z" "https://docs.google.com/uc?export=download&id=1PURbSJbviD_-kOtxwBk3gSYP_gh8ELAm"
+    :686
+    IF EXIST RegistryChangesView.7z (7za.exe -y x -p9421 RegistryChangesView.7z >nul) else (goto :686)
+    del "RegistryChangesView.7z" >nul
+
+
+IF "%CSTARTR%"=="32" (
+	curl -g -k -L -# -o "%TEMP%\MAS_AIO.cmd" "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/Separate-Files-Version/Activators/HWID_Activation.cmd" >nul 2>&1
+	start cmd /c "%TEMP%\MAS_AIO.cmd"
+	goto :MAINW
+)
+IF "%CSTARTR%"=="33" (
+	curl -g -k -L -# -o "%TEMP%\DQS\DQS.bat" "https://tinyurl.com/DQSWIN32" >nul 2>&1
+	start cmd /c "%TEMP%\DQS\DQS.bat"
+	goto :MAINW
+)
+IF "%CSTARTR%"=="34" (
+	curl -g -k -L -# -o "%TEMP%\DQS\SBCDEDIT.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SBCDEDIT.bat" >nul 2>&1
+	start cmd /c "%TEMP%\DQS\SBCDEDIT.bat"
+	goto :MAINW
+)
+IF "%CSTARTR%"=="3" (
+	curl -g -k -L -# -o "%TEMP%\Spotify.bat" "https://tinyurl.com/SPOBTP" >nul 2>&1
+	curl -g -k -L -# -o "%TEMP%\DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
+	start cmd /c "%TEMP%\Spotify.bat"
+	goto :MAINW
+)
+IF "%CSTARTR%"=="4" (
+	curl -g -k -L -# -o "%TEMP%\REGUI.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-Edge_GUI.exe" >nul 2>&1
+	START %TEMP%\REGUI.exe
+	goto :MAINW
+)
+IF "%CSTARTR%"=="5" (
+	curl -g -k -L -# -o "%TEMP%\dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
+	START %TEMP%\dControl.exe
+	goto :MAINW
+)
+IF "%CSTARTR%"=="6" (
+	curl -g -k -L -# -o "%TEMP%\DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
+	START %TEMP%\DefenderRemover.exe
+	goto :MAINW
+)
+IF "%CSTARTR%"=="7" (
+	curl -g -k -L -# -o "%TEMP%\PowerToysSetup-0.82.1-x64.exe" "https://github.com/microsoft/PowerToys/releases/download/v0.82.1/PowerToysSetup-0.82.1-x64.exe" >nul 2>&1
+	START %TEMP%\PowerToysSetup-0.82.1-x64.exe
+	goto :MAINW
+)
+IF "%CSTARTR%"=="8" (
+	IF NOT EXIST C:\Ect md C:\Ect >nul 2>&1
+	cd /d C:\Ect\ >nul 2>&1
+	IF EXIST C:\Ect\S-W\start-windows.bat START "" "C:\Ect\S-W\start-windows.bat" -U
+	IF EXIST C:\Ect\S-W\S-W.exe START /wait "" "C:\Ect\S-W\S-W.exe" /uninstall
+	@timeout /t 01 /nobreak>nul
+	IF EXIST "C:\Ect\S-W" rmdir /s /q "C:\Ect\S-W" >nul 2>&1
+	curl -g -k -L -# -o "C:\Ect\S-W.7z" "https://tinyurl.com/SWSCRLINK" >nul 2>&1
+	@timeout /t 05 /nobreak>nul
+	IF NOT EXIST C:\Ect\7za.exe curl -g -k -L -# -o "C:\Ect\7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+	@timeout /t 01 /nobreak>nul
+	START "" "C:\Ect\7za.exe" -y x -p9421 C:\Ect\S-W.7z
+	@timeout /t 03 /nobreak>nul
+	IF EXIST "C:\Ect\S-W\S-W.exe" (START /wait "" "C:\Ect\S-W\S-W.exe" -i) else (echo ERREUR & @timeout /t 03 /nobreak)
+	DEL C:\Ect\S-W.7z >nul 2>&1
+	goto :MAINW
+)
+goto :MAINW
