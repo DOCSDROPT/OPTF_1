@@ -24,6 +24,8 @@ cd /d %~dp0
 IF NOT EXIST %TEMP%\DQS md %TEMP%\DQS
 color 7
 
+SET VERSCRIPT=0001
+
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 if %errorlevel% neq 0 (
