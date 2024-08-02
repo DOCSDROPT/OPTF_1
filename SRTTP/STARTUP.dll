@@ -68,7 +68,7 @@ echo ³  ³ %indigo%[ 4]%white% Firefox                  ³   ³ %indigo%[18]%white%
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
 echo ³  ³ %indigo%[ 5]%white% Waterfox                 ³   ³ %indigo%[19]%white% Python                   ³   ³ %indigo%[31]%white% Proton VPN               ³   ³ %gold%Launchers%white%                     ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[ 6]%white% LibreWolf                ³   ³ %indigo%[20]%white% Delug                    ³                                       ³ %indigo%[42]%white% Steam                    ³  ³
+echo ³  ³ %indigo%[ 6]%white% LibreWolf                ³   ³ %indigo%[20]%white% Deluge                   ³                                       ³ %indigo%[42]%white% Steam                    ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³  ³ %indigo%[ 7]%white% Chromium                 ³   ³ %indigo%[21]%white% StreamLink Twitch Gui    ³   ³ %gold%Scripts%white%                       ³   ³ %indigo%[43]%white% Epic Games               ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
@@ -92,14 +92,176 @@ IF "%CSTARTR%"=="1" (
 )
 
 IF "%CSTARTR%"=="2" (
-	IF EXIST "C:\Ect\RWC\main.bat" start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
-	IF NOT EXIST "C:\Ect\RWC\main.bat" curl -g -k -L -# -o "C:\Ect\RWC\main.bat" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/main.dll" & start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
+	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage"
+	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
+	IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+	curl -g -k -L -# -o "Optifiles.7z" "https://docs.google.com/uc?export=download&id=1yVNzcph1H-oK-0jSj-t8fZIBNWEaSooS" >nul 2>&1
+	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
+	IF EXIST 7za.exe DEL 7za.exe>nul
+	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
+	IF EXIST C:\ph_main.exe start C:\ph_main.exe
+	goto :MAINW
 )
 
-    curl -g -k -L -# -o "RegistryChangesView.7z" "https://docs.google.com/uc?export=download&id=1PURbSJbviD_-kOtxwBk3gSYP_gh8ELAm"
-    :686
-    IF EXIST RegistryChangesView.7z (7za.exe -y x -p9421 RegistryChangesView.7z >nul) else (goto :686)
-    del "RegistryChangesView.7z" >nul
+IF "%CSTARTR%"=="3" (
+	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
+	IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+	curl -g -k -L -# -o "DEBUG.7z" "https://docs.google.com/uc?export=download&id=1y8SZuF_70jcj_WEFUAY7JtxNDKSjFPzw" >nul 2>&1
+	IF EXIST DEBUG.7z (7za.exe -y x -p9421 -oC:\ DEBUG.7z >nul)
+	IF EXIST 7za.exe DEL 7za.exe>nul
+	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="4" (
+	IF EXIST "Firefox Installer.exe" DEL "Firefox Installer.exe" >nul
+	curl -g -k -L -# -o "Firefox Installer.exe" "https://download.mozilla.org/?product=firefox-stub&os=win&lang=fr" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "Firefox Installer.exe"
+	DEL "Firefox Installer.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="5" (
+	IF EXIST "waterfox-portable-win64-6.0.7-29-setup.exe" DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
+	curl -g -k -L -# -o "waterfox-portable-win64-6.0.7-29-setup.exe" "https://github.com/portapps/waterfox-portable/releases/download/6.0.7-29/waterfox-portable-win64-6.0.7-29-setup.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "waterfox-portable-win64-6.0.7-29-setup.exe"
+	DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="6" (
+	IF EXIST "librewolf-128.0.3-1-windows-x86_64-setup.exe" DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
+	curl -g -k -L -# -o "librewolf-128.0.3-1-windows-x86_64-setup.exe" "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/128.0.3-1/librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "librewolf-128.0.3-1-windows-x86_64-setup.exe"
+	DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="7" (
+	IF EXIST "chrome-win.zip" DEL "chrome-win.zip" >nul
+	curl -g -k -L -# -o "chrome-win.zip" "https://download-chromium.appspot.com/dl/Win_x64?type=snapshots" >nul 2>&1
+	@timeout /t 02>nul
+	Start chrome-win.zip
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="8" (
+	IF EXIST "ChromeSetup.exe" DEL "ChromeSetup.exe" >nul
+	curl -g -k -L -# -o "ChromeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Chr.dll" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "ChromeSetup.exe"
+	DEL "ChromeSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="9" (
+	IF EXIST "MicrosoftEdgeSetup.exe" DEL "MicrosoftEdgeSetup.exe" >nul
+	curl -g -k -L -# -o "MicrosoftEdgeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Edge.dll" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "MicrosoftEdgeSetup.exe"
+	DEL "MicrosoftEdgeSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="10" (
+	IF EXIST "OperaSetup.exe" DEL "OperaSetup.exe" >nul
+	curl -g -k -L -# -o "OperaSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Opera.dll" >nul 2>&1
+	START /WAIT "" "OperaSetup.exe"
+	DEL "OperaSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="11" (
+	IF EXIST "OperaGXSetup.exe" DEL "OperaGXSetup.exe" >nul
+	curl -g -k -L -# -o "OperaGXSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/OperaGX.dll" >nul 2>&1
+	START /WAIT "" "OperaGXSetup.exe"
+	DEL "OperaGXSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="12" (
+	IF EXIST "Vivaldix64.exe" DEL "Vivaldix64.exe" >nul
+	curl -g -k -L -# -o "Vivaldix64.exe" "https://downloads.vivaldi.com/stable/Vivaldi.6.8.3381.48.x64.exe" >nul 2>&1
+	START /WAIT "" "Vivaldix64.exe"
+	DEL "Vivaldix64.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="13" (
+	IF EXIST "7z2407-x64.exe" DEL "7z2407-x64.exe" >nul
+	curl -g -k -L -# -o "7z2407-x64.exe" "https://www.7-zip.org/a/7z2407-x64.exe" >nul 2>&1
+	START /WAIT "" "7z2407-x64.exe"
+	DEL "7z2407-x64.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="14" (
+	IF EXIST "winrar-x64-701.exe" DEL "winrar-x64-701.exe" >nul
+	curl -g -k -L -# -o "winrar-x64-701.exe" "https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-701.exe" >nul 2>&1
+	START /WAIT "" "winrar-x64-701.exe"
+	DEL "winrar-x64-701.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="15" (
+	IF EXIST "vlc-3.0.21-win64.exe" DEL "vlc-3.0.21-win64.exe" >nul
+	curl -g -k -L -# -o "vlc-3.0.21-win64.exe" "https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe" >nul 2>&1
+	START /WAIT "" "vlc-3.0.21-win64.exe"
+	DEL "vlc-3.0.21-win64.exe" >nul
+	goto :MAINW
+)
+
+
+IF "%CSTARTR%"=="16" (
+	IF EXIST "DiscordSetup.exe" DEL "DiscordSetup.exe" >nul
+	curl -g -k -L -# -o "DiscordSetup.exe" "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64" >nul 2>&1
+	START /WAIT "" "DiscordSetup.exe"
+	DEL "DiscordSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="17" (
+	IF EXIST "teamspeak-client.msi" DEL "teamspeak-client.msi" >nul
+	curl -g -k -L -# -o "teamspeak-client.msi" "https://files.teamspeak-services.com/pre_releases/client/5.0.0-beta77/teamspeak-client.msi" >nul 2>&1
+	START /WAIT "" "teamspeak-client.msi"
+	DEL "teamspeak-client.msi" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="18" (
+	IF EXIST "PowerToysUserSetup-0.83.0-x64.exe" DEL "PowerToysUserSetup-0.83.0-x64.exe" >nul
+	curl -g -k -L -# -o "PowerToysUserSetup-0.83.0-x64.exe" "https://github.com/microsoft/PowerToys/releases/download/v0.83.0/PowerToysUserSetup-0.83.0-x64.exe" >nul 2>&1
+	START /WAIT "" "PowerToysUserSetup-0.83.0-x64.exe"
+	DEL "PowerToysUserSetup-0.83.0-x64.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="19" (
+	IF EXIST "python-3.12.4-amd64.exe" DEL "python-3.12.4-amd64.exe" >nul
+	curl -g -k -L -# -o "python-3.12.4-amd64.exe" "https://www.python.org/ftp/python/3.12.4/python-3.12.4-amd64.exe" >nul 2>&1
+	START /WAIT "" "python-3.12.4-amd64.exe"
+	DEL "python-3.12.4-amd64.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="20" (
+	IF EXIST "deluge-2.1.1-win64-setup.exe" DEL "deluge-2.1.1-win64-setup.exe" >nul
+	curl -g -k -L -# -o "deluge-2.1.1-win64-setup.exe" "https://ftp.osuosl.org/pub/deluge/windows/deluge-2.1.1-win64-setup.exe" >nul 2>&1
+	START /WAIT "" "deluge-2.1.1-win64-setup.exe"
+	DEL "deluge-2.1.1-win64-setup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="ff" (
+	IF EXIST "ff" DEL "ff" >nul
+	curl -g -k -L -# -o "ff" "ff" >nul 2>&1
+	START /WAIT "" "ff"
+	DEL "ff" >nul
+	goto :MAINW
+)
 
 
 IF "%CSTARTR%"=="32" (
