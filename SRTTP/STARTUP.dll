@@ -28,11 +28,7 @@ SET VERSCRIPT=0004
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 if %errorlevel% neq 0 (
-	cls
-	echo.
-	echo  %red%Veuillez executer le CMD en tant qu'administrateur.%white%
-	pause
-	exit
+	powershell -NoProfile -NonInteractive -Command start -verb runas "'%~s0'" >nul 2>&1 & exit /b
 )
 
 if /i "%~1"=="/4" (
@@ -43,15 +39,7 @@ if /i "%~1"=="/4" (
 
 IF NOT EXIST "%appdata%\StartUp Tools" goto :Firtstr
 :FirtstrBac
-
 cd "%appdata%\StartUp Tools"
-IF EXIST "MAS_AIO.cmd" DEL "MAS_AIO.cmd"
-IF EXIST "DQS\DQS.bat" DEL "DQS\DQS.bat"
-IF EXIST "Spotify.bat" DEL "Spotify.bat"
-IF EXIST "REGUI.exe" DEL "REGUI.exe"
-IF EXIST "dControl.exe" DEL "dControl.exe"
-IF EXIST "DefenderRemover.exe" DEL "DefenderRemover.exe"
-IF EXIST "PowerToysSetup-0.82.1-x64.exe" DEL "PowerToysSetup-0.82.1-x64.exe"
 
 :MAINW
 cls 
