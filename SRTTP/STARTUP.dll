@@ -21,7 +21,6 @@ set orange=[38;5;208m
 set white=[37m
 set indigo=[38;5;105m
 cd /d %~dp0
-IF NOT EXIST DQS md DQS
 color 7
 
 SET VERSCRIPT=0003
@@ -42,21 +41,8 @@ if /i "%~1"=="/4" (
 	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
 )
 
-IF NOT EXIST "%appdata%\StartUp Tools" (
-	for /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') do SET "HWID=%%i"
-	@timeout /t 01>nul
-	IF %HWID%==PF0TRR6A goto :CRSTRC
-	IF %HWID%==219925897859274 goto :CRSTRC
-	IF %HWID%==191262638503131 goto :CRSTRC
-	IF %HWID%==J216401760 goto :CRSTRC
-	DEL "%~f0"
-	Exit
-	:CRSTRC
-	md "%appdata%\StartUp Tools"
-	@timeout /t 01>nul
-	cd "%appdata%\StartUp Tools"
-	IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
-)
+IF NOT EXIST "%appdata%\StartUp Tools" goto :Firtstr
+:FirtstrBac
 
 cd "%appdata%\StartUp Tools"
 IF EXIST "MAS_AIO.cmd" DEL "MAS_AIO.cmd"
@@ -388,3 +374,20 @@ IF "%CSTARTR%"=="8" (
 	goto :MAINW
 )
 goto :MAINW
+
+:Firtstr
+for /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') do SET "HWID=%%i"
+@timeout /t 01>nul
+IF %HWID%==PF0TRR6A goto :CRSTRC
+IF %HWID%==219925897859274 goto :CRSTRC
+IF %HWID%==191262638503131 goto :CRSTRC
+IF %HWID%==J216401760 goto :CRSTRC
+DEL "%~f0"
+Exit
+:CRSTRC
+md "%appdata%\StartUp Tools"
+@timeout /t 01>nul
+cd "%appdata%\StartUp Tools"
+IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+IF NOT EXIST DQS md DQS
+goto :FirtstrBac
