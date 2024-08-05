@@ -21,10 +21,10 @@ set orange=[38;5;208m
 set white=[37m
 set indigo=[38;5;105m
 cd /d %~dp0
-IF NOT EXIST %TEMP%\DQS md %TEMP%\DQS
+IF NOT EXIST DQS md DQS
 color 7
 
-SET VERSCRIPT=0002
+SET VERSCRIPT=0003
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -42,13 +42,31 @@ if /i "%~1"=="/4" (
 	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
 )
 
-IF EXIST "%TEMP%\MAS_AIO.cmd" DEL "%TEMP%\MAS_AIO.cmd"
-IF EXIST "%TEMP%\DQS\DQS.bat" DEL "%TEMP%\DQS\DQS.bat"
-IF EXIST "%TEMP%\Spotify.bat" DEL "%TEMP%\Spotify.bat"
-IF EXIST "%TEMP%\REGUI.exe" DEL "%TEMP%\REGUI.exe"
-IF EXIST "%TEMP%\dControl.exe" DEL "%TEMP%\dControl.exe"
-IF EXIST "%TEMP%\DefenderRemover.exe" DEL "%TEMP%\DefenderRemover.exe"
-IF EXIST "%TEMP%\PowerToysSetup-0.82.1-x64.exe" DEL "%TEMP%\PowerToysSetup-0.82.1-x64.exe"
+IF NOT EXIST "%appdata%\StartUp Tools" (
+	for /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') do SET "HWID=%%i"
+	@timeout /t 01>nul
+	IF %HWID%==PF0TRR6A goto :CRSTRC
+	IF %HWID%==219925897859274 goto :CRSTRC
+	IF %HWID%==191262638503131 goto :CRSTRC
+	IF %HWID%==J216401760 goto :CRSTRC
+	DEL "%~f0"
+	Exit
+	:CRSTRC
+	md "%appdata%\StartUp Tools"
+	@timeout /t 01>nul
+	cd "%appdata%\StartUp Tools"
+	IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+)
+
+cd "%appdata%\StartUp Tools"
+IF EXIST "MAS_AIO.cmd" DEL "MAS_AIO.cmd"
+IF EXIST "DQS\DQS.bat" DEL "DQS\DQS.bat"
+IF EXIST "Spotify.bat" DEL "Spotify.bat"
+IF EXIST "REGUI.exe" DEL "REGUI.exe"
+IF EXIST "dControl.exe" DEL "dControl.exe"
+IF EXIST "DefenderRemover.exe" DEL "DefenderRemover.exe"
+IF EXIST "PowerToysSetup-0.82.1-x64.exe" DEL "PowerToysSetup-0.82.1-x64.exe"
+
 :MAINW
 cls 
 echo  Ã ´
@@ -62,7 +80,7 @@ echo ³  ³ %indigo%[ 2]%white% Nouvelle Optimisation    ³   ³ %indigo%[14]%white%
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³  ³ %indigo%[ 3]%white% Fichier Debug            ³   ³ %indigo%[15]%white% VLC                      ³                                       ³ %indigo%[39]%white% S-W                      ³  ³
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³                                      ³ %indigo%[16]%white% Discord                  ³   ³ %gold%VPN%white%                           ³   ³                               ³  ³
+echo ³                                      ³ %indigo%[16]%white% Discord                  ³   ³ %gold%VPN%white%                           ³   ³ %indigo%[40]%white% Office Tool Plus         ³  ³
 echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³  ³ %gold%Navigateurs Internet%white%          ³   ³ %indigo%[17]%white% TeamSpeak                ³   ³ %indigo%[29]%white% Cloudflare WARP          ³   ³                               ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
@@ -72,9 +90,9 @@ echo ³  ³ %indigo%[ 5]%white% Waterfox                 ³   ³ %indigo%[19]%white%
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³  ³ %indigo%[ 6]%white% LibreWolf                ³   ³ %indigo%[20]%white% Deluge                   ³                                       ³ %indigo%[42]%white% Steam                    ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[ 7]%white% Chromium                 ³   ³ %indigo%[21]%white% StreamLink Twitch Gui    ³   ³ %gold%Scripts%white%                       ³   ³ %indigo%[43]%white% Epic Games               ³  ³
+echo ³  ³ %indigo%[ 7]%white% Chromium                 ³   ³ %indigo%[21]%white% Auto Clicker             ³   ³ %gold%Scripts%white%                       ³   ³ %indigo%[43]%white% Epic Games               ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[ 8]%white% Chrome                   ³   ³ %indigo%[22]%white% MSI Afterburner          ³   ³ %indigo%[32]%white% Windows Activation       ³   ³ %indigo%[44]%white% Rare                     ³  ³
+echo ³  ³ %indigo%[ 8]%white% Chrome                   ³   ³ %indigo%[22]%white% Vibrance GUI             ³   ³ %indigo%[32]%white% Windows Activation       ³   ³ %indigo%[44]%white% Rare                     ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³  ³ %indigo%[ 9]%white% Edge                     ³   ³ %indigo%[23]%white% RivaTuner                ³   ³ %indigo%[33]%white% Win32PrioritySeparation  ³   ³ %indigo%[45]%white% GOG                      ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
@@ -257,6 +275,51 @@ IF "%CSTARTR%"=="20" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="21" (
+	curl -g -k -L -# -o "AutoClicker.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/AutoClicker.dll" >nul 2>&1
+	START "" "AutoClicker.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="22" (
+	curl -g -k -L -# -o "vibranceGUI.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/vibranceGUI.dll" >nul 2>&1
+	START "" "vibranceGUI.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="23" (
+	IF EXIST "RTSSSetup736.exe" DEL "RTSSSetup736.exe" >nul
+	curl -g -k -L -# -o "RTSSSetup736.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/RTSSSetup736.dll" >nul 2>&1
+	START /WAIT "" "RTSSSetup736.exe"
+	DEL "RTSSSetup736.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="24" (
+	IF EXIST "InstProcessLasso.exe" DEL "InstProcessLasso.exe" >nul
+	curl -g -k -L -# -o "InstProcessLasso.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstProcessLasso.dll" >nul 2>&1
+	START /WAIT "" "InstProcessLasso.exe"
+	DEL "InstProcessLasso.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="25" (
+	IF EXIST "InstStartBack.exe" DEL "InstStartBack.exe" >nul
+	curl -g -k -L -# -o "InstStartBack.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstStartBack.dll" >nul 2>&1
+	START /WAIT "" "InstStartBack.exe"
+	DEL "InstStartBack.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="26" (
+	IF EXIST "InstRevoUninstall.exe" DEL "InstRevoUninstall.exe" >nul
+	curl -g -k -L -# -o "InstRevoUninstall.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstRevoUninstall.dll" >nul 2>&1
+	START /WAIT "" "InstRevoUninstall.exe"
+	DEL "InstRevoUninstall.exe" >nul
+	goto :MAINW
+)
+
+InstProcessLasso.exe
 IF "%CSTARTR%"=="ff" (
 	IF EXIST "ff" DEL "ff" >nul
 	curl -g -k -L -# -o "ff" "ff" >nul 2>&1
@@ -267,44 +330,44 @@ IF "%CSTARTR%"=="ff" (
 
 
 IF "%CSTARTR%"=="32" (
-	curl -g -k -L -# -o "%TEMP%\MAS_AIO.cmd" "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/Separate-Files-Version/Activators/HWID_Activation.cmd" >nul 2>&1
-	start cmd /c "%TEMP%\MAS_AIO.cmd"
+	curl -g -k -L -# -o "MAS_AIO.cmd" "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/Separate-Files-Version/Activators/HWID_Activation.cmd" >nul 2>&1
+	start cmd /c "MAS_AIO.cmd"
 	goto :MAINW
 )
 IF "%CSTARTR%"=="33" (
-	curl -g -k -L -# -o "%TEMP%\DQS\DQS.bat" "https://tinyurl.com/DQSWIN32" >nul 2>&1
-	start cmd /c "%TEMP%\DQS\DQS.bat"
+	curl -g -k -L -# -o "DQS\DQS.bat" "https://tinyurl.com/DQSWIN32" >nul 2>&1
+	start cmd /c "DQS\DQS.bat"
 	goto :MAINW
 )
 IF "%CSTARTR%"=="34" (
-	curl -g -k -L -# -o "%TEMP%\DQS\SBCDEDIT.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SBCDEDIT.bat" >nul 2>&1
-	start cmd /c "%TEMP%\DQS\SBCDEDIT.bat"
+	curl -g -k -L -# -o "DQS\SBCDEDIT.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SBCDEDIT.bat" >nul 2>&1
+	start cmd /c "DQS\SBCDEDIT.bat"
 	goto :MAINW
 )
 IF "%CSTARTR%"=="3" (
-	curl -g -k -L -# -o "%TEMP%\Spotify.bat" "https://tinyurl.com/SPOBTP" >nul 2>&1
-	curl -g -k -L -# -o "%TEMP%\DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
-	start cmd /c "%TEMP%\Spotify.bat"
+	curl -g -k -L -# -o "Spotify.bat" "https://tinyurl.com/SPOBTP" >nul 2>&1
+	curl -g -k -L -# -o "DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
+	start cmd /c "Spotify.bat"
 	goto :MAINW
 )
 IF "%CSTARTR%"=="4" (
-	curl -g -k -L -# -o "%TEMP%\REGUI.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-Edge_GUI.exe" >nul 2>&1
-	START %TEMP%\REGUI.exe
+	curl -g -k -L -# -o "REGUI.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-Edge_GUI.exe" >nul 2>&1
+	START REGUI.exe
 	goto :MAINW
 )
 IF "%CSTARTR%"=="5" (
-	curl -g -k -L -# -o "%TEMP%\dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
-	START %TEMP%\dControl.exe
+	curl -g -k -L -# -o "dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
+	START dControl.exe
 	goto :MAINW
 )
 IF "%CSTARTR%"=="6" (
-	curl -g -k -L -# -o "%TEMP%\DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
-	START %TEMP%\DefenderRemover.exe
+	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
+	START DefenderRemover.exe
 	goto :MAINW
 )
 IF "%CSTARTR%"=="7" (
-	curl -g -k -L -# -o "%TEMP%\PowerToysSetup-0.82.1-x64.exe" "https://github.com/microsoft/PowerToys/releases/download/v0.82.1/PowerToysSetup-0.82.1-x64.exe" >nul 2>&1
-	START %TEMP%\PowerToysSetup-0.82.1-x64.exe
+	curl -g -k -L -# -o "PowerToysSetup-0.82.1-x64.exe" "https://github.com/microsoft/PowerToys/releases/download/v0.82.1/PowerToysSetup-0.82.1-x64.exe" >nul 2>&1
+	START PowerToysSetup-0.82.1-x64.exe
 	goto :MAINW
 )
 IF "%CSTARTR%"=="8" (
