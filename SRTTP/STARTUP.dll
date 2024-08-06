@@ -23,7 +23,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0004
+SET VERSCRIPT=0005
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -42,7 +42,7 @@ IF NOT EXIST "%appdata%\StartUp Tools" goto :Firtstr
 cd "%appdata%\StartUp Tools"
 
 :MAINW
-cls 
+cls
 echo  Ã ´
 echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
 echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
@@ -50,13 +50,13 @@ echo ³  ³ %gold%Optimisations%white%                 ³   ³ %gold%Softwares%white
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³  ³ %indigo%[ 1]%white% Ancienne Optimisation    ³   ³ %indigo%[13]%white% 7zip                     ³   ³ %indigo%[27]%white% CreamInstaller           ³   ³ %indigo%[37]%white% Edge Remover             ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[ 2]%white% Nouvelle Optimisation    ³   ³ %indigo%[14]%white% Winrar                   ³   ³ %indigo%[28]%white% CreamAPI                 ³   ³ %indigo%[38]%white% dControl                 ³  ³
+echo ³  ³ %indigo%[ 2]%white% Nouvelle Optimisation    ³   ³ %indigo%[14]%white% Winrar                   ³   ³ %indigo%[28]%white% Auto-CreamApi 2          ³   ³ %indigo%[38]%white% dControl                 ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³  ³ %indigo%[ 3]%white% Fichier Debug            ³   ³ %indigo%[15]%white% VLC                      ³                                       ³ %indigo%[39]%white% S-W                      ³  ³
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³                                      ³ %indigo%[16]%white% Discord                  ³   ³ %gold%VPN%white%                           ³   ³ %indigo%[40]%white% Office Tool Plus         ³  ³
 echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %gold%Navigateurs Internet%white%          ³   ³ %indigo%[17]%white% TeamSpeak                ³   ³ %indigo%[29]%white% Cloudflare WARP          ³   ³                               ³  ³
+echo ³  ³ %gold%Navigateurs Internet%white%          ³   ³ %indigo%[17]%white% TeamSpeak                ³   ³ %indigo%[29]%white% Cloudflare WARP          ³   ³ %indigo%[41]%white% Activation Scripts (MAS) ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
 echo ³  ³ %indigo%[ 4]%white% Firefox                  ³   ³ %indigo%[18]%white% PowerToys                ³   ³ %indigo%[30]%white% RiseupVPN                ³                                      ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
@@ -293,58 +293,95 @@ IF "%CSTARTR%"=="26" (
 	goto :MAINW
 )
 
-InstProcessLasso.exe
-IF "%CSTARTR%"=="ff" (
-	IF EXIST "ff" DEL "ff" >nul
-	curl -g -k -L -# -o "ff" "ff" >nul 2>&1
-	START /WAIT "" "ff"
-	DEL "ff" >nul
+IF "%CSTARTR%"=="27" (
+	IF EXIST "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe" START "" "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\CreamInstaller" md "%appdata%\StartUp Tools\CreamInstaller"
+	IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
+	curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
+	IF EXIST CreamInstaller.zip (7za.exe -y x -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.zip >nul)
+	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="28" (
+	IF EXIST "%appdata%\StartUp Tools\Auto-CreamApi\auto-creamapi.exe" START "" "%appdata%\StartUp Tools\Auto-CreamApi"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\Auto-CreamApi" md "%appdata%\StartUp Tools\Auto-CreamApi"
+	IF EXIST "auto-creamapi-2.1.7.1.7z" DEL "auto-creamapi-2.1.7.1.7z" >nul
+	curl -g -k -L -# -o "auto-creamapi-2.1.7.1.7z" "https://git.jeddunk.xyz/jeddunk/auto-creamapi-2/releases/download/2.1.7/auto-creamapi-2.1.7.1.7z" >nul 2>&1
+	IF EXIST auto-creamapi-2.1.7.1.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Auto-CreamApi" auto-creamapi-2.1.7.1.7z >nul)
+	curl -g -k -L -# -o "%appdata%\StartUp Tools\Auto-CreamApi\dotnet-sdk-3.1.426-win-x64.exe" "https://download.visualstudio.microsoft.com/download/pr/b70ad520-0e60-43f5-aee2-d3965094a40d/667c122b3736dcbfa1beff08092dbfc3/dotnet-sdk-3.1.426-win-x64.exe" >nul 2>&1
+	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\Auto-CreamApi"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="29" (
+	IF EXIST "Cloudflare_WARP_2024.6.473.0.msi" DEL "Cloudflare_WARP_2024.6.473.0.msi" >nul
+	curl -g -k -L -# -o "Cloudflare_WARP_2024.6.473.0.msi" "https://1111-releases.cloudflareclient.com/win/latest" >nul 2>&1
+	START /WAIT "" "Cloudflare_WARP_2024.6.473.0.msi"
+	DEL "Cloudflare_WARP_2024.6.473.0.msi" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="30" (
+	IF EXIST "RiseupVPN-win-latest.exe" DEL "RiseupVPN-win-latest.exe" >nul
+	curl -g -k -L -# -o "RiseupVPN-win-latest.exe" "https://downloads.leap.se/RiseupVPN/windows/RiseupVPN-win-latest.exe" >nul 2>&1
+	START /WAIT "" "RiseupVPN-win-latest.exe"
+	DEL "RiseupVPN-win-latest.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="31" (
+	IF EXIST "ProtonVPN_v3.3.0.exe" DEL "ProtonVPN_v3.3.0.exe" >nul
+	curl -g -k -L -# -o "ProtonVPN_v3.3.0.exe" "https://protonvpn.com/download/ProtonVPN_v3.3.0.exe" >nul 2>&1
+	START /WAIT "" "ProtonVPN_v3.3.0.exe"
+	DEL "ProtonVPN_v3.3.0.exe" >nul
+	goto :MAINW
+)
 
 IF "%CSTARTR%"=="32" (
 	curl -g -k -L -# -o "MAS_AIO.cmd" "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/Separate-Files-Version/Activators/HWID_Activation.cmd" >nul 2>&1
 	start cmd /c "MAS_AIO.cmd"
 	goto :MAINW
 )
+
 IF "%CSTARTR%"=="33" (
 	curl -g -k -L -# -o "DQS\DQS.bat" "https://tinyurl.com/DQSWIN32" >nul 2>&1
 	start cmd /c "DQS\DQS.bat"
 	goto :MAINW
 )
+
 IF "%CSTARTR%"=="34" (
 	curl -g -k -L -# -o "DQS\SBCDEDIT.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SBCDEDIT.bat" >nul 2>&1
 	start cmd /c "DQS\SBCDEDIT.bat"
 	goto :MAINW
 )
-IF "%CSTARTR%"=="3" (
+
+IF "%CSTARTR%"=="35" (
+	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
+	START DefenderRemover.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="36" (
 	curl -g -k -L -# -o "Spotify.bat" "https://tinyurl.com/SPOBTP" >nul 2>&1
 	curl -g -k -L -# -o "DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
 	start cmd /c "Spotify.bat"
 	goto :MAINW
 )
-IF "%CSTARTR%"=="4" (
+
+IF "%CSTARTR%"=="37" (
 	curl -g -k -L -# -o "REGUI.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-Edge_GUI.exe" >nul 2>&1
 	START REGUI.exe
 	goto :MAINW
 )
-IF "%CSTARTR%"=="5" (
+
+IF "%CSTARTR%"=="38" (
 	curl -g -k -L -# -o "dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
 	START dControl.exe
 	goto :MAINW
 )
-IF "%CSTARTR%"=="6" (
-	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
-	START DefenderRemover.exe
-	goto :MAINW
-)
-IF "%CSTARTR%"=="7" (
-	curl -g -k -L -# -o "PowerToysSetup-0.82.1-x64.exe" "https://github.com/microsoft/PowerToys/releases/download/v0.82.1/PowerToysSetup-0.82.1-x64.exe" >nul 2>&1
-	START PowerToysSetup-0.82.1-x64.exe
-	goto :MAINW
-)
-IF "%CSTARTR%"=="8" (
+
+IF "%CSTARTR%"=="39" (
 	IF NOT EXIST C:\Ect md C:\Ect >nul 2>&1
 	cd /d C:\Ect\ >nul 2>&1
 	IF EXIST C:\Ect\S-W\start-windows.bat START "" "C:\Ect\S-W\start-windows.bat" -U
@@ -361,6 +398,82 @@ IF "%CSTARTR%"=="8" (
 	DEL C:\Ect\S-W.7z >nul 2>&1
 	goto :MAINW
 )
+
+IF "%CSTARTR%"=="40" (
+	IF EXIST "%appdata%\StartUp Tools\Office\Office Tool\Office Tool Plus.exe" START "" "%appdata%\StartUp Tools\Office\Office Tool\Office Tool Plus.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\Office" md "%appdata%\StartUp Tools\Office"
+	IF EXIST "Office_Tool_with_runtime_v10.13.10.0_x64.7z" DEL "Office_Tool_with_runtime_v10.13.10.0_x64.7z" >nul
+	curl -g -k -L -# -o "Office_Tool_with_runtime_v10.13.10.0_x64.7z" "https://github.com/YerongAI/Office-Tool/releases/download/v10.13.10.0/Office_Tool_with_runtime_v10.13.10.0_x64.7z" >nul 2>&1
+	IF EXIST Office_Tool_with_runtime_v10.13.10.0_x64.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Office" Office_Tool_with_runtime_v10.13.10.0_x64.7z >nul)
+	START "" "%appdata%\StartUp Tools\Office\Office Tool\Office Tool Plus.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="41" (
+	curl -g -k -L -# -o "MAS_AIO-CRC32_31F7FD1E.cmd" "https://github.com/massgravel/Microsoft-Activation-Scripts/raw/master/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd" >nul 2>&1
+	start cmd /c "MAS_AIO-CRC32_31F7FD1E.cmd"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="42" (
+	curl -g -k -L -# -o "%TEMP%\SteamSetup.exe" "https://cdn.akamai.steamstatic.com/client/installer/SteamSetup.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "%TEMP%\SteamSetup.exe"
+	DEL "%TEMP%\SteamSetup.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="43" (
+	IF NOT EXIST "C:\Windows\temp" MD "C:\Windows\temp"
+	curl -g -k -L -# -o "%TEMP%\EpicGamesLauncherInstaller.msi" "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "%TEMP%\EpicGamesLauncherInstaller.msi"
+	DEL "%TEMP%\EpicGamesLauncherInstaller.msi"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="44" (
+	IF NOT EXIST "C:\Windows\temp" MD "C:\Windows\temp"
+	curl -g -k -L -# -o "%TEMP%\Rare-1.10.11.msi" "https://github.com/RareDevs/Rare/releases/download/1.10.11/Rare-1.10.11.msi" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "%TEMP%\Rare-1.10.11.msi"
+	DEL "%TEMP%\Rare-1.10.11.msi"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="45" (
+	IF EXIST "GOG_Galaxy_2.0.exe" DEL "GOG_Galaxy_2.0.exe" >nul
+	curl -g -k -L -# -o "GOG_Galaxy_2.0.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/GOG.dll" >nul 2>&1
+	START /WAIT "" "GOG_Galaxy_2.0.exe"
+	DEL "GOG_Galaxy_2.0.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="46" (
+	IF NOT EXIST "C:\Windows\temp" MD "C:\Windows\temp"
+	curl -g -k -L -# -o "%TEMP%\EAappInstaller.exe" "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /wait "" "%TEMP%\EAappInstaller.exe"
+	DEL "%TEMP%\EAappInstaller.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="47" (
+	curl -g -k -L -# -o "%TEMP%\UbisoftConnectInstaller.exe" "https://static3.cdn.ubi.com/orbit/launcher_installer/UbisoftConnectInstaller.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /wait "" "%TEMP%\UbisoftConnectInstaller.exe"
+	DEL "%TEMP%\UbisoftConnectInstaller.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="48" (
+	IF EXIST "Battle.net-Setup.exe" DEL "Battle.net-Setup.exe" >nul
+	curl -g -k -L -# -o "Battle.net-Setup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Battle.dll" >nul 2>&1
+	START /WAIT "" "Battle.net-Setup.exe"
+	DEL "Battle.net-Setup.exe" >nul
+	goto :MAINW
+)
+
 goto :MAINW
 
 :Firtstr
