@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0008
+SET VERSCRIPT=0009
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -49,7 +49,7 @@ cd "%appdata%\StartUp Tools"
 cls
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
-echo   %bblue% %black%OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%
+echo   %bblue% OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
 echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
@@ -85,8 +85,8 @@ echo ³  ³ %indigo%[12]%white% Vivaldi                  ³   ³ %indigo%[26]%white%
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
-echo      %indigo%[99]%white% RESET
-echo                                                                                                                                       %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
+echo      %indigo%[98]%white% RESET
+echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor%                                                                                         %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 set /p CSTARTR="%green%>%white%"
 
@@ -485,13 +485,18 @@ IF "%CSTARTR%"=="48" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="99" (
+IF "%CSTARTR%"=="98" (
 	cd %temp%
 	@timeout /t 01>nul
 	rmdir /s /q "%appdata%\StartUp Tools" >nul 2>&1
 	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
 	@timeout /t 01>nul
 	goto :RESET
+)
+
+IF "%CSTARTR%"=="99" (
+	powershell -command "Set-Clipboard -Value 'Fc#$f6EtsY@&duxFqg3B'" >nul 2>&1
+	goto :MAINW
 )
 
 goto :MAINW
