@@ -1,3 +1,4 @@
+:RESET
 @echo off
 @Title START-UP TOOLS
 set black=[30m
@@ -15,15 +16,17 @@ set bmagenta=[45m
 set cyan=[36m
 set defcolor=[49m
 set gold=[38;5;220m
+set ggold=[48;5;220m
 set grey=[90m
 set ggrey=[100m
 set orange=[38;5;208m
+set oorange=[48;5;208m
 set white=[37m
 set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0005
+SET VERSCRIPT=0007
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -32,18 +35,22 @@ if %errorlevel% neq 0 (
 )
 
 if /i "%~1"=="/4" (
-	mode con:cols=147 lines=60
+	mode con:cols=147 lines=42
 ) else (
 	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
 )
 
 IF NOT EXIST "%appdata%\StartUp Tools" goto :Firtstr
 :FirtstrBac
+call "%appdata%\StartUp Tools\IFHW.bat"
 cd "%appdata%\StartUp Tools"
 
 :MAINW
 cls
-echo  Ã ´
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
+echo   %bblue% %black%OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
 echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
 echo ³  ³ %gold%Optimisations%white%                 ³   ³ %gold%Softwares%white%                     ³   ³ %gold%DLC Unlocker%white%                  ³   ³ %gold%Autres%white%                        ³  ³
@@ -77,6 +84,10 @@ echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   
 echo ³  ³ %indigo%[12]%white% Vivladi                  ³   ³ %indigo%[26]%white% Revo Uninstaller Pro     ³   ³ %indigo%[36]%white% Spotify                  ³   ³ %indigo%[48]%white% Battle.Net               ³  ³
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo      %indigo%[99]%white% RESET
+echo                                                                                                                                       %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 set /p CSTARTR="%green%>%white%"
 
 IF "%CSTARTR%"=="1" (
@@ -474,6 +485,15 @@ IF "%CSTARTR%"=="48" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="99" (
+	cd %temp%
+	@timeout /t 01>nul
+	rmdir /s /q "%appdata%\StartUp Tools" >nul 2>&1
+	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
+	@timeout /t 01>nul
+	goto :RESET
+)
+
 goto :MAINW
 
 :Firtstr
@@ -486,9 +506,59 @@ IF %HWID%==J216401760 goto :CRSTRC
 DEL "%~f0"
 Exit
 :CRSTRC
+
 md "%appdata%\StartUp Tools"
 @timeout /t 01>nul
 cd "%appdata%\StartUp Tools"
+
+for /f "tokens=*" %%a in ('powershell -Command "(Get-WmiObject Win32_BIOS).BIOSCharacteristics -contains 33"') do set "USBlegacy=%%a"
+if "%USBlegacy%"=="True" (set VM=NO) else (set VM=YES)
+
+curl -g -k -L -# -o "%appdata%\StartUp Tools\_CP.exe" "https://tinyurl.com/dl-opt-nfo" >nul 2>&1
+
+for /f "tokens=*" %%i in ('powershell -Command "Get-WmiObject win32_videocontroller | Select-Object -ExpandProperty Name"') do set GPU_NAME=%%i
+echo %GPU_NAME% | find /I "NVIDIA" > nul
+if %errorlevel% == 0 (set GPU=NVIDIA&goto :ENDGPU)
+echo %GPU_NAME% | find /I "AMD" > nul
+if %errorlevel% == 0 (set GPU=AMD&goto :ENDGPU)
+echo %GPU_NAME% | find /I "VMWARE" > nul
+if %errorlevel% == 0 (set GPU=VMWARE&goto :ENDGPU)
+set GPU=UNKNOWN
+:ENDGPU
+
+for /f "tokens=*" %%c in ('"%appdata%\StartUp Tools\_CP.exe" /P') do set MY_IP=%%c
+
 IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 IF NOT EXIST DQS md DQS
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "CurrentBuildNumber"') DO set RO1=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "DisplayVersion"') DO set RO2=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "ReleaseId"') DO set RO9=%%B
+
+
+
+Echo SET HWID=%HWID%>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET VM=%VM%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET GPU=%GPU%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET IP=%MY_IP%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET CBN=%RO1%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET DV=%RO2%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET RID=%RO9%>>"%appdata%\StartUp Tools\IFHW.bat"
+
+for /f "tokens=3" %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v CurrentBuild') do set build_number=%%i
+if %build_number% GEQ 22000 (
+    SET WVAC=11
+) else if %build_number% GEQ 10240 (
+    SET WVAC=10
+) else (
+    SET WVAC=ERR
+)
+
+Echo SET BLD=%WVAC%>>"%appdata%\StartUp Tools\IFHW.bat"
+
 goto :FirtstrBac
