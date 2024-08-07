@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0009
+SET VERSCRIPT=0011
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -35,7 +35,7 @@ if %errorlevel% neq 0 (
 )
 
 if /i "%~1"=="/4" (
-	mode con:cols=147 lines=42
+	mode con:cols=147 lines=45
 ) else (
 	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
 )
@@ -83,6 +83,9 @@ echo ³  ³ %indigo%[11]%white% Opera GX                 ³   ³ %indigo%[25]%white%
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³  ³ %indigo%[12]%white% Vivaldi                  ³   ³ %indigo%[26]%white% Revo Uninstaller Pro     ³   ³ %indigo%[36]%white% Spotify                  ³   ³ %indigo%[48]%white% Battle.Net               ³  ³
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
+echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
+echo ³  ³ %indigo%[49]%white% MSI utility v3             ³   %indigo%[50]%white% WPD                        ³   %indigo%[51]%white% ShutUp10++                 ³   %indigo%[52]%white% Script Network %grey%CoutX%white%     ³  ³
+echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo      %indigo%[98]%white% RESET
@@ -482,6 +485,38 @@ IF "%CSTARTR%"=="48" (
 	curl -g -k -L -# -o "Battle.net-Setup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Battle.dll" >nul 2>&1
 	START /WAIT "" "Battle.net-Setup.exe"
 	DEL "Battle.net-Setup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="49" (
+	IF EXIST "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" START "" "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\MSI" md "%appdata%\StartUp Tools\MSI"
+	curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\PCIutil.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/PCIutil.dll" >nul 2>&1
+	curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/MSI_util_v3.dll" >nul 2>&1
+	START "" "%appdata%\StartUp Tools\MSI\PCIutil.exe"
+	@timeout /t 04>nul
+	Taskkill /f /im PCIutil.exe>nul
+	START "" "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="50" (
+	IF EXIST WPD.exe START WPD.exe
+	curl -g -k -L -# -o "WPD.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/WPD.dll" >nul 2>&1
+	START WPD.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="51" (
+	IF EXIST OOSU10.exe START OOSU10.exe
+	curl -g -k -L -# -o "OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" >nul 2>&1
+	START OOSU10.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="52" (
+	curl -g -k -L -# -o "Network.bat" "https://github.com/UnLovedCookie/Network/releases/download/v1.1/Network.bat" >nul 2>&1
+	START /WAIT Network.bat
 	goto :MAINW
 )
 
