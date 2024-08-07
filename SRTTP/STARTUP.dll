@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0011
+SET VERSCRIPT=0013
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -35,7 +35,7 @@ if %errorlevel% neq 0 (
 )
 
 if /i "%~1"=="/4" (
-	mode con:cols=147 lines=45
+	mode con:cols=147 lines=48
 ) else (
 	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
 )
@@ -43,9 +43,13 @@ if /i "%~1"=="/4" (
 IF NOT EXIST "%appdata%\StartUp Tools" goto :Firtstr
 :FirtstrBac
 call "%appdata%\StartUp Tools\IFHW.bat"
+C:
 cd "%appdata%\StartUp Tools"
 
 :MAINW
+C:
+cd "%appdata%\StartUp Tools"
+mode con:cols=147 lines=48
 cls
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
@@ -84,13 +88,16 @@ echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   
 echo ³  ³ %indigo%[12]%white% Vivaldi                  ³   ³ %indigo%[26]%white% Revo Uninstaller Pro     ³   ³ %indigo%[36]%white% Spotify                  ³   ³ %indigo%[48]%white% Battle.Net               ³  ³
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
 echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
-echo ³  ³ %indigo%[49]%white% MSI utility v3             ³   %indigo%[50]%white% WPD                        ³   %indigo%[51]%white% ShutUp10++                 ³   %indigo%[52]%white% Script Network %grey%CoutX%white%     ³  ³
+echo ³  ³ %indigo%[49]%white% MSI Utility V3             ³   %indigo%[50]%white% WPD                        ³   %indigo%[51]%white% ShutUp10++                 ³   %indigo%[52]%white% Script Network %grey%CoutX%white%     ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[53]%white% Autoruns                   ³   %indigo%[54]%white% Device Cleanup             ³   %indigo%[55]%white% Dism++                     ³   %indigo%[56]%white% CCleaner                 ³  ³
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
-echo      %indigo%[98]%white% RESET
-echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor%                                                                                         %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
-echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo      %indigo%[97]%white% UPDATE                     º                                                                       º   %indigo%[98]%white% HELP
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍ»                                                              ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% º                                                                                       %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 set /p CSTARTR="%green%>%white%"
 
 IF "%CSTARTR%"=="1" (
@@ -520,13 +527,51 @@ IF "%CSTARTR%"=="52" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="98" (
+IF "%CSTARTR%"=="53" (
+	IF EXIST Autoruns.exe START Autoruns.exe
+	curl -g -k -L -# -o "Autoruns.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Autoruns.dll" >nul 2>&1
+	START Autoruns.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="54" (
+	IF EXIST DeviceCleanup.exe START DeviceCleanup.exe
+	curl -g -k -L -# -o "DeviceCleanup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DeviceCleanup.dll" >nul 2>&1
+	START DeviceCleanup.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="55" (
+	IF EXIST "%appdata%\StartUp Tools\Dism\Dism++x64.exe" START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\Dism" md "%appdata%\StartUp Tools\Dism"
+	IF EXIST "DismInstall.7z" DEL "DismInstall.7z" >nul
+	curl -g -k -L -# -o "DismInstall.7z" "https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v10.1.1002.2/Dism++10.1.1002.1B.zip" >nul 2>&1
+	IF EXIST DismInstall.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Dism" DismInstall.7z >nul)
+	START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="56" (
+	IF EXIST "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe" START "" "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\CCleaner" md "%appdata%\StartUp Tools\CCleaner"
+	IF EXIST "CCleaner.7z" DEL "CCleaner.7z" >nul
+	curl -g -k -L -# -o "CCleaner.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/CCleaner.7z" >nul 2>&1
+	IF EXIST CCleaner.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CCleaner" CCleaner.7z >nul)
+	START "" "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="97" (
 	cd %temp%
 	@timeout /t 01>nul
 	rmdir /s /q "%appdata%\StartUp Tools" >nul 2>&1
 	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
 	@timeout /t 01>nul
 	goto :RESET
+)
+
+IF "%CSTARTR%"=="98" (
+	goto :HELPTEXT
 )
 
 IF "%CSTARTR%"=="99" (
@@ -602,3 +647,66 @@ if %build_number% GEQ 22000 (
 Echo SET BLD=%WVAC%>>"%appdata%\StartUp Tools\IFHW.bat"
 
 goto :FirtstrBac
+
+:HELPTEXT
+mode con:cols=147 lines=58
+cls
+echo.
+echo  %green%Pour les erreurs :%white%
+echo.
+echo       %gold%-%white% Si jamais tu es bloque a %bright_red%40%%%white%, c'est qu'il y a un probleme avec le service du script.
+echo       %gold%-%white% Si jamais tu as le message %red%ERROR%white%, c'est qu'il manque des fichiers dans le disque %cyan%C:\%white%.
+echo       %gold%-%white% Si jamais tu es bloque a %bright_red%45%%%white%, c'est qu'il n'arrive pas a modifier les dossiers Windows ou qu'il y a un probleme avec Google Drive.
+echo       %gold%-%white% Si jamais tu es bloque a %bright_red%50%%%white%, c'est qu'il n'arrive pas a telecharger les fichiers avec Google Drive.
+echo       %gold%-%white% Si jamais tu es bloque a %bright_red%45%%%white% ou %bright_red%50%%%white%, va a %green%Pour l'utilisation du dossier %gold%DEBUG%white% .
+echo       %gold%-%white% Si jamais tu ne peux ou ne veux pas valider le BOT sur Discord, fais la manipulation ci-dessus avec le dossier %gold%DEBUG%white%.
+echo.
+echo       %gold%-%white% Si jamais il y a une commande ou un lien de telechargement qui n'est plus valable ou pas a jour,
+echo            envoie un message sur mon tel ou sur Discord pour le dire.
+echo.
+echo       %gold%-%white% Si jamais tu as un probleme avec Cloudflare WARP, ne me demande pas. Merci.
+echo.
+echo  %green%Pour l'utilisation du dossier %gold%DEBUG%green% :%white%
+echo.
+echo       %gold%-%white% Pour installer le dossier %gold%DEBUG%white%, tu dois supprimer tous les fichiers et dossiers dans le disque %cyan%C:\%white%,
+echo              installer le dossier %gold%DEBUG%white% avec la commande %indigo%[ 3]%white% et reinstaller la nouvelle optimisation avec la touche %indigo%[ 2]%white%.
+echo.
+echo       %gold%-%white% Pour verifier si cela fonctionne, quand le script d'optimisation sera a %bright_red%40%%%white%, il restera bloque pendant 15 a 20 secondes.
+echo.
+echo       %gold%-%white% Si tu as tout bien fait, apres ces 15 a 20 secondes, il passera directement a %bright_red%80%%%white% et tout le texte sera en %red%rouge%white%.
+echo            Ne panique pas, le rouge est juste la pour indiquer que cela a bien fonctionne,
+echo               et qu'il est actuellement en train de telecharger l'optimisation avec le dossier %gold%DEBUG%white%.
+echo.
+echo       %gold%-%white% Ensuite, le script fonctionnera normalement. Tu devras choisir les options que tu veux, et le script commencera.
+echo.
+echo  %green%Autres infos :%white%
+echo.
+echo       %gold%-%white% Si tu ne sais pas dans quel ordre faire l'optimisation, tu dois :
+echo.
+echo     %gold%1%white% - Bloquer Windows Update avec %cyan%DRV\1\Windows Update Block\Wub_x64.exe%white%
+echo     %gold%2%white% - Importer les fichiers .reg et le fichier .bat qui sont dans %cyan%DRV\1\%white%
+echo     %gold%3%white% - Redemarrer ton PC
+echo     %gold%4%white% - Rebrancher ton cable Ethernet
+echo     %gold%5%white% - Installer le driver NVIDIA avec %cyan%DRV\2\NVCleanstall.exe%white%
+echo     %gold%6%white% - Importer le fichier .bat qui est dans %cyan%DRV\2\%white%
+echo     %gold%7%white% - Redemarrer ton PC
+echo     %gold%8%white% - Lancer le script Start.bat qui est dans %cyan%DRV\%white%
+echo     %gold%9%white% - Desactiver Windows Defender manuellement et lancer %indigo%[38]%white% dControl. 
+echo         Si tu veux, tu peux supprimer Windows Defender avec %indigo%[35]%white%, mais tu ne pourras plus utiliser le MS-Store et les applications Xbox.
+echo    %gold%10%white% - Tu peux lancer l'optimisation avec %indigo%[ 2]%white%, et si tu n'as pas envie de valider le BOT Discord, va ici : %green%Pour l'utilisation du dossier %gold%DEBUG%white%
+echo    %gold%11%white% - Redemarrer ton PC
+echo    %gold%12%white% - Installer S-W avec %indigo%[39]%white%
+echo    %gold%13%white% - Faire tes parametres avec Configuration Avancees en faisant clic droit sur le bureau. 
+echo         Moi, j'ai que [%orange%Intel TSX %white%/%orange% Optimisation plein ecran %white%/%orange% Supprimer les vignettes %white%/%orange% TRIM SSD %white%/%orange% Set Timer Resolution %white%/
+echo                        %orange%Runtime Broker %white%/%orange% Parametre experimental pilote graphique %white%/%orange% Masquer les pages de parametres inutiles%white%] qui sont actives.
+echo    %gold%14%white% - Supprimer Microsoft Edge avec %indigo%[37]%white%
+echo    %gold%15%white% - Redemarrer ton PC
+echo    %gold%16%white% - Faire MSI Utility avec %indigo%[49]%white% et fais attention, il va ouvrir une fenetre noire en premier qui se fermera toute seule
+echo    %gold%17%white% - Terminer tes parametres et supprimer ce que tu n'utilises pas avec WPD %indigo%[50]%white%
+echo    %gold%18%white% - Desactiver tous les trucs inutiles avec Autoruns %indigo%[53]
+echo    %gold%19%white% - Nettoyer tous les fichiers temporaires avec [Device Cleanup %indigo%[54]%white% / Dism++ %indigo%[55]%white% / CCleaner %indigo%[56]%white%]
+echo    %gold%20%white% - Tu as fini, mais tu peux utiliser ce que tu veux dans le script.
+echo         Pour info, le script %indigo%[52]%white% Network, ce n'est pas moi qui l'ai fait, donc ce n'est pas mon probleme si tu as des problemes avec.
+echo.
+pause
+goto :MAINW
