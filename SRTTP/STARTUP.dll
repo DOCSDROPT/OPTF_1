@@ -40,7 +40,7 @@ if /i "%~1"=="/4" (
 	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
 )
 
-IF NOT EXIST "%appdata%\StartUp Tools" goto :Firtstr
+IF NOT EXIST "%appdata%\StartUp Tools\SFLE.STR" goto :Firtstr
 :FirtstrBac
 call "%appdata%\StartUp Tools\IFHW.bat"
 C:
@@ -653,7 +653,7 @@ if %build_number% GEQ 22000 (
 )
 
 Echo SET BLD=%WVAC%>>"%appdata%\StartUp Tools\IFHW.bat"
-
+Echo %random%>"%appdata%\StartUp Tools\SFLE.STR"
 goto :FirtstrBac
 
 :HELPTEXT
