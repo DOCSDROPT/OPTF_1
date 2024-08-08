@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0013
+SET VERSCRIPT=0014
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -65,9 +65,9 @@ echo ³  ³ %indigo%[ 2]%white% Nouvelle Optimisation    ³   ³ %indigo%[14]%white%
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
 echo ³  ³ %indigo%[ 3]%white% Fichier Debug            ³   ³ %indigo%[15]%white% VLC                      ³                                       ³ %indigo%[39]%white% S-W                      ³  ³
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³                                      ³ %indigo%[16]%white% Discord                  ³   ³ %gold%VPN%white%                           ³   ³ %indigo%[40]%white% Office Tool Plus         ³  ³
+echo ³                                      ³ %indigo%[16]%white% Discord                  ³   ³ %gold%VPN%white%                           ³   ³ %indigo%[40]%white% TreeSize                 ³  ³
 echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %gold%Navigateurs Internet%white%          ³   ³ %indigo%[17]%white% TeamSpeak                ³   ³ %indigo%[29]%white% Cloudflare WARP          ³   ³ %indigo%[41]%white% Activation Scripts (MAS) ³  ³
+echo ³  ³ %gold%Navigateurs Internet%white%          ³   ³ %indigo%[17]%white% TeamSpeak                ³   ³ %indigo%[29]%white% Cloudflare WARP          ³   ³ %indigo%[41]%white% Everything               ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
 echo ³  ³ %indigo%[ 4]%white% Firefox                  ³   ³ %indigo%[18]%white% PowerToys                ³   ³ %indigo%[30]%white% RiseupVPN                ³                                      ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
@@ -90,7 +90,7 @@ echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   
 echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
 echo ³  ³ %indigo%[49]%white% MSI Utility V3             ³   %indigo%[50]%white% WPD                        ³   %indigo%[51]%white% ShutUp10++                 ³   %indigo%[52]%white% Script Network %grey%CoutX%white%     ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[53]%white% Autoruns                   ³   %indigo%[54]%white% Device Cleanup             ³   %indigo%[55]%white% Dism++                     ³   %indigo%[56]%white% CCleaner                 ³  ³
+echo ³  ³ %indigo%[53]%white% Autoruns                   ³   %indigo%[54]%white% Device Cleanup             ³   %indigo%[55]%white% CCleaner                   ³   %indigo%[56]%white% Dism++                   ³  ³
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
@@ -397,6 +397,7 @@ IF "%CSTARTR%"=="37" (
 )
 
 IF "%CSTARTR%"=="38" (
+	IF EXIST dControl.exe START dControl.exe
 	curl -g -k -L -# -o "dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
 	START dControl.exe
 	goto :MAINW
@@ -421,20 +422,27 @@ IF "%CSTARTR%"=="39" (
 )
 
 IF "%CSTARTR%"=="40" (
-	IF EXIST "%appdata%\StartUp Tools\Office\Office Tool\Office Tool Plus.exe" START "" "%appdata%\StartUp Tools\Office\Office Tool\Office Tool Plus.exe"&goto :MAINW
-	IF NOT EXIST "%appdata%\StartUp Tools\Office" md "%appdata%\StartUp Tools\Office"
-	IF EXIST "Office_Tool_with_runtime_v10.13.10.0_x64.7z" DEL "Office_Tool_with_runtime_v10.13.10.0_x64.7z" >nul
-	curl -g -k -L -# -o "Office_Tool_with_runtime_v10.13.10.0_x64.7z" "https://github.com/YerongAI/Office-Tool/releases/download/v10.13.10.0/Office_Tool_with_runtime_v10.13.10.0_x64.7z" >nul 2>&1
-	IF EXIST Office_Tool_with_runtime_v10.13.10.0_x64.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Office" Office_Tool_with_runtime_v10.13.10.0_x64.7z >nul)
-	START "" "%appdata%\StartUp Tools\Office\Office Tool\Office Tool Plus.exe"
+	IF EXIST "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe" START "" "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\TreeSizeFree" md "%appdata%\StartUp Tools\TreeSizeFree"
+	IF EXIST "TreeSizeFree.7z" DEL "TreeSizeFree.7z" >nul
+	curl -g -k -L -# -o "TreeSizeFree.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/TreeSizeFree.7z" >nul 2>&1
+	IF EXIST TreeSizeFree.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\TreeSizeFree" TreeSizeFree.7z >nul)
+	START "" "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="41" (
-	curl -g -k -L -# -o "MAS_AIO-CRC32_31F7FD1E.cmd" "https://github.com/massgravel/Microsoft-Activation-Scripts/raw/master/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd" >nul 2>&1
-	start cmd /c "MAS_AIO-CRC32_31F7FD1E.cmd"
+	IF EXIST Everything.exe START Everything.exe
+	curl -g -k -L -# -o "Everything.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Everything.dll" >nul 2>&1
+	START Everything.exe
 	goto :MAINW
 )
+
+rem IF "%CSTARTR%"=="41" (
+rem 	curl -g -k -L -# -o "MAS_AIO-CRC32_31F7FD1E.cmd" "https://github.com/massgravel/Microsoft-Activation-Scripts/raw/master/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd" >nul 2>&1
+rem 	start cmd /c "MAS_AIO-CRC32_31F7FD1E.cmd"
+rem 	goto :MAINW
+rem )
 
 IF "%CSTARTR%"=="42" (
 	curl -g -k -L -# -o "%TEMP%\SteamSetup.exe" "https://cdn.akamai.steamstatic.com/client/installer/SteamSetup.exe" >nul 2>&1
@@ -542,22 +550,22 @@ IF "%CSTARTR%"=="54" (
 )
 
 IF "%CSTARTR%"=="55" (
-	IF EXIST "%appdata%\StartUp Tools\Dism\Dism++x64.exe" START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"&goto :MAINW
-	IF NOT EXIST "%appdata%\StartUp Tools\Dism" md "%appdata%\StartUp Tools\Dism"
-	IF EXIST "DismInstall.7z" DEL "DismInstall.7z" >nul
-	curl -g -k -L -# -o "DismInstall.7z" "https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v10.1.1002.2/Dism++10.1.1002.1B.zip" >nul 2>&1
-	IF EXIST DismInstall.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Dism" DismInstall.7z >nul)
-	START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="56" (
 	IF EXIST "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe" START "" "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\CCleaner" md "%appdata%\StartUp Tools\CCleaner"
 	IF EXIST "CCleaner.7z" DEL "CCleaner.7z" >nul
 	curl -g -k -L -# -o "CCleaner.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/CCleaner.7z" >nul 2>&1
 	IF EXIST CCleaner.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CCleaner" CCleaner.7z >nul)
 	START "" "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="56" (
+	IF EXIST "%appdata%\StartUp Tools\Dism\Dism++x64.exe" START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\Dism" md "%appdata%\StartUp Tools\Dism"
+	IF EXIST "DismInstall.7z" DEL "DismInstall.7z" >nul
+	curl -g -k -L -# -o "DismInstall.7z" "https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v10.1.1002.2/Dism++10.1.1002.1B.zip" >nul 2>&1
+	IF EXIST DismInstall.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Dism" DismInstall.7z >nul)
+	START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"
 	goto :MAINW
 )
 
