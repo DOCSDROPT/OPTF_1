@@ -603,7 +603,7 @@ DEL "%~f0"
 Exit
 :CRSTRC
 
-md "%appdata%\StartUp Tools"
+md "%appdata%\StartUp Tools" >nul 2>&1
 @timeout /t 01>nul
 cd "%appdata%\StartUp Tools"
 
