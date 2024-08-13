@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0015
+SET VERSCRIPT=0016
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -40,12 +40,10 @@ if /i "%~1"=="/4" (
 	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
 )
 
-IF NOT EXIST "%appdata%\StartUp Tools\SFLE.STR" goto :Firtstr
+IF NOT EXIST "%appdata%\StartUp Tools\SFLE.bat" goto :Firtstr
 :FirtstrBac
 call "%appdata%\StartUp Tools\IFHW.bat"
-C:
-cd "%appdata%\StartUp Tools"
-
+call "%appdata%\StartUp Tools\SFLE.bat"
 :MAINW
 C:
 cd "%appdata%\StartUp Tools"
@@ -95,9 +93,9 @@ echo ณ  ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤ
 echo ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤู
 echo อออออออออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออ
 echo      %indigo%[97]%white% UPDATE                     บ                                                                       บ   %indigo%[98]%white% HELP
-echo อออออออออออออออออออออออออออออออออออออสออออออออป                                                              ศอออออออออออออออออออออออออออออออออออออ
-echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% บ                                                                                       %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
-echo ออออออออออออออออออออออออออออออออออออออออออออออสออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
+echo อออออออออออออออออออออออออออออออออออออสออออออออหอออออออออออออออออออออออออออออออป                              ศอออออออออออออออออออออออออออออออออออออ
+echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% บ %indigo%[100]%white% Configurer les jeux     บ                                                       %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
+echo ออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออสออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
 set /p CSTARTR="%green%>%white%"
 
 IF "%CSTARTR%"=="1" (
@@ -588,6 +586,10 @@ IF "%CSTARTR%"=="99" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="100" (
+	goto :GAMECONF
+)
+
 goto :MAINW
 
 :Firtstr
@@ -666,7 +668,7 @@ if %build_number% GEQ 22000 (
 )
 
 Echo SET BLD=%WVAC%>>"%appdata%\StartUp Tools\IFHW.bat"
-Echo %random%>"%appdata%\StartUp Tools\SFLE.STR"
+Echo SET GMEMENU=0 > "%appdata%\StartUp Tools\SFLE.bat"
 goto :FirtstrBac
 
 :HELPTEXT
@@ -730,4 +732,57 @@ echo    %gold%20%white% - Tu as fini, mais tu peux utiliser ce que tu veux dans 
 echo         Pour info, le script %indigo%[52]%white% Network, ce n'est pas moi qui l'ai fait, donc ce n'est pas mon probleme si tu as des problemes avec.
 echo.
 pause
+goto :MAINW
+
+:GAMECONF
+IF EXIST found_executables.txt DEL found_executables.txt
+curl -g -k -L -# -o "exe_gamename.txt" "https://raw.githubusercontent.com/00FGV1/ver/main/exe_gamename.txt" >nul 2>&1
+IF NOT EXIST GMEFND.exe curl -g -k -L -# -o "GMEFND.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/GMEFND.dll" >nul 2>&1
+@timeout /t 01>nul
+START /WAIT GMEFND.exe
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS" /f >nul 2>&1
+IF EXIST result.log DEL result.log
+IF NOT EXIST cli.c curl -g -k -L -# -o "cli.c" "https://raw.githubusercontent.com/00FGV1/ver/main/file/cli.c" >nul 2>&1
+IF NOT EXIST es.exe curl -g -k -L -# -o "es.exe" "https://github.com/00FGV1/ver/raw/main/file/es.exe" >nul 2>&1
+IF NOT EXIST Everything.exe curl -g -k -L -# -o "Everything.exe" "https://github.com/00FGV1/ver/raw/main/file/Everything.exe" >nul 2>&1
+IF NOT EXIST Everything.lng curl -g -k -L -# -o "Everything.lng" "https://github.com/00FGV1/ver/raw/main/file/Everything.lng" >nul 2>&1
+IF EXIST Everything.ini DEL Everything.ini
+Start "" "Everything.exe" -startup
+Reg add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d "1" /f >nul 2>&1
+Reg add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "1" /f >nul 2>&1
+set "fileList=found_executables.txt"
+cls
+echo.
+echo  %gold%Les jeux ci-dessous ont ete configures :%white%
+echo.
+for /f "tokens=*" %%i in (%fileList%) do (
+    for %%j in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+        es.exe "%%i" -path "%%j:\" -export-txt "temp_results.txt"
+        for /f "delims=" %%k in ('type "temp_results.txt" ^| findstr /i "\.exe$"') do (
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Version" /t REG_SZ /d "1.0" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Application Name" /t REG_SZ /d "%%k" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Protocol" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Local Port" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Local IP" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Local IP Prefix Length" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Remote Port" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Remote IP" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Remote IP Prefix Length" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "DSCP Value" /t REG_SZ /d "46" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Throttle Rate" /t REG_SZ /d "-1" /f > NUL 2>&1
+		    Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%%k" /t REG_SZ /d "~ DISABLEDXMAXIMIZEDWINDOWEDMODE RUNASADMIN HIGHDPIAWARE" /f > NUL 2>&1
+		    Reg.exe add "HKCU\SOFTWARE\Microsoft\DirectX\UserGpuPreferences" /v "%%k" /t REG_SZ /d "GpuPreference=2;" /f > NUL 2>&1
+		    Reg.exe add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\%%i\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "3" /f >nul 2>&1
+            echo Game path         : "%%k"
+            echo Game registry ID  : "%%i"
+            echo.
+            echo.>>result.log
+            echo  Game path         : "%%k">>result.log
+            echo  Game registry ID  : "%%i">>result.log
+        )
+        del "temp_results.txt"
+    )
+)
+taskkill /IM Everything.exe /F >nul
+@timeout /t 05>nul
 goto :MAINW
