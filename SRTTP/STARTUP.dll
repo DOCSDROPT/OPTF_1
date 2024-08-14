@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0016
+SET VERSCRIPT=0017
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -281,7 +281,7 @@ IF "%CSTARTR%"=="22" (
 )
 
 IF "%CSTARTR%"=="23" (
-	IF EXIST "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe" START "" "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe"
+	IF EXIST "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe" START "" "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe"&goto :MAINW
 	IF EXIST "RTSSSetup736.exe" DEL "RTSSSetup736.exe" >nul
 	curl -g -k -L -# -o "RTSSSetup736.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/RTSSSetup736.dll" >nul 2>&1
 	START /WAIT "" "RTSSSetup736.exe"
@@ -384,7 +384,9 @@ IF "%CSTARTR%"=="35" (
 
 IF "%CSTARTR%"=="36" (
 	curl -g -k -L -# -o "Spotify.bat" "https://tinyurl.com/SPOBTP" >nul 2>&1
-	curl -g -k -L -# -o "DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
+	rem curl -g -k -L -# -o "DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
+	Taskkill /f /im Spotify.exe >nul 2>&1
+	powershell -command "iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex"
 	start cmd /c "Spotify.bat"
 	goto :MAINW
 )
@@ -396,7 +398,7 @@ IF "%CSTARTR%"=="37" (
 )
 
 IF "%CSTARTR%"=="38" (
-	IF EXIST dControl.exe START dControl.exe
+	IF EXIST dControl.exe START dControl.exe&goto :MAINW
 	curl -g -k -L -# -o "dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
 	START dControl.exe
 	goto :MAINW
@@ -431,7 +433,7 @@ IF "%CSTARTR%"=="40" (
 )
 
 IF "%CSTARTR%"=="41" (
-	IF EXIST Everything.exe START Everything.exe
+	IF EXIST Everything.exe START Everything.exe&goto :MAINW
 	curl -g -k -L -# -o "Everything.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Everything.dll" >nul 2>&1
 	START Everything.exe
 	goto :MAINW
@@ -515,14 +517,14 @@ IF "%CSTARTR%"=="49" (
 )
 
 IF "%CSTARTR%"=="50" (
-	IF EXIST WPD.exe START WPD.exe
+	IF EXIST WPD.exe START WPD.exe&goto :MAINW
 	curl -g -k -L -# -o "WPD.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/WPD.dll" >nul 2>&1
 	START WPD.exe
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="51" (
-	IF EXIST OOSU10.exe START OOSU10.exe
+	IF EXIST OOSU10.exe START OOSU10.exe&goto :MAINW
 	curl -g -k -L -# -o "OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" >nul 2>&1
 	START OOSU10.exe
 	goto :MAINW
@@ -535,14 +537,14 @@ IF "%CSTARTR%"=="52" (
 )
 
 IF "%CSTARTR%"=="53" (
-	IF EXIST Autoruns.exe START Autoruns.exe
+	IF EXIST Autoruns.exe START Autoruns.exe&goto :MAINW
 	curl -g -k -L -# -o "Autoruns.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Autoruns.dll" >nul 2>&1
 	START Autoruns.exe
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="54" (
-	IF EXIST DeviceCleanup.exe START DeviceCleanup.exe
+	IF EXIST DeviceCleanup.exe START DeviceCleanup.exe&goto :MAINW
 	curl -g -k -L -# -o "DeviceCleanup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DeviceCleanup.dll" >nul 2>&1
 	START DeviceCleanup.exe
 	goto :MAINW
