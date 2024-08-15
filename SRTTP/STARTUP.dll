@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0017
+SET VERSCRIPT=0018
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -505,12 +505,11 @@ IF "%CSTARTR%"=="48" (
 )
 
 IF "%CSTARTR%"=="49" (
-	IF EXIST "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" START "" "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\MSI" md "%appdata%\StartUp Tools\MSI"
-	curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\PCIutil.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/PCIutil.dll" >nul 2>&1
-	curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/MSI_util_v3.dll" >nul 2>&1
+	IF NOT EXIST "%appdata%\StartUp Tools\MSI\PCIutil.exe" curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\PCIutil.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/PCIutil.dll" >nul 2>&1
+	IF NOT EXIST "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/MSI_util_v3.dll" >nul 2>&1
 	START "" "%appdata%\StartUp Tools\MSI\PCIutil.exe"
-	@timeout /t 04>nul
+	@timeout /t 02>nul
 	Taskkill /f /im PCIutil.exe>nul
 	START "" "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe"
 	goto :MAINW
