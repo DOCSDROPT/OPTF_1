@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0018
+SET VERSCRIPT=0019
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -105,10 +105,11 @@ IF "%CSTARTR%"=="1" (
 )
 
 IF "%CSTARTR%"=="2" (
-	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage"
+	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
 	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
 	IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
-	curl -g -k -L -# -o "Optifiles.7z" "https://docs.google.com/uc?export=download&id=1yVNzcph1H-oK-0jSj-t8fZIBNWEaSooS" >nul 2>&1
+	curl -L -o "Optifiles.7z" "https://edef2.pcloud.com/cBZ7p3Gm9ZXDsfJrZZZ0q91kkZ2ZZi05ZkZnNNmkZj5Zi0ZJ5Z7FZDHZEJZr0ZYVZ8JZs5ZD0Z9kZGkZaVZ5KigZGHpNry3bP2Q1JK0DWQeqnJ1bPNky/Optifiles.7z" >nul 2>&1
+	@timeout /t 02>nul
 	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
 	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
@@ -119,7 +120,7 @@ IF "%CSTARTR%"=="2" (
 IF "%CSTARTR%"=="3" (
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
 	IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
-	curl -g -k -L -# -o "DEBUG.7z" "https://docs.google.com/uc?export=download&id=1y8SZuF_70jcj_WEFUAY7JtxNDKSjFPzw" >nul 2>&1
+	curl -g -k -L -# -o "DEBUG.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/ph_user/DEBUG.dll" >nul 2>&1
 	IF EXIST DEBUG.7z (7za.exe -y x -p9421 -oC:\ DEBUG.7z >nul)
 	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
