@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0019
+SET VERSCRIPT=0020
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -385,10 +385,13 @@ IF "%CSTARTR%"=="35" (
 
 IF "%CSTARTR%"=="36" (
 	curl -g -k -L -# -o "Spotify.bat" "https://tinyurl.com/SPOBTP" >nul 2>&1
+	@timeout /t 02>nul
+	start cmd /c "Spotify.bat"
+	@timeout /t 02>nul
 	rem curl -g -k -L -# -o "DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
 	Taskkill /f /im Spotify.exe >nul 2>&1
 	powershell -command "iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex"
-	start cmd /c "Spotify.bat"
+
 	goto :MAINW
 )
 
