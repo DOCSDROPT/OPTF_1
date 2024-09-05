@@ -1,0 +1,104 @@
+@echo off
+del /s /f /q c:\windows\temp\*.* >nul 2>&1
+rd /s /q c:\windows\temp >nul 2>&1
+rd /s /q c:\windows\tempor~1 >nul 2>&1
+rd /s /q c:\windows\tmp >nul 2>&1
+del /s /f /q c:\windows\ff*.tmp >nul 2>&1
+rd /s /q c:\windows\history >nul 2>&1
+rd /s /q c:\windows\cookies >nul 2>&1
+rd /s /q c:\windows\recent >nul 2>&1
+rd /s /q c:\windows\spool\printers >nul 2>&1
+del /s /f /q c:\WINDOWS\Prefetch\*.* >nul 2>&1
+del /s /f /q %temp%\*.* >nul 2>&1
+del /F /Q "%USERPROFILE%\Documents\*.tmp" >nul 2>&1
+del /F /Q "%USERPROFILE%\My Documents\*.tmp" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\*.blf" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\*.regtrans-ms" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\LocalLow\Sun\Java\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\Cache\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\JumpListIconsOld\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\JumpListIcons\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\Local Storage\http*.*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\Media Cache\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Internet Explorer\Recovery\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Terminal Server Client\Cache\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Windows\Caches\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Windows\Explorer\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Windows\History\low\*" /AH >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Windows\INetCache\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Windows\Temporary Internet Files\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Windows\WER\ReportArchive\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Windows\WER\ReportQueue\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Microsoft\Windows\WebCache\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Local\Temp\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Roaming\Adobe\Flash Player\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Roaming\Microsoft\Teams\Service Worker\CacheStorage\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Roaming\Macromedia\Flash Player\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Recent\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Application Data\Adobe\Flash Player\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Application Data\Macromedia\Flash Player\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Application Data\Microsoft\Dr Watson\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Application Data\Microsoft\Windows\WER\ReportArchive\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Application Data\Microsoft\Windows\WER\ReportQueue\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Application Data\Sun\Java\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Application Data\ApplicationHistory\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Application Data\Google\Chrome\User Data\Default\Cache\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Application Data\Google\Chrome\User Data\Default\JumpListIconsOld\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Application Data\Google\Chrome\User Data\Default\JumpListIcons\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Application Data\Google\Chrome\User Data\Default\Local Storage\http*.*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Application Data\Google\Chrome\User Data\Default\Media Cache\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Application Data\Microsoft\Dr Watson\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Application Data\Microsoft\Internet Explorer\Recovery\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Application Data\Microsoft\Terminal Server Client\Cache\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Temp\*" >nul 2>&1
+del /F /S /Q "%USERPROFILE%\Local SETtings\Temporary Internet Files\*" >nul 2>&1
+
+for /D %%x in ("%USERPROFILES%\*") do (
+        del /F /Q "%%x\Documents\*.tmp" >nul 2>&1
+        del /F /Q "%%x\My Documents\*.tmp" >nul 2>&1
+        del /F /S /Q "%%x\*.blf" >nul 2>&1
+        del /F /S /Q "%%x\*.regtrans-ms" >nul 2>&1
+        del /F /S /Q "%%x\AppData\LocalLow\Sun\Java\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Google\Chrome\User Data\Default\Cache\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Google\Chrome\User Data\Default\JumpListIconsOld\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Google\Chrome\User Data\Default\JumpListIcons\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Google\Chrome\User Data\Default\Local Storage\http*.*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Google\Chrome\User Data\Default\Media Cache\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Internet Explorer\Recovery\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Terminal Server Client\Cache\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Windows\Caches\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Windows\Explorer\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Windows\History\low\*" /AH >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Windows\INetCache\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Windows\Temporary Internet Files\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Windows\WER\ReportArchive\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Windows\WER\ReportQueue\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Microsoft\Windows\WebCache\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Local\Temp\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Roaming\Adobe\Flash Player\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Roaming\Microsoft\Teams\Service Worker\CacheStorage\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Roaming\Macromedia\Flash Player\*" >nul 2>&1
+        del /F /S /Q "%%x\AppData\Roaming\Microsoft\Windows\Recent\*" >nul 2>&1
+        del /F /S /Q "%%x\Application Data\Adobe\Flash Player\*" >nul 2>&1
+        del /F /S /Q "%%x\Application Data\Macromedia\Flash Player\*" >nul 2>&1
+        del /F /S /Q "%%x\Application Data\Microsoft\Dr Watson\*" >nul 2>&1
+        del /F /S /Q "%%x\Application Data\Microsoft\Windows\WER\ReportArchive\*" >nul 2>&1
+        del /F /S /Q "%%x\Application Data\Microsoft\Windows\WER\ReportQueue\*" >nul 2>&1
+        del /F /S /Q "%%x\Application Data\Sun\Java\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Application Data\ApplicationHistory\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Application Data\Google\Chrome\User Data\Default\Cache\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Application Data\Google\Chrome\User Data\Default\JumpListIconsOld\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Application Data\Google\Chrome\User Data\Default\JumpListIcons\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Application Data\Google\Chrome\User Data\Default\Local Storage\http*.*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Application Data\Google\Chrome\User Data\Default\Media Cache\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Application Data\Microsoft\Dr Watson\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Application Data\Microsoft\Internet Explorer\Recovery\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Application Data\Microsoft\Terminal Server Client\Cache\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Temp\*" >nul 2>&1
+        del /F /S /Q "%%x\Local SETtings\Temporary Internet Files\*" >nul 2>&1
+)
+powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA== >nul 2>&1
+
+IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp
+
+@echo on

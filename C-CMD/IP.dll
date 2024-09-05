@@ -1,0 +1,66 @@
+@echo off
+echo.
+IF NOT EXIST "%APPDATA%\C-CMD\_CP.exe" curl -g -k -L -# -o "%APPDATA%\C-CMD\_CP.exe" "https://github.com/00FGV1/ver/raw/main/REPTILITE/_CP.exe" >nul 2>&1
+
+for /f "tokens=*" %%c in ('"%APPDATA%\C-CMD\_CP.exe" /P') do SET ip=%%c
+
+SETlocal ENABLEDELAYEDEXPANSION
+SET webclient=webclient
+if exist IP_INFO.log del IP_INFO.log
+if exist "%temp%\%webclient%.vbs" del "%temp%\%webclient%.vbs" /f /q /s >nul
+if exist "%temp%\response.txt" del "%temp%\response.txt" /f /q /s >nul
+
+:iplookup
+echo sUrl = "http://ipinfo.io/%ip%/json" > %temp%\%webclient%.vbs
+
+:localip
+echo SET oHTTP = CreateObject("MSXML2.ServerXMLHTTP.6.0") >> %temp%\%webclient%.vbs
+echo oHTTP.open "GET", sUrl,false >> %temp%\%webclient%.vbs
+echo oHTTP.SETRequestHeader "Content-Type", "application/x-www-form-urlencoded" >> %temp%\%webclient%.vbs
+echo oHTTP.SETRequestHeader "Content-Length", Len(sRequest) >> %temp%\%webclient%.vbs
+echo oHTTP.send sRequest >> %temp%\%webclient%.vbs
+echo HTTPGET = oHTTP.responSEText >> %temp%\%webclient%.vbs
+echo strDirectory = "%temp%\response.txt" >> %temp%\%webclient%.vbs
+echo SET objFSO = CreateObject("Scripting.FileSystemObject") >> %temp%\%webclient%.vbs
+echo SET objFile = objFSO.CreateTextFile(strDirectory) >> %temp%\%webclient%.vbs
+echo objFile.Write(HTTPGET) >> %temp%\%webclient%.vbs
+echo objFile.Close >> %temp%\%webclient%.vbs
+echo Wscript.Quit >> %temp%\%webclient%.vbs
+start %temp%\%webclient%.vbs
+SET /a requests=0
+
+:checkresponseexists
+SET /a requests=%requests% + 1
+if %requests% gtr 7 goto :failed
+IF EXIST "%temp%\response.txt" (
+goto :response_exist
+) ELSE (
+ping 127.0.0.1 -n 2 -w 1000 >nul
+goto :checkresponseexists
+)
+
+:failed
+taskkill /f /im wscript.exe >nul
+del "%temp%\%webclient%.vbs" /f /q /s >nul
+
+:response_exist
+for /f "delims=     " %%i in ('findstr /i "," %temp%\response.txt') do (
+    SET data=%%i
+    SET data=!data:,=!
+    SET data=!data:""=Not Listed!
+    SET data=!data:"=!
+    SET data=!data:ip:= IP           :!
+    SET data=!data:hostname:= Hostname     :!
+    SET data=!data:org:= ISP          :!
+    SET data=!data:city:= City         :!
+    SET data=!data:region:= State        :!
+    SET data=!data:country:= Country      :!
+    SET data=!data:postal:= Postal       :!
+    SET data=!data:loc:= Location     :!
+    SET data=!data:timezone:= Timezone     :!
+    echo !data!
+)
+del "%temp%\%webclient%.vbs" /f /q /s >nul
+if '%ip%'=='' goto :failed
+echo.
+@echo on
