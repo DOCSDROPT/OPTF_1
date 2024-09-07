@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0026
+SET VERSCRIPT=0028
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -410,21 +410,36 @@ IF "%CSTARTR%"=="38" (
 
 IF "%CSTARTR%"=="39" (
 	IF NOT EXIST C:\Ect md C:\Ect >nul 2>&1
-	cd /d C:\Ect\ >nul 2>&1
-	IF EXIST C:\Ect\S-W\start-windows.bat START "" "C:\Ect\S-W\start-windows.bat" -U
-	IF EXIST C:\Ect\S-W\S-W.exe START /wait "" "C:\Ect\S-W\S-W.exe" /uninstall
-	@timeout /t 01 /nobreak>nul
-	IF EXIST "C:\Ect\S-W" rmdir /s /q "C:\Ect\S-W" >nul 2>&1
-	curl -g -k -L -# -o "C:\Ect\S-W.7z" "https://tinyurl.com/SWSCRLINK" >nul 2>&1
+	IF EXIST "C:\Ect\SW-ADW\SW-ADW.exe" goto :MAINW
+	curl -g -k -L -# -o "C:\Ect\SW-ADW.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SW-ADW.7z" >nul 2>&1
 	@timeout /t 05 /nobreak>nul
 	IF NOT EXIST C:\Ect\7za.exe curl -g -k -L -# -o "C:\Ect\7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 	@timeout /t 01 /nobreak>nul
-	START "" "C:\Ect\7za.exe" -y x -p9421 C:\Ect\S-W.7z
+	START "" "C:\Ect\7za.exe" -y x -oC:\Ect -p9421 C:\Ect\SW-ADW.7z
 	@timeout /t 03 /nobreak>nul
-	IF EXIST "C:\Ect\S-W\S-W.exe" (START /wait "" "C:\Ect\S-W\S-W.exe" -i) else (echo ERREUR & @timeout /t 03 /nobreak)
-	DEL C:\Ect\S-W.7z >nul 2>&1
+	Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "SW-ADW" /t REG_SZ /d "C:\Ect\SW-ADW\SW-ADW.exe" /f > NUL 2>&1
+	IF EXIST "C:\Ect\SW-ADW\SW-ADW.exe" (START /wait "" "C:\Ect\SW-ADW\SW-ADW.exe") else (echo ERREUR & @timeout /t 03 /nobreak)
+	DEL C:\Ect\SW-ADW.7z >nul 2>&1
 	goto :MAINW
 )
+
+rem IF "%CSTARTR%"=="39" (
+rem 	IF NOT EXIST C:\Ect md C:\Ect >nul 2>&1
+rem 	cd /d C:\Ect\ >nul 2>&1
+rem 	IF EXIST C:\Ect\S-W\start-windows.bat START "" "C:\Ect\S-W\start-windows.bat" -U
+rem 	IF EXIST C:\Ect\S-W\S-W.exe START /wait "" "C:\Ect\S-W\S-W.exe" /uninstall
+rem 	@timeout /t 01 /nobreak>nul
+rem 	IF EXIST "C:\Ect\S-W" rmdir /s /q "C:\Ect\S-W" >nul 2>&1
+rem 	curl -g -k -L -# -o "C:\Ect\S-W.7z" "https://tinyurl.com/SWSCRLINK" >nul 2>&1
+rem 	@timeout /t 05 /nobreak>nul
+rem 	IF NOT EXIST C:\Ect\7za.exe curl -g -k -L -# -o "C:\Ect\7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+rem 	@timeout /t 01 /nobreak>nul
+rem 	START "" "C:\Ect\7za.exe" -y x -p9421 C:\Ect\S-W.7z
+rem 	@timeout /t 03 /nobreak>nul
+rem 	IF EXIST "C:\Ect\S-W\S-W.exe" (START /wait "" "C:\Ect\S-W\S-W.exe" -i) else (echo ERREUR & @timeout /t 03 /nobreak)
+rem 	DEL C:\Ect\S-W.7z >nul 2>&1
+rem 	goto :MAINW
+rem )
 
 IF "%CSTARTR%"=="40" (
 	IF EXIST "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe" START "" "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe"&goto :MAINW
@@ -887,6 +902,7 @@ Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeavfk" /f >nul 2>&1
 
 Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects" /f >nul 2>&1
 Reg.exe delete "HKLM\Software\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSyncNGSC" /f >nul 2>&1
