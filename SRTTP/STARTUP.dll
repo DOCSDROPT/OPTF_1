@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0031
+SET VERSCRIPT=0032
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -86,9 +86,9 @@ echo Ёцддддддддддддддддддддддддддддддд╢цддддддддддддддддддддддддддддддд╢Ё %indig
 echo ЁЁ %indigo%[12]%white% Vivaldi                  ЁЁ %indigo%[24]%white% Driver Talent Pro        ЁЁдддддддддддддддддддддддддддддддЁЁ %indigo%[46]%white% AdwCleaner               ЁЁ
 echo ЁюдддддддддддддддддддддддддддддддыюдддддддддддддддддддддддддддддддыюдддддддддддддддддддддддддддддддыюдддддддддддддддддддддддддддддддыЁ
 echo Ё%orange%здддддддддддддддддддддддддддддддбддддддддддддддддддддддддддддддддбддддддддддддддддддддддддддддддддбдддддддддддддддддддддддддддддддд©%white%Ё
-echo Ё%orange%O%white% %indigo%[47]%white% MSI Utility V3           %orange%Ё%white%   %indigo%[48]%white% WPD                     %orange%Ё%white%   %indigo%[49]%white% ShutUp10++              %orange%Ё%white%   %indigo%[50]%white% Script Network %grey%CoutX%white%    %orange%O%white%Ё
+echo Ё%orange%O%white% %indigo%[47]%white% MSI Utility V3           %orange%Ё%white%  %indigo%[48]%white% WPD                      %orange%Ё%white%  %indigo%[49]%white% ShutUp10++               %orange%Ё%white%  %indigo%[50]%white% Script Network %grey%CoutX%white%     %orange%O%white%Ё
 echo Ё%orange%Pдддддддддддддддддддддддддддддддеддддддддддддддддддддддддддддддддеддддддддддддддддддддддддддддддддедддддддддддддддддддддддддддддддд%orange%P%white%Ё
-echo Ё%orange%T%white% %indigo%[51]%white% Autoruns                 %orange%Ё%white%   %indigo%[52]%white% Device Cleanup          %orange%Ё%white%   %indigo%[53]%white% CCleaner                %orange%Ё%white%   %indigo%[54]%white% Dism++                  %orange%T%white%Ё
+echo Ё%orange%T%white% %indigo%[51]%white% Autoruns                 %orange%Ё%white%  %indigo%[52]%white% Device Cleanup           %orange%Ё%white%  %indigo%[53]%white% CCleaner                 %orange%Ё%white%  %indigo%[54]%white% Dism++                   %orange%T%white%Ё
 echo Ё%orange%юдддддддддддддддддддддддддддддддаддддддддддддддддддддддддддддддддаддддддддддддддддддддддддддддддддадддддддддддддддддддддддддддддддды%white%Ё
 echo юдддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддды
 echo мммммммммммммммммммммммммммммммммкммммммммммммммммммммммммммммммммкмммммммммммммммммммммммммммммммммммммммкммммммммммммммммммммммммммм
