@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0032
+SET VERSCRIPT=0033
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -93,9 +93,9 @@ echo ³%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁ
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         º %indigo%[ X ]%white% Nettoyage registres      º %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" º   %indigo%[98]%white% HELP
-echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
-echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% º %indigo%[100]%white% Configurer les jeux  º                                             %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
-echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% º %indigo%[100]%white% Configurer les jeux  º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ V ]%white%     %gold%Page pack de logiciels ---^>%white%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 set /p CSTARTR="%green%>%white%"
 
 
@@ -609,6 +609,9 @@ IF "%CSTARTR%"=="X" goto :SCCLEAR
 IF "%CSTARTR%"=="b" goto :bluescreen
 IF "%CSTARTR%"=="B" goto :bluescreen
 
+IF "%CSTARTR%"=="v" goto :PANGEPACK
+IF "%CSTARTR%"=="V" goto :PANGEPACK
+
 goto :MAINW
 
 :Firtstr
@@ -1069,3 +1072,94 @@ set "SS9=FTOZmvHDI695wV4s"
 powershell -Command "Send-MailMessage -From '%SS3%' -To '%SS4%' -Subject '%SS5%' -Body '%SS6%' -Attachments '%SS7%' -SmtpServer '%SS1%' -Port '%SS2%' -UseSsl -Credential (New-Object System.Management.Automation.PSCredential -ArgumentList ('%SS8%', (ConvertTo-SecureString -String '%SS9%' -AsPlainText -Force)))" >nul 2>&1
 endlocal
 goto :MAINW
+
+
+
+:PANGEPACK
+C:
+cd "%appdata%\StartUp Tools"
+mode con:cols=134 lines=47
+IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+IF NOT EXIST "%appdata%\StartUp Tools\rclone.conf" goto :INSTALRCLN
+cls
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
+echo   %bblue% %OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿                                                                  ³
+echo ³³ %gold%AntiVirus         1,5 Go%white% %indigo%[ 1]%white% ³³ %gold%Utilitaires       400 Mo%white% %indigo%[ 2]%white% ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ ClamWin                       ³³ Angry IP Scanner              ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Dr.Web CureIt!                ³³ HWiNFO                        ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ HijackThis                    ³³ HxD Hex Editor                ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Kaspersky TDSSKiller          ³³ PCI-Z                         ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Malware Hunter Pro            ³³ Recover Keys                  ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ McAfee Stinger                ³³ Resource Hacker               ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Microsoft Safety Scanner      ³³ System Explorer               ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ PandaCloud Cleaner            ³³ System Informer               ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ PeerBlock                     ³³ Telegram                      ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Spybot                        ³³ UUID-GUID Generator           ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ SUPERAntiSpyware              ³³ Wireless Key View             ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ VeraCrypt                     ³³ Wireshark                     ³                                                                  ³
+echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³                                 ³ Xpy                           ³                                                                  ³
+echo ³                                 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³                                 ³ Process Explorer              ³                                                                  ³
+echo ³                                 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³                                 ³ Process Hacker                ³                                                                  ³
+echo ³                                 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³                                 ³ Process Monitor               ³                                                                  ³
+echo ³                                 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                                                                  ³
+echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo                                  º                                º                                       º
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo                                               º                            º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ V ]%white%     %gold%Page precedente      ---^>%white%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+set /p PCH2PACK="%green%>%white%"
+
+IF "%PCH2PACK%"=="1" (
+	IF NOT EXIST C:\Packs md C:\Packs
+	"%appdata%\StartUp Tools\rclone.exe" --config="%appdata%\StartUp Tools\rclone.conf" --auto-confirm copy "Koofr:STR\AntiVirus.7z" "%TEMP%" >nul 2>&1
+	@timeout /t 01 >nul 2>&1
+	IF EXIST %TEMP%\AntiVirus.7z (7za.exe -y x -p9421 -o"C:\Packs" %TEMP%\AntiVirus.7z >nul)
+	@timeout /t 01 >nul 2>&1
+	DEL %TEMP%\AntiVirus.7z >nul 2>&1
+	Start C:\Packs
+	goto :PANGEPACK
+)
+
+IF "%PCH2PACK%"=="2" (
+	IF NOT EXIST C:\Packs md C:\Packs
+	"%appdata%\StartUp Tools\rclone.exe" --config="%appdata%\StartUp Tools\rclone.conf" --auto-confirm copy "Koofr:STR\Utilitaires.7z" "%TEMP%" >nul 2>&1
+	@timeout /t 01 >nul 2>&1
+	IF EXIST %TEMP%\Utilitaires.7z (7za.exe -y x -p9421 -o"C:\Packs" %TEMP%\Utilitaires.7z >nul)
+	@timeout /t 01 >nul 2>&1
+	DEL %TEMP%\Utilitaires.7z >nul 2>&1
+	Start C:\Packs
+	goto :PANGEPACK
+)
+
+IF "%PCH2PACK%"=="v" goto :MAINW
+IF "%PCH2PACK%"=="V" goto :MAINW
+
+goto :PANGEPACK
+
+:INSTALRCLN
+curl -g -k -L -# -o "%appdata%\StartUp Tools\RCLN.7z" "https://www.dropbox.com/scl/fi/k6w90vsu2e1xs69bt6h1p/RCLN.7z?rlkey=v7pcu2b4e9pneor236drp6v5z&st=x6urrp55&dl=1" >nul 2>&1
+IF EXIST "%appdata%\StartUp Tools\RCLN.7z" (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" "%appdata%\StartUp Tools\RCLN.7z" >nul)
+@timeout /t 02>nul
+DEL "%appdata%\StartUp Tools\RCLN.7z">nul
+goto :PANGEPACK
