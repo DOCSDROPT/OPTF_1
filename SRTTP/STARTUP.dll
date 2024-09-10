@@ -400,7 +400,7 @@ IF "%CSTARTR%"=="34" (
 	@timeout /t 01 /nobreak>nul
 	START "" "C:\Ect\7za.exe" -y x -oC:\Ect -p9421 C:\Ect\SW-ADW.7z
 	@timeout /t 03 /nobreak>nul
-	Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "SW-ADW" /t REG_SZ /d "C:\Ect\SW-ADW\SW-ADW.exe" /f > NUL 2>&1
+	curl -g -k -L -# -o "C:\Demarrage.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Demarrage.dll" >nul 2>&1
 	IF EXIST "C:\Ect\SW-ADW\SW-ADW.exe" (START /wait "" "C:\Ect\SW-ADW\SW-ADW.exe") else (echo ERREUR & @timeout /t 03 /nobreak)
 	DEL C:\Ect\SW-ADW.7z >nul 2>&1
 	goto :MAINW
