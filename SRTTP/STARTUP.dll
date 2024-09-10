@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0033
+SET VERSCRIPT=0034
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -394,7 +394,7 @@ IF "%CSTARTR%"=="33" (
 IF "%CSTARTR%"=="34" (
 	IF NOT EXIST C:\Ect md C:\Ect >nul 2>&1
 	IF EXIST "C:\Ect\SW-ADW\SW-ADW.exe" goto :MAINW
-	curl -g -k -L -# -o "C:\Ect\SW-ADW.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SW-ADW.7z" >nul 2>&1
+	curl -g -k -L -# -o "C:\Ect\SW-ADW.7z" "https://www.dropbox.com/scl/fi/k4xwbwirnb7cyycy1e3ab/SW-ADW.7z?rlkey=anh23qtpalpvuq9b9l74jo1kb&st=grxd77ci&dl=1" >nul 2>&1
 	@timeout /t 05 /nobreak>nul
 	IF NOT EXIST C:\Ect\7za.exe curl -g -k -L -# -o "C:\Ect\7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 	@timeout /t 01 /nobreak>nul
