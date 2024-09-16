@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0034
+SET VERSCRIPT=0036
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -425,8 +425,8 @@ rem 	goto :MAINW
 rem )
 
 IF "%CSTARTR%"=="35" (
-	curl -g -k -L -# -o "REGUI.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-Edge_GUI.exe" >nul 2>&1
-	START REGUI.exe
+	curl -g -k -L -# -o "Remove-EdgeWeb.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-EdgeWeb.exe" >nul 2>&1
+	START Remove-EdgeWeb.exe
 	goto :MAINW
 )
 
@@ -873,6 +873,7 @@ goto :MAINW
 
 :SCCLEAR
 sc delete epp >nul 2>&1
+sc delete PSKMAD >nul 2>&1
 sc delete spooler >nul 2>&1
 sc delete GameInputSvc >nul 2>&1
 sc delete WinRing0_1_2_0 >nul 2>&1
