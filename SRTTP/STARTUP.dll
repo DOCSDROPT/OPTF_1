@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0036
+SET VERSCRIPT=0037
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -825,7 +825,6 @@ START /WAIT "" "stinger64.exe" --REPORTONLY --REPORTPATH="%appdata%\StartUp Tool
 FOR %%i IN ("Stinger_*.html") DO Set FileNameStinger="%%i"
 Start "" "%FileNameStinger%"
 @timeout /t 01>nul
-Del %FileNameStinger%>nul
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
@@ -852,7 +851,6 @@ START /WAIT "" "stinger64.exe" --SCANPATH="C:\" --REPORTONLY --REPORTPATH="%appd
 FOR %%i IN ("Stinger_*.html") DO Set FileNameStinger="%%i"
 Start "" "%FileNameStinger%"
 @timeout /t 01>nul
-Del %FileNameStinger%>nul
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
