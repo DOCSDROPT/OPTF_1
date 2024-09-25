@@ -26,7 +26,7 @@ set indigo=[38;5;105m
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0037
+SET VERSCRIPT=0038
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -44,6 +44,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\SFLE.bat" goto :Firtstr
 :FirtstrBac
 call "%appdata%\StartUp Tools\IFHW.bat"
 call "%appdata%\StartUp Tools\SFLE.bat"
+goto :24570896
 :MAINW
 C:
 cd "%appdata%\StartUp Tools"
@@ -52,7 +53,7 @@ IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7
 cls
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
-echo   %bblue% %OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%
+echo   %bblue% %OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%%ggrey% ERR REGISTRE : %REGERROR% %defcolor%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
 echo ³%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
@@ -97,8 +98,6 @@ echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍ
 echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% º %indigo%[100]%white% Configurer les jeux  º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ V ]%white%     %gold%Page pack de logiciels ---^>%white%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 set /p CSTARTR="%green%>%white%"
-
-
 
 IF "%CSTARTR%"=="1" (
 	IF NOT EXIST C:\Ect\RWC md C:\Ect\RWC
@@ -1162,3 +1161,1642 @@ IF EXIST "%appdata%\StartUp Tools\RCLN.7z" (7za.exe -y x -p9421 -o"%appdata%\Sta
 @timeout /t 02>nul
 DEL "%appdata%\StartUp Tools\RCLN.7z">nul
 goto :PANGEPACK
+
+:24570896
+setlocal EnableDelayedExpansion
+SET chk_1_1=ERR
+SET chk_1_2=ERR
+REM SET chk_1_3=ERR
+SET chk_1_4=ERR
+REM SET chk_1_5=ERR
+REM SET chk_1_6=ERR
+SET chk_1_7=ERR
+SET chk_1_8=ERR
+SET chk_1_9=ERR
+SET chk_1_10=ERR
+SET chk_1_11=ERR
+SET chk_1_12=ERR
+SET chk_1_13=ERR
+SET chk_1_14=ERR
+SET chk_1_15=ERR
+SET chk_1_16=ERR
+SET chk_1_17=ERR
+SET chk_1_18=ERR
+SET chk_1_19=ERR
+REM SET chk_1_20=ERR
+REM SET chk_1_21=ERR
+REM SET chk_1_22=ERR
+REM SET chk_1_23=ERR
+REM SET chk_1_24=ERR
+SET chk_1_25=ERR
+SET chk_1_26=ERR
+SET chk_1_27=ERR
+SET chk_1_28=ERR
+SET chk_1_29=ERR
+SET chk_1_30=ERR
+SET chk_1_31=ERR
+SET chk_1_32=ERR
+SET chk_1_33=ERR
+SET chk_1_34=ERR
+SET chk_1_35=ERR
+SET chk_1_36=ERR
+SET chk_1_37=ERR
+SET chk_1_38=ERR
+SET chk_1_39=ERR
+SET chk_1_40=ERR
+SET chk_1_41=ERR
+SET chk_1_42=ERR
+SET chk_1_43=ERR
+SET chk_1_44=ERR
+SET chk_1_45=ERR
+SET chk_1_46=ERR
+SET chk_1_47=ERR
+SET chk_1_48=ERR
+SET chk_1_49=ERR
+SET chk_1_50=ERR
+SET chk_1_51=ERR
+SET chk_1_52=ERR
+SET chk_1_53=ERR
+SET chk_1_54=ERR
+SET chk_1_55=ERR
+SET chk_1_56=ERR
+SET chk_1_57=ERR
+SET chk_1_58=ERR
+SET chk_1_59=ERR
+SET chk_1_60=ERR
+SET chk_1_61=ERR
+SET chk_1_62=ERR
+SET chk_1_63=ERR
+SET chk_1_64=ERR
+SET chk_1_65=ERR
+SET chk_1_66=ERR
+
+REM ###---------FILES_1-----------------------------------------------------------------------------------###
+
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Control\BootControl" /v "BootProgressAnimation"') DO set chk_1_1=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness"') DO set chk_1_2=%%a >NUL 2>nul
+REM for /f %%A in ('powershell.exe -File "ccm\GetGPUPriority.ps1" 2^> $null') do set chk_1_3=%%A
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Priority"') DO set chk_1_4=%%a >NUL 2>nul
+REM for /f %%A in ('powershell.exe -File "ccm\Scheduling.ps1" 2^> $null') do set chk_1_5=%%A
+REM for /f %%A in ('powershell.exe -File "ccm\SFIO.ps1" 2^> $null') do set chk_1_6=%%A
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "AlwaysOn"') DO set chk_1_7=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex"') DO set chk_1_8=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NoLazyMode"') DO set chk_1_9=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize"') DO set chk_1_10=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize"') DO set chk_1_11=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DoNotHoldNicBuffers"') DO set chk_1_12=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "Win32PrioritySeparation"') DO set chk_1_13=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Control Panel\Desktop\WindowMetrics" /v "MinAnimate"') DO set chk_1_14=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold"') DO set chk_1_15=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled"') DO set chk_1_16=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut"') DO set chk_1_17=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled"') DO set chk_1_18=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v "HistoricalCaptureEnabled"') DO set chk_1_19=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions"') DO set chk_1_20=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\ControlSet001\Control\Session Manager\kernel" /v "MitigationOptions"') DO set chk_1_21=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\ControlSet002\Control\Session Manager\kernel" /v "MitigationOptions"') DO set chk_1_22=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe" /v "MitigationAuditOptions"') DO set chk_1_23=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe" /v "MitigationOptions"') DO set chk_1_24=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtualizationBasedSecurity"') DO set chk_1_25=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Internet Explorer\Main" /v "DEPOff"') DO set chk_1_26=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v "NoDataExecutionPrevention"') DO set chk_1_27=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\System" /v "DisableHHDEP"') DO set chk_1_28=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\PolicyManager\default\DmaGuard\DeviceEnumerationPolicy" /v "value"') DO set chk_1_29=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock"') DO set chk_1_30=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\DeviceGuard" /v "HVCIMATRequired"') DO set chk_1_31=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground"') DO set chk_1_32=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle"') DO set chk_1_33=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Biometrics" /v "Enabled"') DO set chk_1_34=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "DisableInventory"') DO set chk_1_35=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\Windows Error Reporting" /v "Disabled"') DO set chk_1_36=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "AITEnable"') DO set chk_1_37=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Internet Explorer\SQM" /v "DisableCustomerImprovementProgram"') DO set chk_1_38=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\SQMClient\Windows" /v "CEIPEnable"') DO set chk_1_39=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\AppV\CEIP" /v "CEIPEnable"') DO set chk_1_40=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Messenger\Client" /v "CEIP"') DO set chk_1_41=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\MSDeploy\3" /v "EnableTelemetry"') DO set chk_1_42=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Input\TIPC" /v "Enabled"') DO set chk_1_43=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\InputPersonalization" /v "RestrictImplicitTextCollection"') DO set chk_1_44=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\InputPersonalization" /v "RestrictImplicitInkCollection"') DO set chk_1_45=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\TabletPC" /v "PreventHandwritingDataSharing"') DO set chk_1_46=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\HandwritingErrorReports" /v "PreventHandwritingErrorReports"') DO set chk_1_47=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Personalization\Settings" /v "AcceptedPrivacyPolicy"') DO set chk_1_48=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\AdvertisingInfo" /v "DisabledByGroupPolicy"') DO set chk_1_49=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Enabled"') DO set chk_1_50=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewAlphaSelect"') DO set chk_1_51=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Control Panel\Desktop" /v "DragFullWindows"') DO set chk_1_52=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\GameBar" /v "GamepadDoublePressIntervalMs"') DO set chk_1_53=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\GameBar" /v "UseNexusForGameBarEnabled"') DO set chk_1_54=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution"') DO set chk_1_55=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SmartScreen" /v "ConfigureAppInstallControl"') DO set chk_1_56=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\MRT" /v "DontReportInfectionInformation"') DO set chk_1_57=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\Input\Settings" /v "HarvestContacts"') DO set chk_1_58=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /v "SubmitSamplesConsent"') DO set chk_1_59=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SmartScreen" /v "ConfigureAppInstallControlEnabled"') DO set chk_1_60=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultConsent"') DO set chk_1_61=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOptions"') DO set chk_1_62=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUPowerManagement"') DO set chk_1_63=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "IncludeRecommendedUpdates"') DO set chk_1_64=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUpdate"') DO set chk_1_65=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "GlobalTimerResolutionRequests"') DO set chk_1_66=%%a >NUL 2>nul
+IF EXIST $null DEL $null >NUL 2>nul
+cls
+REM ###---------FILES_1-----------------------------------------------------------------------------------###
+
+IF %chk_1_1%==0x1 (
+	echo BootProgressAnimation >nul 2>&1
+) else (
+	echo BootProgressAnimation = Incorrect registry key>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_2%==0x0 (
+	echo SystemResponsiveness >nul 2>&1
+) else (
+	echo SystemResponsiveness = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+REM IF %chk_1_3%==8 (
+REM 	echo GPU Priority >nul 2>&1
+REM ) else (
+REM 	echo GPU Priority = Incorrect registry key>>err.log
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+IF %chk_1_4%==0x6 (
+	echo Priority >nul 2>&1
+) else (
+	echo Priority = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+REM IF %chk_1_5%==High (
+REM 	echo Scheduling Category >nul 2>&1
+REM ) else (
+REM 	echo Scheduling Category = Incorrect registry key>>err.log
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+REM IF %chk_1_6%==High (
+REM 	echo SFIO Priority >nul 2>&1
+REM ) else (
+REM 	echo SFIO Priority = Incorrect registry key>>err.log
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+IF %chk_1_7%==0x1 (
+	echo AlwaysOn >nul 2>&1
+) else (
+	echo AlwaysOn = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_8%==0xffffffff (
+	echo NetworkThrottlingIndex >nul 2>&1
+) else (
+	echo NetworkThrottlingIndex = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_9%==0x1 (
+	echo NoLazyMode >nul 2>&1
+) else (
+	echo NoLazyMode = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_10%==0x18 (
+	echo KeyboardDataQueueSize >nul 2>&1
+) else (
+	echo KeyboardDataQueueSize >nul 2>&1
+)
+
+IF %chk_1_11%==0x18 (
+	echo MouseDataQueueSize >nul 2>&1
+) else (
+	echo MouseDataQueueSize >nul 2>&1
+)
+
+IF %chk_1_12%==0x1 (
+	echo DoNotHoldNicBuffers >nul 2>&1
+) else (
+	echo DoNotHoldNicBuffers = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_13%==0x6 (
+	echo Win32PrioritySeparation >nul 2>&1
+) else (
+	echo Win32PrioritySeparation >nul 2>&1
+)
+
+IF %chk_1_14%==0 (
+	echo MinAnimate >nul 2>&1
+) else (
+	echo MinAnimate = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_15%==0x0 (
+	echo HeapDeCommitFreeBlockThreshold >nul 2>&1
+) else (
+	echo HeapDeCommitFreeBlockThreshold = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_16%==0x1 (
+	echo GlobalUserDisabled >nul 2>&1
+) else (
+	echo GlobalUserDisabled = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_17%==0x1 (
+	echo HttpAcceptLanguageOptOut >nul 2>&1
+) else (
+	echo HttpAcceptLanguageOptOut = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_18%==0x0 (
+	echo AppCaptureEnabled >nul 2>&1
+) else (
+	echo AppCaptureEnabled = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_19%==0x0 (
+	echo HistoricalCaptureEnabled >nul 2>&1
+) else (
+	echo HistoricalCaptureEnabled = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+REM IF %chk_1_20%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationOptions = Incorrect registry key>>err.log
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+REM IF %chk_1_21%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationOptions = Incorrect registry key>>err.log
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+REM IF %chk_1_22%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationOptions = Incorrect registry key>>err.log
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+REM IF %chk_1_23%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationAuditOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationAuditOptions = Incorrect registry key>>err.log
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+REM IF %chk_1_24%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationOptions = Incorrect registry key>>err.log
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+IF %chk_1_25%==0x0 (
+	echo EnableVirtualizationBasedSecurity >nul 2>&1
+) else (
+	echo EnableVirtualizationBasedSecurity = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_26%==0x1 (
+	echo DEPOff >nul 2>&1
+) else (
+	echo DEPOff = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_27%==0x1 (
+	echo NoDataExecutionPrevention >nul 2>&1
+) else (
+	echo NoDataExecutionPrevention = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_28%==0x1 (
+	echo DisableHHDEP >nul 2>&1
+) else (
+	echo DisableHHDEP = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_29%==0x2 (
+	echo value >nul 2>&1
+) else (
+	echo value = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_30%==0x0 (
+	echo DisableExternalDMAUnderLock >nul 2>&1
+) else (
+	echo DisableExternalDMAUnderLock = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_31%==0x0 (
+	echo HVCIMATRequired >nul 2>&1
+) else (
+	echo HVCIMATRequired = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_32%==0x2 (
+	echo LetAppsRunInBackground >nul 2>&1
+) else (
+	echo LetAppsRunInBackground = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_33%==0x0 (
+	echo BackgroundAppGlobalToggle >nul 2>&1
+) else (
+	echo BackgroundAppGlobalToggle = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_34%==0x0 (
+	echo Enabled >nul 2>&1
+) else (
+	echo Enabled = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_35%==0x1 (
+	echo DisableInventory >nul 2>&1
+) else (
+	echo DisableInventory = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_36%==0x1 (
+	echo Disabled >nul 2>&1
+) else (
+	echo Disabled = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_37%==0x0 (
+	echo AITEnable >nul 2>&1
+) else (
+	echo AITEnable = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_38%==0x0 (
+	echo DisableCustomerImprovementProgram >nul 2>&1
+) else (
+	echo DisableCustomerImprovementProgram = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_39%==0x0 (
+	echo CEIPEnable >nul 2>&1
+) else (
+	echo CEIPEnable = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_40%==0x0 (
+	echo CEIPEnable >nul 2>&1
+) else (
+	echo CEIPEnable = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_41%==0x2 (
+	echo CEIP >nul 2>&1
+) else (
+	echo CEIP = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_42%==0x1 (
+	echo EnableTelemetry >nul 2>&1
+) else (
+	echo EnableTelemetry = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_43%==0x0 (
+	echo Enabled >nul 2>&1
+) else (
+	echo Enabled chk_1_43 = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_44%==0x1 (
+	echo RestrictImplicitTextCollection >nul 2>&1
+) else (
+	echo RestrictImplicitTextCollection = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_45%==0x1 (
+	echo RestrictImplicitInkCollection >nul 2>&1
+) else (
+	echo RestrictImplicitInkCollection = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_46%==0x1 (
+	echo PreventHandwritingDataSharing >nul 2>&1
+) else (
+	echo PreventHandwritingDataSharing = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+
+IF %chk_1_47%==0x1 (
+	echo PreventHandwritingErrorReports >nul 2>&1
+) else (
+	echo PreventHandwritingErrorReports = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_48%==0x0 (
+	echo AcceptedPrivacyPolicy >nul 2>&1
+) else (
+	echo AcceptedPrivacyPolicy = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_49%==0x1 (
+	echo DisabledByGroupPolicy >nul 2>&1
+) else (
+	echo DisabledByGroupPolicy = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_50%==0x0 (
+	echo Enabled >nul 2>&1
+) else (
+	echo Enabled chk_1_50 = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_51%==0x1 (
+	echo ListviewAlphaSelect >nul 2>&1
+) else (
+	echo ListviewAlphaSelect = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_52%==1 (
+	echo DragFullWindows >nul 2>&1
+) else (
+	echo DragFullWindows = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_53%==0x0 (
+	echo GamepadDoublePressIntervalMs >nul 2>&1
+) else (
+	echo GamepadDoublePressIntervalMs = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_54%==0x0 (
+	echo UseNexusForGameBarEnabled >nul 2>&1
+) else (
+	echo UseNexusForGameBarEnabled = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_55%==0x0 (
+	echo EnabledExecution >nul 2>&1
+) else (
+	echo EnabledExecution = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_56%==Anywhere (
+	echo ConfigureAppInstallControl >nul 2>&1
+) else (
+	echo ConfigureAppInstallControl = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_57%==0x1 (
+	echo DontReportInfectionInformation >nul 2>&1
+) else (
+	echo DontReportInfectionInformation = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_58%==0x0 (
+	echo HarvestContacts >nul 2>&1
+) else (
+	echo HarvestContacts = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_59%==0x0 (
+	echo SubmitSamplesConsent >nul 2>&1
+) else (
+	echo SubmitSamplesConsent = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_60%==0x0 (
+	echo ConfigureAppInstallControlEnabled >nul 2>&1
+) else (
+	echo ConfigureAppInstallControlEnabled = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_61%==0x1 (
+	echo DefaultConsent >nul 2>&1
+) else (
+	echo DefaultConsent = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_62%==0x2 goto :6579413
+IF %chk_1_62%==ERR goto :6579413
+
+echo AUOptions = Incorrect registry key>>err.log
+SET /a ERROR=%ERROR%+1
+
+:6579413
+
+IF %chk_1_63%==0x0 (
+	echo AUPowerManagement >nul 2>&1
+) else (
+	echo AUPowerManagement = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_64%==0x0 (
+	echo IncludeRecommendedUpdates >nul 2>&1
+) else (
+	echo IncludeRecommendedUpdates = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_65%==0x1 (
+	echo NoAutoUpdate >nul 2>&1
+) else (
+	echo NoAutoUpdate = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_66%==0x1 (
+	echo GlobalTimerResolutionRequests >nul 2>&1
+) else (
+	echo GlobalTimerResolutionRequests = Incorrect registry key>>err.log
+	SET /a ERROR=%ERROR%+1
+)
+
+IF %chk_1_1%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_2%==ERR SET /a ERROR=%ERROR%-1
+
+REM IF %chk_1_3%==ERR SET /a ERROR=%ERROR%-1
+
+IF %chk_1_4%==ERR SET /a ERROR=%ERROR%-1
+
+REM IF %chk_1_5%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_6%==ERR SET /a ERROR=%ERROR%-1
+
+IF %chk_1_7%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_8%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_9%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_10%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_11%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_12%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_13%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_14%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_15%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_16%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_17%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_18%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_19%==ERR SET /a ERROR=%ERROR%-1
+
+REM IF %chk_1_20%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_21%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_22%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_23%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_24%==ERR SET /a ERROR=%ERROR%-1
+
+IF %chk_1_25%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_26%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_27%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_28%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_29%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_30%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_31%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_32%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_33%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_34%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_35%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_36%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_37%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_38%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_39%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_40%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_41%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_42%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_43%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_44%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_45%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_46%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_47%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_48%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_49%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_50%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_51%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_52%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_53%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_54%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_55%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_56%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_57%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_58%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_59%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_60%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_61%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_62%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_63%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_64%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_65%==ERR SET /a ERROR=%ERROR%-1
+IF %chk_1_66%==ERR SET /a ERROR=%ERROR%-1
+
+goto :PGG2
+
+:PGG2
+SET ERROR2=0
+SET CULTD=2
+SET chk_2_1=ERR
+SET chk_2_2=ERR
+SET chk_2_3=ERR
+SET chk_2_4=ERR
+SET chk_2_5=ERR
+SET chk_2_6=ERR
+SET chk_2_7=ERR
+SET chk_2_8=ERR
+SET chk_2_9=ERR
+SET chk_2_10=ERR
+SET chk_2_11=ERR
+SET chk_2_12=ERR
+SET chk_2_13=ERR
+SET chk_2_14=ERR
+SET chk_2_15=ERR
+SET chk_2_16=ERR
+SET chk_2_17=ERR
+SET chk_2_18=ERR
+SET chk_2_19=ERR
+SET chk_2_20=ERR
+SET chk_2_21=ERR
+SET chk_2_22=ERR
+SET chk_2_23=ERR
+SET chk_2_24=ERR
+SET chk_2_25=ERR
+SET chk_2_26=ERR
+SET chk_2_27=ERR
+SET chk_2_28=ERR
+SET chk_2_29=ERR
+SET chk_2_30=ERR
+SET chk_2_31=ERR
+SET chk_2_32=ERR
+SET chk_2_33=ERR
+SET chk_2_34=ERR
+SET chk_2_35=ERR
+SET chk_2_36=ERR
+SET chk_2_37=ERR
+SET chk_2_38=ERR
+SET chk_2_39=ERR
+SET chk_2_40=ERR
+SET chk_2_41=ERR
+SET chk_2_42=ERR
+
+REM ###---------FILES_2-----------------------------------------------------------------------------------###
+
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableVirtualization"') DO set chk_2_1=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableInstallerDetection"') DO set chk_2_2=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "PromptOnSecureDesktop"') DO set chk_2_3=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA"') DO set chk_2_4=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableSecureUIAPaths"') DO set chk_2_5=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin"') DO set chk_2_6=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ValidateAdminCodeSignatures"') DO set chk_2_7=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableUIADesktopToggle"') DO set chk_2_8=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorUser"') DO set chk_2_9=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "FilterAdministratorToken"') DO set chk_2_10=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride"') DO set chk_2_11=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask"') DO set chk_2_12=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Control Panel\Desktop" /v "MenuShowDelay"') DO set chk_2_13=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Control Panel\Desktop" /v "CursorBlinkRate"') DO set chk_2_14=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher"') DO set chk_2_15=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher"') DO set chk_2_16=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/Main" /v "Enabled"') DO set chk_2_17=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/PfApLog" /v "Enabled"') DO set chk_2_18=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/StoreLog" /v "Enabled"') DO set chk_2_19=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Ndu" /v "Start"') DO set chk_2_20=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "ClearPageFileAtShutdown"') DO set chk_2_21=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana"') DO set chk_2_22=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCloudSearch"') DO set chk_2_23=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWeb"') DO set chk_2_24=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWebOverMeteredConnections"') DO set chk_2_25=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "DisableWebSearch"') DO set chk_2_26=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowSearchToUseLocation"') DO set chk_2_27=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortanaAboveLock"') DO set chk_2_28=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Speech_OneCore\Preferences" /v "ModelDownloadAllowed"') DO set chk_2_29=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v "PreventDeviceMetadataFromNetwork"') DO set chk_2_30=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "ExcludeWUDriversInQualityUpdate"') DO set chk_2_31=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig"') DO set chk_2_32=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption"') DO set chk_2_33=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\InputPersonalization\TrainedDataStore" /v "HarvestContacts"') DO set chk_2_34=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows Script Host\Settings" /v "Enabled"') DO set chk_2_35=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "AllowGameDVR"') DO set chk_2_36=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_Enabled"') DO set chk_2_37=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehaviorMode"') DO set chk_2_38=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehavior"') DO set chk_2_39=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_HonorUserFSEBehaviorMode"') DO set chk_2_40=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_EFSEFeatureFlags"') DO set chk_2_41=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible"') DO set chk_2_42=%%a >NUL 2>nul
+IF EXIST $null DEL $null >NUL 2>nul
+cls
+REM ###---------FILES_2-----------------------------------------------------------------------------------###
+
+IF %chk_2_1%==0x0 (
+	echo EnableVirtualization >nul 2>&1
+) else (
+	echo EnableVirtualization = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_2%==0x0 (
+	echo EnableInstallerDetection >nul 2>&1
+) else (
+	echo EnableInstallerDetection = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_3%==0x0 (
+	echo PromptOnSecureDesktop >nul 2>&1
+) else (
+	echo PromptOnSecureDesktop = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_4%==0x0 (
+	echo EnableLUA >nul 2>&1
+) else (
+	echo EnableLUA = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_5%==0x0 (
+	echo EnableSecureUIAPaths >nul 2>&1
+) else (
+	echo EnableSecureUIAPaths = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_6%==0x0 (
+	echo ConsentPromptBehaviorAdmin >nul 2>&1
+) else (
+	echo ConsentPromptBehaviorAdmin = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_7%==0x0 (
+	echo ValidateAdminCodeSignatures >nul 2>&1
+) else (
+	echo ValidateAdminCodeSignatures = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_8%==0x0 (
+	echo EnableUIADesktopToggle >nul 2>&1
+) else (
+	echo EnableUIADesktopToggle = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_9%==0x0 (
+	echo ConsentPromptBehaviorUser >nul 2>&1
+) else (
+	echo ConsentPromptBehaviorUser = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_10%==0x0 (
+	echo FilterAdministratorToken >nul 2>&1
+) else (
+	echo FilterAdministratorToken = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_11%==0x3 (
+	echo FeatureSettingsOverride >nul 2>&1
+) else (
+	echo FeatureSettingsOverride = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_12%==0x3 (
+	echo FeatureSettingsOverrideMask >nul 2>&1
+) else (
+	echo FeatureSettingsOverrideMask = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_13%==0 (
+	echo MenuShowDelay >nul 2>&1
+) else (
+	echo MenuShowDelay >nul 2>&1
+)
+
+IF %chk_2_14%==-1 (
+	echo CursorBlinkRate >nul 2>&1
+) else (
+	echo CursorBlinkRate >nul 2>&1
+)
+IF %chk_2_15%==0x0 (
+	echo EnablePrefetcher >nul 2>&1
+) else (
+	echo EnablePrefetcher = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_16%==0x0 (
+	echo EnablePrefetcher >nul 2>&1
+) else (
+	echo EnablePrefetcher = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_17%==0x0 goto :53046897146
+IF %chk_2_17%==0 goto :53046897146
+
+echo Enabled chk_2_17 = Incorrect registry key>>err.log
+SET /a ERROR2=%ERROR2%+1
+
+:53046897146
+
+IF %chk_2_18%==0x0 goto :43908659
+IF %chk_2_18%==0 goto :43908659
+
+echo Enabled chk_2_18 = Incorrect registry key>>err.log
+SET /a ERROR2=%ERROR2%+1
+
+:43908659
+
+IF %chk_2_19%==0x0 goto :0964351
+IF %chk_2_19%==0 goto :0964351
+
+echo Enabled chk_2_19 = Incorrect registry key>>err.log
+SET /a ERROR2=%ERROR2%+1
+
+:0964351
+
+IF %chk_2_20%==0x4 (
+	echo Start >nul 2>&1
+) else (
+	echo Start = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_21%==0x0 (
+	echo ClearPageFileAtShutdown >nul 2>&1
+) else (
+	echo ClearPageFileAtShutdown = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_22%==0x0 (
+	echo AllowCortana >nul 2>&1
+) else (
+	echo AllowCortana = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_23%==0x0 (
+	echo AllowCloudSearch >nul 2>&1
+) else (
+	echo AllowCloudSearch = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_24%==0x0 (
+	echo ConnectedSearchUseWeb >nul 2>&1
+) else (
+	echo ConnectedSearchUseWeb = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_25%==0x0 (
+	echo ConnectedSearchUseWebOverMeteredConnections >nul 2>&1
+) else (
+	echo ConnectedSearchUseWebOverMeteredConnections = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_26%==0x1 (
+	echo DisableWebSearch >nul 2>&1
+) else (
+	echo DisableWebSearch = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_27%==0x0 (
+	echo AllowSearchToUseLocation >nul 2>&1
+) else (
+	echo AllowSearchToUseLocation = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_28%==0x0 (
+	echo AllowCortanaAboveLock >nul 2>&1
+) else (
+	echo AllowCortanaAboveLock = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_29%==0x0 (
+	echo ModelDownloadAllowed >nul 2>&1
+) else (
+	echo ModelDownloadAllowed = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_30%==0x1 (
+	echo PreventDeviceMetadataFromNetwork >nul 2>&1
+) else (
+	echo PreventDeviceMetadataFromNetwork = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_31%==0x1 (
+	echo ExcludeWUDriversInQualityUpdate >nul 2>&1
+) else (
+	echo ExcludeWUDriversInQualityUpdate = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_32%==0x0 (
+	echo SearchOrderConfig >nul 2>&1
+) else (
+	echo SearchOrderConfig = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_33%==0x0 (
+	echo EnablePreemption >nul 2>&1
+) else (
+	echo EnablePreemption = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_34%==0x0 (
+	echo HarvestContacts >nul 2>&1
+) else (
+	echo HarvestContacts = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_35%==0x1 (
+	echo Enabled >nul 2>&1
+) else (
+	echo Enabled chk_2_35 = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_36%==0x0 (
+	echo AllowGameDVR >nul 2>&1
+) else (
+	echo AllowGameDVR = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_37%==0x0 (
+	echo GameDVR_Enabled >nul 2>&1
+) else (
+	echo GameDVR_Enabled = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_38%==0x0 (
+	echo GameDVR_FSEBehaviorMode >nul 2>&1
+) else (
+	echo GameDVR_FSEBehaviorMode = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_39%==ERR goto :7678656
+IF %chk_2_39%==0x0 goto :7678656
+
+echo GameDVR_FSEBehavior = Incorrect registry key>>err.log
+SET /a ERROR2=%ERROR2%+1
+
+:7678656
+
+IF %chk_2_40%==ERR (
+	echo GameDVR_HonorUserFSEBehaviorMode >nul 2>&1
+) else (
+	echo GameDVR_HonorUserFSEBehaviorMode = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+IF %chk_2_41%==ERR (
+	echo GameDVR_EFSEFeatureFlags >nul 2>&1
+) else (
+	echo GameDVR_EFSEFeatureFlags = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_42%==ERR (
+	echo GameDVR_DXGIHonorFSEWindowsCompatible >nul 2>&1
+) else (
+	echo GameDVR_DXGIHonorFSEWindowsCompatible = Incorrect registry key>>err.log
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF %chk_2_1%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_2%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_3%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_4%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_5%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_6%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_7%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_8%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_9%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_10%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_11%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_12%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_13%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_14%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_15%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_16%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_17%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_18%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_19%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_20%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_21%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_22%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_23%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_24%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_25%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_26%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_27%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_28%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_29%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_30%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_31%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_32%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_33%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_34%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_35%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_36%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_37%==ERR SET /a ERROR2=%ERROR2%-1
+IF %chk_2_38%==ERR SET /a ERROR2=%ERROR2%-1
+
+SET ERROR3=0
+SET CULTD=3
+SET chk_3_1=ERR
+SET chk_3_2=ERR
+SET chk_3_3=ERR
+SET chk_3_4=ERR
+SET chk_3_5=ERR
+SET chk_3_6=ERR
+SET chk_3_7=ERR
+SET chk_3_8=ERR
+REM SET chk_3_9=ERR
+REM SET chk_3_10=ERR
+SET chk_3_11=ERR
+SET chk_3_12=ERR
+SET chk_3_13=ERR
+SET chk_3_14=ERR
+SET chk_3_15=ERR
+SET chk_3_16=ERR
+SET chk_3_17=ERR
+SET chk_3_18=ERR
+SET chk_3_19=ERR
+SET chk_3_20=ERR
+SET chk_3_21=ERR
+REM SET chk_3_22=ERR
+REM SET chk_3_23=ERR
+SET chk_3_24=ERR
+SET chk_3_25=ERR
+SET chk_3_26=ERR
+SET chk_3_27=ERR
+SET chk_3_28=ERR
+SET chk_3_29=ERR
+SET chk_3_30=ERR
+SET chk_3_31=ERR
+SET chk_3_32=ERR
+SET chk_3_33=ERR
+SET chk_3_34=ERR
+SET chk_3_35=ERR
+SET chk_3_36=ERR
+SET chk_3_37=ERR
+SET chk_3_38=ERR
+SET chk_3_39=ERR
+SET chk_3_40=ERR
+SET chk_3_41=ERR
+SET chk_3_42=ERR
+SET chk_3_43=ERR
+SET chk_3_44=ERR
+SET chk_3_45=ERR
+SET chk_3_46=ERR
+SET chk_3_47=ERR
+SET chk_3_48=ERR
+SET chk_3_49=ERR
+SET chk_3_50=ERR
+SET chk_3_51=ERR
+SET chk_3_52=ERR
+SET chk_3_53=ERR
+
+REM ###---------FILES_3-----------------------------------------------------------------------------------###
+
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR"') DO set chk_3_1=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "NoNetCrawling"') DO set chk_3_2=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\MSMQ\Parameters" /v "TCPNoDelay"') DO set chk_3_3=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableICMPRedirect"') DO set chk_3_4=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnablePMTUDiscovery"') DO set chk_3_5=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "Tcp1323Opts"') DO set chk_3_6=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpMaxDupAcks"') DO set chk_3_7=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay"') DO set chk_3_8=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "GlobalMaxTcpWindowSize"') DO set chk_3_9=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpWindowSize"') DO set chk_3_10=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DisableTaskOffload"') DO set chk_3_11=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxConnectionsPerServer"') DO set chk_3_12=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort"') DO set chk_3_13=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "SackOpts"') DO set chk_3_14=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DeadGWDetectDefault"') DO set chk_3_15=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DefaultTTL"') DO set chk_3_16=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "EnableICMPRedirect"') DO set chk_3_17=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "EnablePMTUDiscovery"') DO set chk_3_18=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "Tcp1323Opts"') DO set chk_3_19=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "TcpMaxDupAcks"') DO set chk_3_20=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay"') DO set chk_3_21=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "GlobalMaxTcpWindowSize"') DO set chk_3_22=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "TcpWindowSize"') DO set chk_3_23=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "DisableTaskOffload"') DO set chk_3_24=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "MaxConnectionsPerServer"') DO set chk_3_25=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "MaxUserPort"') DO set chk_3_26=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "SackOpts"') DO set chk_3_27=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "DeadGWDetectDefault"') DO set chk_3_28=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "DefaultTTL"') DO set chk_3_29=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled"') DO set chk_3_30=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\NetBT\Parameters" /v "NameSrvQueryTimeout"') DO set chk_3_31=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Winsock" /v "UseDelayedAcceptance"') DO set chk_3_32=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Winsock" /v "MaxSockAddrLength"') DO set chk_3_33=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Winsock" /v "MinSockAddrLength"') DO set chk_3_34=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "ServiceDllUnloadOnStop"') DO set chk_3_35=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "maxcachettl"') DO set chk_3_36=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "maxnegativecachettl"') DO set chk_3_37=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NetFailureCacheTime"') DO set chk_3_38=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NegativeSOACacheTime"') DO set chk_3_39=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NegativeCacheTime"') DO set chk_3_40=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableBucketSize"') DO set chk_3_41=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheEntryTtlLimit"') DO set chk_3_42=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxSOACacheEntryTtlLimit"') DO set chk_3_43=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableSize"') DO set chk_3_44=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "Class"') DO set chk_3_45=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "DnsPriority"') DO set chk_3_46=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "HostsPriority"') DO set chk_3_47=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "LocalPriority"') DO set chk_3_48=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "NetbtPriority"') DO set chk_3_49=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "NonBestEffortLimit"') DO set chk_3_50=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry"') DO set chk_3_51=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "DoNotShowFeedbackNotifications"') DO set chk_3_52=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\CurrentControlSet\Services\NetBT\Parameters" /v "EnableLMHOSTS"') DO set chk_3_53=%%a >NUL 2>nul
+IF EXIST $null DEL $null >NUL 2>nul
+cls
+REM ###---------FILES_3-----------------------------------------------------------------------------------###
+
+IF %chk_3_1%==0x1 (
+	echo AllowGameDVR = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+IF %chk_3_2%==0x1 (
+	echo NoNetCrawling >nul 2>&1
+) else (
+	echo NoNetCrawling = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_3%==0x1 (
+	echo TCPNoDelay >nul 2>&1
+) else (
+	echo TCPNoDelay = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+IF %chk_3_4%==0x1 (
+	echo EnableICMPRedirect >nul 2>&1
+) else (
+	echo EnableICMPRedirect = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_5%==0x1 (
+	echo EnablePMTUDiscovery >nul 2>&1
+) else (
+	echo EnablePMTUDiscovery = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+IF %chk_3_6%==0x0 (
+	echo Tcp1323Opts >nul 2>&1
+) else (
+	echo Tcp1323Opts = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_7%==0x2 (
+	echo TcpMaxDupAcks >nul 2>&1
+) else (
+	echo TcpMaxDupAcks = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+IF %chk_3_8%==0x20 (
+	echo TcpTimedWaitDelay >nul 2>&1
+) else (
+	echo TcpTimedWaitDelay = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+REM IF %chk_3_9%==0x2238 (
+REM 	echo GlobalMaxTcpWindowSize >nul 2>&1
+REM ) else (
+REM 	echo GlobalMaxTcpWindowSize = Incorrect registry key>>err.log
+REM 	SET /a ERROR3=%ERROR3%+1
+REM )
+
+REM IF %chk_3_10%==0x2238 (
+REM 	echo TcpWindowSize >nul 2>&1
+REM ) else (
+REM 	echo TcpWindowSize = Incorrect registry key>>err.log
+REM 	SET /a ERROR3=%ERROR3%+1
+REM )
+
+IF %chk_3_11%==0x0 (
+	echo DisableTaskOffload >nul 2>&1
+) else (
+	echo DisableTaskOffload = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_12%==0x0 (
+	echo MaxConnectionsPerServer >nul 2>&1
+) else (
+	echo MaxConnectionsPerServer = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_13%==0xfffe (
+	echo MaxUserPort >nul 2>&1
+) else (
+	echo MaxUserPort = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_14%==0x0 (
+	echo SackOpts >nul 2>&1
+) else (
+	echo SackOpts = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_15%==0x1 (
+	echo DeadGWDetectDefault >nul 2>&1
+) else (
+	echo DeadGWDetectDefault = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_16%==0x40 (
+	echo DefaultTTL >nul 2>&1
+) else (
+	echo DefaultTTL = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_17%==0x1 (
+	echo EnableICMPRedirect >nul 2>&1
+) else (
+	echo EnableICMPRedirect = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_18%==0x1 (
+	echo EnablePMTUDiscovery >nul 2>&1
+) else (
+	echo EnablePMTUDiscovery = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_19%==0x0 (
+	echo Tcp1323Opts >nul 2>&1
+) else (
+	echo Tcp1323Opts = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_20%==0x2 (
+	echo TcpMaxDupAcks >nul 2>&1
+) else (
+	echo TcpMaxDupAcks = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_21%==0x20 (
+	echo TcpTimedWaitDelay >nul 2>&1
+) else (
+	echo TcpTimedWaitDelay = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+REM IF %chk_3_22%==0x2238 (
+REM 	echo GlobalMaxTcpWindowSize >nul 2>&1
+REM ) else (
+REM 	echo GlobalMaxTcpWindowSize = Incorrect registry key>>err.log
+REM 	SET /a ERROR3=%ERROR3%+1
+REM )
+
+REM IF %chk_3_23%==0x2238 (
+REM 	echo TcpWindowSize >nul 2>&1
+REM ) else (
+REM 	echo TcpWindowSize = Incorrect registry key>>err.log
+REM 	SET /a ERROR3=%ERROR3%+1
+REM )
+
+IF %chk_3_24%==0x0 (
+	echo DisableTaskOffload >nul 2>&1
+) else (
+	echo DisableTaskOffload = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_25%==0x0 (
+	echo MaxConnectionsPerServer >nul 2>&1
+) else (
+	echo MaxConnectionsPerServer = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_26%==0xfffe (
+	echo MaxUserPort >nul 2>&1
+) else (
+	echo MaxUserPort = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_27%==0x0 (
+	echo SackOpts >nul 2>&1
+) else (
+	echo SackOpts = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_28%==0x1 (
+	echo DeadGWDetectDefault >nul 2>&1
+) else (
+	echo DeadGWDetectDefault = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_29%==0x40 (
+	echo DefaultTTL >nul 2>&1
+) else (
+	echo DefaultTTL = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_30%==0x0 (
+	echo Enabled >nul 2>&1
+) else (
+	echo Enabled = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_31%==0xbb8 (
+	echo NameSrvQueryTimeout >nul 2>&1
+) else (
+	echo NameSrvQueryTimeout = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_32%==0x0 (
+	echo UseDelayedAcceptance >nul 2>&1
+) else (
+	echo UseDelayedAcceptance = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_33%==0x10 (
+	echo MaxSockAddrLength >nul 2>&1
+) else (
+	echo MaxSockAddrLength = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_34%==0x10 (
+	echo MinSockAddrLength >nul 2>&1
+) else (
+	echo MinSockAddrLength = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_35%==0x1 (
+	echo ServiceDllUnloadOnStop >nul 2>&1
+) else (
+	echo ServiceDllUnloadOnStop = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_36%==0x3600 (
+	echo maxcachettl >nul 2>&1
+) else (
+	echo maxcachettl = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_37%==0x0 (
+	echo maxnegativecachettl >nul 2>&1
+) else (
+	echo maxnegativecachettl = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_38%==0x0 (
+	echo NetFailureCacheTime >nul 2>&1
+) else (
+	echo NetFailureCacheTime = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_39%==0x0 (
+	echo NegativeSOACacheTime >nul 2>&1
+) else (
+	echo NegativeSOACacheTime = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_40%==0x0 (
+	echo NegativeCacheTime >nul 2>&1
+) else (
+	echo NegativeCacheTime = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_41%==0x1 (
+	echo CacheHashTableBucketSize >nul 2>&1
+) else (
+	echo CacheHashTableBucketSize = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_42%==0x15180 (
+	echo MaxCacheEntryTtlLimit >nul 2>&1
+) else (
+	echo MaxCacheEntryTtlLimit = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_43%==0x12c (
+	echo MaxSOACacheEntryTtlLimit >nul 2>&1
+) else (
+	echo MaxSOACacheEntryTtlLimit = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_44%==0x180 (
+	echo CacheHashTableSize >nul 2>&1
+) else (
+	echo CacheHashTableSize = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_45%==0x8 (
+	echo Class >nul 2>&1
+) else (
+	echo Class = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_46%==0x6 (
+	echo DnsPriority >nul 2>&1
+) else (
+	echo DnsPriority = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_47%==0x5 (
+	echo HostsPriority >nul 2>&1
+) else (
+	echo HostsPriority = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_48%==0x4 (
+	echo LocalPriority >nul 2>&1
+) else (
+	echo LocalPriority = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_49%==0x7 (
+	echo NetbtPriority >nul 2>&1
+) else (
+	echo NetbtPriority = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_50%==0x0 (
+	echo NonBestEffortLimit >nul 2>&1
+) else (
+	echo NonBestEffortLimit = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_51%==0x0 (
+	echo AllowTelemetry >nul 2>&1
+) else (
+	echo AllowTelemetry = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_52%==0x1 (
+	echo DoNotShowFeedbackNotifications >nul 2>&1
+) else (
+	echo DoNotShowFeedbackNotifications = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_53%==0x0 (
+	echo EnableLMHOSTS >nul 2>&1
+) else (
+	echo EnableLMHOSTS = Incorrect registry key>>err.log
+	SET /a ERROR3=%ERROR3%+1
+)
+
+IF %chk_3_1%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_2%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_3%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_4%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_5%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_6%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_7%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_8%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_9%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_10%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_11%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_12%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_13%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_14%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_15%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_16%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_17%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_18%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_19%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_20%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_21%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_22%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_23%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_24%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_25%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_26%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_27%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_28%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_29%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_30%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_31%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_32%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_33%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_34%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_35%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_36%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_37%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_38%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_39%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_40%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_41%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_42%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_43%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_44%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_45%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_46%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_47%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_48%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_49%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_50%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_51%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_52%==ERR SET /a ERROR3=%ERROR3%-1
+IF %chk_3_53%==ERR SET /a ERROR3=%ERROR3%-1
+cls
+
+DEL RERR.bat>nul
+
+IF %ERROR%==-1 SET ERROR=0
+IF %ERROR3%==-1 SET ERROR3=0
+
+Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK1" /t REG_SZ /d "%ERROR%" /f >nul
+Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK2" /t REG_SZ /d "%ERROR2%" /f >nul
+Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK3" /t REG_SZ /d "%ERROR3%" /f >nul
+SET /a REGERROR=%ERROR3%+%ERROR2%+%ERROR%
+echo SET "REGERROR=%REGERROR%">>RERR.bat
+Endlocal
+call RERR.bat
+DEL RERR.bat>nul
+goto :MAINW
