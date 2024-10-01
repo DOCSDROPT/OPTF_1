@@ -29,7 +29,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0040
+SET VERSCRIPT=0041
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -1037,6 +1037,32 @@ Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\DeviceGuard\Scenarios\Hypervis
 Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /f >nul 2>&1
 Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /f >nul 2>&1
 Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /f >nul 2>&1
+
+rmdir /s /q "C:\Program Files\dotnet" >nul 2>&1
+rmdir /s /q "C:\Program Files\HitmanPro" >nul 2>&1
+rmdir /s /q "C:\Program Files\stinger" >nul 2>&1
+rmdir /s /q "C:\Program Files (x86)\AGEIA Technologies" >nul 2>&1
+rmdir /s /q "C:\Program Files (x86)\dotnet" >nul 2>&1
+rmdir /s /q "C:\Program Files (x86)\Microsoft.NET" >nul 2>&1
+rmdir /s /q "C:\ProgramData\Addons" >nul 2>&1
+rmdir /s /q "C:\ProgramData\Emsisoft" >nul 2>&1
+rmdir /s /q "C:\ProgramData\McAfee" >nul 2>&1
+rmdir /s /q "C:\ProgramData\Oracle" >nul 2>&1
+rmdir /s /q "C:\ProgramData\USOShared" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\.resourcefullib" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\CrashReportClient" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\D3DSCache" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\fontconfig" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\OO Software" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\PeerDistRepub" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\PlaceholderTileLogoFolder" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\Publishers" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\speech" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\LocalLow\Sun" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\Sun" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\gg.essential.mod" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\Adobe" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\AdbAppControl" >nul 2>&1
 
 curl -g -k -L -# -o "colors.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/colors.reg" >nul 2>&1
 curl -g -k -L -# -o "REG.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/REG.reg" >nul 2>&1
