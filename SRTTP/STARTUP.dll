@@ -29,7 +29,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0041
+SET VERSCRIPT=0042
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -259,6 +259,7 @@ IF "%CSTARTR%"=="17" (
 )
 
 IF "%CSTARTR%"=="18" (
+	IF EXIST "W:\Windows\Documents\1-APK\RivaTuner\RTSS.exe" START "" "W:\Windows\Documents\1-APK\RivaTuner\RTSS.exe"&goto :MAINW
 	IF EXIST "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe" START "" "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe"&goto :MAINW
 	IF EXIST "RTSSSetup736.exe" DEL "RTSSSetup736.exe" >nul
 	curl -g -k -L -# -o "RTSSSetup736.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/RTSSSetup736.dll" >nul 2>&1
@@ -411,24 +412,6 @@ IF "%CSTARTR%"=="34" (
 	goto :MAINW
 )
 
-rem IF "%CSTARTR%"=="39" (
-rem 	IF NOT EXIST C:\Ect md C:\Ect >nul 2>&1
-rem 	cd /d C:\Ect\ >nul 2>&1
-rem 	IF EXIST C:\Ect\S-W\start-windows.bat START "" "C:\Ect\S-W\start-windows.bat" -U
-rem 	IF EXIST C:\Ect\S-W\S-W.exe START /wait "" "C:\Ect\S-W\S-W.exe" /uninstall
-rem 	@timeout /t 01 /nobreak>nul
-rem 	IF EXIST "C:\Ect\S-W" rmdir /s /q "C:\Ect\S-W" >nul 2>&1
-rem 	curl -g -k -L -# -o "C:\Ect\S-W.7z" "https://tinyurl.com/SWSCRLINK" >nul 2>&1
-rem 	@timeout /t 05 /nobreak>nul
-rem 	IF NOT EXIST C:\Ect\7za.exe curl -g -k -L -# -o "C:\Ect\7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
-rem 	@timeout /t 01 /nobreak>nul
-rem 	START "" "C:\Ect\7za.exe" -y x -p9421 C:\Ect\S-W.7z
-rem 	@timeout /t 03 /nobreak>nul
-rem 	IF EXIST "C:\Ect\S-W\S-W.exe" (START /wait "" "C:\Ect\S-W\S-W.exe" -i) else (echo ERREUR & @timeout /t 03 /nobreak)
-rem 	DEL C:\Ect\S-W.7z >nul 2>&1
-rem 	goto :MAINW
-rem )
-
 IF "%CSTARTR%"=="35" (
 	curl -g -k -L -# -o "Remove-EdgeWeb.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-EdgeWeb.exe" >nul 2>&1
 	START Remove-EdgeWeb.exe
@@ -443,14 +426,16 @@ IF "%CSTARTR%"=="36" (
 )
 
 IF "%CSTARTR%"=="37" (
-	curl -g -k -L -# -o "Spotify.bat" "https://tinyurl.com/SPOBTP" >nul 2>&1
+    curl -g -k -L -# -o "%TEMP%\SpotifySetup.exe" "https://download.scdn.co/SpotifySetup.exe" >nul 2>&1
+    @timeout /t 02 >nul
+    START /wait "" "%TEMP%\SpotifySetup.exe" /silent
+    @timeout /t 05 >nul
+    DEL "%TEMP%\SpotifySetup.exe" >nul 2>&1
+    Taskkill /f /im Spotify.exe >nul 2>&1
 	@timeout /t 02>nul
-	start cmd /c "Spotify.bat"
-	@timeout /t 02>nul
-	rem curl -g -k -L -# -o "DownloadBlockTheSpot.ps1" "https://github.com/00FGV1/ver/raw/main/ccmd/DownloadBlockTheSpot.ps1" >nul 2>&1
-	Taskkill /f /im Spotify.exe >nul 2>&1
 	powershell -command "iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex"
-
+	IF EXIST C:\Users\%USERNAME%\Desktop\Spotify.lnk DEL C:\Users\%USERNAME%\Desktop\Spotify.lnk >nul 2>&1
+	IF EXIST W:\Windows\Desktop\Spotify.lnk DEL W:\Windows\Desktop\Spotify.lnk >nul 2>&1
 	goto :MAINW
 )
 
