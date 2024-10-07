@@ -1,0 +1,2881 @@
+:RESET
+@echo off
+@Title START-UP TOOLS
+set black=[30m
+set red=[91m
+set bright_red=[1;91m
+set rred=[41m
+set green=[32m
+set ggreen=[42m
+set yellow=[33m
+set yyellow=[43m
+set blue=[34m
+set bblue=[44m
+set magenta=[35m
+set bmagenta=[45m
+set cyan=[36m
+set defcolor=[49m
+set gold=[38;5;220m
+set ggold=[48;5;220m
+set grey=[90m
+set ggrey=[100m
+set orange=[38;5;208m
+set oorange=[48;5;208m
+set white=[37m
+set indigo=[38;5;105m
+C:
+IF NOT EXIST "%appdata%\StartUp Tools" md "%appdata%\StartUp Tools"
+IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
+cd /d %~dp0
+color 7
+
+SET VERSCRIPT=0043
+
+rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
+mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
+if %errorlevel% neq 0 (
+	powershell -NoProfile -NonInteractive -Command start -verb runas "'%~s0'" >nul 2>&1 & exit /b
+)
+
+if /i "%~1"=="/4" (
+	mode con:cols=134 lines=47
+) else (
+	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
+)
+
+IF NOT EXIST "%appdata%\StartUp Tools\SFLE.bat" goto :Firtstr
+:FirtstrBac
+call "%appdata%\StartUp Tools\IFHW.bat"
+call "%appdata%\StartUp Tools\SFLE.bat"
+
+REM goto :24570896
+REM %ggrey% ERR REGISTRE : %REGERROR% %defcolor%
+
+:MAINW
+C:
+cd "%appdata%\StartUp Tools"
+mode con:cols=134 lines=47
+IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+cls
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
+echo   %bblue% %OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+echo ³%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+echo ³%orange%³%white% %gold%Optimisations%white%           %orange%[OPT]%white% %orange%³%white%³ %gold%Softwares%white%                     ³³ %gold%DLC Unlocker%white%                  ³³ %gold%Autres%white%                        ³³
+echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³%orange%³%white% %indigo%[ 1]%white% Ancienne Optimisation    %orange%³%white%³ %indigo%[13]%white% VLC                      ³³ %indigo%[25]%white% CreamInstaller           ³³ %indigo%[35]%white% Edge Remover             ³³
+echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³%orange%³%white% %indigo%[ 2]%white% Optimisation             %orange%³%white%³ %indigo%[14]%white% Discord                  ³³ %indigo%[26]%white% Auto-CreamApi 2          ³³ %indigo%[36]%white% dControl                 ³³
+echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³%orange%³%white% %indigo%[ 3]%white% Optimisation      %gold%[BETA]%white% %orange%³%white%³ %indigo%[15]%white% TeamSpeak                ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[37]%white% Spotify                  ³³
+echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%VPN%white%                           ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³%orange%³%white% %indigo%[ 4]%white% Fichier Debug            %orange%³%white%³ %indigo%[16]%white% Auto Clicker             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[38]%white% TreeSize                 ³³
+echo ³%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[27]%white% Cloudflare WARP          ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[17]%white% Vibrance GUI             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[39]%white% Everything               ³³
+echo ³³ %gold%Navigateurs Internet%white%          ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[28]%white% RiseupVPN                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[18]%white% RivaTuner                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[40]%white% Lossless Scaling         ³³
+echo ³³ %indigo%[ 5]%white% Firefox                  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[29]%white% Proton VPN               ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[19]%white% Process Lasso Pro        ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[41]%white% AnyDesk                  ³³
+echo ³³ %indigo%[ 6]%white% Waterfox                 ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[20]%white% StartAllBack Pro         ³³ %gold%Scripts%white%                       ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+echo ³³ %indigo%[ 7]%white% LibreWolf                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%Virus%white%                         ³³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[21]%white% Revo Uninstaller Pro     ³³ %indigo%[30]%white% Windows Activation       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³³ %indigo%[ 8]%white% Chrome                   ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[42]%white% Hitman Pro               ³³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[31]%white% Win32PrioritySeparation  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³³ %indigo%[ 9]%white% Edge                     ³³ %gold%Drivers%white%                       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[43]%white% McAfee Stinger Lite %green%2Min%white% ³³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[32]%white% BCDEdit                  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³³ %indigo%[10]%white% Opera                    ³³ %indigo%[22]%white% Display Driver Uninstall ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[44]%white% McAfee Stinger Full %red%35M%white%  ³³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[33]%white% Defender Remover         ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³³ %indigo%[11]%white% Opera GX                 ³³ %indigo%[23]%white% Snappy Driver Installer  ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[45]%white% Emsisoft                 ³³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³³ %indigo%[12]%white% Vivaldi                  ³³ %indigo%[24]%white% Driver Talent Pro        ³%orange%³ %indigo%[34]%white% Utilisateurs %orange%OPTI%white% %gold%[BETA]%white% %orange%³%white%³ %indigo%[46]%white% AdwCleaner               ³³
+echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³
+echo ³%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%³
+echo ³%orange%O%white% %indigo%[47]%white% MSI Utility V3           %orange%³%white%  %indigo%[48]%white% WPD                      %orange%³%white%  %indigo%[49]%white% ShutUp10++               %orange%³%white%  %indigo%[50]%white% Script Network %grey%CoutX%white%     %orange%O%white%³
+echo ³%orange%PÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ%orange%P%white%³
+echo ³%orange%T%white% %indigo%[51]%white% Autoruns                 %orange%³%white%  %indigo%[52]%white% Device Cleanup           %orange%³%white%  %indigo%[53]%white% CCleaner                 %orange%³%white%  %indigo%[54]%white% Dism++                   %orange%T%white%³
+echo ³%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%³
+echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         º %indigo%[ X ]%white% Nettoyage registres      º %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" º   %indigo%[98]%white% HELP
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% º %indigo%[100]%white% Configurer les jeux  º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ V ]%white%     %gold%Page pack de logiciels ---^>%white%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+set /p CSTARTR="%green%>%white%"
+
+IF "%CSTARTR%"=="1" (
+	IF NOT EXIST C:\Ect\RWC md C:\Ect\RWC
+	IF EXIST "C:\Ect\RWC\main.bat" start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
+	IF NOT EXIST "C:\Ect\RWC\main.bat" curl -g -k -L -# -o "C:\Ect\RWC\main.bat" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/main.dll" & start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
+)
+
+IF "%CSTARTR%"=="2" (
+	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
+	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
+	curl -g -k -L -# -o "dl.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/dl.dll" >nul 2>&1 & start cmd /c "dl.bat"
+	@timeout /t 10>nul
+	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
+	IF EXIST 7za.exe DEL 7za.exe>nul
+	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
+	IF EXIST C:\ph_main.exe start C:\ph_main.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="3" (
+	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
+	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
+	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
+	@timeout /t 10>nul
+	IF EXIST BETA-Optifiles.7z (7za.exe -y x -p9421 -oC:\ BETA-Optifiles.7z >nul)
+	IF EXIST 7za.exe DEL 7za.exe>nul
+	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
+	IF EXIST C:\ph_main.exe start C:\ph_main.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="4" (
+	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
+	curl -g -k -L -# -o "DEBUG.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/ph_user/DEBUG.dll" >nul 2>&1
+	IF EXIST DEBUG.7z (7za.exe -y x -p9421 -oC:\ DEBUG.7z >nul)
+	IF EXIST 7za.exe DEL 7za.exe>nul
+	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="5" (
+	IF EXIST "Firefox Installer.exe" DEL "Firefox Installer.exe" >nul
+	curl -g -k -L -# -o "Firefox Installer.exe" "https://download.mozilla.org/?product=firefox-stub&os=win&lang=fr" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "Firefox Installer.exe"
+	DEL "Firefox Installer.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="6" (
+	IF EXIST "waterfox-portable-win64-6.0.7-29-setup.exe" DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
+	curl -g -k -L -# -o "waterfox-portable-win64-6.0.7-29-setup.exe" "https://github.com/portapps/waterfox-portable/releases/download/6.0.7-29/waterfox-portable-win64-6.0.7-29-setup.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "waterfox-portable-win64-6.0.7-29-setup.exe"
+	DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="7" (
+	IF EXIST "librewolf-128.0.3-1-windows-x86_64-setup.exe" DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
+	curl -g -k -L -# -o "librewolf-128.0.3-1-windows-x86_64-setup.exe" "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/128.0.3-1/librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "librewolf-128.0.3-1-windows-x86_64-setup.exe"
+	DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
+	goto :MAINW
+)
+
+rem IF "%CSTARTR%"=="7" (
+rem 	IF EXIST "chrome-win.zip" DEL "chrome-win.zip" >nul
+rem 	curl -g -k -L -# -o "chrome-win.zip" "https://download-chromium.appspot.com/dl/Win_x64?type=snapshots" >nul 2>&1
+rem 	@timeout /t 02>nul
+rem 	Start chrome-win.zip
+rem 	goto :MAINW
+rem )
+
+IF "%CSTARTR%"=="8" (
+	IF EXIST "ChromeSetup.exe" DEL "ChromeSetup.exe" >nul
+	curl -g -k -L -# -o "ChromeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Chr.dll" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "ChromeSetup.exe"
+	DEL "ChromeSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="9" (
+	IF EXIST "MicrosoftEdgeSetup.exe" DEL "MicrosoftEdgeSetup.exe" >nul
+	curl -g -k -L -# -o "MicrosoftEdgeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Edge.dll" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "MicrosoftEdgeSetup.exe"
+	DEL "MicrosoftEdgeSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="10" (
+	IF EXIST "OperaSetup.exe" DEL "OperaSetup.exe" >nul
+	curl -g -k -L -# -o "OperaSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Opera.dll" >nul 2>&1
+	START /WAIT "" "OperaSetup.exe"
+	DEL "OperaSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="11" (
+	IF EXIST "OperaGXSetup.exe" DEL "OperaGXSetup.exe" >nul
+	curl -g -k -L -# -o "OperaGXSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/OperaGX.dll" >nul 2>&1
+	START /WAIT "" "OperaGXSetup.exe"
+	DEL "OperaGXSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="12" (
+	IF EXIST "Vivaldix64.exe" DEL "Vivaldix64.exe" >nul
+	curl -g -k -L -# -o "Vivaldix64.exe" "https://downloads.vivaldi.com/stable/Vivaldi.6.8.3381.48.x64.exe" >nul 2>&1
+	START /WAIT "" "Vivaldix64.exe"
+	DEL "Vivaldix64.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="13" (
+	IF EXIST "vlc-3.0.21-win64.exe" DEL "vlc-3.0.21-win64.exe" >nul
+	curl -g -k -L -# -o "vlc-3.0.21-win64.exe" "https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe" >nul 2>&1
+	START /WAIT "" "vlc-3.0.21-win64.exe"
+	DEL "vlc-3.0.21-win64.exe" >nul
+	goto :MAINW
+)
+
+
+IF "%CSTARTR%"=="14" (
+	IF EXIST "DiscordSetup.exe" DEL "DiscordSetup.exe" >nul
+	curl -g -k -L -# -o "DiscordSetup.exe" "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64" >nul 2>&1
+	START /WAIT "" "DiscordSetup.exe"
+	DEL "DiscordSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="15" (
+	IF EXIST "teamspeak-client.msi" DEL "teamspeak-client.msi" >nul
+	curl -g -k -L -# -o "teamspeak-client.msi" "https://files.teamspeak-services.com/pre_releases/client/5.0.0-beta77/teamspeak-client.msi" >nul 2>&1
+	START /WAIT "" "teamspeak-client.msi"
+	DEL "teamspeak-client.msi" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="16" (
+	curl -g -k -L -# -o "AutoClicker.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/AutoClicker.dll" >nul 2>&1
+	START "" "AutoClicker.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="17" (
+	curl -g -k -L -# -o "vibranceGUI.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/vibranceGUI.dll" >nul 2>&1
+	START "" "vibranceGUI.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="18" (
+	IF EXIST "W:\Windows\Documents\1-APK\RivaTuner\RTSS.exe" START "" "W:\Windows\Documents\1-APK\RivaTuner\RTSS.exe"&goto :MAINW
+	IF EXIST "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe" START "" "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe"&goto :MAINW
+	IF EXIST "RTSSSetup736.exe" DEL "RTSSSetup736.exe" >nul
+	curl -g -k -L -# -o "RTSSSetup736.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/RTSSSetup736.dll" >nul 2>&1
+	START /WAIT "" "RTSSSetup736.exe"
+	DEL "RTSSSetup736.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="19" (
+	IF EXIST "InstProcessLasso.exe" DEL "InstProcessLasso.exe" >nul
+	curl -g -k -L -# -o "InstProcessLasso.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstProcessLasso.dll" >nul 2>&1
+	START /WAIT "" "InstProcessLasso.exe"
+	DEL "InstProcessLasso.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="20" (
+	IF EXIST "InstStartBack.exe" DEL "InstStartBack.exe" >nul
+	curl -g -k -L -# -o "InstStartBack.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstStartBack.dll" >nul 2>&1
+	START /WAIT "" "InstStartBack.exe"
+	DEL "InstStartBack.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="21" (
+	IF EXIST "InstRevoUninstall.exe" DEL "InstRevoUninstall.exe" >nul
+	curl -g -k -L -# -o "InstRevoUninstall.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstRevoUninstall.dll" >nul 2>&1
+	START /WAIT "" "InstRevoUninstall.exe"
+	DEL "InstRevoUninstall.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="22" (
+	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
+	IF EXIST "DDU\Display Driver Uninstaller.exe" Start "" "DDU\Display Driver Uninstaller.exe"&goto :MAINW
+	curl -g -k -L -# -o "DDU.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DDU.7z" >nul 2>&1
+	@timeout /t 02>nul
+	IF EXIST DDU.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" DDU.7z >nul)
+	@timeout /t 02>nul
+	Start "" "DDU\Display Driver Uninstaller.exe"
+	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="23" (
+	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
+	IF EXIST "SnappyDriverInstaller\SDIO_auto.exe" Start "" "SnappyDriverInstaller\SDIO_auto.exe"&goto :MAINW
+	curl -g -k -L -# -o "SnappyDriverInstaller.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SnappyDriverInstaller.7z" >nul 2>&1
+	@timeout /t 02>nul
+	IF EXIST SnappyDriverInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" SnappyDriverInstaller.7z >nul)
+	@timeout /t 02>nul
+	Start "" "SnappyDriverInstaller\SDIO_auto.exe"
+	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="24" (
+	IF EXIST "Driver-Talent-Pro.7z" DEL "Driver-Talent-Pro.7z" >nul
+	IF EXIST "Driver Talent Pro\DriverTalent.exe" Start "" "Driver Talent Pro\DriverTalent.exe"&goto :MAINW
+	curl -g -k -L -# -o "Driver-Talent-Pro.7z" "https://www.dropbox.com/scl/fi/t0d913urlv2erj73i936q/Driver-Talent-Pro.7z?rlkey=8efcjq8td69pnoztfk92yqf7g&st=njs9ng1i&dl=1" >nul 2>&1
+	@timeout /t 02>nul
+	IF EXIST Driver-Talent-Pro.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" Driver-Talent-Pro.7z >nul)
+	@timeout /t 02>nul
+	Start "" "Driver Talent Pro\DriverTalent.exe"
+	IF EXIST "Driver-Talent-Pro.7z" DEL "Driver-Talent-Pro.7z" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="25" (
+	IF EXIST "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe" START "" "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\CreamInstaller" md "%appdata%\StartUp Tools\CreamInstaller"
+	IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
+	curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
+	IF EXIST CreamInstaller.zip (7za.exe -y x -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.zip >nul)
+	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="26" (
+	IF EXIST "%appdata%\StartUp Tools\Auto-CreamApi\auto-creamapi.exe" START "" "%appdata%\StartUp Tools\Auto-CreamApi"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\Auto-CreamApi" md "%appdata%\StartUp Tools\Auto-CreamApi"
+	IF EXIST "auto-creamapi-2.1.7.1.7z" DEL "auto-creamapi-2.1.7.1.7z" >nul
+	curl -g -k -L -# -o "auto-creamapi-2.1.7.1.7z" "https://git.jeddunk.xyz/jeddunk/auto-creamapi-2/releases/download/2.1.7/auto-creamapi-2.1.7.1.7z" >nul 2>&1
+	IF EXIST auto-creamapi-2.1.7.1.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Auto-CreamApi" auto-creamapi-2.1.7.1.7z >nul)
+	curl -g -k -L -# -o "%appdata%\StartUp Tools\Auto-CreamApi\dotnet-sdk-3.1.426-win-x64.exe" "https://download.visualstudio.microsoft.com/download/pr/b70ad520-0e60-43f5-aee2-d3965094a40d/667c122b3736dcbfa1beff08092dbfc3/dotnet-sdk-3.1.426-win-x64.exe" >nul 2>&1
+	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\Auto-CreamApi"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="27" (
+	IF EXIST "Cloudflare_WARP_2024.6.473.0.msi" DEL "Cloudflare_WARP_2024.6.473.0.msi" >nul
+	curl -g -k -L -# -o "Cloudflare_WARP_2024.6.473.0.msi" "https://1111-releases.cloudflareclient.com/win/latest" >nul 2>&1
+	START /WAIT "" "Cloudflare_WARP_2024.6.473.0.msi"
+	DEL "Cloudflare_WARP_2024.6.473.0.msi" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="28" (
+	IF EXIST "RiseupVPN-win-latest.exe" DEL "RiseupVPN-win-latest.exe" >nul
+	curl -g -k -L -# -o "RiseupVPN-win-latest.exe" "https://downloads.leap.se/RiseupVPN/windows/RiseupVPN-win-latest.exe" >nul 2>&1
+	START /WAIT "" "RiseupVPN-win-latest.exe"
+	DEL "RiseupVPN-win-latest.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="29" (
+	IF EXIST "ProtonVPN_v3.3.0.exe" DEL "ProtonVPN_v3.3.0.exe" >nul
+	curl -g -k -L -# -o "ProtonVPN_v3.3.0.exe" "https://protonvpn.com/download/ProtonVPN_v3.3.0.exe" >nul 2>&1
+	START /WAIT "" "ProtonVPN_v3.3.0.exe"
+	DEL "ProtonVPN_v3.3.0.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="30" (
+	curl -g -k -L -# -o "MAS_AIO.cmd" "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/Separate-Files-Version/Activators/HWID_Activation.cmd" >nul 2>&1
+	start cmd /c "MAS_AIO.cmd"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="31" (
+	curl -g -k -L -# -o "DQS\DQS.bat" "https://tinyurl.com/DQSWIN32" >nul 2>&1
+	start cmd /c "DQS\DQS.bat"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="32" (
+	curl -g -k -L -# -o "DQS\SBCDEDIT.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SBCDEDIT.bat" >nul 2>&1
+	start cmd /c "DQS\SBCDEDIT.bat"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="33" (
+	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
+	START DefenderRemover.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="34" (
+	goto :USEROPTI
+)
+
+IF "%CSTARTR%"=="35" (
+	curl -g -k -L -# -o "Remove-EdgeWeb.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-EdgeWeb.exe" >nul 2>&1
+	START Remove-EdgeWeb.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="36" (
+	IF EXIST dControl.exe START dControl.exe&goto :MAINW
+	curl -g -k -L -# -o "dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
+	START dControl.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="37" (
+    curl -g -k -L -# -o "%TEMP%\SpotifySetup.exe" "https://download.scdn.co/SpotifySetup.exe" >nul 2>&1
+    @timeout /t 02 >nul
+    START /wait "" "%TEMP%\SpotifySetup.exe" /silent
+    @timeout /t 05 >nul
+    DEL "%TEMP%\SpotifySetup.exe" >nul 2>&1
+    Taskkill /f /im Spotify.exe >nul 2>&1
+	@timeout /t 02>nul
+	powershell -command "iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex"
+	IF EXIST C:\Users\%USERNAME%\Desktop\Spotify.lnk DEL C:\Users\%USERNAME%\Desktop\Spotify.lnk >nul 2>&1
+	IF EXIST W:\Windows\Desktop\Spotify.lnk DEL W:\Windows\Desktop\Spotify.lnk >nul 2>&1
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="38" (
+	IF EXIST "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe" START "" "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\TreeSizeFree" md "%appdata%\StartUp Tools\TreeSizeFree"
+	IF EXIST "TreeSizeFree.7z" DEL "TreeSizeFree.7z" >nul
+	curl -g -k -L -# -o "TreeSizeFree.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/TreeSizeFree.7z" >nul 2>&1
+	IF EXIST TreeSizeFree.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\TreeSizeFree" TreeSizeFree.7z >nul)
+	START "" "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="39" (
+	IF EXIST Everything.exe START Everything.exe&goto :MAINW
+	curl -g -k -L -# -o "Everything.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Everything.dll" >nul 2>&1
+	START Everything.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="40" (
+	IF EXIST "%appdata%\StartUp Tools\LSC\game\LosslessScaling.exe" START "" "%appdata%\StartUp Tools\LSC\game\LosslessScaling.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\LSC" md "%appdata%\StartUp Tools\LSC"
+	IF EXIST "game.7z" DEL "game.7z" >nul
+	Reg.exe add "HKCU\SOFTWARE\Valve\Steam\Apps\993090" /v "Installed" /t REG_DWORD /d "1" /f >nul 2>&1
+	curl -g -k -L -# -o "game.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/game.dll" >nul 2>&1
+	IF EXIST game.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\LSC" game.7z >nul)
+	START "" "%appdata%\StartUp Tools\LSC\game\LosslessScaling.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="41" (
+	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "hhttps://download.anydesk.com/AnyDesk.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "%TEMP%\AnyDesk.exe"
+	DEL "%TEMP%\AnyDesk.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="42" (
+	curl -g -k -L -# -o "HitmanPro_x64.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/HitmanPro_x64.dll" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "HitmanPro_x64.exe" /scan /quiet /nolog /uninstall
+	@timeout /t 02>nul
+	DEL "HitmanPro_x64.exe">nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="43" goto :GST45L
+
+IF "%CSTARTR%"=="44" goto :GST45F
+
+IF "%CSTARTR%"=="45" (
+	IF EXIST "EmsisoftEmergencyKit.exe" DEL "EmsisoftEmergencyKit.exe" >nul
+	@timeout /t 01>nul
+	curl -g -k -L -# -o "EmsisoftEmergencyKit.exe" "https://dl.emsisoft.com/EmsisoftEmergencyKit.exe" >nul 2>&1
+	START /WAIT "" "EmsisoftEmergencyKit.exe"
+	DEL "EmsisoftEmergencyKit.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="46" (
+    IF NOT EXIST "adwcleaner.exe" curl -g -k -L -# -o "adwcleaner.exe" "https://downloads.malwarebytes.com/file/adwcleaner"
+    @timeout /t 1 >nul
+    start /wait adwcleaner.exe /eula /clean /noreboot
+    @timeout /t 1 >nul
+    start /wait adwcleaner.exe /uninstall
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="47" (
+	IF NOT EXIST "%appdata%\StartUp Tools\MSI" md "%appdata%\StartUp Tools\MSI"
+	IF NOT EXIST "%appdata%\StartUp Tools\MSI\PCIutil.exe" curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\PCIutil.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/PCIutil.dll" >nul 2>&1
+	IF NOT EXIST "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/MSI_util_v3.dll" >nul 2>&1
+	START "" "%appdata%\StartUp Tools\MSI\PCIutil.exe"
+	@timeout /t 02>nul
+	Taskkill /f /im PCIutil.exe>nul
+	START "" "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="48" (
+	IF EXIST WPD.exe START WPD.exe&goto :MAINW
+	curl -g -k -L -# -o "WPD.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/WPD.dll" >nul 2>&1
+	START WPD.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="49" (
+	IF EXIST OOSU10.exe START OOSU10.exe&goto :MAINW
+	curl -g -k -L -# -o "OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" >nul 2>&1
+	START OOSU10.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="50" (
+	curl -g -k -L -# -o "Network.bat" "https://github.com/UnLovedCookie/Network/releases/download/v1.1/Network.bat" >nul 2>&1
+	START /WAIT Network.bat
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="51" (
+	IF EXIST Autoruns.exe START Autoruns.exe&goto :MAINW
+	curl -g -k -L -# -o "Autoruns.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Autoruns.dll" >nul 2>&1
+	START Autoruns.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="52" (
+	IF EXIST DeviceCleanup.exe START DeviceCleanup.exe&goto :MAINW
+	curl -g -k -L -# -o "DeviceCleanup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DeviceCleanup.dll" >nul 2>&1
+	START DeviceCleanup.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="53" (
+	IF EXIST "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe" START "" "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\CCleaner" md "%appdata%\StartUp Tools\CCleaner"
+	IF EXIST "CCleaner.7z" DEL "CCleaner.7z" >nul
+	curl -g -k -L -# -o "CCleaner.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/CCleaner.7z" >nul 2>&1
+	IF EXIST CCleaner.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CCleaner" CCleaner.7z >nul)
+	START "" "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="54" (
+	IF EXIST "%appdata%\StartUp Tools\Dism\Dism++x64.exe" START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\Dism" md "%appdata%\StartUp Tools\Dism"
+	IF EXIST "DismInstall.7z" DEL "DismInstall.7z" >nul
+	curl -g -k -L -# -o "DismInstall.7z" "https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v10.1.1002.2/Dism++10.1.1002.1B.zip" >nul 2>&1
+	IF EXIST DismInstall.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Dism" DismInstall.7z >nul)
+	START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="97" (
+	cd %temp%
+	@timeout /t 01>nul
+	rmdir /s /q "%appdata%\StartUp Tools" >nul 2>&1
+	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
+	@timeout /t 01>nul
+	goto :RESET
+)
+
+IF "%CSTARTR%"=="98" (
+	goto :HELPTEXT
+)
+
+IF "%CSTARTR%"=="99" (
+	powershell -command "Set-Clipboard -Value 'Fc#$f6EtsY@&duxFqg3B'" >nul 2>&1
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="100" (
+	goto :GAMECONF
+)
+
+IF "%CSTARTR%"=="x" goto :SCCLEAR
+IF "%CSTARTR%"=="X" goto :SCCLEAR
+
+IF "%CSTARTR%"=="b" goto :bluescreen
+IF "%CSTARTR%"=="B" goto :bluescreen
+
+IF "%CSTARTR%"=="v" goto :PANGEPACK
+IF "%CSTARTR%"=="V" goto :PANGEPACK
+
+goto :MAINW
+
+:Firtstr
+for /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') do SET "HWID=%%i"
+cls
+echo Verification de l'utilisateur.
+@timeout /t 01>nul
+IF %HWID%==PF0TRR6A goto :CRSTRC
+IF %HWID%==219925897859274 goto :CRSTRC
+IF %HWID%==191262638503131 goto :CRSTRC
+IF %HWID%==J216401760 goto :CRSTRC
+DEL "%~f0"
+Exit
+:CRSTRC
+
+md "%appdata%\StartUp Tools" >nul 2>&1
+@timeout /t 01>nul
+cd "%appdata%\StartUp Tools"
+
+cls
+echo Chargement des donnees %bluel%1/6%white%
+for /f "tokens=*" %%a in ('powershell -Command "(Get-WmiObject Win32_BIOS).BIOSCharacteristics -contains 33"') do set "USBlegacy=%%a"
+if "%USBlegacy%"=="True" (set VM=NO) else (set VM=YES)
+
+cls
+echo Chargement des donnees %bluel%2/6%white%
+curl -g -k -L -# -o "%appdata%\StartUp Tools\_CP.exe" "https://tinyurl.com/dl-opt-nfo" >nul 2>&1
+
+cls
+echo Chargement des donnees %bluel%3/6%white%
+for /f "tokens=*" %%i in ('powershell -Command "Get-WmiObject win32_videocontroller | Select-Object -ExpandProperty Name"') do set GPU_NAME=%%i
+echo %GPU_NAME% | find /I "NVIDIA" > nul
+if %errorlevel% == 0 (set GPU=NVIDIA&goto :ENDGPU)
+echo %GPU_NAME% | find /I "AMD" > nul
+if %errorlevel% == 0 (set GPU=AMD&goto :ENDGPU)
+echo %GPU_NAME% | find /I "VMWARE" > nul
+if %errorlevel% == 0 (set GPU=VMWARE&goto :ENDGPU)
+set GPU=UNKNOWN
+:ENDGPU
+
+cls
+echo Chargement des donnees %bluel%4/6%white%
+for /f "tokens=*" %%c in ('"%appdata%\StartUp Tools\_CP.exe" /P') do set MY_IP=%%c
+
+cls
+echo Chargement des donnees %bluel%5/6%white%
+IF NOT EXIST DQS md DQS
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "CurrentBuildNumber"') DO set RO1=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "DisplayVersion"') DO set RO2=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "ReleaseId"') DO set RO9=%%B
+
+cls
+echo Chargement des donnees %bluel%6/6%white%
+Echo SET HWID=%HWID%>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET VM=%VM%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET GPU=%GPU%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET IP=%MY_IP%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET CBN=%RO1%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET DV=%RO2%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET RID=%RO9%>>"%appdata%\StartUp Tools\IFHW.bat"
+
+for /f "tokens=3" %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v CurrentBuild') do set build_number=%%i
+if %build_number% GEQ 22000 (
+    SET WVAC=11
+) else if %build_number% GEQ 10240 (
+    SET WVAC=10
+) else (
+    SET WVAC=ERR
+)
+
+Echo SET BLD=%WVAC%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET GMEMENU=0 > "%appdata%\StartUp Tools\SFLE.bat"
+goto :FirtstrBac
+
+:HELPTEXT
+mode con:cols=147 lines=58
+cls
+echo.
+echo  %green%Pour les erreurs :%white%
+echo.
+echo       %gold%-%white% Si jamais tu es bloque a %bright_red%40%%%white%, c'est qu'il y a un probleme avec le service du script.
+echo       %gold%-%white% Si jamais tu as le message %red%ERROR%white%, c'est qu'il manque des fichiers dans le disque %cyan%C:\%white%.
+echo       %gold%-%white% Si jamais tu es bloque a %bright_red%45%%%white%, c'est qu'il n'arrive pas a modifier les dossiers Windows ou qu'il y a un probleme avec Google Drive.
+echo       %gold%-%white% Si jamais tu es bloque a %bright_red%50%%%white%, c'est qu'il n'arrive pas a telecharger les fichiers avec Google Drive.
+echo       %gold%-%white% Si jamais tu es bloque a %bright_red%45%%%white% ou %bright_red%50%%%white%, va a %green%Pour l'utilisation du dossier %gold%DEBUG%white% .
+echo       %gold%-%white% Si jamais tu ne peux ou ne veux pas valider le BOT sur Discord, fais la manipulation ci-dessus avec le dossier %gold%DEBUG%white%.
+echo.
+echo       %gold%-%white% Si jamais il y a une commande ou un lien de telechargement qui n'est plus valable ou pas a jour,
+echo            envoie un message sur mon tel ou sur Discord pour le dire.
+echo.
+echo       %gold%-%white% Si jamais tu as un probleme avec Cloudflare WARP, ne me demande pas. Merci.
+echo.
+echo  %green%Pour l'utilisation du dossier %gold%DEBUG%green% :%white%
+echo.
+echo       %gold%-%white% Pour installer le dossier %gold%DEBUG%white%, tu dois supprimer tous les fichiers et dossiers dans le disque %cyan%C:\%white%,
+echo              installer le dossier %gold%DEBUG%white% avec la commande %indigo%[ 3]%white% et reinstaller la nouvelle optimisation avec la touche %indigo%[ 2]%white%.
+echo.
+echo       %gold%-%white% Pour verifier si cela fonctionne, quand le script d'optimisation sera a %bright_red%40%%%white%, il restera bloque pendant 15 a 20 secondes.
+echo.
+echo       %gold%-%white% Si tu as tout bien fait, apres ces 15 a 20 secondes, il passera directement a %bright_red%80%%%white% et tout le texte sera en %red%rouge%white%.
+echo            Ne panique pas, le rouge est juste la pour indiquer que cela a bien fonctionne,
+echo               et qu'il est actuellement en train de telecharger l'optimisation avec le dossier %gold%DEBUG%white%.
+echo.
+echo       %gold%-%white% Ensuite, le script fonctionnera normalement. Tu devras choisir les options que tu veux, et le script commencera.
+echo.
+echo  %green%Autres infos :%white%
+echo.
+echo       %gold%-%white% Si tu ne sais pas dans quel ordre faire l'optimisation, tu dois :
+echo.
+echo     %gold%1%white% - Bloquer Windows Update avec %cyan%DRV\1\Windows Update Block\Wub_x64.exe%white%
+echo     %gold%2%white% - Importer les fichiers .reg et le fichier .bat qui sont dans %cyan%DRV\1\%white%
+echo     %gold%3%white% - Redemarrer ton PC
+echo     %gold%4%white% - Rebrancher ton cable Ethernet
+echo     %gold%5%white% - Installer le driver NVIDIA avec %cyan%DRV\2\NVCleanstall.exe%white%
+echo     %gold%6%white% - Importer le fichier .bat qui est dans %cyan%DRV\2\%white%
+echo     %gold%7%white% - Redemarrer ton PC
+echo     %gold%8%white% - Lancer le script Start.bat qui est dans %cyan%DRV\%white%
+echo     %gold%9%white% - Desactiver Windows Defender manuellement et lancer %indigo%[38]%white% dControl. 
+echo         Si tu veux, tu peux supprimer Windows Defender avec %indigo%[35]%white%, mais tu ne pourras plus utiliser le MS-Store et les applications Xbox.
+echo    %gold%10%white% - Tu peux lancer l'optimisation avec %indigo%[ 2]%white%, et si tu n'as pas envie de valider le BOT Discord, va ici : %green%Pour l'utilisation du dossier %gold%DEBUG%white%
+echo    %gold%11%white% - Redemarrer ton PC
+echo    %gold%12%white% - Installer S-W avec %indigo%[39]%white%
+echo    %gold%13%white% - Faire tes parametres avec Configuration Avancees en faisant clic droit sur le bureau. 
+echo         Moi, j'ai que [%orange%Intel TSX %white%/%orange% Optimisation plein ecran %white%/%orange% Supprimer les vignettes %white%/%orange% TRIM SSD %white%/%orange% Set Timer Resolution %white%/
+echo                        %orange%Runtime Broker %white%/%orange% Parametre experimental pilote graphique %white%/%orange% Masquer les pages de parametres inutiles%white%] qui sont actives.
+echo    %gold%14%white% - Supprimer Microsoft Edge avec %indigo%[37]%white%
+echo    %gold%15%white% - Redemarrer ton PC
+echo    %gold%16%white% - Faire MSI Utility avec %indigo%[49]%white% et fais attention, il va ouvrir une fenetre noire en premier qui se fermera toute seule
+echo    %gold%17%white% - Terminer tes parametres et supprimer ce que tu n'utilises pas avec WPD %indigo%[50]%white%
+echo    %gold%18%white% - Desactiver tous les trucs inutiles avec Autoruns %indigo%[53]
+echo    %gold%19%white% - Nettoyer tous les fichiers temporaires avec [Device Cleanup %indigo%[54]%white% / Dism++ %indigo%[55]%white% / CCleaner %indigo%[56]%white%]
+echo    %gold%20%white% - Tu as fini, mais tu peux utiliser ce que tu veux dans le script.
+echo         Pour info, le script %indigo%[52]%white% Network, ce n'est pas moi qui l'ai fait, donc ce n'est pas mon probleme si tu as des problemes avec.
+echo.
+pause
+goto :MAINW
+
+:GAMECONF
+IF EXIST found_executables.txt DEL found_executables.txt
+curl -g -k -L -# -o "exe_gamename.txt" "https://raw.githubusercontent.com/00FGV1/ver/main/exe_gamename.txt" >nul 2>&1
+IF NOT EXIST GMEFND.exe curl -g -k -L -# -o "GMEFND.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/GMEFND.dll" >nul 2>&1
+@timeout /t 01>nul
+START /WAIT GMEFND.exe
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS" /f >nul 2>&1
+IF EXIST result.log DEL result.log
+IF NOT EXIST cli.c curl -g -k -L -# -o "cli.c" "https://raw.githubusercontent.com/00FGV1/ver/main/file/cli.c" >nul 2>&1
+IF NOT EXIST es.exe curl -g -k -L -# -o "es.exe" "https://github.com/00FGV1/ver/raw/main/file/es.exe" >nul 2>&1
+IF NOT EXIST Everything.exe curl -g -k -L -# -o "Everything.exe" "https://github.com/00FGV1/ver/raw/main/file/Everything.exe" >nul 2>&1
+IF NOT EXIST Everything.lng curl -g -k -L -# -o "Everything.lng" "https://github.com/00FGV1/ver/raw/main/file/Everything.lng" >nul 2>&1
+IF EXIST Everything.ini DEL Everything.ini
+Start "" "Everything.exe" -startup
+Reg add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d "1" /f >nul 2>&1
+Reg add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "1" /f >nul 2>&1
+set "fileList=found_executables.txt"
+cls
+echo.
+echo  %gold%Les jeux ci-dessous ont ete configures :%white%
+echo.
+for /f "tokens=*" %%i in (%fileList%) do (
+    for %%j in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+        es.exe "%%i" -path "%%j:\" -export-txt "temp_results.txt"
+        for /f "delims=" %%k in ('type "temp_results.txt" ^| findstr /i "\.exe$"') do (
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Version" /t REG_SZ /d "1.0" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Application Name" /t REG_SZ /d "%%k" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Protocol" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Local Port" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Local IP" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Local IP Prefix Length" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Remote Port" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Remote IP" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Remote IP Prefix Length" /t REG_SZ /d "*" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "DSCP Value" /t REG_SZ /d "46" /f > NUL 2>&1
+		    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Throttle Rate" /t REG_SZ /d "-1" /f > NUL 2>&1
+		    Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%%k" /t REG_SZ /d "~ RUNASADMIN HIGHDPIAWARE" /f > NUL 2>&1
+		    rem Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%%k" /t REG_SZ /d "~ DISABLEDXMAXIMIZEDWINDOWEDMODE RUNASADMIN HIGHDPIAWARE" /f > NUL 2>&1
+		    Reg.exe add "HKCU\SOFTWARE\Microsoft\DirectX\UserGpuPreferences" /v "%%k" /t REG_SZ /d "GpuPreference=2;" /f > NUL 2>&1
+		    Reg.exe add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\%%i\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "3" /f >nul 2>&1
+            echo Game path         : "%%k"
+            echo Game registry ID  : "%%i"
+            echo.
+            echo.>>result.log
+            echo  Game path         : "%%k">>result.log
+            echo  Game registry ID  : "%%i">>result.log
+        )
+        del "temp_results.txt"
+    )
+)
+
+Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /f > NUL 2>&1
+Reg.exe add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_DSEBehavior" /t REG_DWORD /d "0" /f > NUL 2>&1
+Reg.exe add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_FSEBehaviorMode" /t REG_DWORD /d "0" /f > NUL 2>&1
+Reg.exe add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_EFSEFeatureFlags" /t REG_DWORD /d "0" /f > NUL 2>&1
+Reg.exe add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "0" /f > NUL 2>&1
+Reg.exe add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_HonorUserFSEBehaviorMode" /t REG_DWORD /d "1" /f > NUL 2>&1
+Reg.exe add "HKCU\SOFTWARE\Microsoft\DirectX\UserGpuPreferences" /v "DirectXUserGlobalSettings" /t REG_SZ /d "VRROptimizeEnable=0;SwapEffectUpgradeEnable=1;" /f > NUL 2>&1
+taskkill /IM Everything.exe /F >nul
+@timeout /t 05>nul
+goto :MAINW
+
+:GST45L
+curl -g -k -L -# -o "stinger64.exe" "https://downloadcenter.trellix.com/products/mcafee-avert/Stinger/stinger64.exe" >nul 2>&1
+@timeout /t 02>nul
+START /WAIT "" "stinger64.exe" --REPORTONLY --REPORTPATH="%appdata%\StartUp Tools\" --SILENT
+@timeout /t 05>nul
+FOR %%i IN ("Stinger_*.html") DO Set FileNameStinger="%%i"
+Start "" "%FileNameStinger%"
+@timeout /t 01>nul
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaack" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaacsk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mdeavfk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefirek" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehck" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehidk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeplk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfekdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
+goto :MAINW
+
+:GST45F
+curl -g -k -L -# -o "stinger64.exe" "https://downloadcenter.trellix.com/products/mcafee-avert/Stinger/stinger64.exe" >nul 2>&1
+@timeout /t 02>nul
+START /WAIT "" "stinger64.exe" --SCANPATH="C:\" --REPORTONLY --REPORTPATH="%appdata%\StartUp Tools\" --SILENT
+@timeout /t 02>nul
+FOR %%i IN ("Stinger_*.html") DO Set FileNameStinger="%%i"
+Start "" "%FileNameStinger%"
+@timeout /t 01>nul
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaack" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaacsk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mdeavfk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefirek" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehck" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehidk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeplk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfekdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
+goto :MAINW
+
+:SCCLEAR
+sc delete epp >nul 2>&1
+sc delete PSKMAD >nul 2>&1
+sc delete spooler >nul 2>&1
+sc delete GameInputSvc >nul 2>&1
+sc delete WinRing0_1_2_0 >nul 2>&1
+sc delete "AMD External Events Utility" >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaack" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaacsk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mdeavfk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefirek" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehck" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehidk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeplk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfekdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeavfk" /f >nul 2>&1
+
+Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSyncNGSC" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOptions" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AutoInstallMinorUpdates" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAUAsDefaultShutdownOption" /f >nul 2>&1
+Reg.exe delete "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehavior" /f >nul 2>&1
+Reg.exe delete "HKCU\System\GameConfigStore" /v "GameDVR_HonorUserFSEBehaviorMode" /f >nul 2>&1
+Reg.exe delete "HKCU\System\GameConfigStore" /v "GameDVR_EFSEFeatureFlags" /f >nul 2>&1
+Reg.exe delete "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\AudioDescription" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\Blind Access" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\HighContrast" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\Keyboard Preference" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\Keyboard Response" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\MouseKeys" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\On" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\ShowSounds" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\SlateLaunch" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\SoundSentry" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\StickyKeys" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\TimeOut" /f >nul 2>&1
+Reg.exe delete "HKCU\Control Panel\Accessibility\ToggleKeys" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\AudioDescription" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\Blind Access" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\HighContrast" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\Keyboard Preference" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\Keyboard Response" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\MouseKeys" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\On" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\ShowSounds" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\SlateLaunch" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\SoundSentry" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\StickyKeys" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\TimeOut" /f >nul 2>&1
+Reg.exe delete "HKU\.DEFAULT\Control Panel\Accessibility\ToggleKeys" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows\CurrentVersion\HotStart" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Sidebar" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Telephony" /f >nul 2>&1
+Reg.exe delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Screensavers" /f >nul 2>&1
+Reg.exe delete "HKCU\Printers" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\Print" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\ControlSet002\Control\Print" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Boot\{304D2127-E6ED-4C82-B9B3-63B3B54A4D66}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Boot\{44AF7ADA-1C0D-43B1-A063-9E7581F7730B}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Logon\{88CE6B8C-B14B-499A-8D43-214F06116F07}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Logon\{892625FE-213B-4B60-95ED-A1CEFCAA365D}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{00446CF1-8668-472D-BEDD-D0BB88DBA009}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{117E2D01-1275-4560-90E9-A34BB4EE69A3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{57C76B66-AD3C-4221-81FA-55045859B06F}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{70EA2999-165C-4933-9027-250FB8B772F8}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{A2FADBDF-6855-42F7-BDFC-F0C510EDA9BC}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{C9EC268B-1D36-4AF0-A1EB-2C1BC3B455D9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Maintenance\{F0FCA53B-F391-48AD-91F6-D1994846E55E}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{00446CF1-8668-472D-BEDD-D0BB88DBA009}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{117E2D01-1275-4560-90E9-A34BB4EE69A3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{2DFC28A5-3035-4555-A9E6-CE6D44EB1DB3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{309BA321-F7C8-46A4-BA50-5FAC484229CB}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{34ADEFE8-89DB-43BC-8C0B-14BB34D69F6D}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{3AB082DC-B77E-4487-BB5D-5DCB3A6C2B3C}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{3E51A991-10E2-4B16-B5B4-A2F051544BB9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{3FC4BE91-4A96-48F5-8858-1628CB88EFB5}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{4671B5C1-A383-4428-A45A-8D348E4CB873}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{57C76B66-AD3C-4221-81FA-55045859B06F}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{6EF4AFAB-DF3D-467E-BB2C-66C7FDC9E4E7}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{70EA2999-165C-4933-9027-250FB8B772F8}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{82CE5325-8693-4EE3-BB57-939DC11EA637}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{87094343-6C1F-4855-A6B9-305BA74AB761}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{8FF5DE67-C947-4488-997B-4184221E7D50}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{90F68E39-00DE-4159-BCDB-5C5759A5CF53}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{9B29B882-A95C-438B-BF91-E7C31B1D82D1}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{A08D6A77-C926-4E78-9ED0-09836E2769AE}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{A2FADBDF-6855-42F7-BDFC-F0C510EDA9BC}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{C5D47392-881C-422A-9BF8-E4916B55CD22}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{C9EC268B-1D36-4AF0-A1EB-2C1BC3B455D9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{EAD9ED20-AC69-4E97-8CCB-E8F62CA707B3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{EC3EFE4E-A2E4-4C66-975C-CA2EFD0D42CD}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{F0FCA53B-F391-48AD-91F6-D1994846E55E}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{00446CF1-8668-472D-BEDD-D0BB88DBA009}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{117E2D01-1275-4560-90E9-A34BB4EE69A3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{2DFC28A5-3035-4555-A9E6-CE6D44EB1DB3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{304D2127-E6ED-4C82-B9B3-63B3B54A4D66}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{309BA321-F7C8-46A4-BA50-5FAC484229CB}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{34ADEFE8-89DB-43BC-8C0B-14BB34D69F6D}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{3AB082DC-B77E-4487-BB5D-5DCB3A6C2B3C}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{3E51A991-10E2-4B16-B5B4-A2F051544BB9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{3FC4BE91-4A96-48F5-8858-1628CB88EFB5}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{44AF7ADA-1C0D-43B1-A063-9E7581F7730B}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{4671B5C1-A383-4428-A45A-8D348E4CB873}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{57C76B66-AD3C-4221-81FA-55045859B06F}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{6EF4AFAB-DF3D-467E-BB2C-66C7FDC9E4E7}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{70EA2999-165C-4933-9027-250FB8B772F8}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{82CE5325-8693-4EE3-BB57-939DC11EA637}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{87094343-6C1F-4855-A6B9-305BA74AB761}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{88CE6B8C-B14B-499A-8D43-214F06116F07}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{892625FE-213B-4B60-95ED-A1CEFCAA365D}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{8FF5DE67-C947-4488-997B-4184221E7D50}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{90F68E39-00DE-4159-BCDB-5C5759A5CF53}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{9B29B882-A95C-438B-BF91-E7C31B1D82D1}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{A08D6A77-C926-4E78-9ED0-09836E2769AE}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{A2FADBDF-6855-42F7-BDFC-F0C510EDA9BC}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{C5D47392-881C-422A-9BF8-E4916B55CD22}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{C9EC268B-1D36-4AF0-A1EB-2C1BC3B455D9}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{EAD9ED20-AC69-4E97-8CCB-E8F62CA707B3}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{EC3EFE4E-A2E4-4C66-975C-CA2EFD0D42CD}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{F0FCA53B-F391-48AD-91F6-D1994846E55E}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\BitLocker" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\Chkdsk" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\Data Integrity Scan" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\DiskFootprint" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\InstallService" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\RecoveryEnvironment" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\Registry" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\SoftwareProtectionPlatform" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\TextServicesFramework" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\Report policies" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\Schedule Scan Static Task" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\Schedule Work" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\UpdateOrchestrator\USO_UxBroker" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\USB" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\User Profile Service" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\WindowsUpdate\Scheduled Start" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{41F5FC9D-EE65-4CA4-A908-91B3587198E0}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{41F5FC9D-EE65-4CA4-A908-91B3587198E0}" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\XblGameSave" /f >nul 2>&1
+Reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Font Drivers" /v "Adobe Type Manager" /f >nul 2>&1
+Reg.exe delete "HKLM\System\ControlSet001\Control\Terminal Server\Wds\rdpwd" /v "StartupPrograms" /f >nul 2>&1
+Reg.exe delete "HKCR\Directory\background\shell\FoxOS. Made by CatGamerOP" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "legalnoticecaption" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "legalnoticetext" /f >nul 2>&1
+Reg.exe delete "HKCU\Software\Microsoft\Siuf\Rules" /v "PeriodInNanoSeconds" /f >nul 2>&1
+Reg.exe delete "HKU\S-1-5-18\Software\Microsoft\Siuf\Rules" /v "PeriodInNanoSeconds" /f >nul 2>&1
+Reg.exe delete "HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Id" /f >nul 2>&1
+Reg.exe delete "HKU\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Id" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "ChangedInBootCycle" /f >nul 2>&1
+Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /f >nul 2>&1
+
+rmdir /s /q "C:\Program Files\dotnet" >nul 2>&1
+rmdir /s /q "C:\Program Files\HitmanPro" >nul 2>&1
+rmdir /s /q "C:\Program Files\stinger" >nul 2>&1
+rmdir /s /q "C:\Program Files (x86)\AGEIA Technologies" >nul 2>&1
+rmdir /s /q "C:\Program Files (x86)\dotnet" >nul 2>&1
+rmdir /s /q "C:\Program Files (x86)\Microsoft.NET" >nul 2>&1
+rmdir /s /q "C:\ProgramData\Addons" >nul 2>&1
+rmdir /s /q "C:\ProgramData\Emsisoft" >nul 2>&1
+rmdir /s /q "C:\ProgramData\McAfee" >nul 2>&1
+rmdir /s /q "C:\ProgramData\Oracle" >nul 2>&1
+rmdir /s /q "C:\ProgramData\USOShared" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\.resourcefullib" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\CrashReportClient" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\D3DSCache" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\fontconfig" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\OO Software" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\PeerDistRepub" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\PlaceholderTileLogoFolder" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\Publishers" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\speech" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\LocalLow\Sun" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\Sun" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\gg.essential.mod" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\Adobe" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\AdbAppControl" >nul 2>&1
+
+curl -g -k -L -# -o "colors.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/colors.reg" >nul 2>&1
+curl -g -k -L -# -o "REG.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/REG.reg" >nul 2>&1
+curl -g -k -L -# -o "DNS.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/DNS.reg" >nul 2>&1
+@timeout /t 01>nul
+Reg.exe import colors.reg >nul 2>&1
+Reg.exe import REG.reg >nul 2>&1
+Reg.exe import DNS.reg >nul 2>&1
+
+IF NOT EXIST %APPDATA%\C-CMD MD %APPDATA%\C-CMD
+setx PATH "%PATH%;%APPDATA%\C-CMD" /M
+
+IF NOT EXIST %APPDATA%\C-CMD\IP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\IP.bat" "https://tinyurl.com/IDLLCMD" >nul 2>&1
+IF NOT EXIST %APPDATA%\C-CMD\STARTUP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\STARTUP.bat" "https://tinyurl.com/STARTUPDLLCMD" >nul 2>&1
+IF NOT EXIST %APPDATA%\C-CMD\TMP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\TMP.bat" "https://tinyurl.com/TMPDLLCMD" >nul 2>&1
+
+powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA== >nul 2>&1
+goto :MAINW
+
+:bluescreen
+IF EXIST "%TEMP%\_blscreen.zip" DEL "%TEMP%\_blscreen.zip" >nul 2>&1
+IF NOT EXIST "C:\Windows\minidump" goto :MAINW
+7za.exe a -tzip -mx9 "%TEMP%\_blscreen.zip" "C:\Windows\minidump\*" >nul 2>&1
+@timeout /t 01 /nobreak>nul
+rd /s /q "C:\Windows\minidump" >nul 2>&1
+
+setlocal
+set "SS1=smtp-relay.brevo.com"
+set "SS2=587"
+set "SS3=mail.log.recs@gmail.com"
+set "SS4=Godentel@proton.me"
+set "SS5=BlueScreen"
+set "SS6=BlueScreen de %USERNAME%, le %date% %time%."
+set "SS7=%TEMP%\_blscreen.zip"
+set "SS8=mail.log.recs@gmail.com"
+set "SS9=FTOZmvHDI695wV4s"
+powershell -Command "Send-MailMessage -From '%SS3%' -To '%SS4%' -Subject '%SS5%' -Body '%SS6%' -Attachments '%SS7%' -SmtpServer '%SS1%' -Port '%SS2%' -UseSsl -Credential (New-Object System.Management.Automation.PSCredential -ArgumentList ('%SS8%', (ConvertTo-SecureString -String '%SS9%' -AsPlainText -Force)))" >nul 2>&1
+endlocal
+goto :MAINW
+
+
+
+:PANGEPACK
+C:
+cd "%appdata%\StartUp Tools"
+mode con:cols=134 lines=47
+IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+IF NOT EXIST "%appdata%\StartUp Tools\rclone.conf" goto :INSTALRCLN
+cls
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
+echo   %bblue% %OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿                                                                  ³
+echo ³³ %gold%AntiVirus         1,5 Go%white% %indigo%[ 1]%white% ³³ %gold%Utilitaires       400 Mo%white% %indigo%[ 2]%white% ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ ClamWin                       ³³ Angry IP Scanner              ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Dr.Web CureIt!                ³³ HWiNFO                        ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ HijackThis                    ³³ HxD Hex Editor                ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Kaspersky TDSSKiller          ³³ PCI-Z                         ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Malware Hunter Pro            ³³ Recover Keys                  ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ McAfee Stinger                ³³ Resource Hacker               ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Microsoft Safety Scanner      ³³ System Explorer               ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ PandaCloud Cleaner            ³³ System Informer               ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ PeerBlock                     ³³ Telegram                      ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ Spybot                        ³³ UUID-GUID Generator           ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ SUPERAntiSpyware              ³³ Wireless Key View             ³                                                                  ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³³ VeraCrypt                     ³³ Wireshark                     ³                                                                  ³
+echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³                                 ³ Xpy                           ³                                                                  ³
+echo ³                                 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³                                 ³ Process Explorer              ³                                                                  ³
+echo ³                                 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³                                 ³ Process Hacker                ³                                                                  ³
+echo ³                                 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³                                 ³ Process Monitor               ³                                                                  ³
+echo ³                                 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                                                                  ³
+echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo                                  º                                º                                       º
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo                                               º                            º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ V ]%white%     %gold%Page precedente      ---^>%white%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+set /p PCH2PACK="%green%>%white%"
+
+IF "%PCH2PACK%"=="1" (
+	IF NOT EXIST C:\Packs md C:\Packs
+	"%appdata%\StartUp Tools\rclone.exe" --config="%appdata%\StartUp Tools\rclone.conf" --auto-confirm copy "Koofr:STR\AntiVirus.7z" "%TEMP%" >nul 2>&1
+	@timeout /t 01 >nul 2>&1
+	IF EXIST %TEMP%\AntiVirus.7z (7za.exe -y x -p9421 -o"C:\Packs" %TEMP%\AntiVirus.7z >nul)
+	@timeout /t 01 >nul 2>&1
+	DEL %TEMP%\AntiVirus.7z >nul 2>&1
+	Start C:\Packs
+	goto :PANGEPACK
+)
+
+IF "%PCH2PACK%"=="2" (
+	IF NOT EXIST C:\Packs md C:\Packs
+	"%appdata%\StartUp Tools\rclone.exe" --config="%appdata%\StartUp Tools\rclone.conf" --auto-confirm copy "Koofr:STR\Utilitaires.7z" "%TEMP%" >nul 2>&1
+	@timeout /t 01 >nul 2>&1
+	IF EXIST %TEMP%\Utilitaires.7z (7za.exe -y x -p9421 -o"C:\Packs" %TEMP%\Utilitaires.7z >nul)
+	@timeout /t 01 >nul 2>&1
+	DEL %TEMP%\Utilitaires.7z >nul 2>&1
+	Start C:\Packs
+	goto :PANGEPACK
+)
+
+IF "%PCH2PACK%"=="v" goto :MAINW
+IF "%PCH2PACK%"=="V" goto :MAINW
+
+goto :PANGEPACK
+
+:INSTALRCLN
+curl -g -k -L -# -o "%appdata%\StartUp Tools\RCLN.7z" "https://www.dropbox.com/scl/fi/k6w90vsu2e1xs69bt6h1p/RCLN.7z?rlkey=v7pcu2b4e9pneor236drp6v5z&st=x6urrp55&dl=1" >nul 2>&1
+IF EXIST "%appdata%\StartUp Tools\RCLN.7z" (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" "%appdata%\StartUp Tools\RCLN.7z" >nul)
+@timeout /t 02>nul
+DEL "%appdata%\StartUp Tools\RCLN.7z">nul
+goto :PANGEPACK
+
+:USEROPTI
+IF EXIST USEID.exe call USEID.exe&goto :MAINW
+IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
+IF NOT EXIST "%appdata%\StartUp Tools\rclone.conf" (
+	curl -g -k -L -# -o "%appdata%\StartUp Tools\RCLN.7z" "https://www.dropbox.com/scl/fi/k6w90vsu2e1xs69bt6h1p/RCLN.7z?rlkey=v7pcu2b4e9pneor236drp6v5z&st=x6urrp55&dl=1" >nul 2>&1
+	IF EXIST "%appdata%\StartUp Tools\RCLN.7z" (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" "%appdata%\StartUp Tools\RCLN.7z" >nul)
+	@timeout /t 02>nul
+	DEL "%appdata%\StartUp Tools\RCLN.7z">nul
+)
+"%appdata%\StartUp Tools\rclone" --config="%appdata%\StartUp Tools\rclone.conf" --auto-confirm copy "Koofr:DOCS\7zx.txt" "%appdata%\StartUp Tools"
+@timeout /t 02>nul
+ren 7zx.txt USEID.exe
+@timeout /t 01>nul
+call USEID.exe
+goto :MAINW
+
+:24570896
+setlocal EnableDelayedExpansion
+echo ^|-------------------------------------------------------------^|>"%appdata%\StartUp Tools\LOG\err.log"
+echo    Start : Le %date% a %time%>>"%appdata%\StartUp Tools\LOG\err.log"
+echo ^|-------------------------------------------------------------^|>>"%appdata%\StartUp Tools\LOG\err.log"
+tree "%appdata%\StartUp Tools">"%appdata%\StartUp Tools\LOG\treefiles.log"
+SET ERROR=0
+SET ERROR2=0
+SET ERROR3=0
+SET chk_1_1=ERR
+SET chk_1_2=ERR
+SET chk_1_4=ERR
+SET chk_1_7=ERR
+SET chk_1_8=ERR
+SET chk_1_9=ERR
+SET chk_1_12=ERR
+SET chk_1_14=ERR
+SET chk_1_15=ERR
+SET chk_1_16=ERR
+SET chk_1_17=ERR
+SET chk_1_18=ERR
+SET chk_1_19=ERR
+REM SET chk_1_20=ERR
+REM SET chk_1_21=ERR
+REM SET chk_1_22=ERR
+REM SET chk_1_23=ERR
+REM SET chk_1_24=ERR
+SET chk_1_25=ERR
+SET chk_1_26=ERR
+SET chk_1_27=ERR
+SET chk_1_28=ERR
+SET chk_1_29=ERR
+SET chk_1_30=ERR
+SET chk_1_31=ERR
+SET chk_1_32=ERR
+SET chk_1_33=ERR
+SET chk_1_34=ERR
+SET chk_1_35=ERR
+SET chk_1_36=ERR
+SET chk_1_37=ERR
+SET chk_1_38=ERR
+SET chk_1_39=ERR
+SET chk_1_40=ERR
+SET chk_1_41=ERR
+SET chk_1_42=ERR
+SET chk_1_43=ERR
+SET chk_1_44=ERR
+SET chk_1_45=ERR
+SET chk_1_46=ERR
+SET chk_1_47=ERR
+SET chk_1_48=ERR
+SET chk_1_49=ERR
+SET chk_1_50=ERR
+SET chk_1_51=ERR
+SET chk_1_52=ERR
+SET chk_1_53=ERR
+SET chk_1_54=ERR
+SET chk_1_55=ERR
+SET chk_1_56=ERR
+SET chk_1_57=ERR
+SET chk_1_58=ERR
+SET chk_1_59=ERR
+SET chk_1_60=ERR
+SET chk_1_61=ERR
+SET chk_1_62=ERR
+SET chk_1_63=ERR
+SET chk_1_64=ERR
+SET chk_1_65=ERR
+SET chk_1_66=ERR
+
+REM ###---------FILES_1-----------------------------------------------------------------------------------###
+
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Control\BootControl" /v "BootProgressAnimation"') DO set chk_1_1=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness"') DO set chk_1_2=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Priority"') DO set chk_1_4=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "AlwaysOn"') DO set chk_1_7=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex"') DO set chk_1_8=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NoLazyMode"') DO set chk_1_9=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\AFD\Parameters" /v "DoNotHoldNicBuffers"') DO set chk_1_12=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Control Panel\Desktop\WindowMetrics" /v "MinAnimate"') DO set chk_1_14=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold"') DO set chk_1_15=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled"') DO set chk_1_16=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut"') DO set chk_1_17=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled"') DO set chk_1_18=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v "HistoricalCaptureEnabled"') DO set chk_1_19=%%a >NUL 2>nul
+
+REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions"') DO set chk_1_20=%%a >NUL 2>nul
+REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\ControlSet001\Control\Session Manager\kernel" /v "MitigationOptions"') DO set chk_1_21=%%a >NUL 2>nul
+REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\ControlSet002\Control\Session Manager\kernel" /v "MitigationOptions"') DO set chk_1_22=%%a >NUL 2>nul
+REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe" /v "MitigationAuditOptions"') DO set chk_1_23=%%a >NUL 2>nul
+REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe" /v "MitigationOptions"') DO set chk_1_24=%%a >NUL 2>nul
+
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtualizationBasedSecurity"') DO set chk_1_25=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Internet Explorer\Main" /v "DEPOff"') DO set chk_1_26=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v "NoDataExecutionPrevention"') DO set chk_1_27=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\System" /v "DisableHHDEP"') DO set chk_1_28=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\PolicyManager\default\DmaGuard\DeviceEnumerationPolicy" /v "value"') DO set chk_1_29=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock"') DO set chk_1_30=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\DeviceGuard" /v "HVCIMATRequired"') DO set chk_1_31=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground"') DO set chk_1_32=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle"') DO set chk_1_33=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Biometrics" /v "Enabled"') DO set chk_1_34=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "DisableInventory"') DO set chk_1_35=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\Windows Error Reporting" /v "Disabled"') DO set chk_1_36=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "AITEnable"') DO set chk_1_37=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Internet Explorer\SQM" /v "DisableCustomerImprovementProgram"') DO set chk_1_38=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\SQMClient\Windows" /v "CEIPEnable"') DO set chk_1_39=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\AppV\CEIP" /v "CEIPEnable"') DO set chk_1_40=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Messenger\Client" /v "CEIP"') DO set chk_1_41=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\MSDeploy\3" /v "EnableTelemetry"') DO set chk_1_42=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Input\TIPC" /v "Enabled"') DO set chk_1_43=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\InputPersonalization" /v "RestrictImplicitTextCollection"') DO set chk_1_44=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\InputPersonalization" /v "RestrictImplicitInkCollection"') DO set chk_1_45=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\TabletPC" /v "PreventHandwritingDataSharing"') DO set chk_1_46=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\HandwritingErrorReports" /v "PreventHandwritingErrorReports"') DO set chk_1_47=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Personalization\Settings" /v "AcceptedPrivacyPolicy"') DO set chk_1_48=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\AdvertisingInfo" /v "DisabledByGroupPolicy"') DO set chk_1_49=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Enabled"') DO set chk_1_50=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewAlphaSelect"') DO set chk_1_51=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Control Panel\Desktop" /v "DragFullWindows"') DO set chk_1_52=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\GameBar" /v "GamepadDoublePressIntervalMs"') DO set chk_1_53=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\GameBar" /v "UseNexusForGameBarEnabled"') DO set chk_1_54=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution"') DO set chk_1_55=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SmartScreen" /v "ConfigureAppInstallControl"') DO set chk_1_56=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\MRT" /v "DontReportInfectionInformation"') DO set chk_1_57=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\Input\Settings" /v "HarvestContacts"') DO set chk_1_58=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /v "SubmitSamplesConsent"') DO set chk_1_59=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SmartScreen" /v "ConfigureAppInstallControlEnabled"') DO set chk_1_60=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultConsent"') DO set chk_1_61=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOptions"') DO set chk_1_62=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUPowerManagement"') DO set chk_1_63=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "IncludeRecommendedUpdates"') DO set chk_1_64=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUpdate"') DO set chk_1_65=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "GlobalTimerResolutionRequests"') DO set chk_1_66=%%a >NUL 2>nul
+IF EXIST $null DEL $null >NUL 2>nul
+cls
+
+REM ###---------FILES_1-----------------------------------------------------------------------------------###
+
+IF NOT %chk_1_1%==0x1 (
+	IF NOT %chk_1_1%==ERR (
+		echo "HKLM\SYSTEM\ControlSet001\Control\BootControl" "BootProgressAnimation">"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_2%==0x0 (
+	IF NOT %chk_1_2%==ERR (
+		echo "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" "SystemResponsiveness">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_4%==0x6 (
+	IF NOT %chk_1_4%==ERR (
+		echo "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" "Priority">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_7%==0x1 (
+	IF NOT %chk_1_7%==ERR (
+		echo "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" "AlwaysOn">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_8%==0xffffffff (
+	IF NOT %chk_1_8%==ERR (
+		echo "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" "NetworkThrottlingIndex">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_9%==0x1 (
+	IF NOT %chk_1_9%==ERR (
+		echo "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" "NoLazyMode">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_12%==0x1 (
+	IF NOT %chk_1_12%==ERR (
+		echo DoNotHoldNicBuffers = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_14%==0 (
+	IF NOT %chk_1_14%==ERR (
+		echo MinAnimate = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_15%==0x0 (
+	IF NOT %chk_1_15%==ERR (
+		echo HeapDeCommitFreeBlockThreshold = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_16%==0x1 (
+	IF NOT %chk_1_16%==ERR (
+		echo GlobalUserDisabled = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_17%==0x1 (
+	IF NOT %chk_1_17%==ERR (
+		echo HttpAcceptLanguageOptOut = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_18%==0x0 (
+	IF NOT %chk_1_18%==ERR (
+		echo AppCaptureEnabled = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_19%==0x0 (
+	IF NOT %chk_1_19%==ERR (
+		echo HistoricalCaptureEnabled = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+REM IF %chk_1_20%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+REM IF %chk_1_21%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+REM IF %chk_1_22%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+REM IF %chk_1_23%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationAuditOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationAuditOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+REM IF %chk_1_24%==222222222222222222222222222222222222222222222222 (
+REM 	echo MitigationOptions >nul 2>&1
+REM ) else (
+REM 	echo MitigationOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+REM 	SET /a ERROR=%ERROR%+1
+REM )
+
+IF NOT %chk_1_25%==0x0 (
+	IF NOT %chk_1_25%==ERR (
+		echo EnableVirtualizationBasedSecurity = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_26%==0x1 (
+	IF NOT %chk_1_26%==ERR (
+		echo DEPOff = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_27%==0x1 (
+	IF NOT %chk_1_27%==ERR (
+		echo NoDataExecutionPrevention = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_28%==0x1 (
+	IF NOT %chk_1_28%==ERR (
+		echo DisableHHDEP = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_29%==0x2 (
+	IF NOT %chk_1_29%==ERR (
+		echo value = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_30%==0x0 (
+	IF NOT %chk_1_30%==ERR (
+		echo DisableExternalDMAUnderLock = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_31%==0x0 (
+	IF NOT %chk_1_31%==ERR (
+		echo HVCIMATRequired = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_32%==0x2 (
+	IF NOT %chk_1_32%==ERR (
+		echo LetAppsRunInBackground = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_33%==0x0 (
+	IF NOT %chk_1_33%==ERR (
+		echo BackgroundAppGlobalToggle = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_34%==0x0 (
+	IF NOT %chk_1_34%==ERR (
+		echo "HKLM\Software\Policies\Microsoft\Biometrics" "Enabled">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_35%==0x1 (
+	IF NOT %chk_1_35%==ERR (
+		echo DisableInventory = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_36%==0x1 (
+	IF NOT %chk_1_36%==ERR (
+		echo Disabled = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_37%==0x0 (
+	IF NOT %chk_1_37%==ERR (
+		echo AITEnable = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_38%==0x0 (
+	IF NOT %chk_1_38%==ERR (
+		echo DisableCustomerImprovementProgram = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_39%==0x0 (
+	IF NOT %chk_1_39%==ERR (
+		echo CEIPEnable = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_40%==0x0 (
+	IF NOT %chk_1_40%==ERR (
+		echo CEIPEnable = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_41%==0x2 (
+	IF NOT %chk_1_41%==ERR (
+		echo CEIP = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_42%==0x1 (
+	IF NOT %chk_1_42%==ERR (
+		echo EnableTelemetry = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_43%==0x0 (
+	IF NOT %chk_1_43%==ERR (
+		echo "HKCU\Software\Microsoft\Input\TIPC" "Enabled">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_44%==0x1 (
+	IF NOT %chk_1_44%==ERR (
+		echo RestrictImplicitTextCollection = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_45%==0x1 (
+	IF NOT %chk_1_45%==ERR (
+		echo RestrictImplicitInkCollection = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_46%==0x1 (
+	IF NOT %chk_1_46%==ERR (
+		echo PreventHandwritingDataSharing = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_47%==0x1 (
+	IF NOT %chk_1_47%==ERR (
+		echo PreventHandwritingErrorReports = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_48%==0x0 (
+	IF NOT %chk_1_48%==ERR (
+		echo AcceptedPrivacyPolicy = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_49%==0x1 (
+	IF NOT %chk_1_49%==ERR (
+		echo DisabledByGroupPolicy = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_50%==0x0 (
+	IF NOT %chk_1_50%==ERR (
+		echo "HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" "Enabled">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_51%==0x1 (
+	IF NOT %chk_1_51%==ERR (
+		echo ListviewAlphaSelect = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_52%==1 (
+	IF NOT %chk_1_52%==ERR (
+		echo DragFullWindows = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_53%==0x0 (
+	IF NOT %chk_1_53%==ERR (
+		echo GamepadDoublePressIntervalMs = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_54%==0x0 (
+	IF NOT %chk_1_54%==ERR (
+		echo UseNexusForGameBarEnabled = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_55%==0x0 (
+	IF NOT %chk_1_55%==ERR (
+		echo EnabledExecution = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_56%==Anywhere (
+	IF NOT %chk_1_56%==ERR (
+		echo ConfigureAppInstallControl = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_57%==0x1 (
+	IF NOT %chk_1_57%==ERR (
+		echo DontReportInfectionInformation = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_58%==0x0 (
+	IF NOT %chk_1_58%==ERR (
+		echo HarvestContacts = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_59%==0x0 (
+	IF NOT %chk_1_59%==ERR (
+		echo SubmitSamplesConsent = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_60%==0x0 (
+	IF NOT %chk_1_60%==ERR (
+		echo ConfigureAppInstallControlEnabled = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_61%==0x1 (
+	IF NOT %chk_1_61%==ERR (
+		echo DefaultConsent = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_62%==0x2 (
+	IF NOT %chk_1_62%==ERR (
+		echo AUOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_63%==0x0 (
+	IF NOT %chk_1_63%==ERR (
+		echo AUPowerManagement = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_64%==0x0 (
+	IF NOT %chk_1_64%==ERR (
+		echo IncludeRecommendedUpdates = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_65%==0x1 (
+	IF NOT %chk_1_65%==ERR (
+		echo NoAutoUpdate = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+IF NOT %chk_1_66%==0x1 (
+	IF NOT %chk_1_66%==ERR (
+		echo GlobalTimerResolutionRequests = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR=%ERROR%+1
+	)
+)
+
+REM IF %chk_1_1%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_2%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_4%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_7%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_8%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_9%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_12%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_14%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_15%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_16%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_17%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_18%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_19%==ERR SET /a ERROR=%ERROR%-1
+
+REM IF %chk_1_20%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_21%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_22%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_23%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_24%==ERR SET /a ERROR=%ERROR%-1
+
+REM IF %chk_1_25%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_26%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_27%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_28%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_29%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_30%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_31%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_32%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_33%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_34%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_35%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_36%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_37%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_38%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_39%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_40%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_41%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_42%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_43%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_44%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_45%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_46%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_47%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_48%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_49%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_50%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_51%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_52%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_53%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_54%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_55%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_56%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_57%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_58%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_59%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_60%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_61%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_62%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_63%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_64%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_65%==ERR SET /a ERROR=%ERROR%-1
+REM IF %chk_1_66%==ERR SET /a ERROR=%ERROR%-1
+
+SET CULTD=2
+SET chk_2_1=ERR
+SET chk_2_2=ERR
+SET chk_2_3=ERR
+SET chk_2_4=ERR
+SET chk_2_5=ERR
+SET chk_2_6=ERR
+SET chk_2_7=ERR
+SET chk_2_8=ERR
+SET chk_2_9=ERR
+SET chk_2_10=ERR
+SET chk_2_11=ERR
+SET chk_2_12=ERR
+SET chk_2_15=ERR
+SET chk_2_16=ERR
+SET chk_2_17=ERR
+SET chk_2_18=ERR
+SET chk_2_19=ERR
+SET chk_2_20=ERR
+SET chk_2_21=ERR
+SET chk_2_22=ERR
+SET chk_2_23=ERR
+SET chk_2_24=ERR
+SET chk_2_25=ERR
+SET chk_2_26=ERR
+SET chk_2_27=ERR
+SET chk_2_28=ERR
+SET chk_2_29=ERR
+SET chk_2_30=ERR
+SET chk_2_31=ERR
+SET chk_2_32=ERR
+SET chk_2_33=ERR
+SET chk_2_34=ERR
+SET chk_2_35=ERR
+SET chk_2_36=ERR
+SET chk_2_37=ERR
+SET chk_2_38=ERR
+SET chk_2_39=ERR
+SET chk_2_40=ERR
+SET chk_2_41=ERR
+SET chk_2_42=ERR
+
+REM ###---------FILES_2-----------------------------------------------------------------------------------###
+
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableVirtualization"') DO set chk_2_1=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableInstallerDetection"') DO set chk_2_2=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "PromptOnSecureDesktop"') DO set chk_2_3=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA"') DO set chk_2_4=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableSecureUIAPaths"') DO set chk_2_5=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin"') DO set chk_2_6=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ValidateAdminCodeSignatures"') DO set chk_2_7=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableUIADesktopToggle"') DO set chk_2_8=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorUser"') DO set chk_2_9=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "FilterAdministratorToken"') DO set chk_2_10=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride"') DO set chk_2_11=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask"') DO set chk_2_12=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher"') DO set chk_2_15=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher"') DO set chk_2_16=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/Main" /v "Enabled"') DO set chk_2_17=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/PfApLog" /v "Enabled"') DO set chk_2_18=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/StoreLog" /v "Enabled"') DO set chk_2_19=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Ndu" /v "Start"') DO set chk_2_20=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "ClearPageFileAtShutdown"') DO set chk_2_21=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana"') DO set chk_2_22=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCloudSearch"') DO set chk_2_23=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWeb"') DO set chk_2_24=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWebOverMeteredConnections"') DO set chk_2_25=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "DisableWebSearch"') DO set chk_2_26=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowSearchToUseLocation"') DO set chk_2_27=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortanaAboveLock"') DO set chk_2_28=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Speech_OneCore\Preferences" /v "ModelDownloadAllowed"') DO set chk_2_29=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v "PreventDeviceMetadataFromNetwork"') DO set chk_2_30=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "ExcludeWUDriversInQualityUpdate"') DO set chk_2_31=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig"') DO set chk_2_32=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption"') DO set chk_2_33=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\InputPersonalization\TrainedDataStore" /v "HarvestContacts"') DO set chk_2_34=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows Script Host\Settings" /v "Enabled"') DO set chk_2_35=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "AllowGameDVR"') DO set chk_2_36=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_Enabled"') DO set chk_2_37=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehaviorMode"') DO set chk_2_38=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehavior"') DO set chk_2_39=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_HonorUserFSEBehaviorMode"') DO set chk_2_40=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_EFSEFeatureFlags"') DO set chk_2_41=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible"') DO set chk_2_42=%%a >NUL 2>nul
+IF EXIST $null DEL $null >NUL 2>nul
+cls
+
+REM ###---------FILES_2-----------------------------------------------------------------------------------###
+
+IF NOT %chk_2_1%==0x0 (
+	IF NOT %chk_2_1%==ERR (
+		echo EnableVirtualization = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_2%==0x0 (
+	IF NOT %chk_2_2%==ERR (
+		echo EnableInstallerDetection = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_3%==0x0 (
+	IF NOT %chk_2_3%==ERR (
+		echo PromptOnSecureDesktop = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_4%==0x0 (
+	IF NOT %chk_2_4%==ERR (
+		echo EnableLUA = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_5%==0x0 (
+	IF NOT %chk_2_5%==ERR (
+		echo EnableSecureUIAPaths = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_6%==0x0 (
+	IF NOT %chk_2_6%==ERR (
+		echo ConsentPromptBehaviorAdmin = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_7%==0x0 (
+	IF NOT %chk_2_7%==ERR (
+		echo ValidateAdminCodeSignatures = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_8%==0x0 (
+	IF NOT %chk_2_8%==ERR (
+		echo EnableUIADesktopToggle = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_9%==0x0 (
+	IF NOT %chk_2_9%==ERR (
+		echo ConsentPromptBehaviorUser = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_10%==0x0 (
+	IF NOT %chk_2_10%==ERR (
+		echo FilterAdministratorToken = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_11%==0x3 (
+	IF NOT %chk_2_11%==ERR (
+		echo FeatureSettingsOverride = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_12%==0x3 (
+	IF NOT %chk_2_12%==ERR (
+		echo FeatureSettingsOverrideMask = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_15%==0x0 (
+	IF NOT %chk_2_15%==ERR (
+		echo EnablePrefetcher = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_16%==0x0 (
+	IF NOT %chk_2_16%==ERR (
+		echo EnablePrefetcher = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_17%==0x0 (
+	IF NOT %chk_2_17%==ERR (
+		echo "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/Main" "Enabled">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_18%==0x0 (
+	IF NOT %chk_2_18%==ERR (
+		echo "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/PfApLog" "Enabled">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_19%==0x0 (
+	IF NOT %chk_2_19%==ERR (
+		echo "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/StoreLog" "Enabled">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_20%==0x4 (
+	IF NOT %chk_2_20%==ERR (
+		echo Start = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_21%==0x0 (
+	IF NOT %chk_2_21%==ERR (
+		echo ClearPageFileAtShutdown = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_22%==0x0 (
+	IF NOT %chk_2_22%==ERR (
+		echo AllowCortana = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_23%==0x0 (
+	IF NOT %chk_2_23%==ERR (
+		echo AllowCloudSearch = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_24%==0x0 (
+	IF NOT %chk_2_24%==ERR (
+		echo ConnectedSearchUseWeb = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_25%==0x0 (
+	IF NOT %chk_2_25%==ERR (
+		echo ConnectedSearchUseWebOverMeteredConnections = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_26%==0x1 (
+	IF NOT %chk_2_26%==ERR (
+		echo DisableWebSearch = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_27%==0x0 (
+	IF NOT %chk_2_27%==ERR (
+		echo AllowSearchToUseLocation = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_28%==0x0 (
+	IF NOT %chk_2_28%==ERR (
+		echo AllowCortanaAboveLock = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_29%==0x0 (
+	IF NOT %chk_2_29%==ERR (
+		echo ModelDownloadAllowed = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_30%==0x1 (
+	IF NOT %chk_2_30%==ERR (
+		echo PreventDeviceMetadataFromNetwork = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_31%==0x1 (
+	IF NOT %chk_2_31%==ERR (
+		echo ExcludeWUDriversInQualityUpdate = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_32%==0x0 (
+	IF NOT %chk_2_32%==ERR (
+		echo SearchOrderConfig = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_33%==0x0 (
+	IF NOT %chk_2_33%==ERR (
+		echo EnablePreemption = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_34%==0x0 (
+	IF NOT %chk_2_34%==ERR (
+		echo HarvestContacts = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_35%==0x1 (
+	IF NOT %chk_2_35%==ERR (
+		echo "HKLM\SOFTWARE\Microsoft\Windows Script Host\Settings" "Enabled">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_36%==0x0 (
+	IF NOT %chk_2_36%==ERR (
+		echo 2 - AllowGameDVR = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_37%==0x0 (
+	IF NOT %chk_2_37%==ERR (
+		echo GameDVR_Enabled = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_38%==0x0 (
+	IF NOT %chk_2_38%==ERR (
+		echo GameDVR_FSEBehaviorMode = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_39%==0x0 (
+	IF NOT %chk_2_39%==ERR (
+		echo GameDVR_FSEBehavior = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR2=%ERROR2%+1
+	)
+)
+
+IF NOT %chk_2_40%==ERR (
+	echo GameDVR_HonorUserFSEBehaviorMode = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF NOT %chk_2_41%==ERR (
+	echo GameDVR_EFSEFeatureFlags = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+	SET /a ERROR2=%ERROR2%+1
+)
+
+IF NOT %chk_2_42%==ERR (
+	echo GameDVR_DXGIHonorFSEWindowsCompatible = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+	SET /a ERROR2=%ERROR2%+1
+)
+
+REM IF %chk_2_1%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_2%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_3%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_4%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_5%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_6%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_7%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_8%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_9%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_10%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_11%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_12%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_15%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_16%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_17%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_18%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_19%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_20%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_21%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_22%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_23%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_24%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_25%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_26%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_27%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_28%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_29%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_30%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_31%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_32%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_33%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_34%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_35%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_36%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_37%==ERR SET /a ERROR2=%ERROR2%-1
+REM IF %chk_2_38%==ERR SET /a ERROR2=%ERROR2%-1
+
+SET CULTD=3
+SET chk_3_1=ERR
+SET chk_3_2=ERR
+SET chk_3_3=ERR
+SET chk_3_4=ERR
+SET chk_3_5=ERR
+SET chk_3_6=ERR
+SET chk_3_7=ERR
+SET chk_3_8=ERR
+SET chk_3_11=ERR
+SET chk_3_12=ERR
+SET chk_3_13=ERR
+SET chk_3_14=ERR
+SET chk_3_15=ERR
+SET chk_3_16=ERR
+SET chk_3_17=ERR
+SET chk_3_18=ERR
+SET chk_3_19=ERR
+SET chk_3_20=ERR
+SET chk_3_21=ERR
+SET chk_3_24=ERR
+SET chk_3_25=ERR
+SET chk_3_26=ERR
+SET chk_3_27=ERR
+SET chk_3_28=ERR
+SET chk_3_29=ERR
+SET chk_3_30=ERR
+SET chk_3_31=ERR
+SET chk_3_32=ERR
+SET chk_3_33=ERR
+SET chk_3_34=ERR
+SET chk_3_35=ERR
+SET chk_3_36=ERR
+SET chk_3_37=ERR
+SET chk_3_38=ERR
+SET chk_3_39=ERR
+SET chk_3_40=ERR
+SET chk_3_41=ERR
+SET chk_3_42=ERR
+SET chk_3_43=ERR
+SET chk_3_44=ERR
+SET chk_3_45=ERR
+SET chk_3_46=ERR
+SET chk_3_47=ERR
+SET chk_3_48=ERR
+SET chk_3_49=ERR
+SET chk_3_50=ERR
+SET chk_3_51=ERR
+SET chk_3_52=ERR
+SET chk_3_53=ERR
+
+REM ###---------FILES_3-----------------------------------------------------------------------------------###
+
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR"') DO set chk_3_1=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "NoNetCrawling"') DO set chk_3_2=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\MSMQ\Parameters" /v "TCPNoDelay"') DO set chk_3_3=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableICMPRedirect"') DO set chk_3_4=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "EnablePMTUDiscovery"') DO set chk_3_5=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "Tcp1323Opts"') DO set chk_3_6=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpMaxDupAcks"') DO set chk_3_7=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay"') DO set chk_3_8=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DisableTaskOffload"') DO set chk_3_11=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxConnectionsPerServer"') DO set chk_3_12=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort"') DO set chk_3_13=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "SackOpts"') DO set chk_3_14=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DeadGWDetectDefault"') DO set chk_3_15=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DefaultTTL"') DO set chk_3_16=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "EnableICMPRedirect"') DO set chk_3_17=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "EnablePMTUDiscovery"') DO set chk_3_18=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "Tcp1323Opts"') DO set chk_3_19=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "TcpMaxDupAcks"') DO set chk_3_20=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay"') DO set chk_3_21=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "DisableTaskOffload"') DO set chk_3_24=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "MaxConnectionsPerServer"') DO set chk_3_25=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "MaxUserPort"') DO set chk_3_26=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "SackOpts"') DO set chk_3_27=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "DeadGWDetectDefault"') DO set chk_3_28=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\Tcpip\Parameters" /v "DefaultTTL"') DO set chk_3_29=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled"') DO set chk_3_30=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Services\NetBT\Parameters" /v "NameSrvQueryTimeout"') DO set chk_3_31=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Winsock" /v "UseDelayedAcceptance"') DO set chk_3_32=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Winsock" /v "MaxSockAddrLength"') DO set chk_3_33=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Winsock" /v "MinSockAddrLength"') DO set chk_3_34=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "ServiceDllUnloadOnStop"') DO set chk_3_35=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "maxcachettl"') DO set chk_3_36=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "maxnegativecachettl"') DO set chk_3_37=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NetFailureCacheTime"') DO set chk_3_38=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NegativeSOACacheTime"') DO set chk_3_39=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "NegativeCacheTime"') DO set chk_3_40=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableBucketSize"') DO set chk_3_41=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxCacheEntryTtlLimit"') DO set chk_3_42=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "MaxSOACacheEntryTtlLimit"') DO set chk_3_43=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableSize"') DO set chk_3_44=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "Class"') DO set chk_3_45=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "DnsPriority"') DO set chk_3_46=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "HostsPriority"') DO set chk_3_47=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "LocalPriority"') DO set chk_3_48=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "NetbtPriority"') DO set chk_3_49=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "NonBestEffortLimit"') DO set chk_3_50=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry"') DO set chk_3_51=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "DoNotShowFeedbackNotifications"') DO set chk_3_52=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\CurrentControlSet\Services\NetBT\Parameters" /v "EnableLMHOSTS"') DO set chk_3_53=%%a >NUL 2>nul
+IF EXIST $null DEL $null >NUL 2>nul
+cls
+
+REM ###---------FILES_3-----------------------------------------------------------------------------------###
+
+IF %chk_3_1%==0x1 (
+	IF %chk_3_1%==ERR (
+		echo 3 - AllowGameDVR = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_2%==0x1 (
+	IF NOT %chk_3_2%==ERR (
+		echo NoNetCrawling = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_3%==0x1 (
+	IF NOT %chk_3_3%==ERR (
+		echo TCPNoDelay = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_4%==0x1 (
+	IF NOT %chk_3_4%==ERR (
+		echo EnableICMPRedirect = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_5%==0x1 (
+	IF NOT %chk_3_5%==ERR (
+		echo EnablePMTUDiscovery = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_6%==0x0 (
+	IF NOT %chk_3_6%==ERR (
+		echo Tcp1323Opts = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_7%==0x2 (
+	IF NOT %chk_3_7%==ERR (
+		echo TcpMaxDupAcks = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_8%==0x20 (
+	IF NOT %chk_3_8%==ERR (
+		echo TcpTimedWaitDelay = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_11%==0x0 (
+	IF NOT %chk_3_11%==ERR (
+		echo DisableTaskOffload = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_12%==0x0 (
+	IF NOT %chk_3_12%==ERR (
+		echo MaxConnectionsPerServer = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_13%==0xfffe (
+	IF NOT %chk_3_13%==ERR (
+		echo MaxUserPort = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_14%==0x0 (
+	IF NOT %chk_3_14%==ERR (
+		echo SackOpts = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_15%==0x1 (
+	IF NOT %chk_3_15%==ERR (
+		echo DeadGWDetectDefault = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_16%==0x40 (
+	IF NOT %chk_3_16%==ERR (
+		echo DefaultTTL = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_17%==0x1 (
+	IF NOT %chk_3_17%==ERR (
+		echo EnableICMPRedirect = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_18%==0x1 (
+	IF NOT %chk_3_18%==ERR (
+		echo EnablePMTUDiscovery = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_19%==0x0 (
+	IF NOT %chk_3_19%==ERR (
+		echo Tcp1323Opts = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_20%==0x2 (
+	IF NOT %chk_3_20%==ERR (
+		echo TcpMaxDupAcks = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_21%==0x20 (
+	IF NOT %chk_3_21%==ERR (
+		echo TcpTimedWaitDelay = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_24%==0x0 (
+	IF NOT %chk_3_24%==ERR (
+		echo DisableTaskOffload = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_25%==0x0 (
+	IF NOT %chk_3_25%==ERR (
+		echo MaxConnectionsPerServer = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_26%==0xfffe (
+	IF NOT %chk_3_26%==ERR (
+		echo MaxUserPort = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_27%==0x0 (
+	IF NOT %chk_3_27%==ERR (
+		echo SackOpts = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_28%==0x1 (
+	IF NOT %chk_3_28%==ERR (
+		echo DeadGWDetectDefault = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_29%==0x40 (
+	IF NOT %chk_3_29%==ERR (
+		echo DefaultTTL = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_30%==0x0 (
+	IF NOT %chk_3_30%==ERR (
+		echo "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" "Enabled">>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_31%==0xbb8 (
+	IF NOT %chk_3_31%==ERR (
+		echo NameSrvQueryTimeout = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_32%==0x0 (
+	IF NOT %chk_3_32%==ERR (
+		echo UseDelayedAcceptance = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_33%==0x10 (
+	IF NOT %chk_3_33%==ERR (
+		echo MaxSockAddrLength = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_34%==0x10 (
+	IF NOT %chk_3_34%==ERR (
+		echo MinSockAddrLength = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_35%==0x1 (
+	IF NOT %chk_3_35%==ERR (
+		echo ServiceDllUnloadOnStop = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_36%==0x3600 (
+	IF NOT %chk_3_36%==ERR (
+		echo maxcachettl = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_37%==0x0 (
+	IF NOT %chk_3_37%==ERR (
+		echo maxnegativecachettl = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_38%==0x0 (
+	IF NOT %chk_3_38%==ERR (
+		echo NetFailureCacheTime = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_39%==0x0 (
+	IF NOT %chk_3_39%==ERR (
+		echo NegativeSOACacheTime = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_40%==0x0 (
+	IF NOT %chk_3_40%==ERR (
+		echo NegativeCacheTime = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_41%==0x1 (
+	IF NOT %chk_3_41%==ERR (
+		echo CacheHashTableBucketSize = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_42%==0x15180 (
+	IF NOT %chk_3_42%==ERR (
+		echo MaxCacheEntryTtlLimit = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_43%==0x12c (
+	IF NOT %chk_3_43%==ERR (
+		echo MaxSOACacheEntryTtlLimit = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_44%==0x180 (
+	IF NOT %chk_3_44%==ERR (
+		echo CacheHashTableSize = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_45%==0x8 (
+	IF NOT %chk_3_45%==ERR (
+		echo Class = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_46%==0x6 (
+	IF NOT %chk_3_46%==ERR (
+		echo DnsPriority = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_47%==0x5 (
+	IF NOT %chk_3_47%==ERR (
+		echo HostsPriority = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_48%==0x4 (
+	IF NOT %chk_3_48%==ERR (
+		echo LocalPriority = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_49%==0x7 (
+	IF NOT %chk_3_49%==ERR (
+		echo NetbtPriority = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_50%==0x0 (
+	IF NOT %chk_3_50%==ERR (
+		echo NonBestEffortLimit = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_51%==0x0 (
+	IF NOT %chk_3_51%==ERR (
+		echo AllowTelemetry = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_52%==0x1 (
+	IF NOT %chk_3_52%==ERR (
+		echo DoNotShowFeedbackNotifications = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+IF NOT %chk_3_53%==0x0 (
+	IF NOT %chk_3_53%==ERR (
+		echo EnableLMHOSTS = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		SET /a ERROR3=%ERROR3%+1
+	)
+)
+
+REM IF %chk_3_1%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_2%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_3%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_4%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_5%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_6%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_7%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_8%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_11%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_12%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_13%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_14%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_15%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_16%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_17%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_18%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_19%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_20%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_21%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_24%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_25%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_26%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_27%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_28%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_29%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_30%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_31%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_32%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_33%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_34%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_35%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_36%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_37%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_38%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_39%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_40%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_41%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_42%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_43%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_44%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_45%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_46%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_47%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_48%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_49%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_50%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_51%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_52%==ERR SET /a ERROR3=%ERROR3%-1
+REM IF %chk_3_53%==ERR SET /a ERROR3=%ERROR3%-1
+cls
+
+REM goto :errregdebug
+DEL RERR.bat>nul
+
+IF %ERROR%==-1 SET ERROR=0
+IF %ERROR3%==-1 SET ERROR3=0
+
+Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK1" /t REG_SZ /d "%ERROR%" /f >nul
+Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK2" /t REG_SZ /d "%ERROR2%" /f >nul
+Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK3" /t REG_SZ /d "%ERROR3%" /f >nul
+SET /a REGERROR=%ERROR3%+%ERROR2%+%ERROR%
+echo SET "REGERROR=%REGERROR%">>RERR.bat
+echo %ERROR% %ERROR2% %ERROR3%
+echo ^|-------------------------------------------------------------^|>>"%appdata%\StartUp Tools\LOG\err.log"
+echo    End : [Err 1] : %ERROR% ^| [Err 2] : %ERROR2% ^| [Err 3] : %ERROR3% ^|>>"%appdata%\StartUp Tools\LOG\err.log"
+echo ^|-------------------------------------------------------------^|>>"%appdata%\StartUp Tools\LOG\err.log"
+Endlocal
+call RERR.bat
+DEL RERR.bat>nul
+goto :MAINW
+
+
+:errregdebug
+cls
+(
+	echo %chk_1_1% 
+	echo %chk_1_2% 
+	echo %chk_1_4% 
+	echo %chk_1_7% 
+	echo %chk_1_8% 
+	echo %chk_1_9% 
+	echo %chk_1_12% 
+	echo %chk_1_14% 
+	echo %chk_1_15% 
+	echo %chk_1_16% 
+	echo %chk_1_17% 
+	echo %chk_1_18% 
+	echo %chk_1_19% 
+	echo %chk_1_25% 
+	echo %chk_1_26% 
+	echo %chk_1_27% 
+	echo %chk_1_28% 
+	echo %chk_1_29% 
+	echo %chk_1_30% 
+	echo %chk_1_31% 
+	echo %chk_1_32% 
+	echo %chk_1_33% 
+	echo %chk_1_34% 
+	echo %chk_1_35% 
+	echo %chk_1_36% 
+	echo %chk_1_37% 
+	echo %chk_1_38% 
+	echo %chk_1_39% 
+	echo %chk_1_40% 
+	echo %chk_1_41% 
+	echo %chk_1_42% 
+	echo %chk_1_43% 
+	echo %chk_1_44% 
+	echo %chk_1_45% 
+	echo %chk_1_46% 
+	echo %chk_1_47% 
+	echo %chk_1_48% 
+	echo %chk_1_49% 
+	echo %chk_1_50% 
+	echo %chk_1_51% 
+	echo %chk_1_52% 
+	echo %chk_1_53% 
+	echo %chk_1_54% 
+	echo %chk_1_55% 
+	echo %chk_1_56% 
+	echo %chk_1_57% 
+	echo %chk_1_58% 
+	echo %chk_1_59% 
+	echo %chk_1_60% 
+	echo %chk_1_61% 
+	echo %chk_1_62% 
+	echo %chk_1_63% 
+	echo %chk_1_64% 
+	echo %chk_1_65% 
+	echo %chk_1_66% 
+	echo.
+	echo %chk_2_1% 
+	echo %chk_2_2% 
+	echo %chk_2_3% 
+	echo %chk_2_4% 
+	echo %chk_2_5% 
+	echo %chk_2_6% 
+	echo %chk_2_7% 
+	echo %chk_2_8% 
+	echo %chk_2_9% 
+	echo %chk_2_10% 
+	echo %chk_2_11% 
+	echo %chk_2_12% 
+	echo %chk_2_15% 
+	echo %chk_2_16% 
+	echo %chk_2_17% 
+	echo %chk_2_18% 
+	echo %chk_2_19% 
+	echo %chk_2_20% 
+	echo %chk_2_21% 
+	echo %chk_2_22% 
+	echo %chk_2_23% 
+	echo %chk_2_24% 
+	echo %chk_2_25% 
+	echo %chk_2_26% 
+	echo %chk_2_27% 
+	echo %chk_2_28% 
+	echo %chk_2_29% 
+	echo %chk_2_30% 
+	echo %chk_2_31% 
+	echo %chk_2_32% 
+	echo %chk_2_33% 
+	echo %chk_2_34% 
+	echo %chk_2_35% 
+	echo %chk_2_36% 
+	echo %chk_2_37% 
+	echo %chk_2_38% 
+	echo %chk_2_39% 
+	echo %chk_2_40% 
+	echo %chk_2_41% 
+	echo %chk_2_42% 
+	echo.
+	echo %chk_3_1% 
+	echo %chk_3_2% 
+	echo %chk_3_3% 
+	echo %chk_3_4% 
+	echo %chk_3_5% 
+	echo %chk_3_6% 
+	echo %chk_3_7% 
+	echo %chk_3_8% 
+	echo %chk_3_11% 
+	echo %chk_3_12% 
+	echo %chk_3_13% 
+	echo %chk_3_14% 
+	echo %chk_3_15% 
+	echo %chk_3_16% 
+	echo %chk_3_17% 
+	echo %chk_3_18% 
+	echo %chk_3_19% 
+	echo %chk_3_20% 
+	echo %chk_3_21% 
+	echo %chk_3_24% 
+	echo %chk_3_25% 
+	echo %chk_3_26% 
+	echo %chk_3_27% 
+	echo %chk_3_28% 
+	echo %chk_3_29% 
+	echo %chk_3_30% 
+	echo %chk_3_31% 
+	echo %chk_3_32% 
+	echo %chk_3_33% 
+	echo %chk_3_34% 
+	echo %chk_3_35% 
+	echo %chk_3_36% 
+	echo %chk_3_37% 
+	echo %chk_3_38% 
+	echo %chk_3_39% 
+	echo %chk_3_40% 
+	echo %chk_3_41% 
+	echo %chk_3_42% 
+	echo %chk_3_43% 
+	echo %chk_3_44% 
+	echo %chk_3_45% 
+	echo %chk_3_46% 
+	echo %chk_3_47% 
+	echo %chk_3_48% 
+	echo %chk_3_49% 
+	echo %chk_3_50% 
+	echo %chk_3_51% 
+	echo %chk_3_52% 
+	echo %chk_3_53% 
+) >"%appdata%\StartUp Tools\LOG\err.log"
+goto :MAINW
