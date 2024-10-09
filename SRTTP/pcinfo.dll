@@ -94,7 +94,7 @@ echo    EditionID    : %RO3%
 echo.
 echo.
 echo.
-echo   %gold%PC%white%
+echo    %gold%PC%white%
 echo    Username     : %username%
 echo    PC Name      : %computername%
 echo    ProductName  : %RO6%
@@ -104,7 +104,7 @@ echo    Baseboard ID : %IHWID%
 echo.
 echo.
 echo.
-echo   %gold%Config%white%
+echo    %gold%Config%white%
 echo    Chassis      : %PCTYP%
 echo    CPU          : %CPUName%
 echo    GPU          : %gpuName%
@@ -113,16 +113,16 @@ echo    Resolution   : %resolutionH% x %resolutionV% - %refreshRate%Hz
 echo.
 echo.
 echo.
-echo   %gold%Informations carte mère%white%
+echo    %gold%Informations carte mère%white%
 call %temp%\motherboard.exe
 echo.
-echo   %gold%Informations du BIOS%white%
+echo    %gold%Informations du BIOS%white%
 call %temp%\bios.exe
 echo.
-echo   %gold%Informations du CPU%white%
+echo    %gold%Informations du CPU%white%
 call %temp%\cpu.exe
 echo.
-echo   %gold%Informations du GPU%white%
+echo    %gold%Informations du GPU%white%
 call %temp%\gpu.exe
 echo.
 SETlocal EnableDelayedExpansion
@@ -142,7 +142,7 @@ for /L %%i in (1,1,!counter!) do (
 endlocal
 echo.
 echo.
-echo   %gold%Informations du SSD / HDD%white%
+echo    %gold%Informations du SSD / HDD%white%
 powershell -command "$Host.UI.RawUI.BufferSize = New-Object System.Management.Automation.Host.Size(480, $Host.UI.RawUI.BufferSize.Height)"
 powershell -command "Get-PhysicalDisk | Format-Table -AutoSize"
 IF EXIST ID.log DEL ID.log
