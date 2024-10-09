@@ -1,0 +1,153 @@
+@echo off
+SET black=[30m
+SET red=[91m
+SET rred=[41m
+SET green=[32m
+SET ggreen=[42m
+SET yellow=[33m
+SET yyellow=[43m
+SET blue=[34m
+SET bblue=[44m
+SET magenta=[35m
+SET bmagenta=[45m
+SET cyan=[36m
+SET white=[37m
+SET defcolor=[49m
+SET gold=[38;5;220m
+SET grey=[90m
+SET ggrey=[100m
+SET orange=[38;5;208m
+SET indigo=[38;5;105m
+chcp 65001 > nul
+cd %temp%
+cls
+
+for /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') do (SET "IHWID=%%i")
+for /f "tokens=*" %%i in ('powershell -command "Get-CimInstance -Class Win32_ComputerSystemProduct | Select-Object -ExpandProperty UUID"') do (SET "IUUID=%%i")
+for /F "delims=*" %%A in ('powershell -command "Get-WmiObject -Class Win32_SystemEnclosure | Select-Object -ExpandProperty ChassisTypes"') do (SET "chassisType=%%A")
+for /f "tokens=*" %%A in ('powershell -Command "(Get-WmiObject Win32_BIOS).BIOSCharacteristics -contains 33"') do (SET "USBlegacy=%%A")
+for /f "tokens=*" %%i in ('powershell -command "Get-CimInstance -Class Win32_Processor | Select-Object -ExpandProperty Name"') do (SET "CPUName=%%i")
+for /f "tokens=*" %%i in ('powershell -Command "Get-WmiObject win32_videocontroller | Select-Object -ExpandProperty Name"') do SET (GPU_NAME=%%i)
+for /f "tokens=*" %%a in ('powershell -command "Get-CimInstance -ClassName Win32_VideoController | Select-Object -ExpandProperty Caption"') do (SET "gpuName=%%a")
+for /f "tokens=*" %%b in ('powershell -command "Get-CimInstance -ClassName Win32_VideoController | Select-Object -ExpandProperty CurrentHorizontalResolution"') do (SET "resolutionH=%%b")
+for /f "tokens=*" %%c in ('powershell -command "Get-CimInstance -ClassName Win32_VideoController | Select-Object -ExpandProperty CurrentVerticalResolution"') do (SET "resolutionV=%%c")
+for /f "tokens=*" %%d in ('powershell -command "Get-CimInstance -ClassName Win32_VideoController | Select-Object -ExpandProperty CurrentRefreshRate"') do (SET "refreshRate=%%d")
+if "%USBlegacy%"=="True" (SET VM=NO) else (SET VM=YES)
+echo %GPU_NAME% | find /I "NVIDIA" > nul
+if %errorlevel% == 0 (SET GPU=NVIDIA&goto :ENDGPU)
+echo %GPU_NAME% | find /I "AMD" > nul
+if %errorlevel% == 0 (SET GPU=AMD&goto :ENDGPU)
+echo %GPU_NAME% | find /I "VMWARE" > nul
+if %errorlevel% == 0 (SET GPU=VMWARE&goto :ENDGPU)
+SET GPU=UNKNOWN
+:ENDGPU
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Cryptography
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "MachineGuid"') DO SET MGG=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "CurrentBuildNumber"') DO SET RO1=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "DisplayVersion"') DO SET RO2=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "EditionID"') DO SET RO3=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "ProductName"') DO SET RO6=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "RegisteredOrganisation"') DO SET RO7=%%B
+
+SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "ReleaseId"') DO SET RO9=%%B
+
+SET "PCTYP=Inconnu"
+IF %chassisType%==1 SET "PCTYP=Inconnu"
+IF %chassisType%==2 SET "PCTYP=Inconnu"
+IF %chassisType%==3 SET "PCTYP=Desktop"
+IF %chassisType%==8 SET "PCTYP=Portable"
+IF %chassisType%==9 SET "PCTYP=Laptop"
+IF %chassisType%==10 SET "PCTYP=Notebook"
+IF %chassisType%==14 SET "PCTYP=Sub-Notebook"
+IF %chassisType%==30 SET "PCTYP=Tablet"
+IF %chassisType%==31 SET "PCTYP=Convertible"
+IF %chassisType%==32 SET "PCTYP=Detachable"
+IF %VM%==YES SET "PCTYP=VM"
+
+for /f "tokens=*" %%a in ('powershell -Command "(Get-WmiObject Win32_OperatingSystem).TotalVisibleMemorySize"') do SET "mem=%%a"
+SET /a mem=%mem% / 1024
+
+SET Wversion=%red%OLD Windows%white%
+IF %RO2%==23H2 SET Wversion=%blue%Windows 11%white%
+IF %RO2%==24H2 SET Wversion=%blue%Windows 11%white%
+
+echo.
+echo    %gold%Windows%white%
+echo    Version      : %Wversion%
+echo    Build        : %RO1%
+echo    MachineGuid  : %MGG%
+echo    ReleaseId    : %RO9%
+echo    DisplayVers  : %RO2%
+echo    EditionID    : %RO3%
+echo.
+echo.
+echo.
+echo   %gold%PC%white%
+echo    Username     : %username%
+echo    PC Name      : %computername%
+echo    ProductName  : %RO6%
+echo    Organisation : %RO7%
+echo    Windows UUID : %IUUID%
+echo    Baseboard ID : %IHWID%
+echo.
+echo.
+echo.
+echo   %gold%Config%white%
+echo    Chassis      : %PCTYP%
+echo    CPU          : %CPUName%
+echo    GPU          : %gpuName%
+echo    RAM          : %mem% Mo
+echo    Resolution   : %resolutionH% x %resolutionV% - %refreshRate%Hz
+echo.
+echo.
+echo.
+echo   %gold%Informations carte mère%white%
+call %temp%\motherboard.exe
+echo.
+echo   %gold%Informations du BIOS%white%
+call %temp%\bios.exe
+echo.
+echo   %gold%Informations du CPU%white%
+call %temp%\cpu.exe
+echo.
+echo   %gold%Informations du GPU%white%
+call %temp%\gpu.exe
+echo.
+SETlocal EnableDelayedExpansion
+for /f "tokens=1,2,3,4,5,6 delims=," %%a in ('powershell -command "Get-CimInstance -ClassName Win32_PhysicalMemory | Select-Object DeviceLocator, Manufacturer, Speed, PartNumber, Capacity, SerialNumber | ConvertTo-Csv -NoTypeInformation" ^| findstr /v /b /c:"DeviceLocator"') do (
+    SET /a counter+=1
+    SET "RAMC_!counter!=%%a"
+    SET "RAMM_!counter!=%%b"
+    SET "RAMS_!counter!=%%c"
+    SET "RAMP_!counter!=%%d"
+    SET "RACP_!counter!=%%e"
+    SET "RAMID_!counter!=%%f"
+)
+
+for /L %%i in (1,1,!counter!) do (
+    echo   [Barrette %%i             ] = DeviceLocator: !RAMC_%%i! - Manufacturer: !RAMM_%%i! - Speed: !RAMS_%%i! - PartNumber: !RAMP_%%i! - Capacity: !RACP_%%i! - SerialNumber: !RAMID_%%i!>>%temp%\USRL.log
+)
+endlocal
+echo.
+echo.
+echo   %gold%Informations du SSD / HDD%white%
+powershell -command "$Host.UI.RawUI.BufferSize = New-Object System.Management.Automation.Host.Size(480, $Host.UI.RawUI.BufferSize.Height)"
+powershell -command "Get-PhysicalDisk | Format-Table -AutoSize"
+IF EXIST ID.log DEL ID.log
+IF EXIST IID.log DEL IID.log
+IF EXIST CPUNAME.log DEL CPUNAME.log
+echo.
+pause>nul
+Exit
