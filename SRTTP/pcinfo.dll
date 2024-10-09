@@ -19,9 +19,10 @@ SET ggrey=[100m
 SET orange=[38;5;208m
 SET indigo=[38;5;105m
 chcp 65001 > nul
+mode con:cols=160 lines=110
 cd %temp%
 cls
-
+echo wait ... 
 for /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') do (SET "IHWID=%%i")
 for /f "tokens=*" %%i in ('powershell -command "Get-CimInstance -Class Win32_ComputerSystemProduct | Select-Object -ExpandProperty UUID"') do (SET "IUUID=%%i")
 for /F "delims=*" %%A in ('powershell -command "Get-WmiObject -Class Win32_SystemEnclosure | Select-Object -ExpandProperty ChassisTypes"') do (SET "chassisType=%%A")
@@ -82,7 +83,7 @@ SET /a mem=%mem% / 1024
 SET Wversion=%red%OLD Windows%white%
 IF %RO2%==23H2 SET Wversion=%blue%Windows 11%white%
 IF %RO2%==24H2 SET Wversion=%blue%Windows 11%white%
-
+cls
 echo.
 echo    %gold%Windows%white%
 echo    Version      : %Wversion%
