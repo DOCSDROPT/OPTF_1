@@ -1,0 +1,109 @@
+@echo off
+SET red=[91m
+SET white=[37m
+IF EXIST tmp.log DEL tmp.log >nul
+SETlocal enabledelayedexpansion
+
+for %%A in (A B D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+	if exist %%A:\ (
+		echo %%A:>tmp.log
+		goto :SAVEAPPDATA
+	)
+)
+endlocal
+
+:SAVEAPPDATA
+endlocal
+
+SET APPDATAPATH=
+for /f "usebackq tokens=*" %%a in ("tmp.log") do (
+    SET "APPDATAPATH=%%a"
+    del tmp.log>nul
+)
+
+echo.
+echo     Tout dossier superieur a 2 Go sera ignore.
+echo     Emplacement du dossier de sauvegarde : %red%%APPDATAPATH%\Backup-Appdata%white%
+echo.
+echo     Debut de la sauvegarde des sous-dossiers d'APPDATA.
+
+IF EXIST %APPDATAPATH%\Backup-Appdata rmdir /s /q %APPDATAPATH%\Backup-Appdata >nul 2>&1
+IF NOT EXIST %APPDATAPATH%\Backup-Appdata md %APPDATAPATH%\Backup-Appdata >nul 2>&1
+
+IF NOT EXIST %APPDATAPATH%\Backup-Appdata\Local md %APPDATAPATH%\Backup-Appdata\Local >nul 2>&1
+IF NOT EXIST %APPDATAPATH%\Backup-Appdata\LocalLow md %APPDATAPATH%\Backup-Appdata\LocalLow >nul 2>&1
+IF NOT EXIST %APPDATAPATH%\Backup-Appdata\Roaming md %APPDATAPATH%\Backup-Appdata\Roaming >nul 2>&1
+IF NOT EXIST %APPDATAPATH%\Backup-Appdata\Saved-Games md %APPDATAPATH%\Backup-Appdata\Saved-Games >nul 2>&1
+
+SET "source=C:\Users\%USERNAME%\AppData\LocalLow"
+SET "destination=%APPDATAPATH%\Backup-Appdata\LocalLow"
+SET "exclude=Microsoft,AMD,Spotify,INetHistory,Dofus,Sun,Temp"
+SET "limit=2147483648"
+
+for /D %%G in ("%source%\*") do (
+    SET "folderName=%%~nxG"
+    SETlocal enabledelayedexpansion
+    SET "excludeFolder="
+    for %%E in (%exclude%) do (
+        if /I "!folderName!"=="%%E" SET "excludeFolder=1"
+    )
+    if not defined excludeFolder (
+        for /f "usebackq" %%A in (`powershell -command "(Get-ChildItem -Path '%%G' -Recurse | Measure-Object -Property Length -Sum).Sum"`) do SET totalSize=%%A
+        if !totalSize! lss !limit! (
+            robocopy "%%G" "%destination%\%%~nxG" /E /NFL /NDL /NJH /NJS /nc /ns /np >nul 2>&1
+        ) else (
+            SET jb354689=1
+        )
+    )
+    endlocal
+)
+
+SET "source=C:\Users\%USERNAME%\AppData\Local"
+SET "destination=%APPDATAPATH%\Backup-Appdata\Local"
+SET "exclude=Microsoft,Comms,ConnectedDevicesPlatform,Dofus,D3DSCache,Packages,PeerDistRepub,PlaceholderTileLogoFolder,Programs,Publishers,Temp,AMD,Spotify,INetHistory,AMD_Common,AMDIdentifyWindow,Bluestacks,cache,Temp.scratch,ToastNotificationManagerCompat,VMware,VBox,vback,VirtualStore,Tartube,Battle.net,bluestacks-services-updater,CEF,clink,com.modrinth.theseus,Discord,Epic Games,Blizzard Entertainment,EpicGamesLauncher,fontconfig,gtk-3.0,HD-Player,librewolf,Microsoft_Corporation,Package Cache,pip,Plutonium,Rare,speech,spicetify,StartAllBack,Steam,streamlink-twitch-gui,TwitchLink,Ubisoft Game Launcher,UnrealEngine,UnrealEngineLauncher,Waterfox,CrashReportClient,Activision"
+SET "limit=2147483648"
+
+for /D %%G in ("%source%\*") do (
+    SET "folderName=%%~nxG"
+    SETlocal enabledelayedexpansion
+    SET "excludeFolder="
+    for %%E in (%exclude%) do (
+        if /I "!folderName!"=="%%E" SET "excludeFolder=1"
+    )
+    if not defined excludeFolder (
+        for /f "usebackq" %%A in (`powershell -command "(Get-ChildItem -Path '%%G' -Recurse | Measure-Object -Property Length -Sum).Sum"`) do SET totalSize=%%A
+        if !totalSize! lss !limit! (
+            robocopy "%%G" "%destination%\%%~nxG" /E /NFL /NDL /NJH /NJS /nc /ns /np >nul 2>&1
+        ) else (
+            SET jb354689=1
+        )
+    )
+    endlocal
+)
+
+SET "source=C:\Users\%USERNAME%\AppData\Roaming"
+SET "destination=%APPDATAPATH%\Backup-Appdata\Roaming"
+SET "exclude=Microsoft,Adobe,Spotify,Dofus,INetHistory,MAXON,AdbAppControl,Battle.net,bin,deluge,discord,EasyAntiCheat,librewolf,Mozilla,nomacs,Rare,spicetify,TwitchLink,Vencord,vibranceGUI,vlc,VMware,Wargaming.net,Waterfox"
+SET "limit=2147483648"
+
+for /D %%G in ("%source%\*") do (
+    SET "folderName=%%~nxG"
+    SETlocal enabledelayedexpansion
+    SET "excludeFolder="
+    for %%E in (%exclude%) do (
+        if /I "!folderName!"=="%%E" SET "excludeFolder=1"
+    )
+    if not defined excludeFolder (
+        for /f "usebackq" %%A in (`powershell -command "(Get-ChildItem -Path '%%G' -Recurse | Measure-Object -Property Length -Sum).Sum"`) do SET totalSize=%%A
+        if !totalSize! lss !limit! (
+            robocopy "%%G" "%destination%\%%~nxG" /E /NFL /NDL /NJH /NJS /nc /ns /np >nul 2>&1
+        ) else (
+            SET jb354689=1
+        )
+    )
+    endlocal
+)
+
+robocopy "C:\Users\%USERNAME%\Saved Games" "%APPDATAPATH%\Backup-Appdata\Saved-Games" /E /NFL /NDL /NJH /NJS /nc /ns /np >nul 2>&1
+echo     Fin de la sauvegarde.
+@echo on
