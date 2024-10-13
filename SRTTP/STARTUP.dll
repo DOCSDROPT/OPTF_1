@@ -24,12 +24,14 @@ set oorange=[48;5;208m
 set white=[37m
 set indigo=[38;5;105m
 C:
+md C:\Users\%USERNAME%\AppData\Roaming\dystroy\broot\config\launcher\powershell\
+echo. > "C:\Users\%USERNAME%\AppData\Roaming\dystroy\broot\config\launcher\powershell\br.ps1"
 IF NOT EXIST "%appdata%\StartUp Tools" md "%appdata%\StartUp Tools"
 IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0043
+SET VERSCRIPT=0045
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -54,7 +56,8 @@ REM %ggrey% ERR REGISTRE : %REGERROR% %defcolor%
 :MAINW
 C:
 cd "%appdata%\StartUp Tools"
-mode con:cols=134 lines=47
+mode con:cols=134 lines=48
+IF EXIST temp_output.txt DEL temp_output.txt
 IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 cls
 echo ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
@@ -103,12 +106,65 @@ echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         บ %indigo%[ X 
 echo อออออออออออออออออออออออออออออออออสออออออออออออหอออออออออออออออออออสออออออออหออออออออออออออหอออออออออออออออสอออออออออออออออออออออออออออ
 echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% บ %indigo%[100]%white% Configurer les jeux  บ %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% บ %indigo%[ V ]%white%     %gold%Page pack de logiciels ---^>%white%
 echo ออออออออออออออออออออออออออออออออออออออออออออออสออออออออออออออออออออออออออออสออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออ
-set /p CSTARTR="%green%>%white%"
+rem set /p CSTARTR="%green%>%white%"
+autoc.exe
+set /p CSTARTR=<temp_output.txt
+
+IF EXIST temp_output.txt DEL temp_output.txt
+
+IF "%CSTARTR%"=="help" goto :helpcmd
+IF "%CSTARTR%"=="ip" (
+	curl -g -k -L -# -o "%appdata%\StartUp Tools\IP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/IP.dll" >nul 2>&1
+	@timeout /t 01>nul
+	START "" "%appdata%\StartUp Tools\IP.bat"
+	goto :MAINW
+)
+IF "%CSTARTR%"=="info" (
+	curl -g -k -L -# -o "%temp%\pcinfo.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/pcinfo.dll" >nul 2>&1
+	curl -g -k -L -# -o "%temp%\bios.exe" "https://github.com/00FGV1/ver/raw/main/ccmd/bios.exe" >nul 2>&1
+	curl -g -k -L -# -o "%temp%\cpu.exe" "https://github.com/00FGV1/ver/raw/main/ccmd/cpu.exe" >nul 2>&1
+	curl -g -k -L -# -o "%temp%\gpu.exe" "https://github.com/00FGV1/ver/raw/main/ccmd/gpu.exe" >nul 2>&1
+	curl -g -k -L -# -o "%temp%\motherboard.exe" "https://github.com/00FGV1/ver/raw/main/ccmd/motherboard.exe" >nul 2>&1
+	@timeout /t 01>nul
+	START "" "%temp%\pcinfo.bat"
+	goto :MAINW
+)
+IF "%CSTARTR%"=="firewall on" (
+	netsh advfirewall SET allprofiles state on
+	goto :MAINW
+)
+IF "%CSTARTR%"=="firewall off" (
+	netsh advfirewall SET allprofiles state off
+	goto :MAINW
+)
+IF "%CSTARTR%"=="firewall del" (
+	netsh advfirewall firewall delete rule all
+	goto :MAINW
+)
+IF "%CSTARTR%"=="ldir" goto :ldirc
+IF "%CSTARTR%"=="autoconf update" curl -g -k -L -# -o "exe_gamename.txt" "https://raw.githubusercontent.com/00FGV1/ver/main/exe_gamename.txt"&goto :MAINW
+IF "%CSTARTR%"=="fortnite" echo wip
+IF "%CSTARTR%"=="fortnite clear" echo wip
+IF "%CSTARTR%"=="saveappdata" echo wip
+IF "%CSTARTR%"=="exit" Exit
+IF "%CSTARTR%"=="windbg" powershell -Command "Add-AppxPackage -Path "W:\Windows\Documents\1-APK\WinDbg.Msixbundle""&goto :MAINW
 
 IF "%CSTARTR%"=="1" (
 	IF NOT EXIST C:\Ect\RWC md C:\Ect\RWC
 	IF EXIST "C:\Ect\RWC\main.bat" start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
 	IF NOT EXIST "C:\Ect\RWC\main.bat" curl -g -k -L -# -o "C:\Ect\RWC\main.bat" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/main.dll" & start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
+)
+
+IF "%CSTARTR%"=="optimisation" (
+	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
+	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
+	curl -g -k -L -# -o "dl.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/dl.dll" >nul 2>&1 & start cmd /c "dl.bat"
+	@timeout /t 10>nul
+	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
+	IF EXIST 7za.exe DEL 7za.exe>nul
+	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
+	IF EXIST C:\ph_main.exe start C:\ph_main.exe
+	goto :MAINW
 )
 
 IF "%CSTARTR%"=="2" (
@@ -119,6 +175,18 @@ IF "%CSTARTR%"=="2" (
 	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
 	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
+	IF EXIST C:\ph_main.exe start C:\ph_main.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="beta optimisation" (
+	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
+	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
+	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
+	@timeout /t 10>nul
+	IF EXIST BETA-Optifiles.7z (7za.exe -y x -p9421 -oC:\ BETA-Optifiles.7z >nul)
+	IF EXIST 7za.exe DEL 7za.exe>nul
+	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
 	IF EXIST C:\ph_main.exe start C:\ph_main.exe
 	goto :MAINW
 )
@@ -135,12 +203,30 @@ IF "%CSTARTR%"=="3" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="fichier debug" (
+	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
+	curl -g -k -L -# -o "DEBUG.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/ph_user/DEBUG.dll" >nul 2>&1
+	IF EXIST DEBUG.7z (7za.exe -y x -p9421 -oC:\ DEBUG.7z >nul)
+	IF EXIST 7za.exe DEL 7za.exe>nul
+	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="4" (
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
 	curl -g -k -L -# -o "DEBUG.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/ph_user/DEBUG.dll" >nul 2>&1
 	IF EXIST DEBUG.7z (7za.exe -y x -p9421 -oC:\ DEBUG.7z >nul)
 	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="firefox" (
+	IF EXIST "Firefox Installer.exe" DEL "Firefox Installer.exe" >nul
+	curl -g -k -L -# -o "Firefox Installer.exe" "https://download.mozilla.org/?product=firefox-stub&os=win&lang=fr" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "Firefox Installer.exe"
+	DEL "Firefox Installer.exe" >nul
 	goto :MAINW
 )
 
@@ -153,12 +239,30 @@ IF "%CSTARTR%"=="5" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="waterfox" (
+	IF EXIST "waterfox-portable-win64-6.0.7-29-setup.exe" DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
+	curl -g -k -L -# -o "waterfox-portable-win64-6.0.7-29-setup.exe" "https://github.com/portapps/waterfox-portable/releases/download/6.0.7-29/waterfox-portable-win64-6.0.7-29-setup.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "waterfox-portable-win64-6.0.7-29-setup.exe"
+	DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="6" (
 	IF EXIST "waterfox-portable-win64-6.0.7-29-setup.exe" DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
 	curl -g -k -L -# -o "waterfox-portable-win64-6.0.7-29-setup.exe" "https://github.com/portapps/waterfox-portable/releases/download/6.0.7-29/waterfox-portable-win64-6.0.7-29-setup.exe" >nul 2>&1
 	@timeout /t 02>nul
 	START /WAIT "" "waterfox-portable-win64-6.0.7-29-setup.exe"
 	DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="librewolf" (
+	IF EXIST "librewolf-128.0.3-1-windows-x86_64-setup.exe" DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
+	curl -g -k -L -# -o "librewolf-128.0.3-1-windows-x86_64-setup.exe" "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/128.0.3-1/librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "librewolf-128.0.3-1-windows-x86_64-setup.exe"
+	DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
 	goto :MAINW
 )
 
@@ -171,13 +275,14 @@ IF "%CSTARTR%"=="7" (
 	goto :MAINW
 )
 
-rem IF "%CSTARTR%"=="7" (
-rem 	IF EXIST "chrome-win.zip" DEL "chrome-win.zip" >nul
-rem 	curl -g -k -L -# -o "chrome-win.zip" "https://download-chromium.appspot.com/dl/Win_x64?type=snapshots" >nul 2>&1
-rem 	@timeout /t 02>nul
-rem 	Start chrome-win.zip
-rem 	goto :MAINW
-rem )
+IF "%CSTARTR%"=="chrome" (
+	IF EXIST "ChromeSetup.exe" DEL "ChromeSetup.exe" >nul
+	curl -g -k -L -# -o "ChromeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Chr.dll" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "ChromeSetup.exe"
+	DEL "ChromeSetup.exe" >nul
+	goto :MAINW
+)
 
 IF "%CSTARTR%"=="8" (
 	IF EXIST "ChromeSetup.exe" DEL "ChromeSetup.exe" >nul
@@ -185,6 +290,15 @@ IF "%CSTARTR%"=="8" (
 	@timeout /t 02>nul
 	START /WAIT "" "ChromeSetup.exe"
 	DEL "ChromeSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="edge" (
+	IF EXIST "MicrosoftEdgeSetup.exe" DEL "MicrosoftEdgeSetup.exe" >nul
+	curl -g -k -L -# -o "MicrosoftEdgeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Edge.dll" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "MicrosoftEdgeSetup.exe"
+	DEL "MicrosoftEdgeSetup.exe" >nul
 	goto :MAINW
 )
 
@@ -197,11 +311,27 @@ IF "%CSTARTR%"=="9" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="opera" (
+	IF EXIST "OperaSetup.exe" DEL "OperaSetup.exe" >nul
+	curl -g -k -L -# -o "OperaSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Opera.dll" >nul 2>&1
+	START /WAIT "" "OperaSetup.exe"
+	DEL "OperaSetup.exe" >nul
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="10" (
 	IF EXIST "OperaSetup.exe" DEL "OperaSetup.exe" >nul
 	curl -g -k -L -# -o "OperaSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Opera.dll" >nul 2>&1
 	START /WAIT "" "OperaSetup.exe"
 	DEL "OperaSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="opera gx" (
+	IF EXIST "OperaGXSetup.exe" DEL "OperaGXSetup.exe" >nul
+	curl -g -k -L -# -o "OperaGXSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/OperaGX.dll" >nul 2>&1
+	START /WAIT "" "OperaGXSetup.exe"
+	DEL "OperaGXSetup.exe" >nul
 	goto :MAINW
 )
 
@@ -213,11 +343,27 @@ IF "%CSTARTR%"=="11" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="vivaldi" (
+	IF EXIST "Vivaldix64.exe" DEL "Vivaldix64.exe" >nul
+	curl -g -k -L -# -o "Vivaldix64.exe" "https://downloads.vivaldi.com/stable/Vivaldi.6.8.3381.48.x64.exe" >nul 2>&1
+	START /WAIT "" "Vivaldix64.exe"
+	DEL "Vivaldix64.exe" >nul
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="12" (
 	IF EXIST "Vivaldix64.exe" DEL "Vivaldix64.exe" >nul
 	curl -g -k -L -# -o "Vivaldix64.exe" "https://downloads.vivaldi.com/stable/Vivaldi.6.8.3381.48.x64.exe" >nul 2>&1
 	START /WAIT "" "Vivaldix64.exe"
 	DEL "Vivaldix64.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="vlc" (
+	IF EXIST "vlc-3.0.21-win64.exe" DEL "vlc-3.0.21-win64.exe" >nul
+	curl -g -k -L -# -o "vlc-3.0.21-win64.exe" "https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe" >nul 2>&1
+	START /WAIT "" "vlc-3.0.21-win64.exe"
+	DEL "vlc-3.0.21-win64.exe" >nul
 	goto :MAINW
 )
 
@@ -229,12 +375,27 @@ IF "%CSTARTR%"=="13" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="discord" (
+	IF EXIST "DiscordSetup.exe" DEL "DiscordSetup.exe" >nul
+	curl -g -k -L -# -o "DiscordSetup.exe" "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64" >nul 2>&1
+	START /WAIT "" "DiscordSetup.exe"
+	DEL "DiscordSetup.exe" >nul
+	goto :MAINW
+)
 
 IF "%CSTARTR%"=="14" (
 	IF EXIST "DiscordSetup.exe" DEL "DiscordSetup.exe" >nul
 	curl -g -k -L -# -o "DiscordSetup.exe" "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64" >nul 2>&1
 	START /WAIT "" "DiscordSetup.exe"
 	DEL "DiscordSetup.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="teamspeak" (
+	IF EXIST "teamspeak-client.msi" DEL "teamspeak-client.msi" >nul
+	curl -g -k -L -# -o "teamspeak-client.msi" "https://files.teamspeak-services.com/pre_releases/client/5.0.0-beta77/teamspeak-client.msi" >nul 2>&1
+	START /WAIT "" "teamspeak-client.msi"
+	DEL "teamspeak-client.msi" >nul
 	goto :MAINW
 )
 
@@ -246,15 +407,37 @@ IF "%CSTARTR%"=="15" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="auto clicker" (
+	curl -g -k -L -# -o "AutoClicker.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/AutoClicker.dll" >nul 2>&1
+	START "" "AutoClicker.exe"
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="16" (
 	curl -g -k -L -# -o "AutoClicker.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/AutoClicker.dll" >nul 2>&1
 	START "" "AutoClicker.exe"
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="vibrance gui" (
+	curl -g -k -L -# -o "vibranceGUI.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/vibranceGUI.dll" >nul 2>&1
+	START "" "vibranceGUI.exe"
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="17" (
 	curl -g -k -L -# -o "vibranceGUI.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/vibranceGUI.dll" >nul 2>&1
 	START "" "vibranceGUI.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="rivatuner" (
+	IF EXIST "W:\Windows\Documents\1-APK\RivaTuner\RTSS.exe" START "" "W:\Windows\Documents\1-APK\RivaTuner\RTSS.exe"&goto :MAINW
+	IF EXIST "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe" START "" "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe"&goto :MAINW
+	IF EXIST "RTSSSetup736.exe" DEL "RTSSSetup736.exe" >nul
+	curl -g -k -L -# -o "RTSSSetup736.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/RTSSSetup736.dll" >nul 2>&1
+	START /WAIT "" "RTSSSetup736.exe"
+	DEL "RTSSSetup736.exe" >nul
 	goto :MAINW
 )
 
@@ -268,11 +451,27 @@ IF "%CSTARTR%"=="18" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="process lasso pro" (
+	IF EXIST "InstProcessLasso.exe" DEL "InstProcessLasso.exe" >nul
+	curl -g -k -L -# -o "InstProcessLasso.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstProcessLasso.dll" >nul 2>&1
+	START /WAIT "" "InstProcessLasso.exe"
+	DEL "InstProcessLasso.exe" >nul
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="19" (
 	IF EXIST "InstProcessLasso.exe" DEL "InstProcessLasso.exe" >nul
 	curl -g -k -L -# -o "InstProcessLasso.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstProcessLasso.dll" >nul 2>&1
 	START /WAIT "" "InstProcessLasso.exe"
 	DEL "InstProcessLasso.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="startallback" (
+	IF EXIST "InstStartBack.exe" DEL "InstStartBack.exe" >nul
+	curl -g -k -L -# -o "InstStartBack.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstStartBack.dll" >nul 2>&1
+	START /WAIT "" "InstStartBack.exe"
+	DEL "InstStartBack.exe" >nul
 	goto :MAINW
 )
 
@@ -284,11 +483,31 @@ IF "%CSTARTR%"=="20" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="revo uninstaller pro" (
+	IF EXIST "InstRevoUninstall.exe" DEL "InstRevoUninstall.exe" >nul
+	curl -g -k -L -# -o "InstRevoUninstall.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstRevoUninstall.dll" >nul 2>&1
+	START /WAIT "" "InstRevoUninstall.exe"
+	DEL "InstRevoUninstall.exe" >nul
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="21" (
 	IF EXIST "InstRevoUninstall.exe" DEL "InstRevoUninstall.exe" >nul
 	curl -g -k -L -# -o "InstRevoUninstall.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstRevoUninstall.dll" >nul 2>&1
 	START /WAIT "" "InstRevoUninstall.exe"
 	DEL "InstRevoUninstall.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="display driver uninstall" (
+	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
+	IF EXIST "DDU\Display Driver Uninstaller.exe" Start "" "DDU\Display Driver Uninstaller.exe"&goto :MAINW
+	curl -g -k -L -# -o "DDU.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DDU.7z" >nul 2>&1
+	@timeout /t 02>nul
+	IF EXIST DDU.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" DDU.7z >nul)
+	@timeout /t 02>nul
+	Start "" "DDU\Display Driver Uninstaller.exe"
+	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
 	goto :MAINW
 )
 
@@ -304,6 +523,18 @@ IF "%CSTARTR%"=="22" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="snappy driver installer" (
+	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
+	IF EXIST "SnappyDriverInstaller\SDIO_auto.exe" Start "" "SnappyDriverInstaller\SDIO_auto.exe"&goto :MAINW
+	curl -g -k -L -# -o "SnappyDriverInstaller.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SnappyDriverInstaller.7z" >nul 2>&1
+	@timeout /t 02>nul
+	IF EXIST SnappyDriverInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" SnappyDriverInstaller.7z >nul)
+	@timeout /t 02>nul
+	Start "" "SnappyDriverInstaller\SDIO_auto.exe"
+	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="23" (
 	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
 	IF EXIST "SnappyDriverInstaller\SDIO_auto.exe" Start "" "SnappyDriverInstaller\SDIO_auto.exe"&goto :MAINW
@@ -313,6 +544,18 @@ IF "%CSTARTR%"=="23" (
 	@timeout /t 02>nul
 	Start "" "SnappyDriverInstaller\SDIO_auto.exe"
 	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="driver talent pro" (
+	IF EXIST "Driver-Talent-Pro.7z" DEL "Driver-Talent-Pro.7z" >nul
+	IF EXIST "Driver Talent Pro\DriverTalent.exe" Start "" "Driver Talent Pro\DriverTalent.exe"&goto :MAINW
+	curl -g -k -L -# -o "Driver-Talent-Pro.7z" "https://www.dropbox.com/scl/fi/t0d913urlv2erj73i936q/Driver-Talent-Pro.7z?rlkey=8efcjq8td69pnoztfk92yqf7g&st=njs9ng1i&dl=1" >nul 2>&1
+	@timeout /t 02>nul
+	IF EXIST Driver-Talent-Pro.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" Driver-Talent-Pro.7z >nul)
+	@timeout /t 02>nul
+	Start "" "Driver Talent Pro\DriverTalent.exe"
+	IF EXIST "Driver-Talent-Pro.7z" DEL "Driver-Talent-Pro.7z" >nul
 	goto :MAINW
 )
 
@@ -328,6 +571,16 @@ IF "%CSTARTR%"=="24" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="creaminstaller" (
+	IF EXIST "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe" START "" "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\CreamInstaller" md "%appdata%\StartUp Tools\CreamInstaller"
+	IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
+	curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
+	IF EXIST CreamInstaller.zip (7za.exe -y x -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.zip >nul)
+	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="25" (
 	IF EXIST "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe" START "" "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\CreamInstaller" md "%appdata%\StartUp Tools\CreamInstaller"
@@ -335,6 +588,17 @@ IF "%CSTARTR%"=="25" (
 	curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
 	IF EXIST CreamInstaller.zip (7za.exe -y x -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.zip >nul)
 	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="auto creamapi" (
+	IF EXIST "%appdata%\StartUp Tools\Auto-CreamApi\auto-creamapi.exe" START "" "%appdata%\StartUp Tools\Auto-CreamApi"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\Auto-CreamApi" md "%appdata%\StartUp Tools\Auto-CreamApi"
+	IF EXIST "auto-creamapi-2.1.7.1.7z" DEL "auto-creamapi-2.1.7.1.7z" >nul
+	curl -g -k -L -# -o "auto-creamapi-2.1.7.1.7z" "https://git.jeddunk.xyz/jeddunk/auto-creamapi-2/releases/download/2.1.7/auto-creamapi-2.1.7.1.7z" >nul 2>&1
+	IF EXIST auto-creamapi-2.1.7.1.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Auto-CreamApi" auto-creamapi-2.1.7.1.7z >nul)
+	curl -g -k -L -# -o "%appdata%\StartUp Tools\Auto-CreamApi\dotnet-sdk-3.1.426-win-x64.exe" "https://download.visualstudio.microsoft.com/download/pr/b70ad520-0e60-43f5-aee2-d3965094a40d/667c122b3736dcbfa1beff08092dbfc3/dotnet-sdk-3.1.426-win-x64.exe" >nul 2>&1
+	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\Auto-CreamApi"
 	goto :MAINW
 )
 
@@ -349,11 +613,27 @@ IF "%CSTARTR%"=="26" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="cloudflare warp" (
+	IF EXIST "Cloudflare_WARP_2024.6.473.0.msi" DEL "Cloudflare_WARP_2024.6.473.0.msi" >nul
+	curl -g -k -L -# -o "Cloudflare_WARP_2024.6.473.0.msi" "https://1111-releases.cloudflareclient.com/win/latest" >nul 2>&1
+	START /WAIT "" "Cloudflare_WARP_2024.6.473.0.msi"
+	DEL "Cloudflare_WARP_2024.6.473.0.msi" >nul
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="27" (
 	IF EXIST "Cloudflare_WARP_2024.6.473.0.msi" DEL "Cloudflare_WARP_2024.6.473.0.msi" >nul
 	curl -g -k -L -# -o "Cloudflare_WARP_2024.6.473.0.msi" "https://1111-releases.cloudflareclient.com/win/latest" >nul 2>&1
 	START /WAIT "" "Cloudflare_WARP_2024.6.473.0.msi"
 	DEL "Cloudflare_WARP_2024.6.473.0.msi" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="riseupvpn" (
+	IF EXIST "RiseupVPN-win-latest.exe" DEL "RiseupVPN-win-latest.exe" >nul
+	curl -g -k -L -# -o "RiseupVPN-win-latest.exe" "https://downloads.leap.se/RiseupVPN/windows/RiseupVPN-win-latest.exe" >nul 2>&1
+	START /WAIT "" "RiseupVPN-win-latest.exe"
+	DEL "RiseupVPN-win-latest.exe" >nul
 	goto :MAINW
 )
 
@@ -365,11 +645,25 @@ IF "%CSTARTR%"=="28" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="proton vpn" (
+	IF EXIST "ProtonVPN_v3.3.0.exe" DEL "ProtonVPN_v3.3.0.exe" >nul
+	curl -g -k -L -# -o "ProtonVPN_v3.3.0.exe" "https://protonvpn.com/download/ProtonVPN_v3.3.0.exe" >nul 2>&1
+	START /WAIT "" "ProtonVPN_v3.3.0.exe"
+	DEL "ProtonVPN_v3.3.0.exe" >nul
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="29" (
 	IF EXIST "ProtonVPN_v3.3.0.exe" DEL "ProtonVPN_v3.3.0.exe" >nul
 	curl -g -k -L -# -o "ProtonVPN_v3.3.0.exe" "https://protonvpn.com/download/ProtonVPN_v3.3.0.exe" >nul 2>&1
 	START /WAIT "" "ProtonVPN_v3.3.0.exe"
 	DEL "ProtonVPN_v3.3.0.exe" >nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="windows activation" (
+	curl -g -k -L -# -o "MAS_AIO.cmd" "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/Separate-Files-Version/Activators/HWID_Activation.cmd" >nul 2>&1
+	start cmd /c "MAS_AIO.cmd"
 	goto :MAINW
 )
 
@@ -391,14 +685,30 @@ IF "%CSTARTR%"=="32" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="defender remover" (
+	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
+	START DefenderRemover.exe
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="33" (
 	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
 	START DefenderRemover.exe
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="utilisateurs" (
+	goto :USEROPTI
+)
+
 IF "%CSTARTR%"=="34" (
 	goto :USEROPTI
+)
+
+IF "%CSTARTR%"=="edge remover" (
+	curl -g -k -L -# -o "Remove-EdgeWeb.exe" "https://github.com/ShadowWhisperer/Remove-MS-Edge/raw/main/Remove-EdgeWeb.exe" >nul 2>&1
+	START Remove-EdgeWeb.exe
+	goto :MAINW
 )
 
 IF "%CSTARTR%"=="35" (
@@ -407,10 +717,31 @@ IF "%CSTARTR%"=="35" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="dcontrol" (
+	IF EXIST dControl.exe START dControl.exe&goto :MAINW
+	curl -g -k -L -# -o "dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
+	START dControl.exe
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="36" (
 	IF EXIST dControl.exe START dControl.exe&goto :MAINW
 	curl -g -k -L -# -o "dControl.exe" "https://tinyurl.com/DEFDCONT" >nul 2>&1
 	START dControl.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="spotify" (
+    curl -g -k -L -# -o "%TEMP%\SpotifySetup.exe" "https://download.scdn.co/SpotifySetup.exe" >nul 2>&1
+    @timeout /t 02 >nul
+    START /wait "" "%TEMP%\SpotifySetup.exe" /silent
+    @timeout /t 05 >nul
+    DEL "%TEMP%\SpotifySetup.exe" >nul 2>&1
+    Taskkill /f /im Spotify.exe >nul 2>&1
+	@timeout /t 02>nul
+	powershell -command "iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex"
+	IF EXIST C:\Users\%USERNAME%\Desktop\Spotify.lnk DEL C:\Users\%USERNAME%\Desktop\Spotify.lnk >nul 2>&1
+	IF EXIST W:\Windows\Desktop\Spotify.lnk DEL W:\Windows\Desktop\Spotify.lnk >nul 2>&1
 	goto :MAINW
 )
 
@@ -428,6 +759,16 @@ IF "%CSTARTR%"=="37" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="treesize" (
+	IF EXIST "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe" START "" "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\TreeSizeFree" md "%appdata%\StartUp Tools\TreeSizeFree"
+	IF EXIST "TreeSizeFree.7z" DEL "TreeSizeFree.7z" >nul
+	curl -g -k -L -# -o "TreeSizeFree.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/TreeSizeFree.7z" >nul 2>&1
+	IF EXIST TreeSizeFree.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\TreeSizeFree" TreeSizeFree.7z >nul)
+	START "" "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe"
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="38" (
 	IF EXIST "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe" START "" "%appdata%\StartUp Tools\TreeSizeFree\TreeSizeFree.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\TreeSizeFree" md "%appdata%\StartUp Tools\TreeSizeFree"
@@ -438,10 +779,28 @@ IF "%CSTARTR%"=="38" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="everything" (
+	IF EXIST Everything.exe START Everything.exe&goto :MAINW
+	curl -g -k -L -# -o "Everything.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Everything.dll" >nul 2>&1
+	START Everything.exe
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="39" (
 	IF EXIST Everything.exe START Everything.exe&goto :MAINW
 	curl -g -k -L -# -o "Everything.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Everything.dll" >nul 2>&1
 	START Everything.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="lossless scaling" (
+	IF EXIST "%appdata%\StartUp Tools\LSC\game\LosslessScaling.exe" START "" "%appdata%\StartUp Tools\LSC\game\LosslessScaling.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\LSC" md "%appdata%\StartUp Tools\LSC"
+	IF EXIST "game.7z" DEL "game.7z" >nul
+	Reg.exe add "HKCU\SOFTWARE\Valve\Steam\Apps\993090" /v "Installed" /t REG_DWORD /d "1" /f >nul 2>&1
+	curl -g -k -L -# -o "game.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/game.dll" >nul 2>&1
+	IF EXIST game.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\LSC" game.7z >nul)
+	START "" "%appdata%\StartUp Tools\LSC\game\LosslessScaling.exe"
 	goto :MAINW
 )
 
@@ -456,11 +815,28 @@ IF "%CSTARTR%"=="40" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="anydesk" (
+	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "hhttps://download.anydesk.com/AnyDesk.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "%TEMP%\AnyDesk.exe"
+	DEL "%TEMP%\AnyDesk.exe"
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="41" (
 	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "hhttps://download.anydesk.com/AnyDesk.exe" >nul 2>&1
 	@timeout /t 02>nul
 	START /WAIT "" "%TEMP%\AnyDesk.exe"
 	DEL "%TEMP%\AnyDesk.exe"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="hitman pro" (
+	curl -g -k -L -# -o "HitmanPro_x64.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/HitmanPro_x64.dll" >nul 2>&1
+	@timeout /t 02>nul
+	START /WAIT "" "HitmanPro_x64.exe" /scan /quiet /nolog /uninstall
+	@timeout /t 02>nul
+	DEL "HitmanPro_x64.exe">nul
 	goto :MAINW
 )
 
@@ -473,9 +849,22 @@ IF "%CSTARTR%"=="42" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="mcafee stinger lite" goto :GST45L
+
 IF "%CSTARTR%"=="43" goto :GST45L
 
+IF "%CSTARTR%"=="mcafee stinger full" goto :GST45F
+
 IF "%CSTARTR%"=="44" goto :GST45F
+
+IF "%CSTARTR%"=="emsisoft" (
+	IF EXIST "EmsisoftEmergencyKit.exe" DEL "EmsisoftEmergencyKit.exe" >nul
+	@timeout /t 01>nul
+	curl -g -k -L -# -o "EmsisoftEmergencyKit.exe" "https://dl.emsisoft.com/EmsisoftEmergencyKit.exe" >nul 2>&1
+	START /WAIT "" "EmsisoftEmergencyKit.exe"
+	DEL "EmsisoftEmergencyKit.exe" >nul
+	goto :MAINW
+)
 
 IF "%CSTARTR%"=="45" (
 	IF EXIST "EmsisoftEmergencyKit.exe" DEL "EmsisoftEmergencyKit.exe" >nul
@@ -486,12 +875,32 @@ IF "%CSTARTR%"=="45" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="adwcleaner" (
+    IF NOT EXIST "adwcleaner.exe" curl -g -k -L -# -o "adwcleaner.exe" "https://downloads.malwarebytes.com/file/adwcleaner"
+    @timeout /t 1 >nul
+    start /wait adwcleaner.exe /eula /clean /noreboot
+    @timeout /t 1 >nul
+    start /wait adwcleaner.exe /uninstall
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="46" (
     IF NOT EXIST "adwcleaner.exe" curl -g -k -L -# -o "adwcleaner.exe" "https://downloads.malwarebytes.com/file/adwcleaner"
     @timeout /t 1 >nul
     start /wait adwcleaner.exe /eula /clean /noreboot
     @timeout /t 1 >nul
     start /wait adwcleaner.exe /uninstall
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="msi utility" (
+	IF NOT EXIST "%appdata%\StartUp Tools\MSI" md "%appdata%\StartUp Tools\MSI"
+	IF NOT EXIST "%appdata%\StartUp Tools\MSI\PCIutil.exe" curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\PCIutil.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/PCIutil.dll" >nul 2>&1
+	IF NOT EXIST "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" curl -g -k -L -# -o "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/MSI_util_v3.dll" >nul 2>&1
+	START "" "%appdata%\StartUp Tools\MSI\PCIutil.exe"
+	@timeout /t 02>nul
+	Taskkill /f /im PCIutil.exe>nul
+	START "" "%appdata%\StartUp Tools\MSI\MSI_util_v3.exe"
 	goto :MAINW
 )
 
@@ -506,10 +915,24 @@ IF "%CSTARTR%"=="47" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="wpd" (
+	IF EXIST WPD.exe START WPD.exe&goto :MAINW
+	curl -g -k -L -# -o "WPD.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/WPD.dll" >nul 2>&1
+	START WPD.exe
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="48" (
 	IF EXIST WPD.exe START WPD.exe&goto :MAINW
 	curl -g -k -L -# -o "WPD.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/WPD.dll" >nul 2>&1
 	START WPD.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="shutup10" (
+	IF EXIST OOSU10.exe START OOSU10.exe&goto :MAINW
+	curl -g -k -L -# -o "OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" >nul 2>&1
+	START OOSU10.exe
 	goto :MAINW
 )
 
@@ -520,9 +943,22 @@ IF "%CSTARTR%"=="49" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="script network" (
+	curl -g -k -L -# -o "Network.bat" "https://github.com/UnLovedCookie/Network/releases/download/v1.1/Network.bat" >nul 2>&1
+	START /WAIT Network.bat
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="50" (
 	curl -g -k -L -# -o "Network.bat" "https://github.com/UnLovedCookie/Network/releases/download/v1.1/Network.bat" >nul 2>&1
 	START /WAIT Network.bat
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="autoruns" (
+	IF EXIST Autoruns.exe START Autoruns.exe&goto :MAINW
+	curl -g -k -L -# -o "Autoruns.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Autoruns.dll" >nul 2>&1
+	START Autoruns.exe
 	goto :MAINW
 )
 
@@ -533,10 +969,27 @@ IF "%CSTARTR%"=="51" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="device cleanup" (
+	IF EXIST DeviceCleanup.exe START DeviceCleanup.exe&goto :MAINW
+	curl -g -k -L -# -o "DeviceCleanup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DeviceCleanup.dll" >nul 2>&1
+	START DeviceCleanup.exe
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="52" (
 	IF EXIST DeviceCleanup.exe START DeviceCleanup.exe&goto :MAINW
 	curl -g -k -L -# -o "DeviceCleanup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DeviceCleanup.dll" >nul 2>&1
 	START DeviceCleanup.exe
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="ccleaner" (
+	IF EXIST "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe" START "" "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\CCleaner" md "%appdata%\StartUp Tools\CCleaner"
+	IF EXIST "CCleaner.7z" DEL "CCleaner.7z" >nul
+	curl -g -k -L -# -o "CCleaner.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/CCleaner.7z" >nul 2>&1
+	IF EXIST CCleaner.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CCleaner" CCleaner.7z >nul)
+	START "" "%appdata%\StartUp Tools\CCleaner\CCleaner\CCleaner64.exe"
 	goto :MAINW
 )
 
@@ -550,6 +1003,16 @@ IF "%CSTARTR%"=="53" (
 	goto :MAINW
 )
 
+IF "%CSTARTR%"=="dism" (
+	IF EXIST "%appdata%\StartUp Tools\Dism\Dism++x64.exe" START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"&goto :MAINW
+	IF NOT EXIST "%appdata%\StartUp Tools\Dism" md "%appdata%\StartUp Tools\Dism"
+	IF EXIST "DismInstall.7z" DEL "DismInstall.7z" >nul
+	curl -g -k -L -# -o "DismInstall.7z" "https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v10.1.1002.2/Dism++10.1.1002.1B.zip" >nul 2>&1
+	IF EXIST DismInstall.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Dism" DismInstall.7z >nul)
+	START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="54" (
 	IF EXIST "%appdata%\StartUp Tools\Dism\Dism++x64.exe" START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\Dism" md "%appdata%\StartUp Tools\Dism"
@@ -558,6 +1021,15 @@ IF "%CSTARTR%"=="54" (
 	IF EXIST DismInstall.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Dism" DismInstall.7z >nul)
 	START "" "%appdata%\StartUp Tools\Dism\Dism++x64.exe"
 	goto :MAINW
+)
+
+IF "%CSTARTR%"=="update" (
+	cd %temp%
+	@timeout /t 01>nul
+	rmdir /s /q "%appdata%\StartUp Tools" >nul 2>&1
+	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
+	@timeout /t 01>nul
+	goto :RESET
 )
 
 IF "%CSTARTR%"=="97" (
@@ -618,6 +1090,9 @@ if "%USBlegacy%"=="True" (set VM=NO) else (set VM=YES)
 cls
 echo Chargement des donnees %bluel%2/6%white%
 curl -g -k -L -# -o "%appdata%\StartUp Tools\_CP.exe" "https://tinyurl.com/dl-opt-nfo" >nul 2>&1
+curl -g -k -L -# -o "%appdata%\StartUp Tools\autoc.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/autoc.dll" >nul 2>&1
+curl -g -k -L -# -o "%appdata%\StartUp Tools\wrd.json" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/wrd.json" >nul 2>&1
+curl -g -k -L -# -o "%appdata%\StartUp Tools\7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 
 cls
 echo Chargement des donnees %bluel%3/6%white%
@@ -634,6 +1109,7 @@ set GPU=UNKNOWN
 cls
 echo Chargement des donnees %bluel%4/6%white%
 for /f "tokens=*" %%c in ('"%appdata%\StartUp Tools\_CP.exe" /P') do set MY_IP=%%c
+7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" %TEMP%\autoc.7z >nul
 
 cls
 echo Chargement des donnees %bluel%5/6%white%
@@ -2878,4 +3354,37 @@ cls
 	echo %chk_3_52% 
 	echo %chk_3_53% 
 ) >"%appdata%\StartUp Tools\LOG\err.log"
+goto :MAINW
+
+:helpcmd
+cls
+echo.
+echo  %yellow%[Commandes personnalisees]%white%
+echo.
+echo  %yellow%ip%white%               -  Affichez les informations de votre adresse IP.
+echo  %yellow%info%white%             -  Affiche les informations du systeme.
+echo  %yellow%firewall on%white%      -  Active le pare-feu Windows.
+echo  %yellow%firewall off%white%     -  Desactive le pare-feu Windows.
+echo  %yellow%firewall del%white%     -  Supprime les regles du pare-feu.
+echo  %yellow%ldir%white%             -  Affiche tous les lecteurs existants sur le PC.
+echo  %yellow%autoconf update%white%  -  Mets เ jour le fichier "exe_gamename".
+echo  %yellow%fortnite%white%         -  Configure le jeu Fortnite.
+echo  %yellow%fortnite clear%white%   -  Supprime les fichiers Fortnite inutiles.
+rem echo %yellow%SAVE%white%             -  Permet d'exporter ou d'importer des sauvegardes.
+rem echo %yellow%CLD%white%              -  Permet d'exporter ou d'importer le dossier "C:\CLD".
+echo  %yellow%saveappdata%white%      -  Sauvegarde les dossiers de moins de 2 Go qui sont dans "APPDATA".
+echo.
+pause
+goto :MAINW
+
+:ldirc
+setlocal enabledelayedexpansion
+for %%A in (A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+	if exist %%A:\ (
+		echo Le lecteur %%A: existe.
+	)
+)
+endlocal
+echo.
+pause>nul
 goto :MAINW
