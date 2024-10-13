@@ -31,7 +31,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0045
+SET VERSCRIPT=0046
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -58,6 +58,7 @@ C:
 cd "%appdata%\StartUp Tools"
 mode con:cols=134 lines=48
 IF EXIST temp_output.txt DEL temp_output.txt
+IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp
 IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 cls
 echo 様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様様
