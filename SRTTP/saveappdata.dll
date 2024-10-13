@@ -106,4 +106,4 @@ for /D %%G in ("%source%\*") do (
 
 robocopy "C:\Users\%USERNAME%\Saved Games" "%APPDATAPATH%\Backup-Appdata\Saved-Games" /E /NFL /NDL /NJH /NJS /nc /ns /np >nul 2>&1
 echo     Fin de la sauvegarde.
-@echo on
+Exit /b
