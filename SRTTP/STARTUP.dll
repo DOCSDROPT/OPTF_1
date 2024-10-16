@@ -31,7 +31,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0047
+SET VERSCRIPT=0048
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -129,6 +129,16 @@ IF "%CSTARTR%"=="info" (
 	curl -g -k -L -# -o "%temp%\motherboard.exe" "https://github.com/00FGV1/ver/raw/main/ccmd/motherboard.exe" >nul 2>&1
 	@timeout /t 01>nul
 	START "" "%temp%\pcinfo.bat"
+	goto :MAINW
+)
+IF "%CSTARTR%"=="warpfix" (
+	sc config WlanSvc start=auto >nul 2>&1
+	sc config "Cloudflare WARP" start=auto >nul 2>&1
+	@timeout /t 02>nul
+	sc start WlanSvc >nul 2>&1
+	@timeout /t 05>nul
+	sc start "Cloudflare WARP" >nul 2>&1
+	@timeout /t 02>nul
 	goto :MAINW
 )
 IF "%CSTARTR%"=="firewall on" (
