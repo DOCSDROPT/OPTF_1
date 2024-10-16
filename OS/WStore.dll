@@ -1,0 +1,91 @@
+@echo off
+@Title WStore
+set black=[30m
+set red=[91m
+set bright_red=[1;91m
+set rred=[41m
+set green=[32m
+set ggreen=[42m
+set yellow=[33m
+set yyellow=[43m
+set blue=[34m
+set bblue=[44m
+set magenta=[35m
+set bmagenta=[45m
+set cyan=[36m
+set defcolor=[49m
+set gold=[38;5;220m
+set ggold=[48;5;220m
+set grey=[90m
+set ggrey=[100m
+set orange=[38;5;208m
+set oorange=[48;5;208m
+set white=[37m
+set indigo=[38;5;105m
+mode con:cols=81 lines=23
+
+rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
+mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
+if %errorlevel% neq 0 (
+	powershell -NoProfile -NonInteractive -Command start -verb runas "'%~s0'" >nul 2>&1 & exit /b
+)
+
+C:
+IF NOT EXIST %appdata%\WStore md %appdata%\WStore
+cd %appdata%\WStore
+cls
+
+echo.
+echo  Verification de %blue%Wub_x64.exe%white%
+IF NOT EXIST Wub_x64.exe (
+	echo  Installation de %blue%Wub_x64.exe%white%
+	curl -g -k -L -# -o "Wub_x64.exe" "https://tinyurl.com/WubWStore" >nul 2>&1
+)
+
+echo  Verification de %blue%EdgeBlock_x64.exe%white%
+IF NOT EXIST EdgeBlock_x64.exe (
+	echo  Installation de %blue%EdgeBlock_x64.exe%white%
+	curl -g -k -L -# -o "EdgeBlock_x64.exe" "https://tinyurl.com/EdgeBlockWStore" >nul 2>&1
+)
+
+echo  Activation du Microsoft Store
+powershell -command "iwr -useb https://tinyurl.com/Wstoreps1 | iex" >nul 2>&1
+
+echo  Autorisation de Microsoft Edge et Webview2
+EdgeBlock_x64.exe /U
+@timeout /t 05>nul
+echo  Blocage de Microsoft Edge
+EdgeBlock_x64.exe /B /E
+@timeout /t 01>nul
+echo  Activation de Windows Update
+Wub_x64.exe /E
+@timeout /t 01>nul
+
+echo  Configuration du service %blue%XblAuthManager%white%
+sc config "XblAuthManager" start=auto >nul 2>&1
+echo  Demarrage du service %blue%XblAuthManager%white%
+sc start "XblAuthManager" >nul 2>&1
+echo  Configuration du service %blue%XblGameSave%white%
+sc config "XblGameSave" start=auto >nul 2>&1
+echo  Demarrage du service %blue%XblGameSave%white%
+sc start "XblGameSave" >nul 2>&1
+echo  Configuration du service %blue%XboxNetApiSvc%white%
+sc config "XboxNetApiSvc" start=auto >nul 2>&1
+echo  Demarrage du service %blue%XboxNetApiSvc%white%
+sc start "XboxNetApiSvc" >nul 2>&1
+echo  Configuration du service %blue%wuauserv%white%
+sc config "wuauserv" start=auto >nul 2>&1
+echo  Demarrage du service %blue%wuauserv%white%
+sc start "wuauserv" >nul 2>&1
+echo  Configuration terminee
+echo.
+echo  Veuillez ne pas oublier d'installer l'application %blue%Xbox%white%.
+echo  Installez egalement le %gold%service de connexion%white% disponible dans l'application %blue%Xbox%white%.
+echo  Vous pouvez redemarrer le PC.
+pause>nul
+Exit
+
+
+
+
+
