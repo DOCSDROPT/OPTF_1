@@ -31,7 +31,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0048
+SET VERSCRIPT=0049
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -133,11 +133,11 @@ IF "%CSTARTR%"=="info" (
 )
 IF "%CSTARTR%"=="warpfix" (
 	sc config WlanSvc start=auto >nul 2>&1
-	sc config "Cloudflare WARP" start=auto >nul 2>&1
+	sc config CloudflareWARP start=auto >nul 2>&1
 	@timeout /t 02>nul
 	sc start WlanSvc >nul 2>&1
 	@timeout /t 05>nul
-	sc start "Cloudflare WARP" >nul 2>&1
+	sc start CloudflareWARP >nul 2>&1
 	@timeout /t 02>nul
 	goto :MAINW
 )
@@ -154,7 +154,6 @@ IF "%CSTARTR%"=="firewall del" (
 	goto :MAINW
 )
 IF "%CSTARTR%"=="ldir" goto :ldirc
-IF "%CSTARTR%"=="autoconf update" curl -g -k -L -# -o "exe_gamename.txt" "https://raw.githubusercontent.com/00FGV1/ver/main/exe_gamename.txt"&goto :MAINW
 IF "%CSTARTR%"=="saveappdata" (
 	 curl -g -k -L -# -o "saveappdata.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/saveappdata.dll" >nul 2>&1
 	 @timeout /t 01>nul
@@ -3384,7 +3383,7 @@ echo  %yellow%firewall on%white%      -  Active le pare-feu Windows.
 echo  %yellow%firewall off%white%     -  Desactive le pare-feu Windows.
 echo  %yellow%firewall del%white%     -  Supprime les regles du pare-feu.
 echo  %yellow%ldir%white%             -  Affiche tous les lecteurs existants sur le PC.
-echo  %yellow%autoconf update%white%  -  Mets à jour le fichier "exe_gamename".
+echo  %yellow%warpfix%white%          -  Fix erreur du service WARP.
 echo  %yellow%schon%white%            -  Active le service Schedule.
 echo  %yellow%schoff%white%           -  Desactive le service Schedule.
 rem echo %yellow%SAVE%white%             -  Permet d'exporter ou d'importer des sauvegardes.
