@@ -23,6 +23,7 @@ set orange=[38;5;208m
 set oorange=[48;5;208m
 set white=[37m
 set indigo=[38;5;105m
+set iindigo=[48;5;105m
 C:
 md C:\Users\%USERNAME%\AppData\Roaming\dystroy\broot\config\launcher\powershell\
 echo. > "C:\Users\%USERNAME%\AppData\Roaming\dystroy\broot\config\launcher\powershell\br.ps1"
@@ -31,7 +32,8 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0049
+SET VERSCRIPT=0050
+SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -43,6 +45,20 @@ if /i "%~1"=="/4" (
 	mode con:cols=134 lines=47
 ) else (
 	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
+)
+
+SET ERROR=0
+
+:ERRNETWORK
+ping -n 1 -w 2000 www.google.com > nul
+if %errorlevel% equ 0 (SET NETWORK=YES) else (SET NETWORK=NO)
+IF %NETWORK%==NO (
+	IF %ERROR%==8 Exit
+	SET /a ERROR=%ERROR%+1
+	cls
+	echo %red%Aucune connexion Internet trouvee, tentative de connexion %ERROR%/7%white%
+	@timeout /t 03>nul
+	goto :ERRNETWORK
 )
 
 IF NOT EXIST "%appdata%\StartUp Tools\SFLE.bat" goto :Firtstr
@@ -64,7 +80,7 @@ IF NOT EXIST PowerRun_x64.exe curl -g -k -L -# -o "PowerRun_x64.exe" "https://ti
 cls
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
-echo   %bblue% %OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%
+echo   %bblue% OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%%iindigo% WINSUPPORT : %WINSUPPORT% %defcolor%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
 echo ³%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
@@ -79,23 +95,23 @@ echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
 echo ³%orange%³%white% %indigo%[ 4]%white% Fichier Debug            %orange%³%white%³ %indigo%[16]%white% Auto Clicker             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[38]%white% TreeSize                 ³³
 echo ³%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[27]%white% Cloudflare WARP          ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[17]%white% Vibrance GUI             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[39]%white% Everything               ³³
-echo ³³ %gold%Navigateurs Internet%white%          ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[28]%white% RiseupVPN                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³³ %gold%Navigateur Internet%white%           ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[28]%white% RiseupVPN                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[18]%white% RivaTuner                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[40]%white% Lossless Scaling         ³³
-echo ³³ %indigo%[ 5]%white% Firefox                  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[29]%white% Proton VPN               ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[19]%white% Process Lasso Pro        ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[41]%white% AnyDesk                  ³³
-echo ³³ %indigo%[ 6]%white% Waterfox                 ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[20]%white% StartAllBack Pro         ³³ %gold%Scripts%white%                       ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
-echo ³³ %indigo%[ 7]%white% LibreWolf                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%Virus%white%                         ³³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[21]%white% Revo Uninstaller Pro     ³³ %indigo%[30]%white% Windows Activation       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³³ %indigo%[ 8]%white% Chrome                   ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[42]%white% Hitman Pro               ³³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[31]%white% Win32PrioritySeparation  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³³ %indigo%[ 9]%white% Edge                     ³³ %gold%Drivers%white%                       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[43]%white% McAfee Stinger Lite %green%2Min%white% ³³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[32]%white% BCDEdit                  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³³ %indigo%[10]%white% Opera                    ³³ %indigo%[22]%white% Display Driver Uninstall ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[44]%white% McAfee Stinger Full %red%35M%white%  ³³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[33]%white% Defender Remover         ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³³ %indigo%[11]%white% Opera GX                 ³³ %indigo%[23]%white% Snappy Driver Installer  ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[45]%white% Emsisoft                 ³³
+echo ³³ %indigo%[ 5]%white% LibreWolf Portable       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[29]%white% Proton VPN               ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[19]%white% Process Lasso Pro        ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[41]%white% AnyDesk                  ³³
+echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³
+echo ³³ %gold%Application portable%white%          ³³ %indigo%[20]%white% StartAllBack Pro         ³³ %gold%Scripts%white%                       ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%Virus%white%                         ³³
+echo ³³ %indigo%[ 6]%white% Vencord Cli              ³³ %indigo%[21]%white% Revo Uninstaller Pro     ³³ %indigo%[30]%white% Windows Activation       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[42]%white% Hitman Pro               ³³
+echo ³³ %indigo%[ 7]%white% UniGetUI                 ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[31]%white% Win32PrioritySeparation  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%Drivers%white%                       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[43]%white% McAfee Stinger Lite %green%2Min%white% ³³
+echo ³³ %indigo%[ 8]%white% Minbrowser               ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[32]%white% BCDEdit                  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[22]%white% Display Driver Uninstall ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[44]%white% McAfee Stinger Full %red%35M%white%  ³³
+echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[33]%white% Defender Remover         ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³³ %gold%Mise a jour%white%                   ³³ %indigo%[23]%white% Snappy Driver Installer  ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[45]%white% Emsisoft                 ³³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³³ %indigo%[12]%white% Vivaldi                  ³³ %indigo%[24]%white% Driver Talent Pro        ³%orange%³ %indigo%[34]%white% Utilisateurs %orange%OPTI%white% %gold%[BETA]%white% %orange%³%white%³ %indigo%[46]%white% AdwCleaner               ³³
+echo ³³ %indigo%[ 9]%white% Outils                   ³³ %indigo%[24]%white% Driver Talent Pro        ³%orange%³ %indigo%[34]%white% Utilisateurs %orange%OPTI%white% %gold%[BETA]%white% %orange%³%white%³ %indigo%[46]%white% AdwCleaner               ³³
 echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³
 echo ³%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%³
 echo ³%orange%O%white% %indigo%[47]%white% MSI Utility V3           %orange%³%white%  %indigo%[48]%white% WPD                      %orange%³%white%  %indigo%[49]%white% ShutUp10++               %orange%³%white%  %indigo%[50]%white% Script Network %grey%CoutX%white%     %orange%O%white%³
@@ -164,6 +180,7 @@ IF "%CSTARTR%"=="windbg" powershell -Command "Add-AppxPackage -Path "W:\Windows\
 IF "%CSTARTR%"=="schon" PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule start=auto&goto :MAINW
 IF "%CSTARTR%"=="schoff" PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule start=disabled&goto :MAINW
 IF "%CSTARTR%"=="amddefender" PowerRun_x64.exe /SW:0 cmd.exe /k ren "C:\Windows\System32\drivers\amdfendr.sys" "amdfendr.sys.old"&goto :MAINW
+IF "%CSTARTR%"=="wstore" curl -g -k -L -# -o "%temp%\WStore.bat" "https://tinyurl.com/ACWStoreScript" & start cmd /c "%temp%\WStore.bat" & goto :MAINW
 
 IF "%CSTARTR%"=="1" (
 	IF NOT EXIST C:\Ect\RWC md C:\Ect\RWC
@@ -177,7 +194,6 @@ IF "%CSTARTR%"=="optimisation" (
 	curl -g -k -L -# -o "dl.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/dl.dll" >nul 2>&1 & start cmd /c "dl.bat"
 	@timeout /t 10>nul
 	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
-	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
 	IF EXIST C:\ph_main.exe start C:\ph_main.exe
 	goto :MAINW
@@ -189,7 +205,6 @@ IF "%CSTARTR%"=="2" (
 	curl -g -k -L -# -o "dl.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/dl.dll" >nul 2>&1 & start cmd /c "dl.bat"
 	@timeout /t 10>nul
 	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
-	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
 	IF EXIST C:\ph_main.exe start C:\ph_main.exe
 	goto :MAINW
@@ -201,7 +216,6 @@ IF "%CSTARTR%"=="beta optimisation" (
 	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
 	@timeout /t 10>nul
 	IF EXIST BETA-Optifiles.7z (7za.exe -y x -p9421 -oC:\ BETA-Optifiles.7z >nul)
-	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
 	IF EXIST C:\ph_main.exe start C:\ph_main.exe
 	goto :MAINW
@@ -213,7 +227,6 @@ IF "%CSTARTR%"=="3" (
 	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
 	@timeout /t 10>nul
 	IF EXIST BETA-Optifiles.7z (7za.exe -y x -p9421 -oC:\ BETA-Optifiles.7z >nul)
-	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
 	IF EXIST C:\ph_main.exe start C:\ph_main.exe
 	goto :MAINW
@@ -223,7 +236,6 @@ IF "%CSTARTR%"=="fichier debug" (
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
 	curl -g -k -L -# -o "DEBUG.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/ph_user/DEBUG.dll" >nul 2>&1
 	IF EXIST DEBUG.7z (7za.exe -y x -p9421 -oC:\ DEBUG.7z >nul)
-	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
 	goto :MAINW
 )
@@ -232,146 +244,119 @@ IF "%CSTARTR%"=="4" (
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
 	curl -g -k -L -# -o "DEBUG.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/ph_user/DEBUG.dll" >nul 2>&1
 	IF EXIST DEBUG.7z (7za.exe -y x -p9421 -oC:\ DEBUG.7z >nul)
-	IF EXIST 7za.exe DEL 7za.exe>nul
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="firefox" (
-	IF EXIST "Firefox Installer.exe" DEL "Firefox Installer.exe" >nul
-	curl -g -k -L -# -o "Firefox Installer.exe" "https://download.mozilla.org/?product=firefox-stub&os=win&lang=fr" >nul 2>&1
+IF "%CSTARTR%"=="librewolf" (
+	IF EXIST "%TEMP%\Librewolf.7z" DEL "%TEMP%\Librewolf.7z" >nul
+	curl -g -k -L -# -o "%TEMP%\Librewolf.7z" "https://www.dropbox.com/scl/fi/8fz6s82fwbbwcsdrfpp1z/Librewolf.7z?rlkey=6w0y194bugkxdiexdj3dttrsn&st=bovfc3av&dl=1" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "Firefox Installer.exe"
-	DEL "Firefox Installer.exe" >nul
+	START /WAIT "" "%TEMP%\Librewolf.7z"
+	DEL "%TEMP%\Librewolf.7z" >nul
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="5" (
-	IF EXIST "Firefox Installer.exe" DEL "Firefox Installer.exe" >nul
-	curl -g -k -L -# -o "Firefox Installer.exe" "https://download.mozilla.org/?product=firefox-stub&os=win&lang=fr" >nul 2>&1
+	IF EXIST "%TEMP%\Librewolf.7z" DEL "%TEMP%\Librewolf.7z" >nul
+	curl -g -k -L -# -o "%TEMP%\Librewolf.7z" "https://www.dropbox.com/scl/fi/8fz6s82fwbbwcsdrfpp1z/Librewolf.7z?rlkey=6w0y194bugkxdiexdj3dttrsn&st=bovfc3av&dl=1" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "Firefox Installer.exe"
-	DEL "Firefox Installer.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="waterfox" (
-	IF EXIST "waterfox-portable-win64-6.0.7-29-setup.exe" DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
-	curl -g -k -L -# -o "waterfox-portable-win64-6.0.7-29-setup.exe" "https://github.com/portapps/waterfox-portable/releases/download/6.0.7-29/waterfox-portable-win64-6.0.7-29-setup.exe" >nul 2>&1
-	@timeout /t 02>nul
-	START /WAIT "" "waterfox-portable-win64-6.0.7-29-setup.exe"
-	DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
+	START /WAIT "" "%TEMP%\Librewolf.7z"
+	DEL "%TEMP%\Librewolf.7z" >nul
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="6" (
-	IF EXIST "waterfox-portable-win64-6.0.7-29-setup.exe" DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
-	curl -g -k -L -# -o "waterfox-portable-win64-6.0.7-29-setup.exe" "https://github.com/portapps/waterfox-portable/releases/download/6.0.7-29/waterfox-portable-win64-6.0.7-29-setup.exe" >nul 2>&1
+	IF EXIST "%TEMP%\VencordInstallerCli.exe" DEL "%TEMP%\VencordInstallerCli.exe" >nul
+	curl -g -k -L -# -o "%TEMP%\VencordInstallerCli.exe" "https://github.com/Vencord/Installer/releases/latest/download/VencordInstallerCli.exe" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "waterfox-portable-win64-6.0.7-29-setup.exe"
-	DEL "waterfox-portable-win64-6.0.7-29-setup.exe" >nul
+	START /WAIT "" "%TEMP%\VencordInstallerCli.exe"
+	DEL "%TEMP%\VencordInstallerCli.exe" >nul
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="librewolf" (
-	IF EXIST "librewolf-128.0.3-1-windows-x86_64-setup.exe" DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
-	curl -g -k -L -# -o "librewolf-128.0.3-1-windows-x86_64-setup.exe" "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/128.0.3-1/librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul 2>&1
+IF "%CSTARTR%"=="vencord" (
+	IF EXIST "%TEMP%\VencordInstallerCli.exe" DEL "%TEMP%\VencordInstallerCli.exe" >nul
+	curl -g -k -L -# -o "%TEMP%\VencordInstallerCli.exe" "https://github.com/Vencord/Installer/releases/latest/download/VencordInstallerCli.exe" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "librewolf-128.0.3-1-windows-x86_64-setup.exe"
-	DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
+	START /WAIT "" "%TEMP%\VencordInstallerCli.exe"
+	DEL "%TEMP%\VencordInstallerCli.exe" >nul
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="7" (
-	IF EXIST "librewolf-128.0.3-1-windows-x86_64-setup.exe" DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
-	curl -g -k -L -# -o "librewolf-128.0.3-1-windows-x86_64-setup.exe" "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/128.0.3-1/librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul 2>&1
-	@timeout /t 02>nul
-	START /WAIT "" "librewolf-128.0.3-1-windows-x86_64-setup.exe"
-	DEL "librewolf-128.0.3-1-windows-x86_64-setup.exe" >nul
+	rem https://github.com/marticliment/UniGetUI/releases/latest/download/UniGetUI.Installer.exe
+	IF EXIST %TEMP%\UniGetUI.7z DEL %TEMP%\UniGetUI.7z>nul
+	IF EXIST "C:\Packs\UniGetUI\WingetUI.exe" START "" "C:\Packs\UniGetUI\WingetUI.exe"&goto :MAINW
+	IF NOT EXIST C:\Packs md C:\Packs
+	curl -g -k -L -# -o "%TEMP%\UniGetUI.7z" "https://www.dropbox.com/scl/fi/7up9qt0y8izbzin3lf4fm/UniGetUI.7z?rlkey=knswz82fl0r5r3muq4fmvgzqp&st=0nabyl3c&dl=1" >nul 2>&1
+	IF EXIST %TEMP%\UniGetUI.7z (7za.exe -y x -p9421 -oC:\Packs %TEMP%\UniGetUI.7z >nul)
+	IF EXIST %TEMP%\UniGetUI.7z DEL %TEMP%\UniGetUI.7z>nul
+	START "" "C:\Packs\UniGetUI\WingetUI.exe"
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="chrome" (
-	IF EXIST "ChromeSetup.exe" DEL "ChromeSetup.exe" >nul
-	curl -g -k -L -# -o "ChromeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Chr.dll" >nul 2>&1
-	@timeout /t 02>nul
-	START /WAIT "" "ChromeSetup.exe"
-	DEL "ChromeSetup.exe" >nul
+IF "%CSTARTR%"=="unigetui" (
+	rem https://github.com/marticliment/UniGetUI/releases/latest/download/UniGetUI.Installer.exe
+	IF EXIST %TEMP%\UniGetUI.7z DEL %TEMP%\UniGetUI.7z>nul
+	IF EXIST "C:\Packs\UniGetUI\WingetUI.exe" START "" "C:\Packs\UniGetUI\WingetUI.exe"&goto :MAINW
+	IF NOT EXIST C:\Packs md C:\Packs
+	curl -g -k -L -# -o "%TEMP%\UniGetUI.7z" "https://www.dropbox.com/scl/fi/7up9qt0y8izbzin3lf4fm/UniGetUI.7z?rlkey=knswz82fl0r5r3muq4fmvgzqp&st=0nabyl3c&dl=1" >nul 2>&1
+	IF EXIST %TEMP%\UniGetUI.7z (7za.exe -y x -p9421 -oC:\Packs %TEMP%\UniGetUI.7z >nul)
+	IF EXIST %TEMP%\UniGetUI.7z DEL %TEMP%\UniGetUI.7z>nul
+	START "" "C:\Packs\UniGetUI\WingetUI.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="8" (
-	IF EXIST "ChromeSetup.exe" DEL "ChromeSetup.exe" >nul
-	curl -g -k -L -# -o "ChromeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Chr.dll" >nul 2>&1
-	@timeout /t 02>nul
-	START /WAIT "" "ChromeSetup.exe"
-	DEL "ChromeSetup.exe" >nul
+	IF EXIST %TEMP%\Min-windows.zip DEL %TEMP%\Min-windows.zip>nul
+	IF EXIST "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe" START "" "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe"&goto :MAINW
+	curl -g -k -L -# -o "%TEMP%\Min-windows.zip" "https://github.com/minbrowser/min/releases/download/v1.33.1/Min-v1.33.1-windows.zip" >nul 2>&1
+	@timeout /t 01>nul
+	IF EXIST %TEMP%\Min-windows.zip (7za.exe -y x -o"%appdata%\StartUp Tools" %TEMP%\Min-windows.zip >nul)
+	@timeout /t 01>nul
+	IF EXIST %TEMP%\Min-windows.zip DEL %TEMP%\Min-windows.zip>nul
+	START "" "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe"
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="edge" (
-	IF EXIST "MicrosoftEdgeSetup.exe" DEL "MicrosoftEdgeSetup.exe" >nul
-	curl -g -k -L -# -o "MicrosoftEdgeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Edge.dll" >nul 2>&1
-	@timeout /t 02>nul
-	START /WAIT "" "MicrosoftEdgeSetup.exe"
-	DEL "MicrosoftEdgeSetup.exe" >nul
+IF "%CSTARTR%"=="minbrowser" (
+	IF EXIST %TEMP%\Min-windows.zip DEL %TEMP%\Min-windows.zip>nul
+	IF EXIST "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe" START "" "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe"&goto :MAINW
+	curl -g -k -L -# -o "%TEMP%\Min-windows.zip" "https://github.com/minbrowser/min/releases/download/v1.33.1/Min-v1.33.1-windows.zip" >nul 2>&1
+	@timeout /t 01>nul
+	IF EXIST %TEMP%\Min-windows.zip (7za.exe -y x -o"%appdata%\StartUp Tools" %TEMP%\Min-windows.zip >nul)
+	@timeout /t 01>nul
+	IF EXIST %TEMP%\Min-windows.zip DEL %TEMP%\Min-windows.zip>nul
+	START "" "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="9" (
-	IF EXIST "MicrosoftEdgeSetup.exe" DEL "MicrosoftEdgeSetup.exe" >nul
-	curl -g -k -L -# -o "MicrosoftEdgeSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Edge.dll" >nul 2>&1
+	Reg.exe delete "HKCR\DesktopBackground\Shell\Outils" /f >nul
+	IF EXIST %TEMP%\Outils.7z DEL %TEMP%\Outils.7z>nul
+	IF EXIST C:\Ect\Outils rmdir /s /q "C:\Ect\Outils" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "MicrosoftEdgeSetup.exe"
-	DEL "MicrosoftEdgeSetup.exe" >nul
+	curl -g -k -L -# -o "%TEMP%\Outils.7z" "https://www.dropbox.com/scl/fi/rp8a0uwfkqympecbfzkg8/Outils.7z?rlkey=mvf6hq1m29530iraapc8hsppb&st=kzm6pjht&dl=1" >nul 2>&1
+	@timeout /t 01>nul
+	IF EXIST %TEMP%\Outils.7z (7za.exe -y x -p9421 -oC:\Ect %TEMP%\Outils.7z >nul)
+	@timeout /t 01>nul
+	IF EXIST C:\Ect\Outils\DNS.reg Reg.exe import C:\Ect\Outils\DNS.reg >nul
+	IF EXIST %TEMP%\Outils.7z DEL %TEMP%\Outils.7z>nul
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="opera" (
-	IF EXIST "OperaSetup.exe" DEL "OperaSetup.exe" >nul
-	curl -g -k -L -# -o "OperaSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Opera.dll" >nul 2>&1
-	START /WAIT "" "OperaSetup.exe"
-	DEL "OperaSetup.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="10" (
-	IF EXIST "OperaSetup.exe" DEL "OperaSetup.exe" >nul
-	curl -g -k -L -# -o "OperaSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/Opera.dll" >nul 2>&1
-	START /WAIT "" "OperaSetup.exe"
-	DEL "OperaSetup.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="opera gx" (
-	IF EXIST "OperaGXSetup.exe" DEL "OperaGXSetup.exe" >nul
-	curl -g -k -L -# -o "OperaGXSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/OperaGX.dll" >nul 2>&1
-	START /WAIT "" "OperaGXSetup.exe"
-	DEL "OperaGXSetup.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="11" (
-	IF EXIST "OperaGXSetup.exe" DEL "OperaGXSetup.exe" >nul
-	curl -g -k -L -# -o "OperaGXSetup.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/OperaGX.dll" >nul 2>&1
-	START /WAIT "" "OperaGXSetup.exe"
-	DEL "OperaGXSetup.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="vivaldi" (
-	IF EXIST "Vivaldix64.exe" DEL "Vivaldix64.exe" >nul
-	curl -g -k -L -# -o "Vivaldix64.exe" "https://downloads.vivaldi.com/stable/Vivaldi.6.8.3381.48.x64.exe" >nul 2>&1
-	START /WAIT "" "Vivaldix64.exe"
-	DEL "Vivaldix64.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="12" (
-	IF EXIST "Vivaldix64.exe" DEL "Vivaldix64.exe" >nul
-	curl -g -k -L -# -o "Vivaldix64.exe" "https://downloads.vivaldi.com/stable/Vivaldi.6.8.3381.48.x64.exe" >nul 2>&1
-	START /WAIT "" "Vivaldix64.exe"
-	DEL "Vivaldix64.exe" >nul
+IF "%CSTARTR%"=="outils" (
+	Reg.exe delete "HKCR\DesktopBackground\Shell\Outils" /f >nul
+	IF EXIST %TEMP%\Outils.7z DEL %TEMP%\Outils.7z>nul
+	IF EXIST C:\Ect\Outils rmdir /s /q "C:\Ect\Outils" >nul 2>&1
+	@timeout /t 02>nul
+	curl -g -k -L -# -o "%TEMP%\Outils.7z" "https://www.dropbox.com/scl/fi/rp8a0uwfkqympecbfzkg8/Outils.7z?rlkey=mvf6hq1m29530iraapc8hsppb&st=kzm6pjht&dl=1" >nul 2>&1
+	@timeout /t 01>nul
+	IF EXIST %TEMP%\Outils.7z (7za.exe -y x -p9421 -oC:\Ect %TEMP%\Outils.7z >nul)
+	@timeout /t 01>nul
+	IF EXIST C:\Ect\Outils\DNS.reg Reg.exe import C:\Ect\Outils\DNS.reg >nul
+	IF EXIST %TEMP%\Outils.7z DEL %TEMP%\Outils.7z>nul
 	goto :MAINW
 )
 
@@ -755,6 +740,7 @@ IF "%CSTARTR%"=="spotify" (
     DEL "%TEMP%\SpotifySetup.exe" >nul 2>&1
     Taskkill /f /im Spotify.exe >nul 2>&1
 	@timeout /t 02>nul
+	Taskkill /f /im Spotify.exe >nul 2>&1
 	powershell -command "iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex"
 	IF EXIST C:\Users\%USERNAME%\Desktop\Spotify.lnk DEL C:\Users\%USERNAME%\Desktop\Spotify.lnk >nul 2>&1
 	IF EXIST W:\Windows\Desktop\Spotify.lnk DEL W:\Windows\Desktop\Spotify.lnk >nul 2>&1
@@ -769,6 +755,7 @@ IF "%CSTARTR%"=="37" (
     DEL "%TEMP%\SpotifySetup.exe" >nul 2>&1
     Taskkill /f /im Spotify.exe >nul 2>&1
 	@timeout /t 02>nul
+	Taskkill /f /im Spotify.exe >nul 2>&1
 	powershell -command "iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex"
 	IF EXIST C:\Users\%USERNAME%\Desktop\Spotify.lnk DEL C:\Users\%USERNAME%\Desktop\Spotify.lnk >nul 2>&1
 	IF EXIST W:\Windows\Desktop\Spotify.lnk DEL W:\Windows\Desktop\Spotify.lnk >nul 2>&1
@@ -1058,7 +1045,7 @@ IF "%CSTARTR%"=="97" (
 )
 
 IF "%CSTARTR%"=="98" (
-	goto :HELPTEXT
+	goto :helpcmd
 )
 
 IF "%CSTARTR%"=="99" (
@@ -1124,6 +1111,7 @@ set GPU=UNKNOWN
 
 cls
 echo Chargement des donnees %bluel%4/6%white%
+for /f "tokens=*" %%i in ('powershell -command "Get-CimInstance -Class Win32_ComputerSystemProduct | Select-Object -ExpandProperty UUID"') do set "UUID=%%i"
 for /f "tokens=*" %%c in ('"%appdata%\StartUp Tools\_CP.exe" /P') do set MY_IP=%%c
 7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" %TEMP%\autoc.7z >nul
 
@@ -1140,6 +1128,8 @@ FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "DisplayVe
 SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
 FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "ReleaseId"') DO set RO9=%%B
 
+IF %UUID%==00000000-0000-0000-0000-00D8614F3007 (SET WINSUPPORT=YES) else (SET WINSUPPORT=NO)
+
 cls
 echo Chargement des donnees %bluel%6/6%white%
 Echo SET HWID=%HWID%>"%appdata%\StartUp Tools\IFHW.bat"
@@ -1149,6 +1139,7 @@ Echo SET IP=%MY_IP%>>"%appdata%\StartUp Tools\IFHW.bat"
 Echo SET CBN=%RO1%>>"%appdata%\StartUp Tools\IFHW.bat"
 Echo SET DV=%RO2%>>"%appdata%\StartUp Tools\IFHW.bat"
 Echo SET RID=%RO9%>>"%appdata%\StartUp Tools\IFHW.bat"
+Echo SET WINSUPPORT=%WINSUPPORT%>>"%appdata%\StartUp Tools\IFHW.bat"
 
 for /f "tokens=3" %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v CurrentBuild') do set build_number=%%i
 if %build_number% GEQ 22000 (
@@ -1162,69 +1153,6 @@ if %build_number% GEQ 22000 (
 Echo SET BLD=%WVAC%>>"%appdata%\StartUp Tools\IFHW.bat"
 Echo SET GMEMENU=0 > "%appdata%\StartUp Tools\SFLE.bat"
 goto :FirtstrBac
-
-:HELPTEXT
-mode con:cols=147 lines=58
-cls
-echo.
-echo  %green%Pour les erreurs :%white%
-echo.
-echo       %gold%-%white% Si jamais tu es bloque a %bright_red%40%%%white%, c'est qu'il y a un probleme avec le service du script.
-echo       %gold%-%white% Si jamais tu as le message %red%ERROR%white%, c'est qu'il manque des fichiers dans le disque %cyan%C:\%white%.
-echo       %gold%-%white% Si jamais tu es bloque a %bright_red%45%%%white%, c'est qu'il n'arrive pas a modifier les dossiers Windows ou qu'il y a un probleme avec Google Drive.
-echo       %gold%-%white% Si jamais tu es bloque a %bright_red%50%%%white%, c'est qu'il n'arrive pas a telecharger les fichiers avec Google Drive.
-echo       %gold%-%white% Si jamais tu es bloque a %bright_red%45%%%white% ou %bright_red%50%%%white%, va a %green%Pour l'utilisation du dossier %gold%DEBUG%white% .
-echo       %gold%-%white% Si jamais tu ne peux ou ne veux pas valider le BOT sur Discord, fais la manipulation ci-dessus avec le dossier %gold%DEBUG%white%.
-echo.
-echo       %gold%-%white% Si jamais il y a une commande ou un lien de telechargement qui n'est plus valable ou pas a jour,
-echo            envoie un message sur mon tel ou sur Discord pour le dire.
-echo.
-echo       %gold%-%white% Si jamais tu as un probleme avec Cloudflare WARP, ne me demande pas. Merci.
-echo.
-echo  %green%Pour l'utilisation du dossier %gold%DEBUG%green% :%white%
-echo.
-echo       %gold%-%white% Pour installer le dossier %gold%DEBUG%white%, tu dois supprimer tous les fichiers et dossiers dans le disque %cyan%C:\%white%,
-echo              installer le dossier %gold%DEBUG%white% avec la commande %indigo%[ 3]%white% et reinstaller la nouvelle optimisation avec la touche %indigo%[ 2]%white%.
-echo.
-echo       %gold%-%white% Pour verifier si cela fonctionne, quand le script d'optimisation sera a %bright_red%40%%%white%, il restera bloque pendant 15 a 20 secondes.
-echo.
-echo       %gold%-%white% Si tu as tout bien fait, apres ces 15 a 20 secondes, il passera directement a %bright_red%80%%%white% et tout le texte sera en %red%rouge%white%.
-echo            Ne panique pas, le rouge est juste la pour indiquer que cela a bien fonctionne,
-echo               et qu'il est actuellement en train de telecharger l'optimisation avec le dossier %gold%DEBUG%white%.
-echo.
-echo       %gold%-%white% Ensuite, le script fonctionnera normalement. Tu devras choisir les options que tu veux, et le script commencera.
-echo.
-echo  %green%Autres infos :%white%
-echo.
-echo       %gold%-%white% Si tu ne sais pas dans quel ordre faire l'optimisation, tu dois :
-echo.
-echo     %gold%1%white% - Bloquer Windows Update avec %cyan%DRV\1\Windows Update Block\Wub_x64.exe%white%
-echo     %gold%2%white% - Importer les fichiers .reg et le fichier .bat qui sont dans %cyan%DRV\1\%white%
-echo     %gold%3%white% - Redemarrer ton PC
-echo     %gold%4%white% - Rebrancher ton cable Ethernet
-echo     %gold%5%white% - Installer le driver NVIDIA avec %cyan%DRV\2\NVCleanstall.exe%white%
-echo     %gold%6%white% - Importer le fichier .bat qui est dans %cyan%DRV\2\%white%
-echo     %gold%7%white% - Redemarrer ton PC
-echo     %gold%8%white% - Lancer le script Start.bat qui est dans %cyan%DRV\%white%
-echo     %gold%9%white% - Desactiver Windows Defender manuellement et lancer %indigo%[38]%white% dControl. 
-echo         Si tu veux, tu peux supprimer Windows Defender avec %indigo%[35]%white%, mais tu ne pourras plus utiliser le MS-Store et les applications Xbox.
-echo    %gold%10%white% - Tu peux lancer l'optimisation avec %indigo%[ 2]%white%, et si tu n'as pas envie de valider le BOT Discord, va ici : %green%Pour l'utilisation du dossier %gold%DEBUG%white%
-echo    %gold%11%white% - Redemarrer ton PC
-echo    %gold%12%white% - Installer S-W avec %indigo%[39]%white%
-echo    %gold%13%white% - Faire tes parametres avec Configuration Avancees en faisant clic droit sur le bureau. 
-echo         Moi, j'ai que [%orange%Intel TSX %white%/%orange% Optimisation plein ecran %white%/%orange% Supprimer les vignettes %white%/%orange% TRIM SSD %white%/%orange% Set Timer Resolution %white%/
-echo                        %orange%Runtime Broker %white%/%orange% Parametre experimental pilote graphique %white%/%orange% Masquer les pages de parametres inutiles%white%] qui sont actives.
-echo    %gold%14%white% - Supprimer Microsoft Edge avec %indigo%[37]%white%
-echo    %gold%15%white% - Redemarrer ton PC
-echo    %gold%16%white% - Faire MSI Utility avec %indigo%[49]%white% et fais attention, il va ouvrir une fenetre noire en premier qui se fermera toute seule
-echo    %gold%17%white% - Terminer tes parametres et supprimer ce que tu n'utilises pas avec WPD %indigo%[50]%white%
-echo    %gold%18%white% - Desactiver tous les trucs inutiles avec Autoruns %indigo%[53]
-echo    %gold%19%white% - Nettoyer tous les fichiers temporaires avec [Device Cleanup %indigo%[54]%white% / Dism++ %indigo%[55]%white% / CCleaner %indigo%[56]%white%]
-echo    %gold%20%white% - Tu as fini, mais tu peux utiliser ce que tu veux dans le script.
-echo         Pour info, le script %indigo%[52]%white% Network, ce n'est pas moi qui l'ai fait, donc ce n'est pas mon probleme si tu as des problemes avec.
-echo.
-pause
-goto :MAINW
 
 :GAMECONF
 IF EXIST found_executables.txt DEL found_executables.txt
@@ -1583,29 +1511,29 @@ echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%wh
 echo   %bblue% %OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿                                                                  ³
-echo ³³ %gold%AntiVirus         1,5 Go%white% %indigo%[ 1]%white% ³³ %gold%Utilitaires       400 Mo%white% %indigo%[ 2]%white% ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ ClamWin                       ³³ Angry IP Scanner              ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ Dr.Web CureIt!                ³³ HWiNFO                        ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ HijackThis                    ³³ HxD Hex Editor                ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ Kaspersky TDSSKiller          ³³ PCI-Z                         ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ Malware Hunter Pro            ³³ Recover Keys                  ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ McAfee Stinger                ³³ Resource Hacker               ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ Microsoft Safety Scanner      ³³ System Explorer               ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ PandaCloud Cleaner            ³³ System Informer               ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ PeerBlock                     ³³ Telegram                      ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
-echo ³³ Spybot                        ³³ UUID-GUID Generator           ³                                                                  ³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
+echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿                                 ³
+echo ³³ %gold%AntiVirus         1,5 Go%white% %indigo%[ 1]%white% ³³ %gold%Utilitaires       400 Mo%white% %indigo%[ 2]%white% ³³ %gold%2-PC             1,36 Go%white% %indigo%[ 3]%white% ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ ClamWin                       ³³ Angry IP Scanner              ³³ ---                           ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ Dr.Web CureIt!                ³³ HWiNFO                        ³³ 1-Msi Mode                    ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ HijackThis                    ³³ HxD Hex Editor                ³³ 2-Regedit                     ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ Kaspersky TDSSKiller          ³³ PCI-Z                         ³³ 3-Scripts                     ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ Malware Hunter Pro            ³³ Recover Keys                  ³³ 4-WinTracking                 ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ McAfee Stinger                ³³ Resource Hacker               ³³ 5-Drivers                     ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ Microsoft Safety Scanner      ³³ System Explorer               ³³ 6-CCleaner                    ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ PandaCloud Cleaner            ³³ System Informer               ³³ 7-Tools                       ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ PeerBlock                     ³³ Telegram                      ³³ 8-Other                       ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                 ³
+echo ³³ Spybot                        ³³ UUID-GUID Generator           ³³ 9-Bios                        ³                                 ³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                                 ³
 echo ³³ SUPERAntiSpyware              ³³ Wireless Key View             ³                                                                  ³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                                                                  ³
 echo ³³ VeraCrypt                     ³³ Wireshark                     ³                                                                  ³
@@ -1645,6 +1573,17 @@ IF "%PCH2PACK%"=="2" (
 	@timeout /t 01 >nul 2>&1
 	DEL %TEMP%\Utilitaires.7z >nul 2>&1
 	Start C:\Packs
+	goto :PANGEPACK
+)
+
+IF "%PCH2PACK%"=="3" (
+	IF EXIST C:\Users\%USERNAME%\Documents\2-PC goto :PANGEPACK
+	"%appdata%\StartUp Tools\rclone.exe" --config="%appdata%\StartUp Tools\rclone.conf" --auto-confirm copy "Koofr:STR\2-PC.7z" "%TEMP%" >nul 2>&1
+	@timeout /t 01 >nul 2>&1
+	IF EXIST %TEMP%\2-PC.7z (7za.exe -y x -p9421 -o"C:\Users\%USERNAME%\Documents" %TEMP%\2-PC.7z >nul)
+	@timeout /t 01 >nul 2>&1
+	DEL %TEMP%\2-PC.7z >nul 2>&1
+	Start C:\Users\%USERNAME%\Documents
 	goto :PANGEPACK
 )
 
@@ -3386,6 +3325,7 @@ echo  %yellow%ldir%white%             -  Affiche tous les lecteurs existants sur
 echo  %yellow%warpfix%white%          -  Fix erreur du service WARP.
 echo  %yellow%schon%white%            -  Active le service Schedule.
 echo  %yellow%schoff%white%           -  Desactive le service Schedule.
+echo  %yellow%wstore%white%           -  Installe le Microsoft Store.
 rem echo %yellow%SAVE%white%             -  Permet d'exporter ou d'importer des sauvegardes.
 rem echo %yellow%CLD%white%              -  Permet d'exporter ou d'importer le dossier "C:\CLD".
 echo  %yellow%saveappdata%white%      -  Sauvegarde les dossiers de moins de 2 Go qui sont dans "APPDATA".
