@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0050
+SET VERSCRIPT=0051
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -79,7 +79,7 @@ IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7
 IF NOT EXIST PowerRun_x64.exe curl -g -k -L -# -o "PowerRun_x64.exe" "https://tinyurl.com/dl-opt-PowerRun" >nul 2>&1
 cls
 echo ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
-echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| HWID : %gold%%HWID%%white% ^| IP : %gold%%IP%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
+echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
 echo   %bblue% OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%%iindigo% WINSUPPORT : %WINSUPPORT% %defcolor%
 echo ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
 echo ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฟ
@@ -121,9 +121,9 @@ echo ณ%orange%ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤม
 echo ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤู
 echo อออออออออออออออออออออออออออออออออหออออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออ
 echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         บ %indigo%[ X ]%white% Nettoyage registres      บ %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" บ   %indigo%[98]%white% HELP
-echo อออออออออออออออออออออออออออออออออสออออออออออออหอออออออออออออออออออสออออออออหออออออออออออออหอออออออออออออออสอออออออออออออออออออออออออออ
-echo      %indigo%[99]%white% COPIER : %bblue% " Fc#$f6EtsY@&duxFqg3B " %defcolor% บ %indigo%[100]%white% Configurer les jeux  บ %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% บ %indigo%[ V ]%white%     %gold%Page pack de logiciels ---^>%white%
-echo ออออออออออออออออออออออออออออออออออออออออออออออสออออออออออออออออออออออออออออสออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออ
+echo อออออออออออออออออออออหอออออออออออสออออออออออออหอออออออออออออออออออสออออออออหออออออออออออออหอออออออออออออออสอออออออออออออออออออออออออออ
+echo      %indigo%[99]%white% COPIER MDP บ %indigo%[ T ]%white% TEST-OPTI        บ %indigo%[100]%white% Configurer les jeux  บ %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% บ %indigo%[ V ]%white%     %gold%Page pack de logiciels ---^>%white%
+echo อออออออออออออออออออออสออออออออออออออออออออออออสออออออออออออออออออออออออออออสออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออ
 rem set /p CSTARTR="%green%>%white%"
 autoc.exe
 set /p CSTARTR=<temp_output.txt
@@ -1060,12 +1060,23 @@ IF "%CSTARTR%"=="100" (
 IF "%CSTARTR%"=="x" goto :SCCLEAR
 IF "%CSTARTR%"=="X" goto :SCCLEAR
 
+IF "%CSTARTR%"=="t" goto :TESTOPTI
+IF "%CSTARTR%"=="T" goto :TESTOPTI
+
 IF "%CSTARTR%"=="b" goto :bluescreen
 IF "%CSTARTR%"=="B" goto :bluescreen
 
 IF "%CSTARTR%"=="v" goto :PANGEPACK
 IF "%CSTARTR%"=="V" goto :PANGEPACK
 
+goto :MAINW
+
+:TESTOPTI
+echo.
+echo  TimeLimitInSeconds [%orange% 6%white%] -^> [%green%12%white%]
+echo.
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\Profile\Events\{54533251-82be-4824-96c1-47b60b740d00}\{0DA965DC-8FCF-4c0b-8EFE-8DD5E7BC959A}\{7E01ADEF-81E6-4e1b-8075-56F373584694}" /v "TimeLimitInSeconds" /t REG_DWORD /d "0x12" /f >nul
+@timeout /t 03>nul
 goto :MAINW
 
 :Firtstr
@@ -1468,8 +1479,8 @@ Reg.exe import colors.reg >nul 2>&1
 Reg.exe import REG.reg >nul 2>&1
 Reg.exe import DNS.reg >nul 2>&1
 
-IF NOT EXIST %APPDATA%\C-CMD MD %APPDATA%\C-CMD
-setx PATH "%PATH%;%APPDATA%\C-CMD" /M
+IF NOT EXIST %APPDATA%\C-CMD MD %APPDATA%\C-CMD >nul 2>&1
+setx PATH "%PATH%;%APPDATA%\C-CMD" /M >nul 2>&1
 
 IF NOT EXIST %APPDATA%\C-CMD\IP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\IP.bat" "https://tinyurl.com/IDLLCMD" >nul 2>&1
 IF NOT EXIST %APPDATA%\C-CMD\STARTUP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\STARTUP.bat" "https://tinyurl.com/STARTUPDLLCMD" >nul 2>&1
