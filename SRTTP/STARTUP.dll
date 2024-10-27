@@ -1111,7 +1111,6 @@ set GPU=UNKNOWN
 
 cls
 echo Chargement des donnees %bluel%4/6%white%
-for /f "tokens=*" %%i in ('powershell -command "Get-CimInstance -Class Win32_ComputerSystemProduct | Select-Object -ExpandProperty UUID"') do set "UUID=%%i"
 for /f "tokens=*" %%c in ('"%appdata%\StartUp Tools\_CP.exe" /P') do set MY_IP=%%c
 7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" %TEMP%\autoc.7z >nul
 
@@ -1128,7 +1127,10 @@ FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "DisplayVe
 SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
 FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "ReleaseId"') DO set RO9=%%B
 
-IF %UUID%==00000000-0000-0000-0000-00D8614F3007 (SET WINSUPPORT=YES) else (SET WINSUPPORT=NO)
+SET WINSUPPORT=NO
+IF %RO1%==22621 SET WINSUPPORT=YES
+IF %RO1%==22631 SET WINSUPPORT=YES
+IF %RO1%==26100 SET WINSUPPORT=NO
 
 cls
 echo Chargement des donnees %bluel%6/6%white%
