@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0051
+SET VERSCRIPT=0053
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -111,7 +111,7 @@ echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[22]%white% Display Driver Unin
 echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[33]%white% Defender Remover         ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³³ %gold%Mise a jour%white%                   ³³ %indigo%[23]%white% Snappy Driver Installer  ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[45]%white% Emsisoft                 ³³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³³ %indigo%[ 9]%white% Outils                   ³³ %indigo%[24]%white% Driver Talent Pro        ³%orange%³ %indigo%[34]%white% Utilisateurs %orange%OPTI%white% %gold%[BETA]%white% %orange%³%white%³ %indigo%[46]%white% AdwCleaner               ³³
+echo ³³ %indigo%[ 9]%white% Outils / CMD             ³³ %indigo%[24]%white% Driver Talent Pro        ³%orange%³ %indigo%[34]%white% Utilisateurs %orange%OPTI%white% %gold%[BETA]%white% %orange%³%white%³ %indigo%[46]%white% AdwCleaner               ³³
 echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³
 echo ³%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%³
 echo ³%orange%O%white% %indigo%[47]%white% MSI Utility V3           %orange%³%white%  %indigo%[48]%white% WPD                      %orange%³%white%  %indigo%[49]%white% ShutUp10++               %orange%³%white%  %indigo%[50]%white% Script Network %grey%CoutX%white%     %orange%O%white%³
@@ -121,9 +121,9 @@ echo ³%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁ
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         º %indigo%[ X ]%white% Nettoyage registres      º %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" º   %indigo%[98]%white% HELP
-echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
-echo      %indigo%[99]%white% COPIER MDP º %indigo%[ T ]%white% TEST-OPTI        º %indigo%[100]%white% Configurer les jeux  º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ V ]%white%     %gold%Page pack de logiciels ---^>%white%
-echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍ
+echo      %indigo%[99]%white% COPIER MDP º %indigo%[ T ]%white% TEST-OPTI        º %indigo%[100]%white% Configurer les jeux  º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ M ]%white% Memoire virtuelle        º %indigo%[ V ]%white% %gold%-^>%white%
+echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍ
 rem set /p CSTARTR="%green%>%white%"
 autoc.exe
 set /p CSTARTR=<temp_output.txt
@@ -953,7 +953,8 @@ IF "%CSTARTR%"=="script network" (
 )
 
 IF "%CSTARTR%"=="50" (
-	curl -g -k -L -# -o "Network.bat" "https://github.com/UnLovedCookie/Network/releases/download/v1.1/Network.bat" >nul 2>&1
+	curl -g -k -L -# -o "Network.bat" "https://github.com/UnLovedCookie/Network/releases/latest/download/Network.bat" >nul 2>&1
+	@timeout /t 01>nul
 	START /WAIT Network.bat
 	goto :MAINW
 )
@@ -1066,9 +1067,62 @@ IF "%CSTARTR%"=="T" goto :TESTOPTI
 IF "%CSTARTR%"=="b" goto :bluescreen
 IF "%CSTARTR%"=="B" goto :bluescreen
 
+IF "%CSTARTR%"=="m" goto :vrmeme
+IF "%CSTARTR%"=="M" goto :vrmeme
+
 IF "%CSTARTR%"=="v" goto :PANGEPACK
 IF "%CSTARTR%"=="V" goto :PANGEPACK
 
+goto :MAINW
+
+:vrmeme
+echo  Taille initiale (Go):
+set /p VIRMEME1="%gold% [de 1 a 10]%white% :"
+IF %VIRMEME1%==1 SET VIRMEME1=1024&goto :vrmeme_2
+IF %VIRMEME1%==2 SET VIRMEME1=2048&goto :vrmeme_2
+IF %VIRMEME1%==3 SET VIRMEME1=3072&goto :vrmeme_2
+IF %VIRMEME1%==4 SET VIRMEME1=4096&goto :vrmeme_2
+IF %VIRMEME1%==5 SET VIRMEME1=5120&goto :vrmeme_2
+IF %VIRMEME1%==6 SET VIRMEME1=6144&goto :vrmeme_2
+IF %VIRMEME1%==7 SET VIRMEME1=7168&goto :vrmeme_2
+IF %VIRMEME1%==8 SET VIRMEME1=8192&goto :vrmeme_2
+IF %VIRMEME1%==9 SET VIRMEME1=9216&goto :vrmeme_2
+IF %VIRMEME1%==10 SET VIRMEME1=10240&goto :vrmeme_2
+goto :vrmeme
+:vrmeme_2
+echo  Taille maximale (Go):
+set /p VIRMEME2="%gold% [de 10 a 20]%white% :"
+IF %VIRMEME2%==10 SET VIRMEME2=10240&goto :vrmeme_3
+IF %VIRMEME2%==11 SET VIRMEME2=11264&goto :vrmeme_3
+IF %VIRMEME2%==12 SET VIRMEME2=12288&goto :vrmeme_3
+IF %VIRMEME2%==13 SET VIRMEME2=13312&goto :vrmeme_3
+IF %VIRMEME2%==14 SET VIRMEME2=14336&goto :vrmeme_3
+IF %VIRMEME2%==15 SET VIRMEME2=15360&goto :vrmeme_3
+IF %VIRMEME2%==16 SET VIRMEME2=16384&goto :vrmeme_3
+IF %VIRMEME2%==17 SET VIRMEME2=17408&goto :vrmeme_3
+IF %VIRMEME2%==18 SET VIRMEME2=18432&goto :vrmeme_3
+IF %VIRMEME2%==19 SET VIRMEME2=19456&goto :vrmeme_3
+IF %VIRMEME2%==20 SET VIRMEME2=20480&goto :vrmeme_3
+goto :vrmeme_2
+:vrmeme_3
+echo.
+echo  Taille initiale (Mo): %VIRMEME1%
+echo  Taille maximale (Mo): %VIRMEME2%
+echo.
+@timeout /t 02>nul
+powershell -Command ^
+    "$PageFile = Get-WmiObject -Query 'SELECT * FROM Win32_PageFileSetting WHERE Name=''C:\\pagefile.sys''';" ^
+    "if ($PageFile) {" ^
+    "    $PageFile.InitialSize = %VIRMEME1%;" ^
+    "    $PageFile.MaximumSize = %VIRMEME2%;" ^
+    "    $PageFile.Put();" ^
+    "} else {" ^
+    "    $PageFile = ([WmiClass]'\\.\root\cimv2:Win32_PageFileSetting').CreateInstance();" ^
+    "    $PageFile.Name = 'C:\\pagefile.sys';" ^
+    "    $PageFile.InitialSize = %VIRMEME1%;" ^
+    "    $PageFile.MaximumSize = %VIRMEME2%;" ^
+    "    $PageFile.Put();" ^
+    "}"
 goto :MAINW
 
 :TESTOPTI
