@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0053
+SET VERSCRIPT=0054
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -575,20 +575,28 @@ IF "%CSTARTR%"=="24" (
 IF "%CSTARTR%"=="creaminstaller" (
 	IF EXIST "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe" START "" "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\CreamInstaller" md "%appdata%\StartUp Tools\CreamInstaller"
-	IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
-	curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
-	IF EXIST CreamInstaller.zip (7za.exe -y x -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.zip >nul)
+	rem IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
+	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
+	rem curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
+	curl -g -k -L -# -o "CreamInstaller.7z" "https://www.dropbox.com/scl/fi/zb0nenws703qdlh3l9z5a/CreamInstaller.7z?rlkey=b9tt0gko4nmigd8v2kx1ba6yn&st=729inwh2&dl=1" >nul 2>&1
+	IF EXIST CreamInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.7z >nul)
+	@timeout /t 02>nul
 	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
+	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="25" (
 	IF EXIST "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe" START "" "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\CreamInstaller" md "%appdata%\StartUp Tools\CreamInstaller"
-	IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
-	curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
-	IF EXIST CreamInstaller.zip (7za.exe -y x -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.zip >nul)
+	rem IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
+	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
+	rem curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
+	curl -g -k -L -# -o "CreamInstaller.7z" "https://www.dropbox.com/scl/fi/zb0nenws703qdlh3l9z5a/CreamInstaller.7z?rlkey=b9tt0gko4nmigd8v2kx1ba6yn&st=729inwh2&dl=1" >nul 2>&1
+	IF EXIST CreamInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.7z >nul)
+	@timeout /t 02>nul
 	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
+	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
 	goto :MAINW
 )
 
@@ -687,13 +695,13 @@ IF "%CSTARTR%"=="32" (
 )
 
 IF "%CSTARTR%"=="defender remover" (
-	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
+	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/latest/download/DefenderRemover.exe" >nul 2>&1
 	START DefenderRemover.exe
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="33" (
-	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/download/release_def_12_8/DefenderRemover.exe" >nul 2>&1
+	curl -g -k -L -# -o "DefenderRemover.exe" "https://github.com/ionuttbara/windows-defender-remover/releases/latest/download/DefenderRemover.exe" >nul 2>&1
 	START DefenderRemover.exe
 	goto :MAINW
 )
@@ -947,7 +955,7 @@ IF "%CSTARTR%"=="49" (
 )
 
 IF "%CSTARTR%"=="script network" (
-	curl -g -k -L -# -o "Network.bat" "https://github.com/UnLovedCookie/Network/releases/download/v1.1/Network.bat" >nul 2>&1
+	curl -g -k -L -# -o "Network.bat" "https://github.com/UnLovedCookie/Network/releases/latest/download/Network.bat" >nul 2>&1
 	START /WAIT Network.bat
 	goto :MAINW
 )
