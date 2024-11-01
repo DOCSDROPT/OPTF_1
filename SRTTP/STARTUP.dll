@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0055
+SET VERSCRIPT=0056
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -90,9 +90,9 @@ echo ³%orange%³%white% %indigo%[ 1]%white% Ancienne Optimisation    %orange%³%wh
 echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³%orange%³%white% %indigo%[ 2]%white% Optimisation             %orange%³%white%³ %indigo%[14]%white% Discord                  ³³ %indigo%[26]%white% Auto-CreamApi 2          ³³ %indigo%[36]%white% dControl                 ³³
 echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³%orange%³%white% %indigo%[ 3]%white% Optimisation      %gold%[BETA]%white% %orange%³%white%³ %indigo%[15]%white% TeamSpeak                ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[37]%white% Spotify                  ³³
+echo ³%orange%³%white% %indigo%[ 3]%white% Fichier Debug            %orange%³%white%³ %indigo%[15]%white% TeamSpeak                ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[37]%white% Spotify                  ³³
 echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%VPN%white%                           ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³%orange%³%white% %indigo%[ 4]%white% Fichier Debug            %orange%³%white%³ %indigo%[16]%white% Auto Clicker             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[38]%white% TreeSize                 ³³
+echo ³%orange%³%white% %indigo%[ 4]%white% Optimisation   %gold%[wor.ps1]%white% %orange%³%white%³ %indigo%[16]%white% Auto Clicker             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[38]%white% TreeSize                 ³³
 echo ³%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[27]%white% Cloudflare WARP          ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[17]%white% Vibrance GUI             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[39]%white% Everything               ³³
 echo ³³ %gold%Navigateur Internet%white%           ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[28]%white% RiseupVPN                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
@@ -122,7 +122,7 @@ echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         º %indigo%[ X ]%white% Nettoyage registres      º %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" º   %indigo%[98]%white% HELP
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍ
-echo      %indigo%[99]%white% COPIER MDP º %indigo%[ T ]%white% TEST-OPTI        º %indigo%[100]%white% Configurer les jeux  º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ M ]%white% Memoire virtuelle        º %indigo%[ V ]%white% %gold%-^>%white%
+echo      %indigo%[99]%white% COPIER MDP º                        º %indigo%[100]%white% Configurer les jeux  º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ M ]%white% Memoire virtuelle        º %indigo%[ V ]%white% %gold%-^>%white%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍ
 rem set /p CSTARTR="%green%>%white%"
 autoc.exe
@@ -197,28 +197,6 @@ IF "%CSTARTR%"=="1" (
 
 IF "%CSTARTR%"=="optimisation" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
-	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
-	curl -g -k -L -# -o "dl.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/dl.dll" >nul 2>&1 & start cmd /c "dl.bat"
-	@timeout /t 10>nul
-	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
-	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
-	IF EXIST C:\ph_main.exe start C:\ph_main.exe
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="2" (
-	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
-	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
-	curl -g -k -L -# -o "dl.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/dl.dll" >nul 2>&1 & start cmd /c "dl.bat"
-	@timeout /t 10>nul
-	IF EXIST Optifiles.7z (7za.exe -y x -p9421 -oC:\ Optifiles.7z >nul)
-	IF EXIST Optifiles.7z DEL Optifiles.7z>nul
-	IF EXIST C:\ph_main.exe start C:\ph_main.exe
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="beta optimisation" (
-	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
 	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
 	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
 	@timeout /t 10>nul
@@ -228,7 +206,7 @@ IF "%CSTARTR%"=="beta optimisation" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="3" (
+IF "%CSTARTR%"=="2" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
 	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
 	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
@@ -247,11 +225,21 @@ IF "%CSTARTR%"=="fichier debug" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="4" (
+IF "%CSTARTR%"=="3" (
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
 	curl -g -k -L -# -o "DEBUG.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/ph_user/DEBUG.dll" >nul 2>&1
 	IF EXIST DEBUG.7z (7za.exe -y x -p9421 -oC:\ DEBUG.7z >nul)
 	IF EXIST DEBUG.7z DEL DEBUG.7z>nul
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="4" (
+	powershell -command "iwr -useb https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/refs/heads/main/SRTTP/wor.ps1 | iex"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="wor.ps1" (
+	powershell -command "iwr -useb https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/refs/heads/main/SRTTP/wor.ps1 | iex"
 	goto :MAINW
 )
 
@@ -1076,9 +1064,6 @@ IF "%CSTARTR%"=="100" (
 IF "%CSTARTR%"=="x" goto :SCCLEAR
 IF "%CSTARTR%"=="X" goto :SCCLEAR
 
-IF "%CSTARTR%"=="t" goto :TESTOPTI
-IF "%CSTARTR%"=="T" goto :TESTOPTI
-
 IF "%CSTARTR%"=="b" goto :bluescreen
 IF "%CSTARTR%"=="B" goto :bluescreen
 
@@ -1138,14 +1123,6 @@ powershell -Command ^
     "    $PageFile.MaximumSize = %VIRMEME2%;" ^
     "    $PageFile.Put();" ^
     "}"
-goto :MAINW
-
-:TESTOPTI
-echo.
-echo  TimeLimitInSeconds [%orange% 6%white%] -^> [%green%12%white%]
-echo.
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\Profile\Events\{54533251-82be-4824-96c1-47b60b740d00}\{0DA965DC-8FCF-4c0b-8EFE-8DD5E7BC959A}\{7E01ADEF-81E6-4e1b-8075-56F373584694}" /v "TimeLimitInSeconds" /t REG_DWORD /d "0x12" /f >nul
-@timeout /t 03>nul
 goto :MAINW
 
 :Firtstr
@@ -1374,7 +1351,7 @@ Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeavfk" /f >nul 2>&1
-
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\Profile\Events\{54533251-82be-4824-96c1-47b60b740d00}\{0DA965DC-8FCF-4c0b-8EFE-8DD5E7BC959A}\{7E01ADEF-81E6-4e1b-8075-56F373584694}" /v "TimeLimitInSeconds" /t REG_DWORD /d "0x12" /f >nul
 Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects" /f >nul 2>&1
 Reg.exe delete "HKLM\Software\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSyncNGSC" /f >nul 2>&1
 Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOptions" /f >nul 2>&1
