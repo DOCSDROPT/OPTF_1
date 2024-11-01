@@ -1334,8 +1334,8 @@ sc delete spooler >nul 2>&1
 sc delete GameInputSvc >nul 2>&1
 sc delete WinRing0_1_2_0 >nul 2>&1
 sc delete "AMD External Events Utility" >nul 2>&1
-Reg.exe add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR /f /t REG_DWORD /v "AppCaptureEnabled" /d 0 /f >nul 2>&1
-Reg.exe add HKEY_CURRENT_USER\System\GameConfigStore /f /t REG_DWORD /v "GameDVR_Enabled" /d 0 /f >nul 2>&1
+Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f > NUL 2>&1
+Reg.exe add "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
