@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0059
+SET VERSCRIPT=0060
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -66,8 +66,8 @@ IF NOT EXIST "%appdata%\StartUp Tools\SFLE.bat" goto :Firtstr
 call "%appdata%\StartUp Tools\IFHW.bat"
 call "%appdata%\StartUp Tools\SFLE.bat"
 
-IF EXIST RERR.bat (
-	call RERR.bat
+IF EXIST "%appdata%\StartUp Tools\RERR.bat" (
+	call "%appdata%\StartUp Tools\RERR.bat"
 ) else (
 	goto :24570896
 )
@@ -108,7 +108,7 @@ echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[18]%white% RivaTuner          
 echo ³³ %indigo%[ 5]%white% LibreWolf Portable       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[29]%white% Proton VPN               ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[19]%white% Process Lasso Pro        ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[41]%white% AnyDesk                  ³³
 echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³
-echo ³³ %gold%Application portable%white%          ³³ %indigo%[20]%white% StartAllBack Pro         ³³ %gold%Scripts%white%                       ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+echo ³³ %gold%Application portable%white%          ³³ %indigo%[20]%white% StartAllBack Pro         ³³ %gold%Script%white%                        ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%Virus%white%                         ³³
 echo ³³ %indigo%[ 6]%white% Vencord Cli              ³³ %indigo%[21]%white% Revo Uninstaller Pro     ³³ %indigo%[30]%white% Windows Activation       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[42]%white% Hitman Pro               ³³
@@ -3263,13 +3263,13 @@ Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK1" /t REG_SZ /d "%ERROR%" /f >nul
 Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK2" /t REG_SZ /d "%ERROR2%" /f >nul
 Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK3" /t REG_SZ /d "%ERROR3%" /f >nul
 SET /a REGERROR=%ERROR3%+%ERROR2%+%ERROR%
-echo SET "REGERROR=%REGERROR%">>RERR.bat
+echo SET "REGERROR=%REGERROR%">>"%appdata%\StartUp Tools\RERR.bat"
 echo %ERROR% %ERROR2% %ERROR3%
 echo ^|-------------------------------------------------------------^|>>"%appdata%\StartUp Tools\LOG\err.log"
 echo    End : [Err 1] : %ERROR% ^| [Err 2] : %ERROR2% ^| [Err 3] : %ERROR3% ^|>>"%appdata%\StartUp Tools\LOG\err.log"
 echo ^|-------------------------------------------------------------^|>>"%appdata%\StartUp Tools\LOG\err.log"
 Endlocal
-call RERR.bat REGERROR
+call "%appdata%\StartUp Tools\RERR.bat"
 rem DEL RERR.bat>nul
 goto :MAINW
 
