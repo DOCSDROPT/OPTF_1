@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0058
+SET VERSCRIPT=0059
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -66,20 +66,28 @@ IF NOT EXIST "%appdata%\StartUp Tools\SFLE.bat" goto :Firtstr
 call "%appdata%\StartUp Tools\IFHW.bat"
 call "%appdata%\StartUp Tools\SFLE.bat"
 
+IF EXIST RERR.bat (
+	call RERR.bat
+) else (
+	goto :24570896
+)
+
 REM goto :24570896
 REM %ggrey% ERR REGISTRE : %REGERROR% %defcolor%
 
 :MAINW
 C:
 cd "%appdata%\StartUp Tools"
+for /f "tokens=3" %%a in ('dir /s /-c "%appdata%\StartUp Tools" ^| findstr /c:"fichier(s)"') do set "size=%%a" >nul 2>&1
+set /a "strsize=%size% / 1048576" >nul 2>&1
 mode con:cols=134 lines=48
-IF EXIST temp_output.txt DEL temp_output.txt
-IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp
+IF EXIST temp_output.txt DEL temp_output.txt >nul 2>&1
+IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp >nul 2>&1
 IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 IF NOT EXIST PowerRun_x64.exe curl -g -k -L -# -o "PowerRun_x64.exe" "https://tinyurl.com/dl-opt-PowerRun" >nul 2>&1
 cls
 echo ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
-echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white%
+echo    USER : %gold%%USERNAME%%white% ^| COMPUTERNAME : %gold%%COMPUTERNAME%%white% ^| VM : %gold%%VM%%white% ^| GPU : %gold%%GPU%%white% ^| DB : %gold%%strsize% Mo%white% ^| REG : %gold%%REGERROR% ERREUR(S)%white%
 echo   %bblue% OS : Windows %BLD% %defcolor%%oorange% RELEASE ID : %RID% %defcolor%%ggreen% DISPLAY VERSION : %DV% %defcolor%%bmagenta% CURRENT BUILD NUMBER : %CBN%%white% %defcolor%%iindigo% WINSUPPORT : %WINSUPPORT% %defcolor%
 echo ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
 echo ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฟ
@@ -122,7 +130,7 @@ echo ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
 echo อออออออออออออออออออออออออออออออออหออออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออ
 echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         บ %indigo%[ X ]%white% Nettoyage registres      บ %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" บ   %indigo%[98]%white% HELP
 echo อออออออออออออออออออออหอออออออออออสออออออออออออหอออออออออออออออออออสออออออออหออออออออออออออหอออออออออออออออสออออออออออออออออหออออออออออ
-echo      %indigo%[99]%white% COPIER MDP บ                        บ %indigo%[100]%white% Configurer les jeux  บ %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% บ %indigo%[ M ]%white% Memoire virtuelle        บ %indigo%[ V ]%white% %gold%-^>%white%
+echo      %indigo%[99]%white% COPIER MDP บ %indigo%[ R ]%white% SCAN REGISTRE    บ %indigo%[100]%white% Configurer les jeux  บ %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% บ %indigo%[ M ]%white% Memoire virtuelle        บ %indigo%[ V ]%white% %gold%-^>%white%
 echo อออออออออออออออออออออสออออออออออออออออออออออออสออออออออออออออออออออออออออออสออออออออออออออสออออออออออออออออออออออออออออออออสออออออออออ
 rem set /p CSTARTR="%green%>%white%"
 autoc.exe
@@ -1100,6 +1108,9 @@ IF "%CSTARTR%"=="M" goto :vrmeme
 IF "%CSTARTR%"=="v" goto :PANGEPACK
 IF "%CSTARTR%"=="V" goto :PANGEPACK
 
+IF "%CSTARTR%"=="r" goto :24570896
+IF "%CSTARTR%"=="R" goto :24570896
+
 goto :MAINW
 
 :vrmeme
@@ -1303,6 +1314,72 @@ taskkill /IM Everything.exe /F >nul
 goto :MAINW
 
 :SCCLEAR
+
+echo C:\Windows\TEMP>files.dll
+echo C:\Windows\Prefetch>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Temp>>files.dll
+echo C:\$Recycle.Bin>>files.dll
+echo C:\$Recycle.Bin\S-1-5-21-2128266018-2056727873-3071760823-1001>>files.dll
+echo C:\Windows\history>>files.dll
+echo C:\Windows\cookies>>files.dll
+echo C:\Windows\recent>>files.dll
+echo C:\Windows\spool\printers>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Temp>>files.dll
+echo C:\Users\%USERNAME%\AppData\LocalLow\Sun\Java>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data\Default\Cache>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\NVIDIA\GLCache>>files.dll
+echo C:\Users\%USERNAME%\AppData\LocalLow\NVIDIA\PerDriverVersion\DXCache>>files.dll
+echo C:\Users\%USERNAME%\AppData\LocalLow\AMD\DxCache>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\AMD\DxCache>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data\Default\JumpListIconsOld>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data\Default\JumpListIcons>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data\Default\Local Storage>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data\Default\Media Cache>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Internet Explorer\Recovery>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Terminal Server Client\Cache>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\Caches>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\Explorer>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\History\low>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\INetCache>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\Temporary Internet Files>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\WER\ReportArchive>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\WER\ReportQueue>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\Windows\WebCache>>files.dll
+echo C:\Users\%USERNAME%\AppData\Roaming\Adobe\Flash Player>>files.dll
+echo C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Teams\Service Worker\CacheStorage>>files.dll
+echo C:\Users\%USERNAME%\AppData\Roaming\Macromedia\Flash Player>>files.dll
+echo C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Recent>>files.dll
+echo C:\Users\%USERNAME%\Application Data\Adobe\Flash Player>>files.dll
+echo C:\Users\%USERNAME%\Application Data\Macromedia\Flash Player>>files.dll
+echo C:\Users\%USERNAME%\Application Data\Microsoft\Dr Watson>>files.dll
+echo C:\Users\%USERNAME%\Application Data\Microsoft\Windows\WER\ReportArchive>>files.dll
+echo C:\Users\%USERNAME%\Application Data\Microsoft\Windows\WER\ReportQueue>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Application Data\ApplicationHistory>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Application Data\Google\Chrome\User Data\Default\Cache>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Application Data\Google\Chrome\User Data\Default\JumpListIconsOld>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Application Data\Google\Chrome\User Data\Default\JumpListIcons>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Application Data\Google\Chrome\User Data\Default\Local Storage>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Application Data\Google\Chrome\User Data\Default\Media Cache>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Application Data\Microsoft\Dr Watson>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Application Data\Microsoft\Internet Explorer\Recovery>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Application Data\Microsoft\Terminal Server Client\Cache>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Temp>>files.dll
+echo C:\Users\%USERNAME%\Local Settings\Temporary Internet Files>>files.dll
+echo C:\Users\%USERNAME%\Recent>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\CLR_v4.0\UsageTraces>>files.dll
+echo C:\Users\%USERNAME%\AppData\Local\Microsoft\CLR_v4.0_32\UsageTraces>>files.dll
+echo C:\Windows\System32\LogFiles>>files.dll
+echo C:\Windows\Logs>>files.dll
+echo C:\Windows\Traces\WindowsUpdate>>files.dll
+echo C:\Windows\ServiceProfiles\LocalService\AppData\Local>>files.dll
+echo C:\Windows\ServiceProfiles\NetworkService\AppData\Local>>files.dll
+echo C:\ProgramData\Microsoft\Search\Data\Applications\Windows>>files.dll
+echo C:\Windows\Assembly\NativeImages_amd64>>files.dll
+echo C:\Windows\Assembly\NativeImages_x86>>files.dll
+echo C:\Windows\Assembly\NativeImages_ia64>>files.dll
+echo C:\Windows\SoftwareDistribution\Download>>files.dll
+
+
 sc delete epp >nul 2>&1
 sc delete PSKMAD >nul 2>&1
 sc delete spooler >nul 2>&1
@@ -1494,6 +1571,7 @@ rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\gg.essential.mod" >nul 2>&1
 rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\Adobe" >nul 2>&1
 rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\AdbAppControl" >nul 2>&1
 
+curl -g -k -L -# -o "cl-temp.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/cl-temp.dll" >nul 2>&1
 curl -g -k -L -# -o "colors.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/colors.reg" >nul 2>&1
 curl -g -k -L -# -o "REG.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/REG.reg" >nul 2>&1
 curl -g -k -L -# -o "DNS.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/DNS.reg" >nul 2>&1
@@ -1510,6 +1588,7 @@ IF NOT EXIST %APPDATA%\C-CMD\STARTUP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\ST
 IF NOT EXIST %APPDATA%\C-CMD\TMP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\TMP.bat" "https://tinyurl.com/TMPDLLCMD" >nul 2>&1
 
 powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA== >nul 2>&1
+START "" "cl-temp.exe"
 goto :MAINW
 
 :bluescreen
@@ -3190,8 +3269,8 @@ echo ^|-------------------------------------------------------------^|>>"%appdat
 echo    End : [Err 1] : %ERROR% ^| [Err 2] : %ERROR2% ^| [Err 3] : %ERROR3% ^|>>"%appdata%\StartUp Tools\LOG\err.log"
 echo ^|-------------------------------------------------------------^|>>"%appdata%\StartUp Tools\LOG\err.log"
 Endlocal
-call RERR.bat
-DEL RERR.bat>nul
+call RERR.bat REGERROR
+rem DEL RERR.bat>nul
 goto :MAINW
 
 
