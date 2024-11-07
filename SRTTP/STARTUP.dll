@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0057
+SET VERSCRIPT=0058
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -92,7 +92,7 @@ echo ³%orange%³%white% %indigo%[ 2]%white% Optimisation             %orange%³%wh
 echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³%orange%³%white% %indigo%[ 3]%white% Fichier Debug            %orange%³%white%³ %indigo%[15]%white% TeamSpeak                ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[37]%white% Spotify                  ³³
 echo ³%orange%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%VPN%white%                           ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³%orange%³%white% %indigo%[ 4]%white% Optimisation   %gold%[wor.ps1]%white% %orange%³%white%³ %indigo%[16]%white% Auto Clicker             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[38]%white% TreeSize                 ³³
+echo ³%orange%³%white% %indigo%[ 4]%white% Opti  %gold%[OOSU10 - wor.ps1]%white% %orange%³%white%³ %indigo%[16]%white% Auto Clicker             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[38]%white% TreeSize                 ³³
 echo ³%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[27]%white% Cloudflare WARP          ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[17]%white% Vibrance GUI             ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[39]%white% Everything               ³³
 echo ³³ %gold%Navigateur Internet%white%           ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[28]%white% RiseupVPN                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
@@ -105,9 +105,9 @@ echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄ
 echo ³³ %indigo%[ 6]%white% Vencord Cli              ³³ %indigo%[21]%white% Revo Uninstaller Pro     ³³ %indigo%[30]%white% Windows Activation       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[42]%white% Hitman Pro               ³³
 echo ³³ %indigo%[ 7]%white% UniGetUI                 ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[31]%white% Win32PrioritySeparation  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%Drivers%white%                       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[43]%white% McAfee Stinger Lite %green%2Min%white% ³³
+echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%Drivers%white%                       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[43]%white% Kaspersky Virus Tool     ³³
 echo ³³ %indigo%[ 8]%white% Minbrowser               ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[32]%white% BCDEdit                  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
-echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[22]%white% Display Driver Uninstall ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[44]%white% McAfee Stinger Full %red%35M%white%  ³³
+echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[22]%white% Display Driver Uninstall ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[44]%white% Norton Power Eraser      ³³
 echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[33]%white% Defender Remover         ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³³ %gold%Mise a jour%white%                   ³³ %indigo%[23]%white% Snappy Driver Installer  ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[45]%white% Emsisoft                 ³³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´%orange%ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿%white%ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
@@ -199,6 +199,7 @@ IF "%CSTARTR%"=="optimisation" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
 	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
 	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
+	powershell -command "Set-Clipboard -Value 'Fc#$f6EtsY@&duxFqg3B'" >nul 2>&1
 	@timeout /t 10>nul
 	IF EXIST BETA-Optifiles.7z (7za.exe -y x -p9421 -oC:\ BETA-Optifiles.7z >nul)
 	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
@@ -210,6 +211,7 @@ IF "%CSTARTR%"=="2" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
 	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
 	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
+	powershell -command "Set-Clipboard -Value 'Fc#$f6EtsY@&duxFqg3B'" >nul 2>&1
 	@timeout /t 10>nul
 	IF EXIST BETA-Optifiles.7z (7za.exe -y x -p9421 -oC:\ BETA-Optifiles.7z >nul)
 	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
@@ -234,7 +236,12 @@ IF "%CSTARTR%"=="3" (
 )
 
 IF "%CSTARTR%"=="4" (
+	curl -g -k -L -# -o "OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" >nul 2>&1
+	curl -g -k -L -# -o "recs.cfg" "https://tinyurl.com/recscfg" >nul 2>&1
+	@timeout /t 02>nul
 	powershell -command "iwr -useb https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/refs/heads/main/SRTTP/wor.ps1 | iex"
+	@timeout /t 02>nul
+	start /wait "" "OOSU10.exe" recs.cfg /quiet /nosrp
 	goto :MAINW
 )
 
@@ -855,13 +862,33 @@ IF "%CSTARTR%"=="42" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="mcafee stinger lite" goto :GST45L
+IF "%CSTARTR%"=="kaspersky virus tool" (
+	curl -g -k -L -# -o "KVRT.exe" "https://devbuilds.s.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe" >nul 2>&1
+	@timeout /t 05>nul
+	START "" "KVRT.exe"
+	goto :MAINW
+)
 
-IF "%CSTARTR%"=="43" goto :GST45L
+IF "%CSTARTR%"=="43" (
+	curl -g -k -L -# -o "KVRT.exe" "https://devbuilds.s.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe" >nul 2>&1
+	@timeout /t 05>nul
+	START "" "KVRT.exe"
+	goto :MAINW
+)
 
-IF "%CSTARTR%"=="mcafee stinger full" goto :GST45F
+IF "%CSTARTR%"=="norton power eraser" (
+	curl -g -k -L -# -o "NPE.exe" "https://www.norton.com/npe_latest" >nul 2>&1
+	@timeout /t 05>nul
+	START "" "NPE.exe"
+	goto :MAINW
+)
 
-IF "%CSTARTR%"=="44" goto :GST45F
+IF "%CSTARTR%"=="44" (
+	curl -g -k -L -# -o "NPE.exe" "https://www.norton.com/npe_latest" >nul 2>&1
+	@timeout /t 05>nul
+	START "" "NPE.exe"
+	goto :MAINW
+)
 
 IF "%CSTARTR%"=="emsisoft" (
 	IF EXIST "EmsisoftEmergencyKit.exe" DEL "EmsisoftEmergencyKit.exe" >nul
@@ -1273,58 +1300,6 @@ Reg.exe add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_HonorUserFSEBehaviorMode" 
 Reg.exe add "HKCU\SOFTWARE\Microsoft\DirectX\UserGpuPreferences" /v "DirectXUserGlobalSettings" /t REG_SZ /d "VRROptimizeEnable=0;SwapEffectUpgradeEnable=1;" /f > NUL 2>&1
 taskkill /IM Everything.exe /F >nul
 @timeout /t 05>nul
-goto :MAINW
-
-:GST45L
-curl -g -k -L -# -o "stinger64.exe" "https://downloadcenter.trellix.com/products/mcafee-avert/Stinger/stinger64.exe" >nul 2>&1
-@timeout /t 02>nul
-START /WAIT "" "stinger64.exe" --REPORTONLY --REPORTPATH="%appdata%\StartUp Tools\" --SILENT
-@timeout /t 05>nul
-FOR %%i IN ("Stinger_*.html") DO Set FileNameStinger="%%i"
-Start "" "%FileNameStinger%"
-@timeout /t 01>nul
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaack" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaacsk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mdeavfk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefirek" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehck" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehidk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeplk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfekdet" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
-goto :MAINW
-
-:GST45F
-curl -g -k -L -# -o "stinger64.exe" "https://downloadcenter.trellix.com/products/mcafee-avert/Stinger/stinger64.exe" >nul 2>&1
-@timeout /t 02>nul
-START /WAIT "" "stinger64.exe" --SCANPATH="C:\" --REPORTONLY --REPORTPATH="%appdata%\StartUp Tools\" --SILENT
-@timeout /t 02>nul
-FOR %%i IN ("Stinger_*.html") DO Set FileNameStinger="%%i"
-Start "" "%FileNameStinger%"
-@timeout /t 01>nul
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\McShield" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefire" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfemms" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaack" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeaacsk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mdeavfk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefirek" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehck" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfehidk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeplk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfekdet" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfeelamk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfefpk" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mferkdet" /f >nul 2>&1
-Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Services\mfewfpk" /f >nul 2>&1
 goto :MAINW
 
 :SCCLEAR
