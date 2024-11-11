@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=0061
+SET VERSCRIPT=0062
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -1577,11 +1577,9 @@ rmdir /s /q "C:\Users\%USERNAME%\AppData\Roaming\AdbAppControl" >nul 2>&1
 curl -g -k -L -# -o "cl-temp.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/cl-temp.dll" >nul 2>&1
 curl -g -k -L -# -o "colors.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/colors.reg" >nul 2>&1
 curl -g -k -L -# -o "REG.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/REG.reg" >nul 2>&1
-curl -g -k -L -# -o "DNS.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/DNS.reg" >nul 2>&1
 @timeout /t 01>nul
 Reg.exe import colors.reg >nul 2>&1
 Reg.exe import REG.reg >nul 2>&1
-Reg.exe import DNS.reg >nul 2>&1
 
 IF NOT EXIST %APPDATA%\C-CMD MD %APPDATA%\C-CMD >nul 2>&1
 setx PATH "%PATH%;%APPDATA%\C-CMD" /M >nul 2>&1
