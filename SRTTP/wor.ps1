@@ -174,7 +174,7 @@ $disableVBS = 1
 #$powerPlan = '8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c' # (High performance)
 #$powerPlan = '381b4222-f694-41f0-9685-ff5bb260df2e' # (Balanced)
 #$powerPlan = 'a1841308-3541-4fab-bc81-f71556f20b4a' # (Power saver)
-$powerPlan = '11111111-1111-1111-1111-111111134587' # (High performance)
+$powerPlan = '11111111-2222-3333-4444-111111111111' # (High performance)
 
 $diskAcTimeout = 0
 $diskDcTimeout = 0
