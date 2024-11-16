@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-64
+SET VERSCRIPT=D-65
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -1260,7 +1260,6 @@ echo.
 echo  Taille initiale (Mo): %VIRMEME1%
 echo  Taille maximale (Mo): %VIRMEME2%
 echo.
-pause
 @timeout /t 02>nul
 powershell -Command ^
     "$PageFile = Get-WmiObject -Query 'SELECT * FROM Win32_PageFileSetting WHERE Name=''C:\\pagefile.sys''';" ^
@@ -1339,7 +1338,7 @@ FOR /F "TOKENS=2,*" %%A IN ('reg query "%CURRENTKEY%" 2^>NUL^|FIND /I "ReleaseId
 SET WINSUPPORT=NO
 IF %RO1%==22621 SET WINSUPPORT=YES
 IF %RO1%==22631 SET WINSUPPORT=YES
-IF %RO1%==26100 SET WINSUPPORT=NO
+IF %RO1%==26100 SET WINSUPPORT=YES
 
 cls
 echo Chargement des donnees %bluel%6/6%white%
