@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-66
+SET VERSCRIPT=D-67
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -71,9 +71,6 @@ IF EXIST "%appdata%\StartUp Tools\RERR.bat" (
 ) else (
 	goto :24570896
 )
-
-REM goto :24570896
-REM %ggrey% ERR REGISTRE : %REGERROR% %defcolor%
 
 :MAINW
 C:
@@ -132,7 +129,6 @@ echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         บ %indigo%[ X 
 echo อออออออออออออออออออออหอออออออออออสอออออออออออออออหอออออออออออออออออออสออออออออหออออออออออออออหอออออออออออออออสอออออออออออออหออออออออออ
 echo      %indigo%[99]%white% COPIER MDP บ %indigo%[ R ]%white% SCAN REGISTRE %gold%[ E ]%white% บ %indigo%[100]%white% Configurer les jeux  บ %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% บ %indigo%[ M ]%white% Memoire virtuelle     บ %indigo%[ V ]%white% %gold%-^>%white%
 echo อออออออออออออออออออออสอออออออออออออออออออออออออออสออออออออออออออออออออออออออออสออออออออออออออสอออออออออออออออออออออออออออออสออออออออออ
-rem set /p CSTARTR="%green%>%white%"
 autoc.exe
 set /p CSTARTR=<temp_output.txt
 
@@ -196,12 +192,6 @@ IF "%CSTARTR%"=="schon" PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule sta
 IF "%CSTARTR%"=="schoff" PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule start=disabled&goto :MAINW
 IF "%CSTARTR%"=="amddefender" PowerRun_x64.exe /SW:0 cmd.exe /k ren "C:\Windows\System32\drivers\amdfendr.sys" "amdfendr.sys.old"&goto :MAINW
 IF "%CSTARTR%"=="wstore" curl -g -k -L -# -o "%temp%\WStore.bat" "https://tinyurl.com/ACWStoreScript" & start cmd /c "%temp%\WStore.bat" & goto :MAINW
-
-rem IF "%CSTARTR%"=="1" (
-rem 	IF NOT EXIST C:\Ect\RWC md C:\Ect\RWC
-rem 	IF EXIST "C:\Ect\RWC\main.bat" start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
-rem 	IF NOT EXIST "C:\Ect\RWC\main.bat" curl -g -k -L -# -o "C:\Ect\RWC\main.bat" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_1/main/SRTTP/main.dll" & start cmd /c "C:\Ect\RWC\main.bat" & goto :MAINW
-rem )
 
 IF "%CSTARTR%"=="optimisation" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
@@ -652,7 +642,6 @@ IF "%CSTARTR%"=="24" (
 IF "%CSTARTR%"=="creaminstaller" (
 	IF EXIST "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe" START "" "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\CreamInstaller" md "%appdata%\StartUp Tools\CreamInstaller"
-	rem IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
 	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
 	rem curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
 	curl -g -k -L -# -o "CreamInstaller.7z" "https://www.dropbox.com/scl/fi/zb0nenws703qdlh3l9z5a/CreamInstaller.7z?rlkey=b9tt0gko4nmigd8v2kx1ba6yn&st=729inwh2&dl=1" >nul 2>&1
@@ -666,7 +655,6 @@ IF "%CSTARTR%"=="creaminstaller" (
 IF "%CSTARTR%"=="25" (
 	IF EXIST "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe" START "" "%appdata%\StartUp Tools\CreamInstaller\CreamInstaller.exe"&goto :MAINW
 	IF NOT EXIST "%appdata%\StartUp Tools\CreamInstaller" md "%appdata%\StartUp Tools\CreamInstaller"
-	rem IF EXIST "CreamInstaller.zip" DEL "CreamInstaller.zip" >nul
 	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
 	rem curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
 	curl -g -k -L -# -o "CreamInstaller.7z" "https://www.dropbox.com/scl/fi/zb0nenws703qdlh3l9z5a/CreamInstaller.7z?rlkey=b9tt0gko4nmigd8v2kx1ba6yn&st=729inwh2&dl=1" >nul 2>&1
@@ -1865,11 +1853,6 @@ SET chk_1_16=ERR
 SET chk_1_17=ERR
 SET chk_1_18=ERR
 SET chk_1_19=ERR
-REM SET chk_1_20=ERR
-REM SET chk_1_21=ERR
-REM SET chk_1_22=ERR
-REM SET chk_1_23=ERR
-REM SET chk_1_24=ERR
 SET chk_1_25=ERR
 SET chk_1_26=ERR
 SET chk_1_27=ERR
@@ -1928,13 +1911,6 @@ for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\Cur
 for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut"') DO set chk_1_17=%%a >NUL 2>nul
 for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled"') DO set chk_1_18=%%a >NUL 2>nul
 for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v "HistoricalCaptureEnabled"') DO set chk_1_19=%%a >NUL 2>nul
-
-REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions"') DO set chk_1_20=%%a >NUL 2>nul
-REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\ControlSet001\Control\Session Manager\kernel" /v "MitigationOptions"') DO set chk_1_21=%%a >NUL 2>nul
-REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\System\ControlSet002\Control\Session Manager\kernel" /v "MitigationOptions"') DO set chk_1_22=%%a >NUL 2>nul
-REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe" /v "MitigationAuditOptions"') DO set chk_1_23=%%a >NUL 2>nul
-REM for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe" /v "MitigationOptions"') DO set chk_1_24=%%a >NUL 2>nul
-
 for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtualizationBasedSecurity"') DO set chk_1_25=%%a >NUL 2>nul
 for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Internet Explorer\Main" /v "DEPOff"') DO set chk_1_26=%%a >NUL 2>nul
 for /f "skip=2 tokens=3" %%a in ('reg query "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v "NoDataExecutionPrevention"') DO set chk_1_27=%%a >NUL 2>nul
@@ -2314,7 +2290,6 @@ IF NOT %chk_1_58%==0x0 (
 IF NOT %chk_1_59%==0x0 (
 	IF NOT %chk_1_59%==ERR (
 		echo SubmitSamplesConsent = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
-		SET /a ERROR=%ERROR%+1
 	)
 )
 
@@ -2367,69 +2342,6 @@ IF NOT %chk_1_66%==0x1 (
 	)
 )
 
-REM IF %chk_1_1%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_2%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_4%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_7%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_8%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_9%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_12%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_14%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_15%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_16%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_17%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_18%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_19%==ERR SET /a ERROR=%ERROR%-1
-
-REM IF %chk_1_20%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_21%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_22%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_23%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_24%==ERR SET /a ERROR=%ERROR%-1
-
-REM IF %chk_1_25%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_26%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_27%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_28%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_29%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_30%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_31%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_32%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_33%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_34%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_35%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_36%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_37%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_38%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_39%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_40%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_41%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_42%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_43%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_44%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_45%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_46%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_47%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_48%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_49%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_50%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_51%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_52%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_53%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_54%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_55%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_56%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_57%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_58%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_59%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_60%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_61%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_62%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_63%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_64%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_65%==ERR SET /a ERROR=%ERROR%-1
-REM IF %chk_1_66%==ERR SET /a ERROR=%ERROR%-1
-
 SET CULTD=2
 SET chk_2_1=ERR
 SET chk_2_2=ERR
@@ -2471,6 +2383,7 @@ SET chk_2_39=ERR
 SET chk_2_40=ERR
 SET chk_2_41=ERR
 SET chk_2_42=ERR
+SET chk_2_43=ERR
 
 REM ###---------FILES_2-----------------------------------------------------------------------------------###
 
@@ -2514,6 +2427,7 @@ for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "Ga
 for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_HonorUserFSEBehaviorMode"') DO set chk_2_40=%%a >NUL 2>nul
 for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_EFSEFeatureFlags"') DO set chk_2_41=%%a >NUL 2>nul
 for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible"') DO set chk_2_42=%%a >NUL 2>nul
+for /f "skip=2 tokens=3" %%a in ('reg query "HKCU\Software\Microsoft\GameBar" /v "ShowStartupPanel"') DO set chk_2_43=%%a >NUL 2>nul
 IF EXIST $null DEL $null >NUL 2>nul
 cls
 
@@ -2753,82 +2667,43 @@ IF NOT %chk_2_35%==0x1 (
 IF NOT %chk_2_36%==0x0 (
 	IF NOT %chk_2_36%==ERR (
 		echo 2 - AllowGameDVR = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
-		SET /a ERROR2=%ERROR2%+1
 	)
 )
 
 IF NOT %chk_2_37%==0x0 (
 	IF NOT %chk_2_37%==ERR (
 		echo GameDVR_Enabled = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
-		SET /a ERROR2=%ERROR2%+1
 	)
 )
 
 IF NOT %chk_2_38%==0x0 (
 	IF NOT %chk_2_38%==ERR (
 		echo GameDVR_FSEBehaviorMode = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
-		SET /a ERROR2=%ERROR2%+1
 	)
 )
 
 IF NOT %chk_2_39%==0x0 (
 	IF NOT %chk_2_39%==ERR (
 		echo GameDVR_FSEBehavior = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
-		SET /a ERROR2=%ERROR2%+1
 	)
 )
 
 IF NOT %chk_2_40%==ERR (
 	echo GameDVR_HonorUserFSEBehaviorMode = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
-	SET /a ERROR2=%ERROR2%+1
 )
 
 IF NOT %chk_2_41%==ERR (
 	echo GameDVR_EFSEFeatureFlags = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
-	SET /a ERROR2=%ERROR2%+1
 )
 
 IF NOT %chk_2_42%==ERR (
 	echo GameDVR_DXGIHonorFSEWindowsCompatible = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
-	SET /a ERROR2=%ERROR2%+1
 )
 
-REM IF %chk_2_1%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_2%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_3%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_4%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_5%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_6%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_7%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_8%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_9%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_10%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_11%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_12%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_15%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_16%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_17%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_18%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_19%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_20%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_21%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_22%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_23%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_24%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_25%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_26%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_27%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_28%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_29%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_30%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_31%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_32%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_33%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_34%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_35%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_36%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_37%==ERR SET /a ERROR2=%ERROR2%-1
-REM IF %chk_2_38%==ERR SET /a ERROR2=%ERROR2%-1
+IF NOT %chk_2_43%==0x0 (
+	echo ShowStartupPanel = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
+	SET /a ERROR2=%ERROR2%+1
+)
 
 SET CULTD=3
 SET chk_3_1=ERR
@@ -2940,7 +2815,6 @@ REM ###---------FILES_3---------------------------------------------------------
 IF %chk_3_1%==0x1 (
 	IF %chk_3_1%==ERR (
 		echo 3 - AllowGameDVR = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
-		SET /a ERROR3=%ERROR3%+1
 	)
 )
 
@@ -3280,58 +3154,8 @@ IF NOT %chk_3_53%==0x0 (
 	)
 )
 
-REM IF %chk_3_1%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_2%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_3%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_4%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_5%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_6%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_7%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_8%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_11%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_12%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_13%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_14%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_15%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_16%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_17%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_18%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_19%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_20%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_21%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_24%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_25%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_26%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_27%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_28%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_29%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_30%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_31%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_32%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_33%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_34%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_35%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_36%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_37%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_38%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_39%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_40%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_41%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_42%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_43%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_44%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_45%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_46%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_47%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_48%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_49%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_50%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_51%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_52%==ERR SET /a ERROR3=%ERROR3%-1
-REM IF %chk_3_53%==ERR SET /a ERROR3=%ERROR3%-1
 cls
 
-REM goto :errregdebug
 DEL RERR.bat>nul
 
 IF %ERROR%==-1 SET ERROR=0
@@ -3348,160 +3172,6 @@ echo    End : [Err 1] : %ERROR% ^| [Err 2] : %ERROR2% ^| [Err 3] : %ERROR3% ^|>>
 echo ^|-------------------------------------------------------------^|>>"%appdata%\StartUp Tools\LOG\err.log"
 Endlocal
 call "%appdata%\StartUp Tools\RERR.bat"
-rem DEL RERR.bat>nul
-goto :MAINW
-
-
-:errregdebug
-cls
-(
-	echo %chk_1_1% 
-	echo %chk_1_2% 
-	echo %chk_1_4% 
-	echo %chk_1_7% 
-	echo %chk_1_8% 
-	echo %chk_1_9% 
-	echo %chk_1_12% 
-	echo %chk_1_14% 
-	echo %chk_1_15% 
-	echo %chk_1_16% 
-	echo %chk_1_17% 
-	echo %chk_1_18% 
-	echo %chk_1_19% 
-	echo %chk_1_25% 
-	echo %chk_1_26% 
-	echo %chk_1_27% 
-	echo %chk_1_28% 
-	echo %chk_1_29% 
-	echo %chk_1_30% 
-	echo %chk_1_31% 
-	echo %chk_1_32% 
-	echo %chk_1_33% 
-	echo %chk_1_34% 
-	echo %chk_1_35% 
-	echo %chk_1_36% 
-	echo %chk_1_37% 
-	echo %chk_1_38% 
-	echo %chk_1_39% 
-	echo %chk_1_40% 
-	echo %chk_1_41% 
-	echo %chk_1_42% 
-	echo %chk_1_43% 
-	echo %chk_1_44% 
-	echo %chk_1_45% 
-	echo %chk_1_46% 
-	echo %chk_1_47% 
-	echo %chk_1_48% 
-	echo %chk_1_49% 
-	echo %chk_1_50% 
-	echo %chk_1_51% 
-	echo %chk_1_52% 
-	echo %chk_1_53% 
-	echo %chk_1_54% 
-	echo %chk_1_55% 
-	echo %chk_1_56% 
-	echo %chk_1_57% 
-	echo %chk_1_58% 
-	echo %chk_1_59% 
-	echo %chk_1_60% 
-	echo %chk_1_61% 
-	echo %chk_1_62% 
-	echo %chk_1_63% 
-	echo %chk_1_64% 
-	echo %chk_1_65% 
-	echo %chk_1_66% 
-	echo.
-	echo %chk_2_1% 
-	echo %chk_2_2% 
-	echo %chk_2_3% 
-	echo %chk_2_4% 
-	echo %chk_2_5% 
-	echo %chk_2_6% 
-	echo %chk_2_7% 
-	echo %chk_2_8% 
-	echo %chk_2_9% 
-	echo %chk_2_10% 
-	echo %chk_2_11% 
-	echo %chk_2_12% 
-	echo %chk_2_15% 
-	echo %chk_2_16% 
-	echo %chk_2_17% 
-	echo %chk_2_18% 
-	echo %chk_2_19% 
-	echo %chk_2_20% 
-	echo %chk_2_21% 
-	echo %chk_2_22% 
-	echo %chk_2_23% 
-	echo %chk_2_24% 
-	echo %chk_2_25% 
-	echo %chk_2_26% 
-	echo %chk_2_27% 
-	echo %chk_2_28% 
-	echo %chk_2_29% 
-	echo %chk_2_30% 
-	echo %chk_2_31% 
-	echo %chk_2_32% 
-	echo %chk_2_33% 
-	echo %chk_2_34% 
-	echo %chk_2_35% 
-	echo %chk_2_36% 
-	echo %chk_2_37% 
-	echo %chk_2_38% 
-	echo %chk_2_39% 
-	echo %chk_2_40% 
-	echo %chk_2_41% 
-	echo %chk_2_42% 
-	echo.
-	echo %chk_3_1% 
-	echo %chk_3_2% 
-	echo %chk_3_3% 
-	echo %chk_3_4% 
-	echo %chk_3_5% 
-	echo %chk_3_6% 
-	echo %chk_3_7% 
-	echo %chk_3_8% 
-	echo %chk_3_11% 
-	echo %chk_3_12% 
-	echo %chk_3_13% 
-	echo %chk_3_14% 
-	echo %chk_3_15% 
-	echo %chk_3_16% 
-	echo %chk_3_17% 
-	echo %chk_3_18% 
-	echo %chk_3_19% 
-	echo %chk_3_20% 
-	echo %chk_3_21% 
-	echo %chk_3_24% 
-	echo %chk_3_25% 
-	echo %chk_3_26% 
-	echo %chk_3_27% 
-	echo %chk_3_28% 
-	echo %chk_3_29% 
-	echo %chk_3_30% 
-	echo %chk_3_31% 
-	echo %chk_3_32% 
-	echo %chk_3_33% 
-	echo %chk_3_34% 
-	echo %chk_3_35% 
-	echo %chk_3_36% 
-	echo %chk_3_37% 
-	echo %chk_3_38% 
-	echo %chk_3_39% 
-	echo %chk_3_40% 
-	echo %chk_3_41% 
-	echo %chk_3_42% 
-	echo %chk_3_43% 
-	echo %chk_3_44% 
-	echo %chk_3_45% 
-	echo %chk_3_46% 
-	echo %chk_3_47% 
-	echo %chk_3_48% 
-	echo %chk_3_49% 
-	echo %chk_3_50% 
-	echo %chk_3_51% 
-	echo %chk_3_52% 
-	echo %chk_3_53% 
-) >"%appdata%\StartUp Tools\LOG\err.log"
 goto :MAINW
 
 :helpcmd
@@ -3519,8 +3189,6 @@ echo  %yellow%warpfix%white%          -  Fix erreur du service WARP.
 echo  %yellow%schon%white%            -  Active le service Schedule.
 echo  %yellow%schoff%white%           -  Desactive le service Schedule.
 echo  %yellow%wstore%white%           -  Installe le Microsoft Store.
-rem echo %yellow%SAVE%white%             -  Permet d'exporter ou d'importer des sauvegardes.
-rem echo %yellow%CLD%white%              -  Permet d'exporter ou d'importer le dossier "C:\CLD".
 echo  %yellow%saveappdata%white%      -  Sauvegarde les dossiers de moins de 2 Go qui sont dans "APPDATA".
 echo.
 echo  %indigo%App%white%              =  %gold%tcpview%white%
