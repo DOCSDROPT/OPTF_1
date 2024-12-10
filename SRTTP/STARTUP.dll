@@ -1,6 +1,6 @@
 :RESET
 @echo off
-@Title START-UP TOOLS
+@Title START-UP TOOL
 set black=[30m
 set red=[91m
 set bright_red=[1;91m
@@ -32,16 +32,16 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-65
+SET VERSCRIPT=D-66
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
-if %errorlevel% neq 0 (
+IF %errorlevel% neq 0 (
 	powershell -NoProfile -NonInteractive -Command start -verb runas "'%~s0'" >nul 2>&1 & exit /b
 )
 
-if /i "%~1"=="/4" (
+IF /i "%~1"=="/4" (
 	mode con:cols=134 lines=47
 ) else (
 	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
@@ -50,7 +50,7 @@ if /i "%~1"=="/4" (
 SET ERROR=0
 
 ping -n 1 -w 2000 www.google.com > nul
-if %errorlevel% equ 0 (SET NETWORK=YES) else (SET NETWORK=NO)
+IF %errorlevel% equ 0 (SET NETWORK=YES) else (SET NETWORK=NO)
 IF %NETWORK%==NO (
 	cls
 	echo.
@@ -657,7 +657,7 @@ IF "%CSTARTR%"=="creaminstaller" (
 	rem curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
 	curl -g -k -L -# -o "CreamInstaller.7z" "https://www.dropbox.com/scl/fi/zb0nenws703qdlh3l9z5a/CreamInstaller.7z?rlkey=b9tt0gko4nmigd8v2kx1ba6yn&st=729inwh2&dl=1" >nul 2>&1
 	IF EXIST CreamInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.7z >nul)
-	@timeout /t 02>nul
+	@timeout /t 05>nul
 	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
 	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
 	goto :MAINW
@@ -671,7 +671,7 @@ IF "%CSTARTR%"=="25" (
 	rem curl -g -k -L -# -o "CreamInstaller.zip" "https://github.com/pointfeev/CreamInstaller/releases/download/v5.0.0.0/CreamInstaller.zip" >nul 2>&1
 	curl -g -k -L -# -o "CreamInstaller.7z" "https://www.dropbox.com/scl/fi/zb0nenws703qdlh3l9z5a/CreamInstaller.7z?rlkey=b9tt0gko4nmigd8v2kx1ba6yn&st=729inwh2&dl=1" >nul 2>&1
 	IF EXIST CreamInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.7z >nul)
-	@timeout /t 02>nul
+	@timeout /t 05>nul
 	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
 	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
 	goto :MAINW
@@ -684,6 +684,7 @@ IF "%CSTARTR%"=="auto creamapi" (
 	curl -g -k -L -# -o "auto-creamapi-2.1.7.1.7z" "https://git.jeddunk.xyz/jeddunk/auto-creamapi-2/releases/download/2.1.7/auto-creamapi-2.1.7.1.7z" >nul 2>&1
 	IF EXIST auto-creamapi-2.1.7.1.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Auto-CreamApi" auto-creamapi-2.1.7.1.7z >nul)
 	curl -g -k -L -# -o "%appdata%\StartUp Tools\Auto-CreamApi\dotnet-sdk-3.1.426-win-x64.exe" "https://download.visualstudio.microsoft.com/download/pr/b70ad520-0e60-43f5-aee2-d3965094a40d/667c122b3736dcbfa1beff08092dbfc3/dotnet-sdk-3.1.426-win-x64.exe" >nul 2>&1
+	@timeout /t 05>nul
 	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\Auto-CreamApi"
 	goto :MAINW
 )
@@ -695,6 +696,7 @@ IF "%CSTARTR%"=="26" (
 	curl -g -k -L -# -o "auto-creamapi-2.1.7.1.7z" "https://git.jeddunk.xyz/jeddunk/auto-creamapi-2/releases/download/2.1.7/auto-creamapi-2.1.7.1.7z" >nul 2>&1
 	IF EXIST auto-creamapi-2.1.7.1.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Auto-CreamApi" auto-creamapi-2.1.7.1.7z >nul)
 	curl -g -k -L -# -o "%appdata%\StartUp Tools\Auto-CreamApi\dotnet-sdk-3.1.426-win-x64.exe" "https://download.visualstudio.microsoft.com/download/pr/b70ad520-0e60-43f5-aee2-d3965094a40d/667c122b3736dcbfa1beff08092dbfc3/dotnet-sdk-3.1.426-win-x64.exe" >nul 2>&1
+	@timeout /t 05>nul
 	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\Auto-CreamApi"
 	goto :MAINW
 )
@@ -1309,11 +1311,11 @@ cls
 echo Chargement des donnees %bluel%3/6%white%
 for /f "tokens=*" %%i in ('powershell -Command "Get-WmiObject win32_videocontroller | Select-Object -ExpandProperty Name"') do set GPU_NAME=%%i
 echo %GPU_NAME% | find /I "NVIDIA" > nul
-if %errorlevel% == 0 (set GPU=NVIDIA&goto :ENDGPU)
+IF %errorlevel% == 0 (set GPU=NVIDIA&goto :ENDGPU)
 echo %GPU_NAME% | find /I "AMD" > nul
-if %errorlevel% == 0 (set GPU=AMD&goto :ENDGPU)
+IF %errorlevel% == 0 (set GPU=AMD&goto :ENDGPU)
 echo %GPU_NAME% | find /I "VMWARE" > nul
-if %errorlevel% == 0 (set GPU=VMWARE&goto :ENDGPU)
+IF %errorlevel% == 0 (set GPU=VMWARE&goto :ENDGPU)
 set GPU=UNKNOWN
 :ENDGPU
 
@@ -1352,9 +1354,9 @@ Echo SET RID=%RO9%>>"%appdata%\StartUp Tools\IFHW.bat"
 Echo SET WINSUPPORT=%WINSUPPORT%>>"%appdata%\StartUp Tools\IFHW.bat"
 
 for /f "tokens=3" %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v CurrentBuild') do set build_number=%%i
-if %build_number% GEQ 22000 (
+IF %build_number% GEQ 22000 (
     SET WVAC=11
-) else if %build_number% GEQ 10240 (
+) else IF %build_number% GEQ 10240 (
     SET WVAC=10
 ) else (
     SET WVAC=ERR
@@ -2071,41 +2073,6 @@ IF NOT %chk_1_19%==0x0 (
 	)
 )
 
-REM IF %chk_1_20%==222222222222222222222222222222222222222222222222 (
-REM 	echo MitigationOptions >nul 2>&1
-REM ) else (
-REM 	echo MitigationOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
-REM 	SET /a ERROR=%ERROR%+1
-REM )
-
-REM IF %chk_1_21%==222222222222222222222222222222222222222222222222 (
-REM 	echo MitigationOptions >nul 2>&1
-REM ) else (
-REM 	echo MitigationOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
-REM 	SET /a ERROR=%ERROR%+1
-REM )
-
-REM IF %chk_1_22%==222222222222222222222222222222222222222222222222 (
-REM 	echo MitigationOptions >nul 2>&1
-REM ) else (
-REM 	echo MitigationOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
-REM 	SET /a ERROR=%ERROR%+1
-REM )
-
-REM IF %chk_1_23%==222222222222222222222222222222222222222222222222 (
-REM 	echo MitigationAuditOptions >nul 2>&1
-REM ) else (
-REM 	echo MitigationAuditOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
-REM 	SET /a ERROR=%ERROR%+1
-REM )
-
-REM IF %chk_1_24%==222222222222222222222222222222222222222222222222 (
-REM 	echo MitigationOptions >nul 2>&1
-REM ) else (
-REM 	echo MitigationOptions = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
-REM 	SET /a ERROR=%ERROR%+1
-REM )
-
 IF NOT %chk_1_25%==0x0 (
 	IF NOT %chk_1_25%==ERR (
 		echo EnableVirtualizationBasedSecurity = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
@@ -2311,7 +2278,7 @@ IF NOT %chk_1_53%==0x0 (
 
 IF NOT %chk_1_54%==0x0 (
 	IF NOT %chk_1_54%==ERR (
-		echo UseNexusForGameBarEnabled = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo UseNexusForGameBarEnabled = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR=%ERROR%+1
 	)
 )
@@ -2346,7 +2313,7 @@ IF NOT %chk_1_58%==0x0 (
 
 IF NOT %chk_1_59%==0x0 (
 	IF NOT %chk_1_59%==ERR (
-		echo SubmitSamplesConsent = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo SubmitSamplesConsent = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR=%ERROR%+1
 	)
 )
@@ -2785,44 +2752,44 @@ IF NOT %chk_2_35%==0x1 (
 
 IF NOT %chk_2_36%==0x0 (
 	IF NOT %chk_2_36%==ERR (
-		echo 2 - AllowGameDVR = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo 2 - AllowGameDVR = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR2=%ERROR2%+1
 	)
 )
 
 IF NOT %chk_2_37%==0x0 (
 	IF NOT %chk_2_37%==ERR (
-		echo GameDVR_Enabled = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo GameDVR_Enabled = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR2=%ERROR2%+1
 	)
 )
 
 IF NOT %chk_2_38%==0x0 (
 	IF NOT %chk_2_38%==ERR (
-		echo GameDVR_FSEBehaviorMode = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo GameDVR_FSEBehaviorMode = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR2=%ERROR2%+1
 	)
 )
 
 IF NOT %chk_2_39%==0x0 (
 	IF NOT %chk_2_39%==ERR (
-		echo GameDVR_FSEBehavior = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo GameDVR_FSEBehavior = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR2=%ERROR2%+1
 	)
 )
 
 IF NOT %chk_2_40%==ERR (
-	echo GameDVR_HonorUserFSEBehaviorMode = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+	echo GameDVR_HonorUserFSEBehaviorMode = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 	SET /a ERROR2=%ERROR2%+1
 )
 
 IF NOT %chk_2_41%==ERR (
-	echo GameDVR_EFSEFeatureFlags = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+	echo GameDVR_EFSEFeatureFlags = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 	SET /a ERROR2=%ERROR2%+1
 )
 
 IF NOT %chk_2_42%==ERR (
-	echo GameDVR_DXGIHonorFSEWindowsCompatible = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+	echo GameDVR_DXGIHonorFSEWindowsCompatible = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 	SET /a ERROR2=%ERROR2%+1
 )
 
@@ -2972,7 +2939,7 @@ REM ###---------FILES_3---------------------------------------------------------
 
 IF %chk_3_1%==0x1 (
 	IF %chk_3_1%==ERR (
-		echo 3 - AllowGameDVR = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo 3 - AllowGameDVR = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR3=%ERROR3%+1
 	)
 )
@@ -2986,7 +2953,7 @@ IF NOT %chk_3_2%==0x1 (
 
 IF NOT %chk_3_3%==0x1 (
 	IF NOT %chk_3_3%==ERR (
-		echo TCPNoDelay = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo TCPNoDelay = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR3=%ERROR3%+1
 	)
 )
@@ -3007,21 +2974,21 @@ IF NOT %chk_3_5%==0x1 (
 
 IF NOT %chk_3_6%==0x0 (
 	IF NOT %chk_3_6%==ERR (
-		echo Tcp1323Opts = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo Tcp1323Opts = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR3=%ERROR3%+1
 	)
 )
 
 IF NOT %chk_3_7%==0x2 (
 	IF NOT %chk_3_7%==ERR (
-		echo TcpMaxDupAcks = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo TcpMaxDupAcks = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR3=%ERROR3%+1
 	)
 )
 
 IF NOT %chk_3_8%==0x20 (
 	IF NOT %chk_3_8%==ERR (
-		echo TcpTimedWaitDelay = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo TcpTimedWaitDelay = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR3=%ERROR3%+1
 	)
 )
@@ -3084,21 +3051,21 @@ IF NOT %chk_3_18%==0x1 (
 
 IF NOT %chk_3_19%==0x0 (
 	IF NOT %chk_3_19%==ERR (
-		echo Tcp1323Opts = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo Tcp1323Opts = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR3=%ERROR3%+1
 	)
 )
 
 IF NOT %chk_3_20%==0x2 (
 	IF NOT %chk_3_20%==ERR (
-		echo TcpMaxDupAcks = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo TcpMaxDupAcks = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR3=%ERROR3%+1
 	)
 )
 
 IF NOT %chk_3_21%==0x20 (
 	IF NOT %chk_3_21%==ERR (
-		echo TcpTimedWaitDelay = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
+		echo TcpTimedWaitDelay = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 		SET /a ERROR3=%ERROR3%+1
 	)
 )
