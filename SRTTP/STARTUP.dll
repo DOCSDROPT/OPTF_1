@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-68
+SET VERSCRIPT=D-69
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -135,82 +135,6 @@ set /p CSTARTR=<temp_output.txt
 IF EXIST temp_output.txt DEL temp_output.txt
 
 IF "%CSTARTR%"=="alim" goto :debugalim
-
-:debugalim
-powercfg -restoredefaultschemes
-@timeout /t 05>nul
-Powercfg /SETACTIVE "381b4222-f694-41f0-9685-ff5bb260df2e"
-@timeout /t 02>nul
-powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 3ff9831b-6f80-4830-8178-736cd4229e7b
-powercfg -changename 3ff9831b-6f80-4830-8178-736cd4229e7b "Revision"
-powercfg -s 3ff9831b-6f80-4830-8178-736cd4229e7b
-powercfg -setacvalueindex scheme_current sub_processor PERFINCPOL 2
-powercfg -setacvalueindex scheme_current sub_processor PERFDECPOL 1
-powercfg -setacvalueindex scheme_current sub_processor PERFINCTHRESHOLD 10
-powercfg -setacvalueindex scheme_current sub_processor PERFDECTHRESHOLD 8
-powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 100
-powercfg -setacvalueindex scheme_current sub_processor CPMINCORES1 100
-powercfg /setactive scheme_current
-@timeout /t 10>nul
-Powercfg /d "11111111-2222-3333-4444-111111111111"
-@timeout /t 02>nul
-IF NOT EXIST "C:\Ect\Alimentation" md "C:\Ect\Alimentation"
-curl -g -k -L -# -o "C:\Ect\Alimentation\RECS-H-PowerPlan.pow" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/RECS-H-PowerPlan.pow" >nul 2>&1
-@timeout /t 02>nul
-Powercfg /IMPORT %systemdrive%\Ect\Alimentation\RECS-H-PowerPlan.pow 11111111-2222-3333-4444-111111111111
-@timeout /t 02>nul
-Powercfg /SETACTIVE "11111111-2222-3333-4444-111111111111"
-@timeout /t 01>nul
-Powercfg /hibernate off
-netsh interface Teredo set state servername=default
-netsh interface Teredo set state type=default
-powercfg -setacvalueindex scheme_current sub_processor PERFINCPOL 2
-powercfg -setacvalueindex scheme_current sub_processor PERFDECPOL 1
-powercfg -setacvalueindex scheme_current sub_processor PERFINCTHRESHOLD 10
-powercfg -setacvalueindex scheme_current sub_processor PERFDECTHRESHOLD 8
-powercfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 0
-bcdedit /set useplatformtick false
-bcdedit /set useplatformclock false
-bcdedit /set disabledynamictick yes
-bcdedit /set vsmlaunchtype Off
-bcdedit /set bootmenupolicy Legacy
-bcdedit /set lastknowngood yes
-bcdedit /set vm No
-bcdedit /set {globalsettings} custom:16000067 false
-bcdedit /set {globalsettings} custom:16000068 true
-bcdedit /set {globalsettings} custom:16000069 false
-bcdedit /set quietboot No
-bcdedit /set bootux Disabled
-bcdedit /set bootlog no
-bcdedit /timeout 3
-bcdedit /event off
-bcdedit /bootdebug off
-bcdedit /set debug No
-bcdedit /set ems No
-bcdedit /set bootems No
-bcdedit /set tpmbootentropy ForceDisable
-bcdedit /set nx alwaysoff
-bcdedit /set integrityservices disable
-bcdedit /set allowedinmemorysettings 0
-bcdedit /set perfmem 0
-bcdedit /deletevalue usefirmwarepcisettings
-bcdedit /set hypervisorlaunchtype off
-bcdedit /set isolatedcontext No
-fsutil behavior set disablecompression 1
-fsutil behavior set disable8dot3 1
-fsutil behavior set encryptpagingfile 0
-fsutil behavior set DisableDeleteNotify 1
-fsutil behavior set disableLastAccess 1
-fsutil behavior set mftzone 2
-fsutil behavior set memoryusage 2
-fsutil behavior set disablelastaccess 1
-wevtutil sl Microsoft-Windows-SleepStudy/Diagnostic /e:false
-wevtutil sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /e:false
-wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /e:false
-powercfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 0
-powercfg /setactive scheme_current
-powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA==
-goto :MAINW
 
 IF "%CSTARTR%"=="help" goto :helpcmd
 IF "%CSTARTR%"=="ip" (
@@ -3286,4 +3210,80 @@ for %%A in (A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
 endlocal
 echo.
 pause>nul
+goto :MAINW
+
+:debugalim
+powercfg -restoredefaultschemes
+@timeout /t 05>nul
+Powercfg /SETACTIVE "381b4222-f694-41f0-9685-ff5bb260df2e"
+@timeout /t 02>nul
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 3ff9831b-6f80-4830-8178-736cd4229e7b
+powercfg -changename 3ff9831b-6f80-4830-8178-736cd4229e7b "Revision"
+powercfg -s 3ff9831b-6f80-4830-8178-736cd4229e7b
+powercfg -setacvalueindex scheme_current sub_processor PERFINCPOL 2
+powercfg -setacvalueindex scheme_current sub_processor PERFDECPOL 1
+powercfg -setacvalueindex scheme_current sub_processor PERFINCTHRESHOLD 10
+powercfg -setacvalueindex scheme_current sub_processor PERFDECTHRESHOLD 8
+powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 100
+powercfg -setacvalueindex scheme_current sub_processor CPMINCORES1 100
+powercfg /setactive scheme_current
+@timeout /t 10>nul
+Powercfg /d "11111111-2222-3333-4444-111111111111"
+@timeout /t 02>nul
+IF NOT EXIST "C:\Ect\Alimentation" md "C:\Ect\Alimentation"
+curl -g -k -L -# -o "C:\Ect\Alimentation\RECS-H-PowerPlan.pow" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/RECS-H-PowerPlan.pow" >nul 2>&1
+@timeout /t 02>nul
+Powercfg /IMPORT %systemdrive%\Ect\Alimentation\RECS-H-PowerPlan.pow 11111111-2222-3333-4444-111111111111
+@timeout /t 02>nul
+Powercfg /SETACTIVE "11111111-2222-3333-4444-111111111111"
+@timeout /t 01>nul
+Powercfg /hibernate off
+netsh interface Teredo set state servername=default
+netsh interface Teredo set state type=default
+powercfg -setacvalueindex scheme_current sub_processor PERFINCPOL 2
+powercfg -setacvalueindex scheme_current sub_processor PERFDECPOL 1
+powercfg -setacvalueindex scheme_current sub_processor PERFINCTHRESHOLD 10
+powercfg -setacvalueindex scheme_current sub_processor PERFDECTHRESHOLD 8
+powercfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 0
+bcdedit /set useplatformtick false
+bcdedit /set useplatformclock false
+bcdedit /set disabledynamictick yes
+bcdedit /set vsmlaunchtype Off
+bcdedit /set bootmenupolicy Legacy
+bcdedit /set lastknowngood yes
+bcdedit /set vm No
+bcdedit /set {globalsettings} custom:16000067 false
+bcdedit /set {globalsettings} custom:16000068 true
+bcdedit /set {globalsettings} custom:16000069 false
+bcdedit /set quietboot No
+bcdedit /set bootux Disabled
+bcdedit /set bootlog no
+bcdedit /timeout 3
+bcdedit /event off
+bcdedit /bootdebug off
+bcdedit /set debug No
+bcdedit /set ems No
+bcdedit /set bootems No
+bcdedit /set tpmbootentropy ForceDisable
+bcdedit /set nx alwaysoff
+bcdedit /set integrityservices disable
+bcdedit /set allowedinmemorysettings 0
+bcdedit /set perfmem 0
+bcdedit /deletevalue usefirmwarepcisettings
+bcdedit /set hypervisorlaunchtype off
+bcdedit /set isolatedcontext No
+fsutil behavior set disablecompression 1
+fsutil behavior set disable8dot3 1
+fsutil behavior set encryptpagingfile 0
+fsutil behavior set DisableDeleteNotify 1
+fsutil behavior set disableLastAccess 1
+fsutil behavior set mftzone 2
+fsutil behavior set memoryusage 2
+fsutil behavior set disablelastaccess 1
+wevtutil sl Microsoft-Windows-SleepStudy/Diagnostic /e:false
+wevtutil sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /e:false
+wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /e:false
+powercfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 0
+powercfg /setactive scheme_current
+powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA==
 goto :MAINW
