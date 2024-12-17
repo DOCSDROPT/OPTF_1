@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-70
+SET VERSCRIPT=D-71
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -1358,7 +1358,6 @@ Echo SET GMEMENU=0 > "%appdata%\StartUp Tools\SFLE.bat"
 goto :FirtstrBac
 
 :GAMECONF
-rem Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "MultipleInvokePromptMinimum" /t REG_DWORD /d "32" /f >nul 2>&1
 Reg.exe delete "HKCR\DesktopBackground\Shell\Gamesr" /f > NUL 2>&1
 Reg.exe delete "HKCR\DesktopBackground\Shell\SGamesr" /f > NUL 2>&1
 IF EXIST found_executables.txt DEL found_executables.txt
@@ -1377,15 +1376,12 @@ IF EXIST Everything.ini DEL Everything.ini
 Start "" "Everything.exe" -startup
 Reg add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d "1" /f >nul 2>&1
 Reg add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "1" /f >nul 2>&1
-
 Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr" /v "MUIVerb" /t REG_SZ /d "Jeux" /f > NUL 2>&1
 Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr" /v "SubCommands" /t REG_SZ /d "" /f > NUL 2>&1
 Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr" /v "Icon" /t REG_SZ /d "C:\Users\%username%\AppData\Roaming\StartUp Tools\favicon-3.ico" /f > NUL 2>&1
-
 Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr" /v "MUIVerb" /t REG_SZ /d "Autres" /f > NUL 2>&1
 Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr" /v "SubCommands" /t REG_SZ /d "" /f > NUL 2>&1
 Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr" /v "Icon" /t REG_SZ /d "C:\Users\%username%\AppData\Roaming\StartUp Tools\favicon-3.ico" /f > NUL 2>&1
-
 set "fileList=found_executables.txt"
 cls
 echo.
@@ -1410,9 +1406,6 @@ for /f "tokens=*" %%i in (%fileList%) do (
 		    rem Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%%k" /t REG_SZ /d "~ DISABLEDXMAXIMIZEDWINDOWEDMODE RUNASADMIN HIGHDPIAWARE" /f > NUL 2>&1
 		    Reg.exe add "HKCU\SOFTWARE\Microsoft\DirectX\UserGpuPreferences" /v "%%k" /t REG_SZ /d "GpuPreference=2;" /f > NUL 2>&1
 		    Reg.exe add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\%%i\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "3" /f >nul 2>&1
-			Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "%%k" /f > NUL 2>&1
-			Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
-			Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			IF %%i==GhostOfTsushima.exe (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Ghost of Tsushima" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
@@ -1544,6 +1537,7 @@ for /f "tokens=*" %%i in (%fileList%) do (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			)
 			IF %%i==MinecraftLauncher.exe (
+
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Minecraft" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "C:\Users\%username%\AppData\Roaming\StartUp Tools\favicon-3.ico" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
@@ -1709,11 +1703,13 @@ for /f "tokens=*" %%i in (%fileList%) do (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			)
 			rem IF %%i==Ryujinx.exe (
+			rem 	SET DJAJ=2
 			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Ryujinx" /f > NUL 2>&1
 			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
 			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			rem )
 			rem IF %%i==yuzu.exe (
+			rem 	SET DJAJ=2
 			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Yuzu" /f > NUL 2>&1
 			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
 			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
@@ -1807,6 +1803,12 @@ for /f "tokens=*" %%i in (%fileList%) do (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Voices of the Void" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
+			)
+			Reg.exe query "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" >nul 2>&1
+			IF ERRORLEVEL 1 (
+			    Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "%%k" /f > NUL 2>&1
+			    Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
+			    Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			)
             echo Game path         : "%%k"
             echo Game registry ID  : "%%i"
