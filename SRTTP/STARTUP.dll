@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-71
+SET VERSCRIPT=D-72
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -137,6 +137,12 @@ IF EXIST temp_output.txt DEL temp_output.txt
 IF "%CSTARTR%"=="alim" goto :debugalim
 
 IF "%CSTARTR%"=="help" goto :helpcmd
+
+IF "%CSTARTR%"=="amdfix" (
+	Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "00000005" /f >nul 2>&1
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="ip" (
 	curl -g -k -L -# -o "%appdata%\StartUp Tools\IP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/IP.dll" >nul 2>&1
 	@timeout /t 01>nul
@@ -1374,8 +1380,8 @@ IF NOT EXIST Everything.exe curl -g -k -L -# -o "Everything.exe" "https://github
 IF NOT EXIST Everything.lng curl -g -k -L -# -o "Everything.lng" "https://github.com/00FGV1/ver/raw/main/file/Everything.lng" >nul 2>&1
 IF EXIST Everything.ini DEL Everything.ini
 Start "" "Everything.exe" -startup
-Reg add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d "1" /f >nul 2>&1
-Reg add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "1" /f >nul 2>&1
+Reg.exe add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d "1" /f >nul 2>&1
+Reg.exe add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "1" /f >nul 2>&1
 Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr" /v "MUIVerb" /t REG_SZ /d "Jeux" /f > NUL 2>&1
 Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr" /v "SubCommands" /t REG_SZ /d "" /f > NUL 2>&1
 Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr" /v "Icon" /t REG_SZ /d "C:\Users\%username%\AppData\Roaming\StartUp Tools\favicon-3.ico" /f > NUL 2>&1
