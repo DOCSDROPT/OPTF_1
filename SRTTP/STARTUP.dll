@@ -32,7 +32,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-73
+SET VERSCRIPT=D-74
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -1136,6 +1136,8 @@ IF "%CSTARTR%"=="update" (
 	cd %temp%
 	@timeout /t 01>nul
 	rmdir /s /q "%appdata%\StartUp Tools" >nul 2>&1
+	Reg.exe delete "HKCR\DesktopBackground\Shell\Gamesr" /f > NUL 2>&1
+	Reg.exe delete "HKCR\DesktopBackground\Shell\SGamesr" /f > NUL 2>&1
 	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
 	@timeout /t 01>nul
 	goto :RESET
