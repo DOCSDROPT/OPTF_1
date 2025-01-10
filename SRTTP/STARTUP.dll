@@ -25,14 +25,12 @@ set white=[37m
 set indigo=[38;5;105m
 set iindigo=[48;5;105m
 C:
-md C:\Users\%USERNAME%\AppData\Roaming\dystroy\broot\config\launcher\powershell\
-echo. > "C:\Users\%USERNAME%\AppData\Roaming\dystroy\broot\config\launcher\powershell\br.ps1"
 IF NOT EXIST "%appdata%\StartUp Tools" md "%appdata%\StartUp Tools"
 IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-74
+SET VERSCRIPT=D-75
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -200,6 +198,10 @@ IF "%CSTARTR%"=="schon" PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule sta
 IF "%CSTARTR%"=="schoff" PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule start=disabled&goto :MAINW
 IF "%CSTARTR%"=="amddefender" PowerRun_x64.exe /SW:0 cmd.exe /k ren "C:\Windows\System32\drivers\amdfendr.sys" "amdfendr.sys.old"&goto :MAINW
 IF "%CSTARTR%"=="wstore" curl -g -k -L -# -o "%temp%\WStore.bat" "https://tinyurl.com/ACWStoreScript" & start cmd /c "%temp%\WStore.bat" & goto :MAINW
+
+rem IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp >nul 2>&1
+rem IF NOT EXIST C:\Windows\Temp\cmd_emu\ConEmu64.exe
+rem @timeout /t 01>nul
 
 IF "%CSTARTR%"=="optimisation" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
@@ -904,36 +906,34 @@ IF "%CSTARTR%"=="40" (
 )
 
 IF "%CSTARTR%"=="anydesk" (
+	IF EXIST "%TEMP%\AnyDesk.exe" START "" "%TEMP%\AnyDesk.exe"&goto :MAINW
 	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "hhttps://download.anydesk.com/AnyDesk.exe" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "%TEMP%\AnyDesk.exe"
-	DEL "%TEMP%\AnyDesk.exe"
+	START "" "%TEMP%\AnyDesk.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="41" (
+	IF EXIST "%TEMP%\AnyDesk.exe" START "" "%TEMP%\AnyDesk.exe"&goto :MAINW
 	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "hhttps://download.anydesk.com/AnyDesk.exe" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "%TEMP%\AnyDesk.exe"
-	DEL "%TEMP%\AnyDesk.exe"
+	START "" "%TEMP%\AnyDesk.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="hitman pro" (
+	IF EXIST HitmanPro_x64.exe START "" "HitmanPro_x64.exe"&goto :MAINW
 	curl -g -k -L -# -o "HitmanPro_x64.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/HitmanPro_x64.dll" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "HitmanPro_x64.exe" /scan /quiet /nolog /uninstall
-	@timeout /t 02>nul
-	DEL "HitmanPro_x64.exe">nul
+	IF EXIST HitmanPro_x64.exe START "" "HitmanPro_x64.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="42" (
+	IF EXIST HitmanPro_x64.exe START "" "HitmanPro_x64.exe"&goto :MAINW
 	curl -g -k -L -# -o "HitmanPro_x64.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/HitmanPro_x64.dll" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "HitmanPro_x64.exe" /scan /quiet /nolog /uninstall
-	@timeout /t 02>nul
-	DEL "HitmanPro_x64.exe">nul
+	IF EXIST HitmanPro_x64.exe START "" "HitmanPro_x64.exe"
 	goto :MAINW
 )
 
@@ -1612,7 +1612,7 @@ for /f "tokens=*" %%i in (%fileList%) do (
 			IF %%i==FortniteClient-Win64-Shipping.exe (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Fortnite" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
-				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"com.epicgames.launcher://apps/fn%3A4fe75bbc5a674f4f9b356b5c90567da5%3AFortnite?action=launch&silent=true\"" /f > NUL 2>&1
 			)
 			IF %%i==NMS.exe (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "No Man's Sky" /f > NUL 2>&1
@@ -1808,6 +1808,11 @@ for /f "tokens=*" %%i in (%fileList%) do (
 			)
 			IF %%i==Raft.exe (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Raft" /f > NUL 2>&1
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
+			)
+			IF %%i==mysummercar.exe (
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "My Summer Car" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			)
