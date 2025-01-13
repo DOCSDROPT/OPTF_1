@@ -30,7 +30,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-75
+SET VERSCRIPT=D-76
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -659,7 +659,7 @@ IF "%CSTARTR%"=="creaminstaller" (
 	curl -g -k -L -# -o "CreamInstaller.7z" "https://www.dropbox.com/scl/fi/zb0nenws703qdlh3l9z5a/CreamInstaller.7z?rlkey=b9tt0gko4nmigd8v2kx1ba6yn&st=729inwh2&dl=1" >nul 2>&1
 	IF EXIST CreamInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.7z >nul)
 	@timeout /t 05>nul
-	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
+	START "" "%appdata%\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
 	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
 	goto :MAINW
 )
@@ -672,7 +672,7 @@ IF "%CSTARTR%"=="25" (
 	curl -g -k -L -# -o "CreamInstaller.7z" "https://www.dropbox.com/scl/fi/zb0nenws703qdlh3l9z5a/CreamInstaller.7z?rlkey=b9tt0gko4nmigd8v2kx1ba6yn&st=729inwh2&dl=1" >nul 2>&1
 	IF EXIST CreamInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\CreamInstaller" CreamInstaller.7z >nul)
 	@timeout /t 05>nul
-	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
+	START "" "%appdata%\AppData\Roaming\StartUp Tools\CreamInstaller\CreamInstaller.exe"
 	IF EXIST "CreamInstaller.7z" DEL "CreamInstaller.7z" >nul
 	goto :MAINW
 )
@@ -685,7 +685,7 @@ IF "%CSTARTR%"=="auto creamapi" (
 	IF EXIST auto-creamapi-2.1.7.1.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Auto-CreamApi" auto-creamapi-2.1.7.1.7z >nul)
 	curl -g -k -L -# -o "%appdata%\StartUp Tools\Auto-CreamApi\dotnet-sdk-3.1.426-win-x64.exe" "https://download.visualstudio.microsoft.com/download/pr/b70ad520-0e60-43f5-aee2-d3965094a40d/667c122b3736dcbfa1beff08092dbfc3/dotnet-sdk-3.1.426-win-x64.exe" >nul 2>&1
 	@timeout /t 05>nul
-	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\Auto-CreamApi"
+	START "" "%appdata%\AppData\Roaming\StartUp Tools\Auto-CreamApi"
 	goto :MAINW
 )
 
@@ -697,7 +697,7 @@ IF "%CSTARTR%"=="26" (
 	IF EXIST auto-creamapi-2.1.7.1.7z (7za.exe -y x -o"%appdata%\StartUp Tools\Auto-CreamApi" auto-creamapi-2.1.7.1.7z >nul)
 	curl -g -k -L -# -o "%appdata%\StartUp Tools\Auto-CreamApi\dotnet-sdk-3.1.426-win-x64.exe" "https://download.visualstudio.microsoft.com/download/pr/b70ad520-0e60-43f5-aee2-d3965094a40d/667c122b3736dcbfa1beff08092dbfc3/dotnet-sdk-3.1.426-win-x64.exe" >nul 2>&1
 	@timeout /t 05>nul
-	START "" "C:\Users\S\AppData\Roaming\StartUp Tools\Auto-CreamApi"
+	START "" "%appdata%\AppData\Roaming\StartUp Tools\Auto-CreamApi"
 	goto :MAINW
 )
 
@@ -1285,6 +1285,7 @@ for /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Ob
 cls
 echo Verification de l'utilisateur.
 @timeout /t 01>nul
+goto :CRSTRC
 IF %HWID%==PF0TRR6A goto :CRSTRC
 IF %HWID%==219925897859274 goto :CRSTRC
 IF %HWID%==191262638503131 goto :CRSTRC
@@ -1811,6 +1812,11 @@ for /f "tokens=*" %%i in (%fileList%) do (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			)
+			IF %%i==Terraria.exe (
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Terraria" /f > NUL 2>&1
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
+			)
 			IF %%i==VotV-Win64-Shipping.exe (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Voices of the Void" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
@@ -2087,6 +2093,18 @@ rmdir /s /q "C:\ProgramData\Emsisoft" >nul 2>&1
 rmdir /s /q "C:\ProgramData\McAfee" >nul 2>&1
 rmdir /s /q "C:\ProgramData\Oracle" >nul 2>&1
 rmdir /s /q "C:\ProgramData\USOShared" >nul 2>&1
+rmdir /s /q "C:\KVRT2020_Data" >nul 2>&1
+rmdir /s /q "C:\$HardLinkBackup" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\.dbus-keyrings" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\.idlerc" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\.openjfx" >nul 2>&1
+rmdir /s /q "C:\ProgramData\CreamInstaller" >nul 2>&1
+rmdir /s /q "C:\ProgramData\HitmanPro" >nul 2>&1
+rmdir /s /q "C:\ProgramData\KeyAuth" >nul 2>&1
+rmdir /s /q "C:\ProgramData\Malwarebytes' Anti-Malware (portable)" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\.IdentityService" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\INetHistory" >nul 2>&1
+rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\IsolatedStorage" >nul 2>&1
 rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\.resourcefullib" >nul 2>&1
 rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\CrashReportClient" >nul 2>&1
 rmdir /s /q "C:\Users\%USERNAME%\AppData\Local\D3DSCache" >nul 2>&1
