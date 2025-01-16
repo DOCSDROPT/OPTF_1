@@ -30,7 +30,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-76
+SET VERSCRIPT=D-77
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -58,6 +58,10 @@ IF %NETWORK%==NO (
 	echo.
 	@timeout /t 15 
 )
+
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DisableWindowsUpdateAccess" /t REG_DWORD /d "0" /f >nul
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUpdate" /t REG_DWORD /d "1" /f >nul
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOptions" /t REG_DWORD /d "2" /f >nul
 
 IF NOT EXIST "%appdata%\StartUp Tools\SFLE.bat" goto :Firtstr
 :FirtstrBac
@@ -133,7 +137,6 @@ set /p CSTARTR=<temp_output.txt
 IF EXIST temp_output.txt DEL temp_output.txt
 
 IF "%CSTARTR%"=="alim" goto :debugalim
-
 IF "%CSTARTR%"=="help" goto :helpcmd
 
 IF "%CSTARTR%"=="amdfix" (
@@ -199,31 +202,33 @@ IF "%CSTARTR%"=="schoff" PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule st
 IF "%CSTARTR%"=="amddefender" PowerRun_x64.exe /SW:0 cmd.exe /k ren "C:\Windows\System32\drivers\amdfendr.sys" "amdfendr.sys.old"&goto :MAINW
 IF "%CSTARTR%"=="wstore" curl -g -k -L -# -o "%temp%\WStore.bat" "https://tinyurl.com/ACWStoreScript" & start cmd /c "%temp%\WStore.bat" & goto :MAINW
 
-rem IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp >nul 2>&1
-rem IF NOT EXIST C:\Windows\Temp\cmd_emu\ConEmu64.exe
-rem @timeout /t 01>nul
-
 IF "%CSTARTR%"=="optimisation" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
-	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
-	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
-	powershell -command "Set-Clipboard -Value 'Fc#$f6EtsY@&duxFqg3B'" >nul 2>&1
+	IF EXIST OBYSS.7z DEL OBYSS.7z>nul
+	IF EXIST cmd_emu.7z DEL cmd_emu.7z>nul
+	curl -g -k -L -# -o "cmd_emu.7z" "https://www.dropbox.com/scl/fi/rnueud0ix8ju7z2xp3iut/cmd_emu.7z?rlkey=5ocqoeffoz8zfitkgg6ldqog2&st=sl3pnmu1&dl=1" >nul 2>&1
+	curl -g -k -L -# -o "OBYSS.7z" "https://www.dropbox.com/scl/fi/7ik63sgxhk5x3e5ttts0v/OBYSS.7z?rlkey=kxahsjdbhjh2ymzpt6pxtxle0&st=pxf4w8d1&dl=1" >nul 2>&1
 	@timeout /t 10>nul
-	IF EXIST BETA-Optifiles.7z (7za.exe -y x -p9421 -oC:\ BETA-Optifiles.7z >nul)
-	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
-	IF EXIST C:\ph_main.exe start C:\ph_main.exe
+	IF EXIST cmd_emu.7z (7za.exe -y x -p123456 -o%TEMP% cmd_emu.7z >nul)
+	IF EXIST OBYSS.7z (7za.exe -y x -p723456 -oC:\ OBYSS.7z >nul)
+	IF EXIST OBYSS.7z DEL OBYSS.7z>nul
+	IF EXIST cmd_emu.7z DEL cmd_emu.7z>nul
+	IF EXIST C:\HGD-OBYSS.bat START "" "%TEMP%\cmd_emu\ConEmu64.exe" -Icon "ConEmu\cmder.ico" -run "C:\HGD-OBYSS.bat"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="1" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
-	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
-	curl -g -k -L -# -o "BETA-Optifiles.7z" "https://www.dropbox.com/scl/fi/r2scb6kolyvc85jy8a3qm/BETA-Optifiles.7z?rlkey=5zji9qb30xwynhimdevbnfgyo&st=w5iqpn9k&dl=1" >nul 2>&1
-	powershell -command "Set-Clipboard -Value 'Fc#$f6EtsY@&duxFqg3B'" >nul 2>&1
+	IF EXIST OBYSS.7z DEL OBYSS.7z>nul
+	IF EXIST cmd_emu.7z DEL cmd_emu.7z>nul
+	curl -g -k -L -# -o "cmd_emu.7z" "https://www.dropbox.com/scl/fi/rnueud0ix8ju7z2xp3iut/cmd_emu.7z?rlkey=5ocqoeffoz8zfitkgg6ldqog2&st=sl3pnmu1&dl=1" >nul 2>&1
+	curl -g -k -L -# -o "OBYSS.7z" "https://www.dropbox.com/scl/fi/7ik63sgxhk5x3e5ttts0v/OBYSS.7z?rlkey=kxahsjdbhjh2ymzpt6pxtxle0&st=pxf4w8d1&dl=1" >nul 2>&1
 	@timeout /t 10>nul
-	IF EXIST BETA-Optifiles.7z (7za.exe -y x -p9421 -oC:\ BETA-Optifiles.7z >nul)
-	IF EXIST BETA-Optifiles.7z DEL BETA-Optifiles.7z>nul
-	IF EXIST C:\ph_main.exe start C:\ph_main.exe
+	IF EXIST cmd_emu.7z (7za.exe -y x -p123456 -o%TEMP% cmd_emu.7z >nul)
+	IF EXIST OBYSS.7z (7za.exe -y x -p723456 -oC:\ OBYSS.7z >nul)
+	IF EXIST OBYSS.7z DEL OBYSS.7z>nul
+	IF EXIST cmd_emu.7z DEL cmd_emu.7z>nul
+	IF EXIST C:\HGD-OBYSS.bat START "" "%TEMP%\cmd_emu\ConEmu64.exe" -Icon "ConEmu\cmder.ico" -run "C:\HGD-OBYSS.bat"
 	goto :MAINW
 )
 
@@ -762,6 +767,7 @@ IF "%CSTARTR%"=="30" (
 )
 
 IF "%CSTARTR%"=="31" (
+	IF NOT EXIST DQS MD DQS
 	curl -g -k -L -# -o "DQS\DQS.bat" "https://tinyurl.com/DQSWIN32" >nul 2>&1
 	start cmd /c "DQS\DQS.bat"
 	goto :MAINW
@@ -3271,8 +3277,7 @@ IF NOT %chk_3_3%==0x1 (
 
 IF NOT %chk_3_4%==0x1 (
 	IF NOT %chk_3_4%==ERR (
-		echo EnableICMPRedirect = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
-		SET /a ERROR3=%ERROR3%+1
+		echo EnableICMPRedirect = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 	)
 )
 
@@ -3348,8 +3353,7 @@ IF NOT %chk_3_16%==0x40 (
 
 IF NOT %chk_3_17%==0x1 (
 	IF NOT %chk_3_17%==ERR (
-		echo EnableICMPRedirect = Incorrect registry key>>"%appdata%\StartUp Tools\LOG\err.log"
-		SET /a ERROR3=%ERROR3%+1
+		echo EnableICMPRedirect = Incorrect registry key [Negligeable]>>"%appdata%\StartUp Tools\LOG\err.log"
 	)
 )
 
