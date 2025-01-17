@@ -30,7 +30,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-77
+SET VERSCRIPT=D-78
 SET WINSUPPORT=ERR
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -350,6 +350,8 @@ IF "%CSTARTR%"=="6" (
 
 IF "%CSTARTR%"=="7" (
 	IF EXIST "%TEMP%\VencordInstallerCli.exe" DEL "%TEMP%\VencordInstallerCli.exe" >nul
+	curl -g -k -L -# -o "C:\Users\%USERNAME%\AppData\Roaming\Vencord\settings\settings.json" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/vencord_settings.json" >nul 2>&1
+	@timeout /t 02>nul
 	curl -g -k -L -# -o "%TEMP%\VencordInstallerCli.exe" "https://github.com/Vencord/Installer/releases/latest/download/VencordInstallerCli.exe" >nul 2>&1
 	@timeout /t 02>nul
 	START /WAIT "" "%TEMP%\VencordInstallerCli.exe"
@@ -359,6 +361,8 @@ IF "%CSTARTR%"=="7" (
 
 IF "%CSTARTR%"=="vencord" (
 	IF EXIST "%TEMP%\VencordInstallerCli.exe" DEL "%TEMP%\VencordInstallerCli.exe" >nul
+	curl -g -k -L -# -o "C:\Users\%USERNAME%\AppData\Roaming\Vencord\settings\settings.json" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/vencord_settings.json" >nul 2>&1
+	@timeout /t 02>nul
 	curl -g -k -L -# -o "%TEMP%\VencordInstallerCli.exe" "https://github.com/Vencord/Installer/releases/latest/download/VencordInstallerCli.exe" >nul 2>&1
 	@timeout /t 02>nul
 	START /WAIT "" "%TEMP%\VencordInstallerCli.exe"
