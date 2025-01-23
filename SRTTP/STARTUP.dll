@@ -30,8 +30,16 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-78
+SET VERSCRIPT=D-79
 SET WINSUPPORT=ERR
+SET USRDETECTE=ERR
+SET STPCHW=1
+SET LCH=0
+
+SET cclolor_1=%black%&SET cclolor_2=%black%
+SET cclolor_3=%black%&SET cclolor_4=%black%
+SET cclolor_5=%black%&SET cclolor_6=%black%
+SET cclolor_7=%black%&SET cclolor_8=%black%
 
 rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
 mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
@@ -74,6 +82,120 @@ IF EXIST "%appdata%\StartUp Tools\RERR.bat" (
 	goto :24570896
 )
 
+IF NOT %COMPUTERNAME%==RGTP-RECS goto :MAINW
+FOR /F "TOKENS=2,*" %%A IN ('reg query "HKLM\SOFTWARE\RECS" 2^>NUL^|FIND /I "LCH"') DO set LCH=%%B
+IF %LCH%==0x1 goto :MAINW
+:CMWCONF
+C:
+cd "%appdata%\StartUp Tools"
+IF NOT EXIST APPS MD APPS >nul 2>&1
+IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp >nul 2>&1
+mode con:cols=134 lines=48
+cls
+SET USRDETECTE=Zeiqoo
+echo %gold%ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white% Configuration :                                                                                                                    %gold%บ%white%
+echo %gold%บ%white% ๎๎๎๎๎๎๎๎๎๎๎๎๎๎                                                                                                                     %gold%บ%white%
+echo %gold%บ%white%  %indigo%^>%white% Detection de l'utilisateur.                                                                                                     %gold%บ%white%
+echo %gold%บ%white%  %cclolor_1%^>%white% %cclolor_2%Configuration personnalisee.                                                                                                    %gold%บ%white%
+echo %gold%บ%white%  %cclolor_3%^>%white% %cclolor_4%Configuration de StartAllBack.                                                                                                  %gold%บ%white%
+echo %gold%บ%white%  %cclolor_5%^>%white% %cclolor_6%Installation de StartAllBack.                                                                                                   %gold%บ%white%
+echo %gold%บ%white%  %cclolor_7%^>%white% %cclolor_8%Installation du pilote de la carte graphique.                                                                                   %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
+echo %gold%ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ%white%
+
+IF %STPCHW%==1 (
+	IF %HWID%==219925897859274 SET USRDETECTE=Zeiqoo
+	IF %HWID%==191262638503131 SET USRDETECTE=Staline
+	IF %HWID%==J216401760 SET USRDETECTE=Zeiqoo
+	IF %HWID%==None SET USRDETECTE=VMWARE
+	SET cclolor_1=%indigo%
+	SET cclolor_2=%white%
+	SET STPCHW=2
+	@timeout /t 02 /nobreak >nul
+	IF NOT %USRDETECTE%==ERR goto :CMWCONF
+	IF %IP%==88.160.218.197 SET USRDETECTE=Staline
+	IF %IP%==88.173.226.86 SET USRDETECTE=Zeiqoo
+	goto :CMWCONF
+)
+
+IF %STPCHW%==2 (
+	SET cclolor_3=%indigo%
+	SET cclolor_4=%white%
+	IF %USRDETECTE%==Staline call :emplacement
+	SET STPCHW=3
+	@timeout /t 02 /nobreak >nul
+	goto :CMWCONF
+)
+
+IF %STPCHW%==3 (
+	SET cclolor_5=%indigo%
+	SET cclolor_6=%white%
+	SET STPCHW=4
+	curl -g -k -L -# -o "StartBack.reg" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/StartBack.reg" >nul 2>&1
+	@timeout /t 02 /nobreak >nul
+	Reg.exe import StartBack.reg >nul
+	goto :CMWCONF
+)
+
+IF %STPCHW%==4 (
+	SET cclolor_7=%indigo%
+	SET cclolor_8=%white%
+	curl -g -k -L -# -o "APPS\InstStartBack.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstStartBack.dll" >nul 2>&1
+	START /WAIT "" "APPS\InstStartBack.exe" /SILENT
+	SET STPCHW=5
+	@timeout /t 02 /nobreak >nul
+	goto :CMWCONF
+)
+
+IF %STPCHW%==5 (
+	IF %USRDETECTE%==Zeiqoo curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.17.0.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/NVCleanstall_1.17.0.dll" >nul 2>&1
+	@timeout /t 02 /nobreak >nul
+	IF %USRDETECTE%==Zeiqoo Start "" "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.17.0.exe"
+	SET STPCHW=0
+	Reg.exe add "HKLM\SOFTWARE\RECS" /v "LCH" /t REG_DWORD /d "1" /f >nul 2>&1
+	@timeout /t 02 /nobreak >nul
+	goto :CMWCONF
+)
+
+@timeout /t 02 /nobreak >nul
+
 :MAINW
 C:
 cd "%appdata%\StartUp Tools"
@@ -81,6 +203,7 @@ for /f "tokens=3" %%a in ('dir /s /-c "%appdata%\StartUp Tools" ^| findstr /c:"f
 set /a "strsize=%size% / 1048576" >nul 2>&1
 mode con:cols=134 lines=48
 IF EXIST temp_output.txt DEL temp_output.txt >nul 2>&1
+IF NOT EXIST APPS MD APPS >nul 2>&1
 IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp >nul 2>&1
 IF NOT EXIST 7za.exe curl -g -k -L -# -o "7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 IF NOT EXIST PowerRun_x64.exe curl -g -k -L -# -o "PowerRun_x64.exe" "https://tinyurl.com/dl-opt-PowerRun" >nul 2>&1
@@ -138,6 +261,7 @@ IF EXIST temp_output.txt DEL temp_output.txt
 
 IF "%CSTARTR%"=="alim" goto :debugalim
 IF "%CSTARTR%"=="help" goto :helpcmd
+IF "%CSTARTR%"=="emplacement" goto :emplacement
 
 IF "%CSTARTR%"=="amdfix" (
 	Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "00000005" /f >nul 2>&1
@@ -202,6 +326,14 @@ IF "%CSTARTR%"=="schoff" PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule st
 IF "%CSTARTR%"=="amddefender" PowerRun_x64.exe /SW:0 cmd.exe /k ren "C:\Windows\System32\drivers\amdfendr.sys" "amdfendr.sys.old"&goto :MAINW
 IF "%CSTARTR%"=="wstore" curl -g -k -L -# -o "%temp%\WStore.bat" "https://tinyurl.com/ACWStoreScript" & start cmd /c "%temp%\WStore.bat" & goto :MAINW
 
+IF "%CSTARTR%"=="compactgui" (
+	IF EXIST "APPS\CompactGUI.mono.exe" START "" "APPS\CompactGUI.mono.exe"&goto :MAINW
+	curl -g -k -L -# -o "APPS\CompactGUI.mono.exe" "https://github.com/IridiumIO/CompactGUI/releases/latest/download/CompactGUI.mono.exe" >nul 2>&1
+	@timeout /t 02>nul
+	START "" "APPS\CompactGUI.mono.exe"
+	goto :MAINW
+)
+
 IF "%CSTARTR%"=="optimisation" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
 	IF EXIST OBYSS.7z DEL OBYSS.7z>nul
@@ -253,15 +385,6 @@ IF "%CSTARTR%"=="wor.ps1" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="librewolf" (
-	IF EXIST "%TEMP%\Librewolf.7z" DEL "%TEMP%\Librewolf.7z" >nul
-	curl -g -k -L -# -o "%TEMP%\Librewolf.7z" "https://www.dropbox.com/scl/fi/8fz6s82fwbbwcsdrfpp1z/Librewolf.7z?rlkey=6w0y194bugkxdiexdj3dttrsn&st=bovfc3av&dl=1" >nul 2>&1
-	@timeout /t 02>nul
-	START /WAIT "" "%TEMP%\Librewolf.7z"
-	DEL "%TEMP%\Librewolf.7z" >nul
-	goto :MAINW
-)
-
 IF "%CSTARTR%"=="3" (
 	netsh advfirewall set allprofiles state off
     @timeout /t 02>nul
@@ -308,9 +431,9 @@ IF "%CSTARTR%"=="3" (
 )
 
 IF "%CSTARTR%"=="4" (
-	IF NOT EXIST Wub_x64.exe curl -g -k -L -# -o "Wub_x64.exe" "https://tinyurl.com/WubWStore" >nul 2>&1
+	IF NOT EXIST APPS\Wub_x64.exe curl -g -k -L -# -o "APPS\Wub_x64.exe" "https://tinyurl.com/WubWStore" >nul 2>&1
 	@timeout /t 02>nul
-	Wub_x64.exe /E
+	APPS\Wub_x64.exe /E
 	sc config "XblAuthManager" start=auto
 	sc config "wuauserv" start=auto
 	sc config "XblGameSave" start=auto
@@ -324,9 +447,9 @@ IF "%CSTARTR%"=="4" (
 )
 
 IF "%CSTARTR%"=="5" (
-	IF NOT EXIST Wub_x64.exe curl -g -k -L -# -o "Wub_x64.exe" "https://tinyurl.com/WubWStore" >nul 2>&1
+	IF NOT EXIST APPS\Wub_x64.exe curl -g -k -L -# -o "APPS\Wub_x64.exe" "https://tinyurl.com/WubWStore" >nul 2>&1
 	@timeout /t 02>nul
-	Wub_x64.exe /D /P
+	APPS\Wub_x64.exe /D /P
 	sc stop "XblAuthManager"
 	sc stop "XblGameSave"
 	sc stop "XboxNetApiSvc"
@@ -340,11 +463,20 @@ IF "%CSTARTR%"=="5" (
 )
 
 IF "%CSTARTR%"=="6" (
-	IF EXIST "%TEMP%\Librewolf.7z" DEL "%TEMP%\Librewolf.7z" >nul
-	curl -g -k -L -# -o "%TEMP%\Librewolf.7z" "https://www.dropbox.com/scl/fi/8fz6s82fwbbwcsdrfpp1z/Librewolf.7z?rlkey=6w0y194bugkxdiexdj3dttrsn&st=bovfc3av&dl=1" >nul 2>&1
+	IF EXIST "APPS\Librewolf.7z" DEL "APPS\Librewolf.7z" >nul
+	curl -g -k -L -# -o "APPS\Librewolf.7z" "https://www.dropbox.com/scl/fi/8fz6s82fwbbwcsdrfpp1z/Librewolf.7z?rlkey=6w0y194bugkxdiexdj3dttrsn&st=bovfc3av&dl=1" >nul 2>&1
 	@timeout /t 02>nul
-	START /WAIT "" "%TEMP%\Librewolf.7z"
-	DEL "%TEMP%\Librewolf.7z" >nul
+	IF NOT EXIST "C:\Program Files\7-Zip\7zFM.exe" START "" "APPS\Librewolf.7z"&goto :MAINW
+	START "" "C:\Program Files\7-Zip\7zFM.exe" "APPS\Librewolf.7z"
+	goto :MAINW
+)
+
+IF "%CSTARTR%"=="librewolf" (
+	IF EXIST "APPS\Librewolf.7z" DEL "APPS\Librewolf.7z" >nul
+	curl -g -k -L -# -o "APPS\Librewolf.7z" "https://www.dropbox.com/scl/fi/8fz6s82fwbbwcsdrfpp1z/Librewolf.7z?rlkey=6w0y194bugkxdiexdj3dttrsn&st=bovfc3av&dl=1" >nul 2>&1
+	@timeout /t 02>nul
+	IF NOT EXIST "C:\Program Files\7-Zip\7zFM.exe" START "" "APPS\Librewolf.7z"&goto :MAINW
+	START "" "C:\Program Files\7-Zip\7zFM.exe" "APPS\Librewolf.7z"
 	goto :MAINW
 )
 
@@ -396,25 +528,25 @@ IF "%CSTARTR%"=="unigetui" (
 
 IF "%CSTARTR%"=="9" (
 	IF EXIST %TEMP%\Min-windows.zip DEL %TEMP%\Min-windows.zip>nul
-	IF EXIST "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe" START "" "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe"&goto :MAINW
+	IF EXIST "%appdata%\StartUp Tools\APPS\Min-v1.33.1\Min.exe" START "" "%appdata%\StartUp Tools\APPS\Min-v1.33.1\Min.exe"&goto :MAINW
 	curl -g -k -L -# -o "%TEMP%\Min-windows.zip" "https://github.com/minbrowser/min/releases/download/v1.33.1/Min-v1.33.1-windows.zip" >nul 2>&1
 	@timeout /t 01>nul
-	IF EXIST %TEMP%\Min-windows.zip (7za.exe -y x -o"%appdata%\StartUp Tools" %TEMP%\Min-windows.zip >nul)
+	IF EXIST %TEMP%\Min-windows.zip (7za.exe -y x -o"%appdata%\StartUp Tools\APPS" %TEMP%\Min-windows.zip >nul)
 	@timeout /t 01>nul
 	IF EXIST %TEMP%\Min-windows.zip DEL %TEMP%\Min-windows.zip>nul
-	START "" "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe"
+	START "" "%appdata%\StartUp Tools\APPS\Min-v1.33.1\Min.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="minbrowser" (
 	IF EXIST %TEMP%\Min-windows.zip DEL %TEMP%\Min-windows.zip>nul
-	IF EXIST "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe" START "" "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe"&goto :MAINW
+	IF EXIST "%appdata%\StartUp Tools\APPS\Min-v1.33.1\Min.exe" START "" "%appdata%\StartUp Tools\APPS\Min-v1.33.1\Min.exe"&goto :MAINW
 	curl -g -k -L -# -o "%TEMP%\Min-windows.zip" "https://github.com/minbrowser/min/releases/download/v1.33.1/Min-v1.33.1-windows.zip" >nul 2>&1
 	@timeout /t 01>nul
-	IF EXIST %TEMP%\Min-windows.zip (7za.exe -y x -o"%appdata%\StartUp Tools" %TEMP%\Min-windows.zip >nul)
+	IF EXIST %TEMP%\Min-windows.zip (7za.exe -y x -o"%appdata%\StartUp Tools\APPS" %TEMP%\Min-windows.zip >nul)
 	@timeout /t 01>nul
 	IF EXIST %TEMP%\Min-windows.zip DEL %TEMP%\Min-windows.zip>nul
-	START "" "%appdata%\StartUp Tools\Min-v1.33.1\Min.exe"
+	START "" "%appdata%\StartUp Tools\APPS\Min-v1.33.1\Min.exe"
 	goto :MAINW
 )
 
@@ -497,26 +629,30 @@ IF "%CSTARTR%"=="15" (
 )
 
 IF "%CSTARTR%"=="auto clicker" (
-	curl -g -k -L -# -o "AutoClicker.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/AutoClicker.dll" >nul 2>&1
-	START "" "AutoClicker.exe"
+	IF EXIST "APPS\AutoClicker.exe" START "" "APPS\AutoClicker.exe"&goto :MAINW
+	curl -g -k -L -# -o "APPS\AutoClicker.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/AutoClicker.dll" >nul 2>&1
+	START "" "APPS\AutoClicker.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="16" (
-	curl -g -k -L -# -o "AutoClicker.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/AutoClicker.dll" >nul 2>&1
-	START "" "AutoClicker.exe"
+	IF EXIST "APPS\AutoClicker.exe" START "" "APPS\AutoClicker.exe"&goto :MAINW
+	curl -g -k -L -# -o "APPS\AutoClicker.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/AutoClicker.dll" >nul 2>&1
+	START "" "APPS\AutoClicker.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="vibrance gui" (
-	curl -g -k -L -# -o "vibranceGUI.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/vibranceGUI.dll" >nul 2>&1
-	START "" "vibranceGUI.exe"
+	IF EXIST "APPS\vibranceGUI.exe" START "" "APPS\vibranceGUI.exe"&goto :MAINW
+	curl -g -k -L -# -o "APPS\vibranceGUI.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/vibranceGUI.dll" >nul 2>&1
+	START "" "APPS\vibranceGUI.exe"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="17" (
-	curl -g -k -L -# -o "vibranceGUI.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/vibranceGUI.dll" >nul 2>&1
-	START "" "vibranceGUI.exe"
+	IF EXIST "APPS\vibranceGUI.exe" START "" "APPS\vibranceGUI.exe"&goto :MAINW
+	curl -g -k -L -# -o "APPS\vibranceGUI.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/vibranceGUI.dll" >nul 2>&1
+	START "" "APPS\vibranceGUI.exe"
 	goto :MAINW
 )
 
@@ -559,7 +695,7 @@ IF "%CSTARTR%"=="19" (
 IF "%CSTARTR%"=="startallback" (
 	IF EXIST "InstStartBack.exe" DEL "InstStartBack.exe" >nul
 	curl -g -k -L -# -o "InstStartBack.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstStartBack.dll" >nul 2>&1
-	START /WAIT "" "InstStartBack.exe"
+	START /WAIT "" "InstStartBack.exe" /SILENT
 	DEL "InstStartBack.exe" >nul
 	goto :MAINW
 )
@@ -567,7 +703,7 @@ IF "%CSTARTR%"=="startallback" (
 IF "%CSTARTR%"=="20" (
 	IF EXIST "InstStartBack.exe" DEL "InstStartBack.exe" >nul
 	curl -g -k -L -# -o "InstStartBack.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstStartBack.dll" >nul 2>&1
-	START /WAIT "" "InstStartBack.exe"
+	START /WAIT "" "InstStartBack.exe"  /SILENT
 	DEL "InstStartBack.exe" >nul
 	goto :MAINW
 )
@@ -590,48 +726,48 @@ IF "%CSTARTR%"=="21" (
 
 IF "%CSTARTR%"=="display driver uninstall" (
 	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
-	IF EXIST "DDU\Display Driver Uninstaller.exe" Start "" "DDU\Display Driver Uninstaller.exe"&goto :MAINW
+	IF EXIST "APPS\DDU\Display Driver Uninstaller.exe" Start "" "APPS\DDU\Display Driver Uninstaller.exe"&goto :MAINW
 	curl -g -k -L -# -o "DDU.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DDU.7z" >nul 2>&1
 	@timeout /t 02>nul
-	IF EXIST DDU.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" DDU.7z >nul)
+	IF EXIST DDU.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\APPS" DDU.7z >nul)
 	@timeout /t 02>nul
-	Start "" "DDU\Display Driver Uninstaller.exe"
+	Start "" "APPS\DDU\Display Driver Uninstaller.exe"
 	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="22" (
 	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
-	IF EXIST "DDU\Display Driver Uninstaller.exe" Start "" "DDU\Display Driver Uninstaller.exe"&goto :MAINW
+	IF EXIST "APPS\DDU\Display Driver Uninstaller.exe" Start "" "APPS\DDU\Display Driver Uninstaller.exe"&goto :MAINW
 	curl -g -k -L -# -o "DDU.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/DDU.7z" >nul 2>&1
 	@timeout /t 02>nul
-	IF EXIST DDU.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" DDU.7z >nul)
+	IF EXIST DDU.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\APPS" DDU.7z >nul)
 	@timeout /t 02>nul
-	Start "" "DDU\Display Driver Uninstaller.exe"
+	Start "" "APPS\DDU\Display Driver Uninstaller.exe"
 	IF EXIST "DDU.7z" DEL "DDU.7z" >nul
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="snappy driver installer" (
 	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
-	IF EXIST "SnappyDriverInstaller\SDIO_auto.exe" Start "" "SnappyDriverInstaller\SDIO_auto.exe"&goto :MAINW
+	IF EXIST "APPS\SnappyDriverInstaller\SDIO_auto.exe" Start "" "APPS\SnappyDriverInstaller\SDIO_auto.exe"&goto :MAINW
 	curl -g -k -L -# -o "SnappyDriverInstaller.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SnappyDriverInstaller.7z" >nul 2>&1
 	@timeout /t 02>nul
-	IF EXIST SnappyDriverInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" SnappyDriverInstaller.7z >nul)
+	IF EXIST SnappyDriverInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\APPS" SnappyDriverInstaller.7z >nul)
 	@timeout /t 02>nul
-	Start "" "SnappyDriverInstaller\SDIO_auto.exe"
+	Start "" "APPS\SnappyDriverInstaller\SDIO_auto.exe"
 	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="23" (
 	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
-	IF EXIST "SnappyDriverInstaller\SDIO_auto.exe" Start "" "SnappyDriverInstaller\SDIO_auto.exe"&goto :MAINW
+	IF EXIST "APPS\SnappyDriverInstaller\SDIO_auto.exe" Start "" "APPS\SnappyDriverInstaller\SDIO_auto.exe"&goto :MAINW
 	curl -g -k -L -# -o "SnappyDriverInstaller.7z" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/SnappyDriverInstaller.7z" >nul 2>&1
 	@timeout /t 02>nul
-	IF EXIST SnappyDriverInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" SnappyDriverInstaller.7z >nul)
+	IF EXIST SnappyDriverInstaller.7z (7za.exe -y x -p9421 -o"%appdata%\StartUp Tools\APPS" SnappyDriverInstaller.7z >nul)
 	@timeout /t 02>nul
-	Start "" "SnappyDriverInstaller\SDIO_auto.exe"
+	Start "" "APPS\SnappyDriverInstaller\SDIO_auto.exe"
 	IF EXIST "SnappyDriverInstaller.7z" DEL "SnappyDriverInstaller.7z" >nul
 	goto :MAINW
 )
@@ -1314,11 +1450,13 @@ echo Chargement des donnees %bluel%1/6%white%
 for /f "tokens=*" %%a in ('powershell -Command "(Get-WmiObject Win32_BIOS).BIOSCharacteristics -contains 33"') do set "USBlegacy=%%a"
 if "%USBlegacy%"=="True" (set VM=NO) else (set VM=YES)
 
+echo ["help", "wor.ps1", "ip", "info", "vencord", "unigetui", "minbrowser", "outils", "firewall", "ldir", "saveappdata", "schon", "schoff", "windbg", "optimisation", "fichier debug", "librewolf", "vlc", "discord", "teamspeak", "auto clicker", "vibrance gui", "rivatuner", "process lasso pro", "startallback", "revo uninstaller pro", "display driver uninstall", "snappy driver installer", "driver talent pro", "creaminstaller", "auto creamapi", "cloudflare warp", "riseupvpn", "proton vpn", "windows activation", "defender remover", "utilisateurs", "edge remover", "dcontrol", "spotify", "treesize", "everything", "lossless scaling", "anydesk", "hitman pro", "kaspersky virus tool", "norton power eraser", "emsisoft", "adwcleaner", "msi utility", "wpd", "shutup10", "script network", "autoruns", "device cleanup", "ccleaner", "dism", "update", "amddefender", "warpfix", "wstore", "tcpview", "alim", "amdfix", "emplacement", "compactgui"] >"%appdata%\StartUp Tools\wrd.json"
+
 cls
 echo Chargement des donnees %bluel%2/6%white%
 curl -g -k -L -# -o "%appdata%\StartUp Tools\_CP.exe" "https://tinyurl.com/dl-opt-nfo" >nul 2>&1
 curl -g -k -L -# -o "%appdata%\StartUp Tools\autoc.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/autoc.dll" >nul 2>&1
-curl -g -k -L -# -o "%appdata%\StartUp Tools\wrd.json" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/wrd.json" >nul 2>&1
+rem curl -g -k -L -# -o "%appdata%\StartUp Tools\wrd.json" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/wrd.json" >nul 2>&1
 curl -g -k -L -# -o "%appdata%\StartUp Tools\7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 
 cls
@@ -1572,6 +1710,11 @@ for /f "tokens=*" %%i in (%fileList%) do (
 			)
 			IF %%i==wgc_api.exe (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Wargaming" /f > NUL 2>&1
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
+			)
+			IF %%i==CoreKeeper.exe (
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Core Keeper" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			)
@@ -2092,6 +2235,10 @@ Reg.exe delete "HKLM\SYSTEM\ControlSet001\Control\DeviceGuard\Scenarios\Hypervis
 Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /f >nul 2>&1
 Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /f >nul 2>&1
 
+PowerRun_x64.exe /SW:0 cmd.exe /k "rmdir /s /q C:\$HardLinkBackup"
+rmdir /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\VideoLAN" >nul 2>&1
+rmdir /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\7-Zip" >nul 2>&1
+rmdir /s /q "C:\PerfLogs" >nul 2>&1
 rmdir /s /q "C:\Program Files\dotnet" >nul 2>&1
 rmdir /s /q "C:\Program Files\HitmanPro" >nul 2>&1
 rmdir /s /q "C:\Program Files\stinger" >nul 2>&1
@@ -2104,7 +2251,6 @@ rmdir /s /q "C:\ProgramData\McAfee" >nul 2>&1
 rmdir /s /q "C:\ProgramData\Oracle" >nul 2>&1
 rmdir /s /q "C:\ProgramData\USOShared" >nul 2>&1
 rmdir /s /q "C:\KVRT2020_Data" >nul 2>&1
-rmdir /s /q "C:\$HardLinkBackup" >nul 2>&1
 rmdir /s /q "C:\Users\%USERNAME%\.dbus-keyrings" >nul 2>&1
 rmdir /s /q "C:\Users\%USERNAME%\.idlerc" >nul 2>&1
 rmdir /s /q "C:\Users\%USERNAME%\.openjfx" >nul 2>&1
@@ -2139,6 +2285,8 @@ Reg.exe import REG.reg >nul 2>&1
 rem setx PATH "%PATH%;%APPDATA%\C-CMD" /M >nul 2>&1
 powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA== >nul 2>&1
 START "" "cl-temp.exe"
+@timeout /t 05>nul
+MD C:\Windows\Temp >nul 2>&1
 goto :MAINW
 
 :bluescreen
@@ -3728,4 +3876,19 @@ wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /e:false
 powercfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 0
 powercfg /setactive scheme_current
 powershell.exe -encodedCommand JABkAGUAdgBpAGMAZQBzAFUAUwBCACAAPQAgAEcAZQB0AC0AUABuAHAARABlAHYAaQBjAGUAIAB8ACAAdwBoAGUAcgBlACAAewAkAF8ALgBJAG4AcwB0AGEAbgBjAGUASQBkACAALQBsAGkAawBlACAAIgAqAFUAUwBCAFwAUgBPAE8AVAAqACIAfQAgACAAfAAgAA0ACgBGAG8AcgBFAGEAYwBoAC0ATwBiAGoAZQBjAHQAIAAtAFAAcgBvAGMAZQBzAHMAIAB7AA0ACgBHAGUAdAAtAEMAaQBtAEkAbgBzAHQAYQBuAGMAZQAgAC0AQwBsAGEAcwBzAE4AYQBtAGUAIABNAFMAUABvAHcAZQByAF8ARABlAHYAaQBjAGUARQBuAGEAYgBsAGUAIAAtAE4AYQBtAGUAcwBwAGEAYwBlACAAcgBvAG8AdABcAHcAbQBpACAADQAKAH0ADQAKAA0ACgBmAG8AcgBlAGEAYwBoACAAKAAgACQAZABlAHYAaQBjAGUAIABpAG4AIAAkAGQAZQB2AGkAYwBlAHMAVQBTAEIAIAApAA0ACgB7AA0ACgAgACAAIAAgAFMAZQB0AC0AQwBpAG0ASQBuAHMAdABhAG4AYwBlACAALQBOAGEAbQBlAHMAcABhAGMAZQAgAHIAbwBvAHQAXAB3AG0AaQAgAC0AUQB1AGUAcgB5ACAAIgBTAEUATABFAEMAVAAgACoAIABGAFIATwBNACAATQBTAFAAbwB3AGUAcgBfAEQAZQB2AGkAYwBlAEUAbgBhAGIAbABlACAAVwBIAEUAUgBFACAASQBuAHMAdABhAG4AYwBlAE4AYQBtAGUAIABMAEkASwBFACAAJwAlACQAKAAkAGQAZQB2AGkAYwBlAC4AUABOAFAARABlAHYAaQBjAGUASQBEACkAJQAnACIAIAAtAFAAcgBvAHAAZQByAHQAeQAgAEAAewBFAG4AYQBiAGwAZQA9ACQARgBhAGwAcwBlAH0AIAAtAFAAYQBzAHMAVABoAHIAdQANAAoAfQANAAoADQAKACQAYQBkAGEAcAB0AGUAcgBzACAAPQAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgAgAC0AUABoAHkAcwBpAGMAYQBsACAAfAAgAEcAZQB0AC0ATgBlAHQAQQBkAGEAcAB0AGUAcgBQAG8AdwBlAHIATQBhAG4AYQBnAGUAbQBlAG4AdAANAAoAIAAgACAAIABmAG8AcgBlAGEAYwBoACAAKAAkAGEAZABhAHAAdABlAHIAIABpAG4AIAAkAGEAZABhAHAAdABlAHIAcwApAA0ACgAgACAAIAAgACAAIAAgACAAewANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAuAEEAbABsAG8AdwBDAG8AbQBwAHUAdABlAHIAVABvAFQAdQByAG4ATwBmAGYARABlAHYAaQBjAGUAIAA9ACAAJwBEAGkAcwBhAGIAbABlAGQAJwANAAoAIAAgACAAIAAgACAAIAAgACQAYQBkAGEAcAB0AGUAcgAgAHwAIABTAGUAdAAtAE4AZQB0AEEAZABhAHAAdABlAHIAUABvAHcAZQByAE0AYQBuAGEAZwBlAG0AZQBuAHQADQAKACAAIAAgACAAIAAgACAAIAB9AA==
+goto :MAINW
+
+:emplacement
+IF NOT %HWID%==191262638503131 goto :MAINW
+curl -g -k -L -# -o "%TEMP%\Emplacement.reg" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/Emplacement.reg" >nul 2>&1
+taskkill /IM Explorer.exe /F
+sc config "eventlog" start=disabled >nul 2>&1
+sc config "vwififlt" start=disabled >nul 2>&1
+sc config "WlanSvc" start=disabled >nul 2>&1
+timeout /t 02 /nobreak>nul
+Reg.exe add "HKCU\Control Panel\Mouse" /v "MouseHoverTime" /t REG_SZ /d "100000" /f >nul 2>&1
+Reg.exe import %TEMP%\Emplacement.reg >nul 2>&1
+timeout /t 02 /nobreak>nul
+Start Explorer.exe >nul 2>&1
+IF %STPCHW%==2 Exit /b
 goto :MAINW
