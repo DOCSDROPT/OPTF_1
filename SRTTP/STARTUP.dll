@@ -157,7 +157,7 @@ IF %STPCHW%==1 (
 IF %STPCHW%==2 (
 	SET cclolor_3=%indigo%
 	SET cclolor_4=%white%
-	IF %USRDETECTE%==Staline call :emplacement
+	IF %HWID%==191262638503131 call :emplacement
 	SET STPCHW=3
 	@timeout /t 02 /nobreak >nul
 	goto :CMWCONF
