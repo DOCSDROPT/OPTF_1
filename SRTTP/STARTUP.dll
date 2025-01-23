@@ -92,7 +92,6 @@ IF NOT EXIST APPS MD APPS >nul 2>&1
 IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp >nul 2>&1
 mode con:cols=134 lines=48
 cls
-SET USRDETECTE=Zeiqoo
 echo %gold%ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป%white%
 echo %gold%บ%white%                                                                                                                                    %gold%บ%white%
 echo %gold%บ%white% Configuration :                                                                                                                    %gold%บ%white%
