@@ -30,7 +30,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-79
+SET VERSCRIPT=D-80
 SET WINSUPPORT=ERR
 SET USRDETECTE=ERR
 SET STPCHW=1
@@ -76,6 +76,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\SFLE.bat" goto :Firtstr
 call "%appdata%\StartUp Tools\IFHW.bat"
 call "%appdata%\StartUp Tools\SFLE.bat"
 
+:FirtstrBac_2
 IF EXIST "%appdata%\StartUp Tools\RERR.bat" (
 	call "%appdata%\StartUp Tools\RERR.bat"
 ) else (
@@ -139,61 +140,61 @@ echo %gold%º%white%                                                             
 echo %gold%º%white%                                                                                                                                    %gold%º%white%
 echo %gold%ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼%white%
 
-IF %STPCHW%==1 (
-	IF %HWID%==219925897859274 SET USRDETECTE=Zeiqoo
-	IF %HWID%==191262638503131 SET USRDETECTE=Staline
-	IF %HWID%==J216401760 SET USRDETECTE=Zeiqoo
-	IF %HWID%==None SET USRDETECTE=VMWARE
-	SET cclolor_1=%indigo%
-	SET cclolor_2=%white%
-	SET STPCHW=2
-	@timeout /t 02 /nobreak >nul
-	IF NOT %USRDETECTE%==ERR goto :CMWCONF
-	IF %IP%==88.160.218.197 SET USRDETECTE=Staline
-	IF %IP%==88.173.226.86 SET USRDETECTE=Zeiqoo
-	goto :CMWCONF
-)
+IF %STPCHW%==1 goto :FSTRSTP_1
+IF %STPCHW%==2 goto :FSTRSTP_2
+IF %STPCHW%==3 goto :FSTRSTP_3
+IF %STPCHW%==4 goto :FSTRSTP_4
+IF %STPCHW%==5 goto :FSTRSTP_5
+goto :MAINW
 
-IF %STPCHW%==2 (
-	SET cclolor_3=%indigo%
-	SET cclolor_4=%white%
-	IF %HWID%==191262638503131 call :emplacement
-	SET STPCHW=3
-	@timeout /t 02 /nobreak >nul
-	goto :CMWCONF
-)
-
-IF %STPCHW%==3 (
-	SET cclolor_5=%indigo%
-	SET cclolor_6=%white%
-	SET STPCHW=4
-	curl -g -k -L -# -o "StartBack.reg" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/StartBack.reg" >nul 2>&1
-	@timeout /t 02 /nobreak >nul
-	Reg.exe import StartBack.reg >nul
-	goto :CMWCONF
-)
-
-IF %STPCHW%==4 (
-	SET cclolor_7=%indigo%
-	SET cclolor_8=%white%
-	curl -g -k -L -# -o "APPS\InstStartBack.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstStartBack.dll" >nul 2>&1
-	START /WAIT "" "APPS\InstStartBack.exe" /SILENT
-	SET STPCHW=5
-	@timeout /t 02 /nobreak >nul
-	goto :CMWCONF
-)
-
-IF %STPCHW%==5 (
-	IF %USRDETECTE%==Zeiqoo curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.17.0.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/NVCleanstall_1.17.0.dll" >nul 2>&1
-	@timeout /t 02 /nobreak >nul
-	IF %USRDETECTE%==Zeiqoo Start "" "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.17.0.exe"
-	SET STPCHW=0
-	Reg.exe add "HKLM\SOFTWARE\RECS" /v "LCH" /t REG_DWORD /d "1" /f >nul 2>&1
-	@timeout /t 02 /nobreak >nul
-	goto :CMWCONF
-)
-
+:FSTRSTP_1
+IF %HWID%==219925897859274 SET USRDETECTE=Zeiqoo
+IF %HWID%==191262638503131 SET USRDETECTE=Staline
+IF %HWID%==J216401760 SET USRDETECTE=Zeiqoo
+IF %HWID%==None SET USRDETECTE=VMWARE
+SET cclolor_1=%indigo%
+SET cclolor_2=%white%
+SET STPCHW=2
 @timeout /t 02 /nobreak >nul
+IF NOT %USRDETECTE%==ERR goto :CMWCONF
+IF %IP%==88.160.218.197 SET USRDETECTE=Staline
+IF %IP%==88.173.226.86 SET USRDETECTE=Zeiqoo
+goto :CMWCONF
+
+:FSTRSTP_2
+SET cclolor_3=%indigo%
+SET cclolor_4=%white%
+IF %HWID%==191262638503131 call :emplacement
+SET STPCHW=3
+@timeout /t 02 /nobreak >nul
+goto :CMWCONF
+
+:FSTRSTP_3
+SET cclolor_5=%indigo%
+SET cclolor_6=%white%
+SET STPCHW=4
+curl -g -k -L -# -o "StartBack.reg" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/StartBack.reg" >nul 2>&1
+@timeout /t 02 /nobreak >nul
+Reg.exe import StartBack.reg >nul
+goto :CMWCONF
+
+:FSTRSTP_4
+SET cclolor_7=%indigo%
+SET cclolor_8=%white%
+curl -g -k -L -# -o "APPS\InstStartBack.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/InstStartBack.dll" >nul 2>&1
+START /WAIT "" "APPS\InstStartBack.exe" /SILENT
+SET STPCHW=5
+@timeout /t 02 /nobreak >nul
+goto :CMWCONF
+
+:FSTRSTP_5
+IF %USRDETECTE%==Zeiqoo curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.17.0.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/NVCleanstall_1.17.0.dll" >nul 2>&1
+@timeout /t 02 /nobreak >nul
+IF %USRDETECTE%==Zeiqoo Start "" "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.17.0.exe"
+SET STPCHW=0
+Reg.exe add "HKLM\SOFTWARE\RECS" /v "LCH" /t REG_DWORD /d "1" /f >nul 2>&1
+@timeout /t 02 /nobreak >nul
+goto :CMWCONF
 
 :MAINW
 C:
@@ -228,8 +229,8 @@ echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indig
 echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[18]%white% RivaTuner                ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[40]%white% Lossless Scaling         ³³
 echo ³³ %indigo%[ 6]%white% LibreWolf Portable       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[29]%white% Proton VPN               ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[19]%white% Process Lasso Pro        ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[41]%white% AnyDesk                  ³³
-echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³
-echo ³³ %gold%Applications portable%white%         ³³ %indigo%[20]%white% StartAllBack Pro         ³³ %gold%Scripts%white%                       ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
+echo ³³ %gold%Applications portable%white%         ³³ %indigo%[20]%white% StartAllBack Pro         ³³ %gold%Scripts%white%                       ³³ %indigo%[42]%white% RustDesk                 ³³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%Virus%white%                         ³³
 echo ³³ %indigo%[ 7]%white% Vencord Cli              ³³ %indigo%[21]%white% Revo Uninstaller Pro     ³³ %indigo%[30]%white% Windows Activation       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[42]%white% Hitman Pro               ³³
@@ -481,7 +482,7 @@ IF "%CSTARTR%"=="librewolf" (
 
 IF "%CSTARTR%"=="7" (
 	IF EXIST "%TEMP%\VencordInstallerCli.exe" DEL "%TEMP%\VencordInstallerCli.exe" >nul
-	curl -g -k -L -# -o "C:\Users\%USERNAME%\AppData\Roaming\Vencord\settings\settings.json" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/vencord_settings.json" >nul 2>&1
+	curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/vencord-settings.json" >nul 2>&1
 	@timeout /t 02>nul
 	curl -g -k -L -# -o "%TEMP%\VencordInstallerCli.exe" "https://github.com/Vencord/Installer/releases/latest/download/VencordInstallerCli.exe" >nul 2>&1
 	@timeout /t 02>nul
@@ -492,7 +493,7 @@ IF "%CSTARTR%"=="7" (
 
 IF "%CSTARTR%"=="vencord" (
 	IF EXIST "%TEMP%\VencordInstallerCli.exe" DEL "%TEMP%\VencordInstallerCli.exe" >nul
-	curl -g -k -L -# -o "C:\Users\%USERNAME%\AppData\Roaming\Vencord\settings\settings.json" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/vencord_settings.json" >nul 2>&1
+	curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/vencord-settings.json" >nul 2>&1
 	@timeout /t 02>nul
 	curl -g -k -L -# -o "%TEMP%\VencordInstallerCli.exe" "https://github.com/Vencord/Installer/releases/latest/download/VencordInstallerCli.exe" >nul 2>&1
 	@timeout /t 02>nul
@@ -1052,7 +1053,7 @@ IF "%CSTARTR%"=="40" (
 
 IF "%CSTARTR%"=="anydesk" (
 	IF EXIST "%TEMP%\AnyDesk.exe" START "" "%TEMP%\AnyDesk.exe"&goto :MAINW
-	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "hhttps://download.anydesk.com/AnyDesk.exe" >nul 2>&1
+	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "https://download.anydesk.com/AnyDesk.exe" >nul 2>&1
 	@timeout /t 02>nul
 	START "" "%TEMP%\AnyDesk.exe"
 	goto :MAINW
@@ -1060,7 +1061,7 @@ IF "%CSTARTR%"=="anydesk" (
 
 IF "%CSTARTR%"=="41" (
 	IF EXIST "%TEMP%\AnyDesk.exe" START "" "%TEMP%\AnyDesk.exe"&goto :MAINW
-	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "hhttps://download.anydesk.com/AnyDesk.exe" >nul 2>&1
+	curl -g -k -L -# -o "%TEMP%\AnyDesk.exe" "https://download.anydesk.com/AnyDesk.exe" >nul 2>&1
 	@timeout /t 02>nul
 	START "" "%TEMP%\AnyDesk.exe"
 	goto :MAINW
@@ -3764,7 +3765,7 @@ echo    End : [Err 1] : %ERROR% ^| [Err 2] : %ERROR2% ^| [Err 3] : %ERROR3% ^|>>
 echo ^|-------------------------------------------------------------^|>>"%appdata%\StartUp Tools\LOG\err.log"
 Endlocal
 call "%appdata%\StartUp Tools\RERR.bat"
-goto :MAINW
+goto :FirtstrBac_2
 
 :helpcmd
 cls
