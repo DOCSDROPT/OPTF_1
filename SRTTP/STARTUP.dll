@@ -188,9 +188,9 @@ SET STPCHW=5
 goto :CMWCONF
 
 :FSTRSTP_5
-IF NOT %USRDETECTE%==Staline curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.18.0.dll" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/NVCleanstall_1.18.0.dll" >nul 2>&1 
+IF NOT %USRDETECTE%==Staline curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.18.0.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/NVCleanstall_1.18.0.dll" >nul 2>&1 
 @timeout /t 02 /nobreak >nul
-IF NOT %USRDETECTE%==Staline Start "" "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.18.0.dll"
+IF NOT %USRDETECTE%==Staline Start "" "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.18.0.exe"
 SET STPCHW=0
 Reg.exe add "HKLM\SOFTWARE\RECS" /v "LCH" /t REG_DWORD /d "1" /f >nul 2>&1
 @timeout /t 02 /nobreak >nul
