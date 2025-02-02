@@ -29,7 +29,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-83
+SET VERSCRIPT=D-84
 SET WINSUPPORT=ERR
 SET USRDETECTE=ERR
 SET STPCHW=1
@@ -151,6 +151,7 @@ goto :MAINW
 :FSTRSTP_1
 IF %HWID%==219925897859274 SET USRDETECTE=Zeiqoo
 IF %HWID%==191262638503131 SET USRDETECTE=Staline
+IF %HWID%==07B9847_L07Y716553 SET USRDETECTE=Zeiqoo
 IF %HWID%==J216401760 SET USRDETECTE=Zeiqoo
 IF %HWID%==None SET USRDETECTE=VMWARE
 SET cclolor_1=%indigo%
@@ -196,9 +197,6 @@ SET STPCHW=0
 Reg.exe add "HKLM\SOFTWARE\RECS" /v "LCH" /t REG_DWORD /d "1" /f >nul 2>&1
 @timeout /t 02 /nobreak >nul
 goto :CMWCONF
-
-rem IF NOT EXIST detection.exe curl -g -k -L -# -o "detection.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/detection.exe" >nul 2>&1
-rem FOR /f "tokens=*" %%i in ('detection.exe') DO SET USSRR=%%i
 
 :MAINW
 C:
@@ -1450,14 +1448,16 @@ IF NOT EXIST SYS\dwnlbar.exe curl -g -k -L -# -o "%appdata%\StartUp Tools\SYS\dw
 FOR /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') DO SET "HWID=%%i"
 cls
 echo Verification de l'utilisateur.
+SYS\dwnlbar.exe "Detection   " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/detection.exe" "%appdata%\StartUp Tools\SYS\detection.exe"
+FOR /f "tokens=*" %%i in ('SYS\detection.exe') DO SET USSRR=%%i
+IF %USSRR%==Staline goto :CRSTRC
+IF %USSRR%==Zeiqoo goto :CRSTRC
+
 FOR /f "delims=" %%A in ('curl -s ifconfig.me') DO SET MY_IP=%%A
 @timeout /t 01>nul
-IF %HWID%==PF0TRR6A goto :CRSTRC
-IF %HWID%==219925897859274 goto :CRSTRC
-IF %HWID%==191262638503131 goto :CRSTRC
-IF %HWID%==J216401760 goto :CRSTRC
 IF %MY_IP%==88.160.218.197 goto :CRSTRC
 IF %MY_IP%==88.173.226.86 goto :CRSTRC
+
 DEL "%~f0"
 Exit
 :CRSTRC
