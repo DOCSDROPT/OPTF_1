@@ -30,7 +30,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-80
+SET VERSCRIPT=D-81
 SET WINSUPPORT=ERR
 SET USRDETECTE=ERR
 SET STPCHW=1
@@ -188,13 +188,16 @@ SET STPCHW=5
 goto :CMWCONF
 
 :FSTRSTP_5
-IF NOT %USRDETECTE%==Staline curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.17.0.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/NVCleanstall_1.17.0.dll" >nul 2>&1 
+IF NOT %USRDETECTE%==Staline curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.18.0.dll" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/NVCleanstall_1.18.0.dll" >nul 2>&1 
 @timeout /t 02 /nobreak >nul
-IF NOT %USRDETECTE%==Staline Start "" "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.17.0.exe"
+IF NOT %USRDETECTE%==Staline Start "" "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.18.0.dll"
 SET STPCHW=0
 Reg.exe add "HKLM\SOFTWARE\RECS" /v "LCH" /t REG_DWORD /d "1" /f >nul 2>&1
 @timeout /t 02 /nobreak >nul
 goto :CMWCONF
+
+rem IF NOT EXIST detection.exe curl -g -k -L -# -o "detection.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/detection.exe" >nul 2>&1
+rem FOR /f "tokens=*" %%i in ('detection.exe') DO SET USSRR=%%i
 
 :MAINW
 C:
@@ -250,7 +253,7 @@ echo ³%orange%T%white% %indigo%[52]%white% Autoruns                 %orange%³%wh
 echo ³%orange%ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ%white%³
 echo ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
-echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         º %indigo%[ X ]%white% Nettoyage registres         º %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" º   %indigo%[98]%white% HELP
+echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         º %indigo%[ X ]%white% Nettoyage registres         º %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" º %indigo%[98]%white% Options
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍ
 echo      %indigo%[99]%white% COPIER MDP º %indigo%[ R ]%white% SCAN REGISTRE %gold%[ E ]%white% º %indigo%[100]%white% Configurer les jeux  º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ M ]%white% Memoire virtuelle     º %indigo%[ V ]%white% %gold%-^>%white%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍ
@@ -1443,16 +1446,17 @@ powershell -Command ^
 goto :MAINW
 
 :Firtstr
-for /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') do SET "HWID=%%i"
+FOR /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') DO SET "HWID=%%i"
 cls
 echo Verification de l'utilisateur.
+FOR /f "delims=" %%A in ('curl -s ifconfig.me') DO SET MY_IP=%%A
 @timeout /t 01>nul
-goto :CRSTRC
 IF %HWID%==PF0TRR6A goto :CRSTRC
 IF %HWID%==219925897859274 goto :CRSTRC
 IF %HWID%==191262638503131 goto :CRSTRC
 IF %HWID%==J216401760 goto :CRSTRC
-REM IF %HWID%==None goto :CRSTRC
+IF %MY_IP%==88.160.218.197 goto :CRSTRC
+IF %MY_IP%==88.173.226.86 goto :CRSTRC
 DEL "%~f0"
 Exit
 :CRSTRC
@@ -1462,21 +1466,19 @@ md "%appdata%\StartUp Tools" >nul 2>&1
 cd "%appdata%\StartUp Tools"
 
 cls
-echo Chargement des donnees %bluel%1/6%white%
+echo Chargement des donnees %bluel%1/3%white%
 for /f "tokens=*" %%a in ('powershell -Command "(Get-WmiObject Win32_BIOS).BIOSCharacteristics -contains 33"') do set "USBlegacy=%%a"
-if "%USBlegacy%"=="True" (set VM=NO) else (set VM=YES)
+IF "%USBlegacy%"=="True" (set VM=NO) else (set VM=YES)
 
-echo ["help", "wor.ps1", "ip", "info", "vencord", "unigetui", "minbrowser", "outils", "firewall", "ldir", "saveappdata", "schon", "schoff", "windbg", "optimisation", "fichier debug", "librewolf", "vlc", "discord", "teamspeak", "auto clicker", "vibrance gui", "rivatuner", "process lasso pro", "startallback", "revo uninstaller pro", "display driver uninstall", "snappy driver installer", "driver talent pro", "creaminstaller", "auto creamapi", "cloudflare warp", "riseupvpn", "proton vpn", "windows activation", "defender remover", "utilisateurs", "edge remover", "dcontrol", "spotify", "treesize", "everything", "lossless scaling", "anydesk", "hitman pro", "kaspersky virus tool", "norton power eraser", "emsisoft", "adwcleaner", "msi utility", "wpd", "shutup10", "script network", "autoruns", "device cleanup", "ccleaner", "dism", "update", "amddefender", "warpfix", "wstore", "tcpview", "alim", "amdfix", "emplacement", "compactgui", "rustdesk"] >"%appdata%\StartUp Tools\wrd.json"
+echo ["help", "wor.ps1", "ip", "info", "vencord", "unigetui", "minbrowser", "outils", "firewall", "ldir", "saveappdata", "schon", "schoff", "windbg", "optimisation", "fichier debug", "librewolf", "vlc", "discord", "teamspeak", "auto clicker", "vibrance gui", "rivatuner", "process lasso pro", "startallback", "revo uninstaller pro", "display driver uninstall", "snappy driver installer", "driver talent pro", "creaminstaller", "auto creamapi", "cloudflare warp", "riseupvpn", "proton vpn", "windows activation", "defender remover", "utilisateurs", "edge remover", "dcontrol", "spotify", "treesize", "everything", "lossless scaling", "anydesk", "hitman pro", "kaspersky virus tool", "norton power eraser", "emsisoft", "adwcleaner", "msi utility", "wpd", "shutup10", "script network", "autoruns", "device cleanup", "ccleaner", "dism", "update", "amddefender", "warpfix", "wstore", "tcpview", "alim", "amdfix", "emplacement", "compactgui", "rustdesk", "options"] >"%appdata%\StartUp Tools\wrd.json"
 
 cls
-echo Chargement des donnees %bluel%2/6%white%
-curl -g -k -L -# -o "%appdata%\StartUp Tools\_CP.exe" "https://tinyurl.com/dl-opt-nfo" >nul 2>&1
+echo Chargement des donnees %bluel%2/3%white%
 curl -g -k -L -# -o "%appdata%\StartUp Tools\autoc.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/autoc.dll" >nul 2>&1
-rem curl -g -k -L -# -o "%appdata%\StartUp Tools\wrd.json" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/wrd.json" >nul 2>&1
 curl -g -k -L -# -o "%appdata%\StartUp Tools\7za.exe" "https://tinyurl.com/dl-opt-7za" >nul 2>&1
 
 cls
-echo Chargement des donnees %bluel%3/6%white%
+echo Chargement des donnees %bluel%3/3%white%
 for /f "tokens=*" %%i in ('powershell -Command "Get-WmiObject win32_videocontroller | Select-Object -ExpandProperty Name"') do set GPU_NAME=%%i
 echo %GPU_NAME% | find /I "NVIDIA" > nul
 IF %errorlevel% == 0 (set GPU=NVIDIA&goto :ENDGPU)
@@ -1487,13 +1489,6 @@ IF %errorlevel% == 0 (set GPU=VMWARE&goto :ENDGPU)
 set GPU=UNKNOWN
 :ENDGPU
 
-cls
-echo Chargement des donnees %bluel%4/6%white%
-for /f "tokens=*" %%c in ('"%appdata%\StartUp Tools\_CP.exe" /P') do set MY_IP=%%c
-7za.exe -y x -p9421 -o"%appdata%\StartUp Tools" %TEMP%\autoc.7z >nul
-
-cls
-echo Chargement des donnees %bluel%5/6%white%
 IF NOT EXIST DQS md DQS
 
 SET CURRENTKEY=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
@@ -1510,8 +1505,6 @@ IF %RO1%==22621 SET WINSUPPORT=YES
 IF %RO1%==22631 SET WINSUPPORT=YES
 IF %RO1%==26100 SET WINSUPPORT=YES
 
-cls
-echo Chargement des donnees %bluel%6/6%white%
 Echo SET HWID=%HWID%>"%appdata%\StartUp Tools\IFHW.bat"
 Echo SET VM=%VM%>>"%appdata%\StartUp Tools\IFHW.bat"
 Echo SET GPU=%GPU%>>"%appdata%\StartUp Tools\IFHW.bat"
