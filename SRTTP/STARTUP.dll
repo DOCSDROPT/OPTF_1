@@ -1,5 +1,19 @@
-:RESET
 @echo off
+
+FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SOFTWARE\START-UP" 2^>NUL^|FIND /I "Update"') DO SET Update=%%B
+IF %Update%==0x1 (
+	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
+	@timeout /t 01>nul
+)
+
+FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SOFTWARE\START-UP" 2^>NUL^|FIND /I "Screen"') DO SET Screen=%%B
+IF %Screen%==0x1 (
+	IF EXIST "%appdata%\StartUp Tools\SYS\cmdow.exe" (
+		"%appdata%\StartUp Tools\SYS\cmdow.exe" @ /mov 408 103
+	)
+)
+
+:RESET
 set black=[30m
 set red=[91m
 set bright_red=[1;91m
@@ -29,7 +43,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-85
+SET VERSCRIPT=D-86
 SET WINSUPPORT=ERR
 SET USRDETECTE=ERR
 SET STPCHW=1
@@ -48,14 +62,15 @@ IF %errorlevel% neq 0 (
 	powershell -NoProfile -NonInteractive -Command start -verb runas "'%~s0'" >nul 2>&1 & exit /b
 )
 
-IF /i "%~1"=="/4" (
-	mode con:cols=134 lines=47
-) else (
-	Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
+IF NOT EXIST "%appdata%\StartUp Tools\SYS\SFLE.bat" (
+	IF /i "%~1"=="/4" (
+		mode con:cols=134 lines=48
+	) else (
+		Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
+	)
 )
 
 SET ERROR=0
-
 ping -n 1 -w 2000 www.google.com > nul
 IF %errorlevel% equ 0 (SET NETWORK=YES) else (SET NETWORK=NO)
 IF %NETWORK%==NO (
@@ -85,7 +100,7 @@ IF EXIST "%appdata%\StartUp Tools\SYS\RERR.bat" (
 )
 
 IF NOT %COMPUTERNAME%==RGTP-RECS goto :MAINW
-FOR /F "TOKENS=2,*" %%A IN ('reg query "HKLM\SOFTWARE\RECS" 2^>NUL^|FIND /I "LCH"') DO set LCH=%%B
+FOR /F "TOKENS=2,*" %%A IN ('reg query "HKLM\SOFTWARE\START-UP" 2^>NUL^|FIND /I "LCH"') DO set LCH=%%B
 IF %LCH%==0x1 goto :MAINW
 :CMWCONF
 C:
@@ -194,7 +209,7 @@ IF NOT %USRDETECTE%==Staline curl -g -k -L -# -o "C:\Users\%USERNAME%\Desktop\NV
 @timeout /t 02 /nobreak >nul
 IF NOT %USRDETECTE%==Staline Start "" "C:\Users\%USERNAME%\Desktop\NVCleanstall_1.18.0.exe"
 SET STPCHW=0
-Reg.exe add "HKLM\SOFTWARE\RECS" /v "LCH" /t REG_DWORD /d "1" /f >nul 2>&1
+Reg.exe add "HKLM\SOFTWARE\START-UP" /v "LCH" /t REG_DWORD /d "1" /f >nul 2>&1
 @timeout /t 02 /nobreak >nul
 goto :CMWCONF
 
@@ -251,9 +266,9 @@ echo ณ%orange%T%white% %indigo%[52]%white% Autoruns                 %orange%ณ%wh
 echo ณ%orange%ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤู%white%ณ
 echo ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤู
 echo อออออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออหออออออออออออออออออออออออ
-echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         บ %indigo%[ X ]%white% Nettoyage registres         บ %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" บ %indigo%[98]%white% Options
+echo      %indigo%[97]%white% %gold%UPDATE / RESET%white%         บ %indigo%[ X ]%white% Nettoyage registres         บ %indigo%[ B ]%white% Envoyer le fichier "%cyan%Bluescreen%white%" บ %indigo%[98]%white% Help
 echo อออออออออออออออออออออหอออออออออออสอออออออออออออออหอออออออออออออออออออสออออออออหออออออออออออออหอออออออออออออออสอออออออออออออหออออออออออ
-echo      %indigo%[99]%white% COPIER MDP บ %indigo%[ R ]%white% SCAN REGISTRE %gold%[ E ]%white% บ %indigo%[100]%white% Configurer les jeux  บ %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% บ %indigo%[ M ]%white% Memoire virtuelle     บ %indigo%[ V ]%white% %gold%-^>%white%
+echo      %indigo%[99]%white% Options    บ %indigo%[ R ]%white% SCAN REGISTRE %gold%[ E ]%white% บ %indigo%[100]%white% Configurer les jeux  บ %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% บ %indigo%[ M ]%white% Memoire virtuelle     บ %indigo%[ V ]%white% %gold%-^>%white%
 echo อออออออออออออออออออออสอออออออออออออออออออออออออออสออออออออออออออออออออออออออออสออออออออออออออสอออออออออออออออออออออออออออออสออออออออออ
 SYS\autoc.exe
 set /p CSTARTR=<temp_output.txt
@@ -270,6 +285,7 @@ IF "%CSTARTR%"=="amdfix" (
 )
 
 IF "%CSTARTR%"=="ip" goto :AFFIP
+IF "%CSTARTR%"=="options" goto :sttngs
 
 IF "%CSTARTR%"=="info" (
 	SYS\dwnlbar.exe "pcinfo.bat      " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/pcinfo.dll" "%temp%\pcinfo.bat"
@@ -318,8 +334,6 @@ IF "%CSTARTR%"=="tcpview" (
 	goto :MAINW
 )
 IF "%CSTARTR%"=="windbg" powershell -Command "Add-AppxPackage -Path "W:\Windows\Documents\1-APK\WinDbg.Msixbundle""&goto :MAINW
-IF "%CSTARTR%"=="schon" SYS\PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule start=auto&goto :MAINW
-IF "%CSTARTR%"=="schoff" SYS\PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule start=disabled&goto :MAINW
 IF "%CSTARTR%"=="amddefender" SYS\PowerRun_x64.exe /SW:0 cmd.exe /k ren "C:\Windows\System32\drivers\amdfendr.sys" "amdfendr.sys.old"&goto :MAINW
 IF "%CSTARTR%"=="wstore" curl -g -k -L -# -o "%temp%\WStore.bat" "https://tinyurl.com/ACWStoreScript" & start cmd /c "%temp%\WStore.bat" & goto :MAINW
 
@@ -328,21 +342,6 @@ IF "%CSTARTR%"=="compactgui" (
 	SYS\dwnlbar.exe "CompactGUI " "https://github.com/IridiumIO/CompactGUI/releases/latest/download/CompactGUI.mono.exe" "%appdata%\StartUp Tools\APPS\CompactGUI.mono.exe"
 	@timeout /t 02>nul
 	START "" "APPS\CompactGUI.mono.exe"
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="optimisation" (
-	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
-	IF EXIST OBYSS.7z DEL OBYSS.7z>nul
-	IF EXIST cmd_emu.7z DEL cmd_emu.7z>nul
-	SYS\dwnlbar.exe "cmd_emu.7z " "https://www.dropbox.com/scl/fi/rnueud0ix8ju7z2xp3iut/cmd_emu.7z?rlkey=5ocqoeffoz8zfitkgg6ldqog2&st=sl3pnmu1&dl=1" "%appdata%\StartUp Tools\TMP\cmd_emu.7z"
-	SYS\dwnlbar.exe "OBYSS.7z   " "https://www.dropbox.com/scl/fi/7ik63sgxhk5x3e5ttts0v/OBYSS.7z?rlkey=kxahsjdbhjh2ymzpt6pxtxle0&st=pxf4w8d1&dl=1" "%appdata%\StartUp Tools\TMP\OBYSS.7z"
-	@timeout /t 10>nul
-	IF EXIST TMP\cmd_emu.7z (SYS\7za.exe -y x -p123456 -o%TEMP% TMP\cmd_emu.7z >nul)
-	IF EXIST TMP\OBYSS.7z (SYS\7za.exe -y x -p723456 -oC:\ TMP\OBYSS.7z >nul)
-	IF EXIST TMP\OBYSS.7z DEL TMP\OBYSS.7z>nul
-	IF EXIST TMP\cmd_emu.7z DEL TMP\cmd_emu.7z>nul
-	IF EXIST C:\HGD-OBYSS.bat START "" "%TEMP%\cmd_emu\ConEmu64.exe" -Icon "ConEmu\cmder.ico" -run "C:\HGD-OBYSS.bat"
 	goto :MAINW
 )
 
@@ -407,7 +406,6 @@ IF "%CSTARTR%"=="3" (
     @timeout /t 02>nul
     Reg.exe add "HKCU\Control Panel\Mouse" /v "MouseHoverTime" /t REG_SZ /d "100000" /f
     @timeout /t 02>nul
-    Reg.exe add "HKLM\SOFTWARE\RECS" /v "VLDWM" /t REG_DWORD /d "1" /f
     fsutil behavior set DisableDeleteNotify 0
     @timeout /t 02>nul
 	sc stop "XblAuthManager"
@@ -1309,18 +1307,9 @@ IF "%CSTARTR%"=="97" (
 	goto :RESET
 )
 
-IF "%CSTARTR%"=="98" (
-	goto :helpcmd
-)
-
-IF "%CSTARTR%"=="99" (
-	powershell -command "Set-Clipboard -Value 'Fc#$f6EtsY@&duxFqg3B'" >nul 2>&1
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="100" (
-	goto :GAMECONF
-)
+IF "%CSTARTR%"=="98" goto :helpcmd
+IF "%CSTARTR%"=="99" goto :sttngs
+IF "%CSTARTR%"=="100" goto :GAMECONF
 
 IF "%CSTARTR%"=="x" goto :SCCLEAR
 IF "%CSTARTR%"=="X" goto :SCCLEAR
@@ -1443,6 +1432,8 @@ md "%appdata%\StartUp Tools\SYS" >nul 2>&1
 C:
 CD "%appdata%\StartUp Tools"
 
+Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\START-UP" /v "Update" /t REG_DWORD /d "0" /f >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\START-UP" /v "Screen" /t REG_DWORD /d "0" /f >nul 2>&1
 IF NOT EXIST SYS\dwnlbar.exe curl -g -k -L -# -o "%appdata%\StartUp Tools\SYS\dwnlbar.exe" "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/dwnlbar.exe" >nul 2>&1
 
 FOR /f "tokens=*" %%i in ('powershell "Get-WmiObject Win32_BaseBoard | Select-Object -ExpandProperty SerialNumber"') DO SET "HWID=%%i"
@@ -1461,13 +1452,15 @@ echo Chargement des donnees %bluel%1/3%white%
 for /f "tokens=*" %%a in ('powershell -Command "(Get-WmiObject Win32_BIOS).BIOSCharacteristics -contains 33"') do set "USBlegacy=%%a"
 IF "%USBlegacy%"=="True" (set VM=NO) else (set VM=YES)
 
-echo ["help", "wor.ps1", "ip", "info", "vencord", "unigetui", "minbrowser", "outils", "firewall", "ldir", "saveappdata", "schon", "schoff", "windbg", "optimisation", "fichier debug", "librewolf", "vlc", "discord", "teamspeak", "auto clicker", "vibrance gui", "rivatuner", "process lasso pro", "startallback", "revo uninstaller pro", "display driver uninstall", "snappy driver installer", "driver talent pro", "creaminstaller", "auto creamapi", "cloudflare warp", "riseupvpn", "proton vpn", "windows activation", "defender remover", "utilisateurs", "edge remover", "dcontrol", "spotify", "treesize", "everything", "lossless scaling", "anydesk", "hitman pro", "kaspersky virus tool", "norton power eraser", "emsisoft", "adwcleaner", "msi utility", "wpd", "shutup10", "script network", "autoruns", "device cleanup", "ccleaner", "dism", "update", "amddefender", "warpfix", "wstore", "tcpview", "alim", "amdfix", "emplacement", "compactgui", "rustdesk", "options"] >"%appdata%\StartUp Tools\wrd.json"
+echo ["help", "wor.ps1", "ip", "info", "vencord", "unigetui", "minbrowser", "outils", "firewall", "ldir", "saveappdata", "windbg", "fichier debug", "librewolf", "vlc", "discord", "teamspeak", "auto clicker", "vibrance gui", "rivatuner", "process lasso pro", "startallback", "revo uninstaller pro", "display driver uninstall", "snappy driver installer", "driver talent pro", "creaminstaller", "auto creamapi", "cloudflare warp", "riseupvpn", "proton vpn", "windows activation", "defender remover", "utilisateurs", "edge remover", "dcontrol", "spotify", "treesize", "everything", "lossless scaling", "anydesk", "hitman pro", "kaspersky virus tool", "norton power eraser", "emsisoft", "adwcleaner", "msi utility", "wpd", "shutup10", "script network", "autoruns", "device cleanup", "ccleaner", "dism", "update", "amddefender", "warpfix", "wstore", "tcpview", "alim", "amdfix", "emplacement", "compactgui", "rustdesk", "options"] >"%appdata%\StartUp Tools\wrd.json"
 
 cls
 echo Chargement des donnees %bluel%2/3%white%
 
 SYS\dwnlbar.exe "autoc " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/autoc.dll" "%appdata%\StartUp Tools\SYS\autoc.exe"
 SYS\dwnlbar.exe "7za   " "https://tinyurl.com/dl-opt-7za" "%appdata%\StartUp Tools\SYS\7za.exe"
+SYS\dwnlbar.exe "mlc   " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/mlc.exe" "%appdata%\StartUp Tools\SYS\mlc.exe"
+SYS\dwnlbar.exe "cmdow " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/cmdow.exe" "%appdata%\StartUp Tools\SYS\cmdow.exe"
 
 cls
 echo Chargement des donnees %bluel%3/3%white%
@@ -1865,18 +1858,6 @@ for /f "tokens=*" %%i in (%fileList%) do (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			)
-			rem IF %%i==Ryujinx.exe (
-			rem 	SET DJAJ=2
-			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Ryujinx" /f > NUL 2>&1
-			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
-			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
-			rem )
-			rem IF %%i==yuzu.exe (
-			rem 	SET DJAJ=2
-			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Yuzu" /f > NUL 2>&1
-			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
-			rem 	Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
-			rem )
 			IF %%i==Cuphead.exe (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Cuphead" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
@@ -3755,9 +3736,6 @@ DEL SYS\RERR.bat>nul
 IF %ERROR%==-1 SET ERROR=0
 IF %ERROR3%==-1 SET ERROR3=0
 
-Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK1" /t REG_SZ /d "%ERROR%" /f >nul
-Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK2" /t REG_SZ /d "%ERROR2%" /f >nul
-Reg.exe add "HKLM\SOFTWARE\RECS" /v "ERRCHK3" /t REG_SZ /d "%ERROR3%" /f >nul
 SET /a REGERROR=%ERROR3%+%ERROR2%+%ERROR%
 echo SET "REGERROR=%REGERROR%">>"%appdata%\StartUp Tools\SYS\RERR.bat"
 echo %ERROR% %ERROR2% %ERROR3%
@@ -3781,8 +3759,6 @@ echo  %yellow%firewall off%white%     -  Desactive le pare-feu Windows.
 echo  %yellow%firewall del%white%     -  Supprime les regles du pare-feu.
 echo  %yellow%ldir%white%             -  Affiche tous les lecteurs existants sur le PC.
 echo  %yellow%warpfix%white%          -  Fix erreur du service WARP.
-echo  %yellow%schon%white%            -  Active le service Schedule.
-echo  %yellow%schoff%white%           -  Desactive le service Schedule.
 echo  %yellow%wstore%white%           -  Installe le Microsoft Store.
 echo  %yellow%saveappdata%white%      -  Sauvegarde les dossiers de moins de 2 Go qui sont dans "APPDATA".
 echo.
@@ -3899,4 +3875,132 @@ FOR /f "delims=" %%A in ('curl -s ifconfig.me') DO SET MY_IP=%%A
 @timeout /t 01>nul
 echo %MY_IP%
 pause
+goto :MAINW
+
+:sttngs
+
+SET OPTSETG_1=1
+SET OPTSETG_2=1
+SET OPTSETG_3=1
+SET OPTSETG_4=1
+SET OPTSETG_5=1
+
+SET Update=ERR
+SET Schedule=ERR
+SET Bluetooth=ERR
+SET Clipboard=ERR
+SET Screen=ERR
+
+FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SOFTWARE\START-UP" 2^>NUL^|FIND /I "Update"') DO SET Update=%%B
+FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SOFTWARE\START-UP" 2^>NUL^|FIND /I "Screen"') DO SET Screen=%%B
+FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SYSTEM\CurrentControlSet\Services\Schedule" 2^>NUL^|FIND /I "Start"') DO SET Schedule=%%B
+FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" 2^>NUL^|FIND /I "Start"') DO SET Bluetooth=%%B
+FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" 2^>NUL^|FIND /I "AllowClipboardHistory"') DO SET Clipboard=%%B
+IF %Update%==0x0 SET OPTSETG_1=0
+IF %Screen%==0x0 SET OPTSETG_2=0
+IF %Schedule%==0x4 SET OPTSETG_3=0
+IF %Bluetooth%==0x4 SET OPTSETG_4=0
+IF %Clipboard%==0x0 SET OPTSETG_5=0
+
+Setlocal enabledelayedexpansion
+for /l %%i in (0,1,9) do set "choice_%%i=0"
+for /f "delims=" %%i in ('SYS\mlc.exe " Maj automatique silencieuse du script , Centrage automatique de l'ecran , Service Schedule , Services Bluetooth , Presse-Papiers " "%OPTSETG_1%,%OPTSETG_2%,%OPTSETG_3%,%OPTSETG_4%,%OPTSETG_5%"') do set "output=%%i"
+set count=0
+for %%a in (%output%) do (
+    set "choice_!count!=%%a"
+    set /a count+=1
+)
+(
+    for /l %%i in (0,1,9) do echo SET choice_%%i=!choice_%%i!
+) > choices.bat
+
+Endlocal
+call choices.bat
+DEL choices.bat>nul
+
+IF %OPTSETG_1%==0 (
+	IF %choice_0%==1 (
+		Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\START-UP" /v "Update" /t REG_DWORD /d "1" /f >nul 2>&1
+	)
+)
+
+IF %OPTSETG_1%==1 (
+	IF %choice_0%==0 (
+		Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\START-UP" /v "Update" /t REG_DWORD /d "0" /f >nul 2>&1
+	)
+)
+
+IF %OPTSETG_2%==0 (
+	IF %choice_1%==1 (
+		Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\START-UP" /v "Screen" /t REG_DWORD /d "1" /f >nul 2>&1
+	)
+)
+
+IF %OPTSETG_2%==1 (
+	IF %choice_1%==0 (
+		Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\START-UP" /v "Screen" /t REG_DWORD /d "0" /f >nul 2>&1
+	)
+)
+
+IF %OPTSETG_3%==0 (
+	IF %choice_2%==1 (
+		SYS\PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule start=auto
+	)
+)
+
+IF %OPTSETG_3%==1 (
+	IF %choice_2%==0 (
+		SYS\PowerRun_x64.exe /SW:0 cmd.exe /k sc config Schedule start=disabled
+	)
+)
+
+IF %OPTSETG_4%==0 (
+	IF %choice_3%==1 (
+		sc config BthA2dp start=demand >nul 2>&1
+		sc config BthEnum start=demand >nul 2>&1
+		sc config BthHFEnum start=demand >nul 2>&1
+		sc config BthLEEnum start=demand >nul 2>&1
+		sc config BthMini start=demand >nul 2>&1
+		sc config BthPan start=demand >nul 2>&1
+		sc config BTHPORT start=demand >nul 2>&1
+		sc config BTHUSB start=demand >nul 2>&1
+		sc config HidBth start=demand >nul 2>&1
+		sc config Microsoft_Bluetooth_AvrcpTransport start=demand >nul 2>&1
+		sc config RFCOMM start=demand >nul 2>&1
+		Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
+		Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ConsentUxUserSvc" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
+		Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
+		sc config BluetoothUserService start=demand >nul 2>&1
+		sc config BTAGService start=demand >nul 2>&1
+		sc config BthAvctpSvc start=demand >nul 2>&1
+		sc config bthserv start=demand >nul 2>&1
+		sc config ConsentUxUserSvc start=demand >nul 2>&1
+		sc config DeviceAssociationBrokerSvc start=demand >nul 2>&1
+	)
+)
+
+IF %OPTSETG_4%==1 (
+	IF %choice_3%==0 (
+		Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+		sc config BluetoothUserService start=disabled >nul 2>&1
+		sc config BTAGService start=disabled >nul 2>&1
+		sc config BthAvctpSvc start=disabled >nul 2>&1
+		sc config bthserv start=disabled >nul 2>&1
+	)
+)
+
+IF %OPTSETG_5%==0 (
+	IF %choice_4%==1 (
+		Reg.exe add "HKCU\Software\Microsoft\Clipboard" /v "EnableClipboardHistory" /t REG_DWORD /d "1" /f >nul
+		Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "AllowClipboardHistory" /t REG_DWORD /d "1" /f >nul
+	)
+)
+
+IF %OPTSETG_5%==1 (
+	IF %choice_4%==0 (
+		Reg.exe add "HKCU\Software\Microsoft\Clipboard" /v "EnableClipboardHistory" /t REG_DWORD /d "0" /f >nul
+		Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "AllowClipboardHistory" /t REG_DWORD /d "0" /f >nul
+	)
+)
+
 goto :MAINW
