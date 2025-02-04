@@ -43,7 +43,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-86
+SET VERSCRIPT=D-87
 SET WINSUPPORT=ERR
 SET USRDETECTE=ERR
 SET STPCHW=1
