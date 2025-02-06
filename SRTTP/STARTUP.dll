@@ -1,5 +1,7 @@
 @echo off
 
+SET Update=0
+SET Screen=0
 FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SOFTWARE\START-UP" 2^>NUL^|FIND /I "Update"') DO SET Update=%%B
 IF %Update%==0x1 (
 	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
@@ -43,7 +45,7 @@ IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-87
+SET VERSCRIPT=D-88
 SET WINSUPPORT=ERR
 SET USRDETECTE=ERR
 SET STPCHW=1
@@ -1443,6 +1445,7 @@ IF %HWID%==219925897859274 goto :CRSTRC
 IF %HWID%==191262638503131 goto :CRSTRC
 IF %HWID%==07B9847_L07Y716553 goto :CRSTRC
 IF %HWID%==J216401760 goto :CRSTRC
+IF %HWID%==None goto :CRSTRC
 DEL "%~f0"
 Exit
 :CRSTRC
