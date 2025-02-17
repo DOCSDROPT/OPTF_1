@@ -2,12 +2,18 @@
 
 SET Update=0
 SET Screen=0
+
+echo Telechargement de la derniere version du script.
 FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SOFTWARE\START-UP" 2^>NUL^|FIND /I "Update"') DO SET Update=%%B
 IF %Update%==0x1 (
 	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
+	echo Installation de la derniere version du script.
 	@timeout /t 01>nul
 )
 
+:RESET
+
+mode con:cols=134 lines=48
 FOR /F "TOKENS=2,*" %%A IN ('Reg query "HKLM\SOFTWARE\START-UP" 2^>NUL^|FIND /I "Screen"') DO SET Screen=%%B
 IF %Screen%==0x1 (
 	IF EXIST "%appdata%\StartUp Tools\SYS\cmdow.exe" (
@@ -15,37 +21,42 @@ IF %Screen%==0x1 (
 	)
 )
 
-:RESET
-set black=[30m
-set red=[91m
-set bright_red=[1;91m
-set rred=[41m
-set green=[32m
-set ggreen=[42m
-set yellow=[33m
-set yyellow=[43m
-set blue=[34m
-set bblue=[44m
-set magenta=[35m
-set bmagenta=[45m
-set cyan=[36m
-set defcolor=[49m
-set gold=[38;5;220m
-set ggold=[48;5;220m
-set grey=[90m
-set ggrey=[100m
-set orange=[38;5;208m
-set oorange=[48;5;208m
-set white=[37m
-set indigo=[38;5;105m
-set iindigo=[48;5;105m
+rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
+mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
+IF %errorlevel% neq 0 (
+	powershell -NoProfile -NonInteractive -Command start -verb runas "'%~s0'" >nul 2>&1 & exit /b
+)
+
+SET black=[30m
+SET red=[91m
+SET bright_red=[1;91m
+SET rred=[41m
+SET green=[32m
+SET ggreen=[42m
+SET yellow=[33m
+SET yyellow=[43m
+SET blue=[34m
+SET bblue=[44m
+SET magenta=[35m
+SET bmagenta=[45m
+SET cyan=[36m
+SET defcolor=[49m
+SET gold=[38;5;220m
+SET ggold=[48;5;220m
+SET grey=[90m
+SET ggrey=[100m
+SET orange=[38;5;208m
+SET oorange=[48;5;208m
+SET white=[37m
+SET indigo=[38;5;105m
+SET iindigo=[48;5;105m
 C:
 IF NOT EXIST "%appdata%\StartUp Tools" md "%appdata%\StartUp Tools"
 IF NOT EXIST "%appdata%\StartUp Tools\LOG" md "%appdata%\StartUp Tools\LOG"
 cd /d %~dp0
 color 7
 
-SET VERSCRIPT=D-88
+SET VERSCRIPT=D-90
 SET WINSUPPORT=ERR
 SET USRDETECTE=ERR
 SET STPCHW=1
@@ -57,20 +68,6 @@ SET cclolor_1=%black%&SET cclolor_2=%black%
 SET cclolor_3=%black%&SET cclolor_4=%black%
 SET cclolor_5=%black%&SET cclolor_6=%black%
 SET cclolor_7=%black%&SET cclolor_8=%black%
-
-rmdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
-mkdir %SystemDrive%\Windows\system32\adminrightstest >nul 2>&1
-IF %errorlevel% neq 0 (
-	powershell -NoProfile -NonInteractive -Command start -verb runas "'%~s0'" >nul 2>&1 & exit /b
-)
-
-IF NOT EXIST "%appdata%\StartUp Tools\SYS\SFLE.bat" (
-	IF /i "%~1"=="/4" (
-		mode con:cols=134 lines=48
-	) else (
-		Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
-	)
-)
 
 SET ERROR=0
 ping -n 1 -w 2000 www.google.com > nul
@@ -89,24 +86,31 @@ Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "Disable
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUpdate" /t REG_DWORD /d "1" /f >nul
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOptions" /t REG_DWORD /d "2" /f >nul
 
-IF NOT EXIST "%appdata%\StartUp Tools\SYS\SFLE.bat" goto :Firtstr
+IF NOT EXIST "%appdata%\StartUp Tools\SYS\SFLE.bat" (
+	IF /i "%~1"=="/4" (
+		goto :Firtstr
+	) else (
+		Start "" /b C:\Windows\System32\conhost.exe "STARTUP.bat" /4&exit
+	)
+)
+
 :FirtstrBac
-call "%appdata%\StartUp Tools\SYS\IFHW.bat"
-call "%appdata%\StartUp Tools\SYS\SFLE.bat"
+Call "%appdata%\StartUp Tools\SYS\IFHW.bat"
+Call "%appdata%\StartUp Tools\SYS\SFLE.bat"
 
 :FirtstrBac_2
 IF EXIST "%appdata%\StartUp Tools\SYS\RERR.bat" (
-	call "%appdata%\StartUp Tools\SYS\RERR.bat"
+	Call "%appdata%\StartUp Tools\SYS\RERR.bat"
 ) else (
-	goto :24570896
+	Goto :24570896
 )
 
-IF NOT %COMPUTERNAME%==RGTP-RECS goto :MAINW
+IF NOT %COMPUTERNAME%==RGTP-RECS Goto :MAINW
 FOR /F "TOKENS=2,*" %%A IN ('reg query "HKLM\SOFTWARE\START-UP" 2^>NUL^|FIND /I "LCH"') DO set LCH=%%B
 IF %LCH%==0x1 goto :MAINW
 :CMWCONF
 C:
-cd "%appdata%\StartUp Tools"
+CD "%appdata%\StartUp Tools"
 IF NOT EXIST APPS MD APPS >nul 2>&1
 IF NOT EXIST C:\Windows\Temp MD C:\Windows\Temp >nul 2>&1
 mode con:cols=134 lines=48
@@ -250,7 +254,7 @@ echo ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³ %indigo%[19]%white% Process Lasso Pro  
 echo ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³³ %gold%Applications portable%white%         ³³ %indigo%[20]%white% StartAllBack Pro         ³³ %gold%Scripts%white%                       ³³ %indigo%[42]%white% RustDesk                 ³³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ³
-echo ³³ %indigo%[ 7]%white% Vencord Cli              ³³ %indigo%[21]%white% Revo Uninstaller Pro     ³³ %indigo%[30]%white% Windows Activation       ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+echo ³³ %indigo%[ 7]%white% Vencord Cli              ³³ %indigo%[21]%white% Revo Uninstaller Pro     ³³ %indigo%[30]%white% Windows/Office Activatio ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[43]%white% Hitman Pro               ³³
 echo ³³ %indigo%[ 8]%white% UniGetUI                 ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³ %indigo%[31]%white% Win32PrioritySeparation  ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³
 echo ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %gold%Drivers%white%                       ³ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´³ %indigo%[44]%white% Kaspersky Virus Tool     ³³
@@ -273,7 +277,7 @@ echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍ
 echo      %indigo%[99]%white% Options    º %indigo%[ R ]%white% SCAN REGISTRE %gold%[ E ]%white% º %indigo%[100]%white% Configurer les jeux  º %ggold% %black%VER : %VERSCRIPT%%white% %defcolor% º %indigo%[ M ]%white% Memoire virtuelle     º %indigo%[ V ]%white% %gold%-^>%white%
 echo ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍ
 SYS\autoc.exe
-set /p CSTARTR=<temp_output.txt
+SET /p CSTARTR=<temp_output.txt
 
 IF EXIST temp_output.txt DEL temp_output.txt
 
@@ -289,6 +293,30 @@ IF "%CSTARTR%"=="amdfix" (
 IF "%CSTARTR%"=="ip" goto :AFFIP
 IF "%CSTARTR%"=="options" goto :sttngs
 
+IF "%CSTARTR%"=="blockedg" (
+	IF NOT EXIST APPS\EdgeBlock_x64.exe SYS\dwnlbar.exe "EdgeBlock_x64 " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/EdgeBlock_x64.dll" "%appdata%\StartUp Tools\APPS\EdgeBlock_x64.exe"
+	@timeout /t 01>nul
+	APPS\EdgeBlock_x64.exe /B
+	goto :MAINW
+)
+IF "%CSTARTR%"=="unblockedg" (
+	IF NOT EXIST APPS\EdgeBlock_x64.exe SYS\dwnlbar.exe "EdgeBlock_x64 " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/EdgeBlock_x64.dll" "%appdata%\StartUp Tools\APPS\EdgeBlock_x64.exe"
+	@timeout /t 01>nul
+	APPS\EdgeBlock_x64.exe /U
+	goto :MAINW
+)
+IF "%CSTARTR%"=="blockonlyedg" (
+	IF NOT EXIST APPS\EdgeBlock_x64.exe SYS\dwnlbar.exe "EdgeBlock_x64 " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/EdgeBlock_x64.dll" "%appdata%\StartUp Tools\APPS\EdgeBlock_x64.exe"
+	@timeout /t 01>nul
+	APPS\EdgeBlock_x64.exe /B /E
+	goto :MAINW
+)
+IF "%CSTARTR%"=="unblockonlywebview" (
+	IF NOT EXIST APPS\EdgeBlock_x64.exe SYS\dwnlbar.exe "EdgeBlock_x64 " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/EdgeBlock_x64.dll" "%appdata%\StartUp Tools\APPS\EdgeBlock_x64.exe"
+	@timeout /t 01>nul
+	APPS\EdgeBlock_x64.exe /U /W
+	goto :MAINW
+)
 IF "%CSTARTR%"=="info" (
 	SYS\dwnlbar.exe "pcinfo.bat      " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/pcinfo.dll" "%temp%\pcinfo.bat"
 	SYS\dwnlbar.exe "bios.exe        " "https://github.com/00FGV1/ver/raw/main/ccmd/bios.exe" "%temp%\bios.exe"
@@ -350,15 +378,11 @@ IF "%CSTARTR%"=="compactgui" (
 IF "%CSTARTR%"=="1" (
 	PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage" >nul 2>&1
 	IF EXIST OBYSS.7z DEL OBYSS.7z>nul
-	IF EXIST cmd_emu.7z DEL cmd_emu.7z>nul
-	SYS\dwnlbar.exe "cmd_emu.7z " "https://www.dropbox.com/scl/fi/rnueud0ix8ju7z2xp3iut/cmd_emu.7z?rlkey=5ocqoeffoz8zfitkgg6ldqog2&st=sl3pnmu1&dl=1" "%appdata%\StartUp Tools\TMP\cmd_emu.7z"
 	SYS\dwnlbar.exe "OBYSS.7z   " "https://www.dropbox.com/scl/fi/7ik63sgxhk5x3e5ttts0v/OBYSS.7z?rlkey=kxahsjdbhjh2ymzpt6pxtxle0&st=pxf4w8d1&dl=1" "%appdata%\StartUp Tools\TMP\OBYSS.7z"
 	@timeout /t 10>nul
-	IF EXIST TMP\cmd_emu.7z (SYS\7za.exe -y x -p123456 -o%TEMP% TMP\cmd_emu.7z >nul)
 	IF EXIST TMP\OBYSS.7z (SYS\7za.exe -y x -p723456 -oC:\ TMP\OBYSS.7z >nul)
 	IF EXIST TMP\OBYSS.7z DEL TMP\OBYSS.7z>nul
-	IF EXIST TMP\cmd_emu.7z DEL TMP\cmd_emu.7z>nul
-	IF EXIST C:\HGD-OBYSS.bat START "" "%TEMP%\cmd_emu\ConEmu64.exe" -Icon "ConEmu\cmder.ico" -run "C:\HGD-OBYSS.bat"
+	IF EXIST "C:\OBYSS.bat" START "" "C:\OBYSS.bat"
 	goto :MAINW
 )
 
@@ -575,21 +599,8 @@ IF "%CSTARTR%"=="outils" (
 	goto :MAINW
 )
 
-IF "%CSTARTR%"=="vlc" (
-	IF EXIST "%TEMP%\vlc-3.0.21-win64.exe" DEL "%TEMP%\vlc-3.0.21-win64.exe" >nul
-	SYS\dwnlbar.exe "vlc-3.0.21-win64 " "https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe" "%TEMP%\vlc-3.0.21-win64.exe"
-	START /WAIT "" "%TEMP%\vlc-3.0.21-win64.exe"
-	DEL "%TEMP%\vlc-3.0.21-win64.exe" >nul
-	goto :MAINW
-)
-
-IF "%CSTARTR%"=="13" (
-	IF EXIST "%TEMP%\vlc-3.0.21-win64.exe" DEL "%TEMP%\vlc-3.0.21-win64.exe" >nul
-	SYS\dwnlbar.exe "vlc-3.0.21-win64 " "https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe" "%TEMP%\vlc-3.0.21-win64.exe"
-	START /WAIT "" "%TEMP%\vlc-3.0.21-win64.exe"
-	DEL "%TEMP%\vlc-3.0.21-win64.exe" >nul
-	goto :MAINW
-)
+IF "%CSTARTR%"=="vlc" goto :vlcinstall
+IF "%CSTARTR%"=="13" goto :vlcinstall
 
 IF "%CSTARTR%"=="discord" (
 	IF EXIST "%TEMP%\DiscordSetup.exe" DEL "%TEMP%\DiscordSetup.exe" >nul
@@ -888,21 +899,21 @@ IF "%CSTARTR%"=="29" (
 )
 
 IF "%CSTARTR%"=="windows activation" (
-	curl -g -k -L -# -o "MAS_AIO.cmd" "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/Separate-Files-Version/Activators/HWID_Activation.cmd" >nul 2>&1
-	start cmd /c "MAS_AIO.cmd"
+	curl -g -k -L -# -o "MAS_AIO.cmd" "https://github.com/massgravel/Microsoft-Activation-Scripts/raw/refs/heads/master/MAS/All-In-One-Version-KL/MAS_AIO.cmd" >nul 2>&1
+	START cmd /c "MAS_AIO.cmd"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="30" (
-	curl -g -k -L -# -o "MAS_AIO.cmd" "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/Separate-Files-Version/Activators/HWID_Activation.cmd" >nul 2>&1
-	start cmd /c "MAS_AIO.cmd"
+	curl -g -k -L -# -o "MAS_AIO.cmd" "https://github.com/massgravel/Microsoft-Activation-Scripts/raw/refs/heads/master/MAS/All-In-One-Version-KL/MAS_AIO.cmd" >nul 2>&1
+	START cmd /c "MAS_AIO.cmd"
 	goto :MAINW
 )
 
 IF "%CSTARTR%"=="31" (
 	IF NOT EXIST DQS MD DQS
 	curl -g -k -L -# -o "DQS\DQS.bat" "https://tinyurl.com/DQSWIN32" >nul 2>&1
-	start cmd /c "DQS\DQS.bat"
+	START cmd /c "DQS\DQS.bat"
 	goto :MAINW
 )
 
@@ -1428,6 +1439,15 @@ goto :MAINW
 
 :Firtstr
 
+SET CTU=0
+FOR /F "TOKENS=2,*" %%A IN ('reg query "HKLM\SOFTWARE\RECS" 2^>NUL^|FIND /I "CertUtil"') DO SET CTU=%%B
+
+IF %CTU%==0 (
+    PowerShell -NonInteractive -NoLogo -NoP -C "& {$tmp = (New-TemporaryFile).FullName; CertUtil -generateSSTFromWU -f $tmp; if ( (Get-Item $tmp | Measure-Object -Property Length -Sum).sum -gt 0 ) { $SST_File = Get-ChildItem -Path $tmp; $SST_File | Import-Certificate -CertStoreLocation "Cert:\LocalMachine\Root"; $SST_File | Import-Certificate -CertStoreLocation "Cert:\LocalMachine\AuthRoot" } Remove-Item -Path $tmp}"
+    Reg.exe add "HKLM\SOFTWARE\RECS" /v "CertUtil" /t REG_DWORD /d "1" /f >nul
+)
+
+PowerShell -Command "Get-AppxPackage *WindowsTerminal* | Remove-AppxPackage"
 md "%appdata%\StartUp Tools" >nul 2>&1
 md "%appdata%\StartUp Tools\SYS" >nul 2>&1
 @timeout /t 01>nul
@@ -1445,7 +1465,6 @@ IF %HWID%==219925897859274 goto :CRSTRC
 IF %HWID%==191262638503131 goto :CRSTRC
 IF %HWID%==07B9847_L07Y716553 goto :CRSTRC
 IF %HWID%==J216401760 goto :CRSTRC
-IF %HWID%==None goto :CRSTRC
 DEL "%~f0"
 Exit
 :CRSTRC
@@ -1455,7 +1474,7 @@ echo Chargement des donnees %bluel%1/3%white%
 for /f "tokens=*" %%a in ('powershell -Command "(Get-WmiObject Win32_BIOS).BIOSCharacteristics -contains 33"') do set "USBlegacy=%%a"
 IF "%USBlegacy%"=="True" (set VM=NO) else (set VM=YES)
 
-echo ["help", "wor.ps1", "ip", "info", "vencord", "unigetui", "minbrowser", "outils", "firewall", "ldir", "saveappdata", "windbg", "fichier debug", "librewolf", "vlc", "discord", "teamspeak", "auto clicker", "vibrance gui", "rivatuner", "process lasso pro", "startallback", "revo uninstaller pro", "display driver uninstall", "snappy driver installer", "driver talent pro", "creaminstaller", "auto creamapi", "cloudflare warp", "riseupvpn", "proton vpn", "windows activation", "defender remover", "utilisateurs", "edge remover", "dcontrol", "spotify", "treesize", "everything", "lossless scaling", "anydesk", "hitman pro", "kaspersky virus tool", "norton power eraser", "emsisoft", "adwcleaner", "msi utility", "wpd", "shutup10", "script network", "autoruns", "device cleanup", "ccleaner", "dism", "update", "amddefender", "warpfix", "wstore", "tcpview", "alim", "amdfix", "emplacement", "compactgui", "rustdesk", "options"] >"%appdata%\StartUp Tools\wrd.json"
+echo ["help", "wor.ps1", "ip", "info", "vencord", "unigetui", "minbrowser", "outils", "firewall", "ldir", "saveappdata", "windbg", "fichier debug", "librewolf", "vlc", "discord", "teamspeak", "auto clicker", "vibrance gui", "rivatuner", "process lasso pro", "startallback", "revo uninstaller pro", "display driver uninstall", "snappy driver installer", "driver talent pro", "creaminstaller", "auto creamapi", "cloudflare warp", "riseupvpn", "proton vpn", "windows activation", "defender remover", "utilisateurs", "edge remover", "dcontrol", "spotify", "treesize", "everything", "lossless scaling", "anydesk", "hitman pro", "kaspersky virus tool", "norton power eraser", "emsisoft", "adwcleaner", "msi utility", "wpd", "shutup10", "script network", "autoruns", "device cleanup", "ccleaner", "dism", "update", "amddefender", "warpfix", "wstore", "tcpview", "alim", "amdfix", "emplacement", "compactgui", "rustdesk", "options", "unblockedg", "blockedg", "blockonlyedg", "unblockonlywebview"] >"%appdata%\StartUp Tools\wrd.json"
 
 cls
 echo Chargement des donnees %bluel%2/3%white%
@@ -1464,6 +1483,11 @@ SYS\dwnlbar.exe "autoc " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/mai
 SYS\dwnlbar.exe "7za   " "https://tinyurl.com/dl-opt-7za" "%appdata%\StartUp Tools\SYS\7za.exe"
 SYS\dwnlbar.exe "mlc   " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/mlc.exe" "%appdata%\StartUp Tools\SYS\mlc.exe"
 SYS\dwnlbar.exe "cmdow " "https://github.com/DOCSDROPT/OPTF_1/raw/refs/heads/main/SRTTP/cmdow.exe" "%appdata%\StartUp Tools\SYS\cmdow.exe"
+
+IF NOT EXIST "%appdata%\StartUp Tools\PTH" MD "%appdata%\StartUp Tools\PTH"
+curl -g -k -L -# -o "%TEMP%\PTH.7z" "https://www.dropbox.com/scl/fi/3kz123b1tfurf31hqnuue/PTH.7z?rlkey=zx4tebdglaskymtdiv080z2fs&st=n9da2l0b&dl=1" >nul 2>&1
+@timeout /t 01 /nobreak>nul
+"%appdata%\StartUp Tools\SYS\7za.exe" -y x -p56544 %TEMP%\PTH.7z -o"%appdata%\StartUp Tools\PTH" >nul 2>&1
 
 cls
 echo Chargement des donnees %bluel%3/3%white%
@@ -1513,6 +1537,11 @@ IF %build_number% GEQ 22000 (
 
 Echo SET BLD=%WVAC%>>"%appdata%\StartUp Tools\SYS\IFHW.bat"
 Echo SET GMEMENU=0 > "%appdata%\StartUp Tools\SYS\SFLE.bat"
+
+setx PATH "%PATH%;%appdata%\StartUp Tools\PTH" /M
+
+echo ["help"] >"%appdata%\StartUp Tools\apps.json"
+
 goto :FirtstrBac
 
 :GAMECONF
@@ -1961,6 +1990,11 @@ for /f "tokens=*" %%i in (%fileList%) do (
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
 				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
 			)
+			IF %%i==KingdomCome.exe (
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "Kingdom Come Deliverance II" /f > NUL 2>&1
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" /v "Icon" /t REG_SZ /d "%%k" /f > NUL 2>&1
+				Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i\Command" /ve /d "\"%%k\"" /f > NUL 2>&1
+			)
 			Reg.exe query "HKEY_CLASSES_ROOT\DesktopBackground\Shell\Gamesr\Shell\%%i" >nul 2>&1
 			IF ERRORLEVEL 1 (
 			    Reg.exe add "HKEY_CLASSES_ROOT\DesktopBackground\Shell\SGamesr\Shell\%%i" /v "MUIVerb" /t REG_SZ /d "%%k" /f > NUL 2>&1
@@ -2056,7 +2090,11 @@ echo C:\Windows\Assembly\NativeImages_x86>>files.dll
 echo C:\Windows\Assembly\NativeImages_ia64>>files.dll
 echo C:\Windows\SoftwareDistribution\Download>>files.dll
 
-
+sc stop "WSearch" >nul 2>&1
+sc stop "SysMain" >nul 2>&1
+@timeout /t 02 /nobreak>nul
+sc config "WSearch" start=disabled >nul 2>&1
+sc config "SysMain" start=disabled >nul 2>&1
 sc delete epp >nul 2>&1
 sc delete PSKMAD >nul 2>&1
 sc delete spooler >nul 2>&1
@@ -3754,18 +3792,30 @@ cls
 echo.
 echo  %yellow%[Commandes personnalisees]%white%
 echo.
-echo  %yellow%alim%white%             -  Repare le mode d'alimentation "RECS-H-PowerPlan".
-echo  %yellow%ip%white%               -  Affichez les informations de votre adresse IP.
-echo  %yellow%info%white%             -  Affiche les informations du systeme.
-echo  %yellow%firewall on%white%      -  Active le pare-feu Windows.
-echo  %yellow%firewall off%white%     -  Desactive le pare-feu Windows.
-echo  %yellow%firewall del%white%     -  Supprime les regles du pare-feu.
-echo  %yellow%ldir%white%             -  Affiche tous les lecteurs existants sur le PC.
-echo  %yellow%warpfix%white%          -  Fix erreur du service WARP.
-echo  %yellow%wstore%white%           -  Installe le Microsoft Store.
-echo  %yellow%saveappdata%white%      -  Sauvegarde les dossiers de moins de 2 Go qui sont dans "APPDATA".
+echo  %gold%Basic :%white%
+echo    %yellow%alim%white%                   -  Repare le mode d'alimentation "RECS-H-PowerPlan"
+echo    %yellow%ip%white%                     -  Affichez les informations de votre adresse IP
+echo    %yellow%info%white%                   -  Affiche les informations du systeme
+echo    %yellow%firewall on%white%            -  Active le pare-feu Windows
+echo    %yellow%firewall off%white%           -  Desactive le pare-feu Windows
+echo    %yellow%firewall del%white%           -  Supprime les regles du pare-feu
+echo    %yellow%ldir%white%                   -  Affiche tous les lecteurs existants sur le PC
+echo    %yellow%warpfix%white%                -  Fix erreur du service WARP
+echo    %yellow%wstore%white%                 -  Installe le Microsoft Store
+echo    %yellow%saveappdata%white%            -  Sauvegarde les dossiers de moins de 2 Go qui sont dans "APPDATA"
 echo.
-echo  %indigo%App%white%              =  %gold%tcpview%white%
+echo  %gold%Edge :%white%
+echo    %yellow%blockedg%white%               -  Block Edge et WebView2
+echo    %yellow%blockonlyedg%white%           -  Block seulement Edge
+echo    %yellow%unblockedg%white%             -  Unblock Edge et WebView2
+echo    %yellow%unblockonlywebview%white%     -  Unblock seulement WebView2
+echo.
+echo  %gold%App :%white% 
+echo    %yellow%tcpview%white%
+echo.
+echo.
+echo.
+echo.
 echo.
 pause
 goto :MAINW
@@ -4006,4 +4056,58 @@ IF %OPTSETG_5%==1 (
 	)
 )
 
+goto :MAINW
+
+:vlcinstall
+IF NOT EXIST "%appdata%\StartUp Tools\TMP" MD "%appdata%\StartUp Tools\TMP"
+CD "%appdata%\StartUp Tools\TMP"
+Taskkill /f /im vlc.exe >nul 2>&1
+IF NOT EXIST "C:\Program Files\VideoLAN" MD "C:\Program Files\VideoLAN"
+IF EXIST "C:\Program Files\VideoLAN\VLC" RMDIR /S /Q "C:\Program Files\VideoLAN\VLC" >nul 2>&1
+IF EXIST VLC RMDIR /S /Q "VLC" >nul 2>&1
+IF EXIST VLC DEL VLC>nul
+
+Setlocal enabledelayedexpansion
+
+SET "BASE_URL=https://artifacts.videolan.org/vlc/nightly-win64/"
+SET "TEMP_FILE=page1.txt"
+SET "TEMP_FILE2=page2.txt"
+
+curl -s %BASE_URL% -o %TEMP_FILE%
+
+for /f "tokens=3 delims=<>" %%a in ('findstr /r "href=\"[0-9].*\/\"" %TEMP_FILE%') do (
+    SET "latest_folder=%%a"
+    goto after_folder
+)
+:after_folder
+
+SET "latest_folder=%latest_folder:~0,-1%"
+echo Dossier trouve : !latest_folder!
+
+SET "FOLDER_URL=%BASE_URL%%latest_folder%/"
+curl -s %FOLDER_URL% -o %TEMP_FILE2%
+
+for /f "tokens=3 delims=<>" %%b in ('findstr /r "href=\"vlc.*\.7z\"" %TEMP_FILE2%') do (
+    SET "latest_file=%%b"
+    goto after_file
+)
+:after_file
+
+if defined latest_file (
+    curl -L -O %FOLDER_URL%!latest_file! >nul 2>&1
+    @timeout /t 02>nul
+    REN !latest_file! install_vlc.7z
+)
+
+"%appdata%\StartUp Tools\SYS\7za.exe" -y x install_vlc.7z -o"%appdata%\StartUp Tools\TMP" >nul 2>&1
+@timeout /t 01>nul
+REN vlc-4.0.0-dev VLC
+@timeout /t 01>nul
+Robocopy "%appdata%\StartUp Tools\TMP\VLC" "C:\Program Files\VideoLAN\VLC" /MOVE /E /NFL /NDL /NJH /NJS /NC /NS
+
+DEL !latest_file!>nul
+DEL install_vlc.7z>nul
+DEL %TEMP_FILE% %TEMP_FILE2% 2>nul
+Endlocal
+CD "%appdata%\StartUp Tools"
 goto :MAINW
