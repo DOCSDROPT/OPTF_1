@@ -2279,6 +2279,7 @@ rmdir /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\VideoLAN" >nul
 rmdir /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\7-Zip" >nul 2>&1
 rmdir /s /q "C:\PerfLogs" >nul 2>&1
 rmdir /s /q "C:\inetpub" >nul 2>&1
+rmdir /s /q "C:\Recovery" >nul 2>&1
 rmdir /s /q "C:\Program Files\dotnet" >nul 2>&1
 rmdir /s /q "C:\Program Files\HitmanPro" >nul 2>&1
 rmdir /s /q "C:\Program Files\stinger" >nul 2>&1
