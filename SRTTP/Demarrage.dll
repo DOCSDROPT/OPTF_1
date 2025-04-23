@@ -1,3 +1,0 @@
-IF EXIST "W:\Windows\Documents\1-APK\simplewall\simplewall.exe" START "" "W:\Windows\Documents\1-APK\simplewall\simplewall.exe" >nul 2>&1
-IF EXIST "W:\Windows\Documents\1-APK\MSI Afterburner\MSIAfterburner.exe" START "" "W:\Windows\Documents\1-APK\MSI Afterburner\MSIAfterburner.exe" >nul 2>&1
-Exit
