@@ -1,5 +1,0 @@
-@echo off
-set "url=https://www.dropbox.com/scl/fi/ymuxb96b18j9sdlqw9c69/Optifiles.7z?rlkey=2l1tqk7p5l0ii4o0ha0nrlelx^&st=y84snlip^&dl=1"
-set "output=Optifiles.7z"
-curl -L -o %output% %url%
-Exit
