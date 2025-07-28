@@ -60,7 +60,7 @@ for /D %%G in ("%source%\*") do (
 
 SET "source=C:\Users\%USERNAME%\AppData\Local"
 SET "destination=%APPDATAPATH%\Backup-Appdata\Local"
-SET "exclude=Microsoft,Comms,ConnectedDevicesPlatform,Dofus,D3DSCache,Packages,PeerDistRepub,PlaceholderTileLogoFolder,Programs,Publishers,Temp,AMD,Spotify,INetHistory,AMD_Common,AMDIdentifyWindow,Bluestacks,cache,Temp.scratch,ToastNotificationManagerCompat,VMware,VBox,vback,VirtualStore,Tartube,Battle.net,bluestacks-services-updater,CEF,clink,com.modrinth.theseus,Discord,Epic Games,Blizzard Entertainment,EpicGamesLauncher,fontconfig,gtk-3.0,HD-Player,librewolf,Microsoft_Corporation,Package Cache,pip,Plutonium,Rare,speech,spicetify,StartAllBack,Steam,streamlink-twitch-gui,TwitchLink,Ubisoft Game Launcher,UnrealEngine,UnrealEngineLauncher,Waterfox,CrashReportClient,Activision"
+SET "exclude=Microsoft,Comms,ConnectedDevicesPlatform,Dofus,D3DSCache,PeerDistRepub,PlaceholderTileLogoFolder,Programs,Publishers,Temp,AMD,Spotify,INetHistory,AMD_Common,AMDIdentifyWindow,Bluestacks,cache,Temp.scratch,ToastNotificationManagerCompat,VMware,VBox,vback,VirtualStore,Tartube,Battle.net,bluestacks-services-updater,CEF,clink,com.modrinth.theseus,Discord,Epic Games,Blizzard Entertainment,EpicGamesLauncher,fontconfig,gtk-3.0,HD-Player,librewolf,Microsoft_Corporation,Package Cache,pip,Plutonium,Rare,speech,spicetify,StartAllBack,Steam,streamlink-twitch-gui,TwitchLink,Ubisoft Game Launcher,UnrealEngine,UnrealEngineLauncher,Waterfox,CrashReportClient,Activision"
 SET "limit=2147483648"
 
 for /D %%G in ("%source%\*") do (
