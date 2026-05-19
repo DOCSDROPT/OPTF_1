@@ -1303,6 +1303,16 @@ $btn_applyall.Font               = New-Object System.Drawing.Font('Calibri',10)
 $btn_applyall.ForeColor          = [System.Drawing.ColorTranslator]::FromHtml("#7ed321")
 
 $Groupbox6                       = New-Object system.Windows.Forms.Groupbox
+
+$btn_autoconfig                  = New-Object system.Windows.Forms.Button
+$btn_autoconfig.text             = "Auto Config"
+$btn_autoconfig.width            = 100
+$btn_autoconfig.height           = 20
+$btn_autoconfig.location         = New-Object System.Drawing.Point(631,16)
+$btn_autoconfig.Font             = New-Object System.Drawing.Font('Calibri',10,[System.Drawing.FontStyle]::Bold)
+$btn_autoconfig.ForeColor        = [System.Drawing.ColorTranslator]::FromHtml("#ff9500")
+
+$Groupbox6                       = New-Object system.Windows.Forms.Groupbox
 $Groupbox6.height                = 365
 $Groupbox6.width                 = 230
 $Groupbox6.text                  = "Interrupt Settings"
@@ -1757,7 +1767,7 @@ $cb_IPv4.location                = New-Object System.Drawing.Point(456,300)
 $cb_IPv4.Font                    = New-Object System.Drawing.Font('Calibri',7)
 $cb_IPv4.ForeColor               = [System.Drawing.ColorTranslator]::FromHtml("#4a90e2")
 
-$Form.controls.AddRange(@($cb_AdapterNamesCombo,$Label1,$Label2,$lbl_Path,$Label3,$lbl_ndisver,$Groupbox1,$btn_apply,$btn_unqueues,$btn_openreg,$Groupbox2,$btn_applyglobal,$Groupbox3,$btn_applyadv,$btn_adaptrest,$Groupbox5,$Groupbox4,$btn_applypowersettings,$Groupbox7,$btn_applyall,$Groupbox6,$btn_applyInterfaceSettings,$cb_IPv6,$cb_IPv4))
+$Form.controls.AddRange(@($cb_AdapterNamesCombo,$Label1,$Label2,$lbl_Path,$Label3,$lbl_ndisver,$Groupbox1,$btn_apply,$btn_unqueues,$btn_openreg,$Groupbox2,$btn_applyglobal,$Groupbox3,$btn_applyadv,$btn_adaptrest,$Groupbox5,$Groupbox4,$btn_applypowersettings,$Groupbox7,$btn_applyall,$btn_autoconfig,$Groupbox6,$btn_applyInterfaceSettings,$cb_IPv6,$cb_IPv4))
 $Groupbox1.controls.AddRange(@($Label4,$Label5,$Label6,$lbl_rssstatus,$cb_rss_onoff,$cb_rssqueues,$cb_rssprofile,$Label7,$cb_rssbaseproc,$Label8,$cb_rssmaxproc,$Label9,$cb_rssmaxprocs,$Label35,$cb_DisablePortScaling,$Label42,$cb_ManyCoreScaling))
 $Groupbox2.controls.AddRange(@($Label10,$cb_osrss,$Label11,$cb_osrsc,$Label12,$cb_oschimney,$Label13,$cb_ostaskoff,$cb_osntd,$Label14,$cb_osntdais,$Label15,$cb_ospcf,$Label16))
 $Groupbox3.controls.AddRange(@($Label17,$cb_flowcontrol,$Label18,$Label19,$Label20,$Label21,$Label22,$Label23,$cb_InterruptModeration,$cb_IPChecksumOffloadIPv4,$cb_TCPChecksumOffloadIPv4,$cb_TCPChecksumOffloadIPv6,$cb_UDPChecksumOffloadIPv4,$cb_UDPChecksumOffloadIPv6,$Label24,$cb_InterruptModerationRate,$Label25,$Label26,$cb_LsoV2IPv4,$cb_LsoV2IPv6,$Label27,$cb_LsoV1IPv4,$Label28,$cb_PMNSOffload,$Label29,$cb_PMARPOffload,$cb_PriorityVLANTag,$Label00,$Label30,$cb_ReceiveBuffers,$Label31,$cb_TransmitBuffers,$Label73,$tb_TxIntDelay,$Label74,$cb_PacketDirect,$Label75,$cb_EnableCoalesce,$Label76,$cb_EnableUdpTxScaling))
@@ -1810,6 +1820,7 @@ $btn_unqueues.Flatstyle = 'Flat'
 $btn_applotadapters.Flatstyle = 'Flat'
 $btn_applypowersettings.Flatstyle = 'Flat'
 $btn_applyall.Flatstyle = 'Flat'
+$btn_autoconfig.Flatstyle = 'Flat'
 $btn_applyInterfaceSettings.Flatstyle = 'Flat'
 
 function Set-ConsoleColor ($bc, $fc) {
@@ -3833,6 +3844,175 @@ function RefreshingNetIPInterfaceSettings{
     
 }
 
+function AutoConfig {
+    Write-Host "=============================================" -ForegroundColor Cyan
+    Write-Host " AUTO CONFIG - Application des parametres optimaux" -ForegroundColor Cyan
+    Write-Host "=============================================" -ForegroundColor Cyan
+
+    # ---- 1) RSS SETTINGS ----
+    Write-Host "`n[1/7] RSS Settings..." -ForegroundColor Yellow
+    $cb_rss_onoff.SelectedIndex      = 1  # Disable
+    $cb_rssqueues.Text               = "1"
+    $cb_rssprofile.SelectedItem      = "ClosestProcessor"
+    $cb_rssbaseproc.SelectedItem     = "2"
+    $cb_rssmaxproc.SelectedItem      = "2"
+    $cb_rssmaxprocs.SelectedItem     = "1"
+    # DisablePortScaling / ManyCoreScaling -> laisser sur index 2 (Undeclared/Skip)
+    $cb_DisablePortScaling.SelectedIndex = 2
+    $cb_ManyCoreScaling.SelectedIndex    = 2
+    # RSS Global
+    $cb_tcpiprssbasecpu.Text         = "0"
+    $cb_ndisrssbasecpu.Text          = "1"
+    applyrsssettings
+    # Apply RSS Global registry values
+    New-ItemProperty -Path $Global:TCPIP_RegPath -Name "RssBaseCpu"  -PropertyType DWORD -Value 0 -Force | Out-Null
+    New-ItemProperty -Path $Global:NDIS_RegPath  -Name "RssBaseCpu"  -PropertyType DWORD -Value 1 -Force | Out-Null
+    Write-Host "  RSS Global TCP/IP_RssBaseCpu=0 | NDIS_RssBaseCpu=1" -ForegroundColor Green
+
+    # ---- 2) GLOBAL SETTINGS ----
+    Write-Host "`n[2/7] Global Settings..." -ForegroundColor Yellow
+    $cb_osrss.SelectedItem           = "Disabled"
+    $cb_osrsc.SelectedItem           = "Disabled"
+    $cb_oschimney.SelectedItem       = "Disabled"
+    $cb_ostaskoff.SelectedItem       = "Disabled"
+    $cb_osntd.SelectedItem           = "Enabled"        # NetworkDirect = Enabled
+    $cb_osntdais.SelectedItem        = "Blocked"        # NetworkDirectAcrossIPSubnets = Blocked
+    $cb_ospcf.SelectedItem           = "Disabled"
+    applyglobal
+
+    # ---- 3) INTERFACE SETTINGS ----
+    Write-Host "`n[3/7] Interface Settings..." -ForegroundColor Yellow
+    $cb_AdvertiseDefaultRoute.SelectedItem       = "Disabled"
+    $cb_Advertising.SelectedItem                 = "Disabled"
+    $cb_AutomaticMetric.SelectedItem             = "Enabled"
+    $cb_ClampMss.SelectedItem                    = "Disabled"
+    $cb_DirectedMacWolPattern.SelectedItem       = "Disabled"
+    $cb_EcnMarking.SelectedItem                  = "AppDecide"
+    $cb_ForceArpNdWolPattern.SelectedItem        = "Disabled"
+    $cb_Forwarding.SelectedItem                  = "Disabled"
+    $cb_IgnoreDefaultRoutes.SelectedItem         = "Disabled"
+    $cb_ManagedAddressConfiguration.SelectedItem = "Enabled"
+    $cb_NeighborDiscoverySupported.SelectedItem  = "Yes"
+    $cb_NeighborUnreachabilityDetection.SelectedItem = "Enabled"
+    $cb_OtherStatefulConfiguration.SelectedItem  = "Enabled"
+    $cb_RouterDiscovery.SelectedItem             = "ControlledByDHCP"
+    $cb_Store.SelectedItem                       = "ActiveStore"
+    $cb_WeakHostReceive.SelectedItem             = "Disabled"
+    $cb_WeakHostSend.SelectedItem                = "Disabled"
+    $tb_CurrentHopLimit.Text                     = "0"
+    $tb_BaseReachableTime.Text                   = "30000"
+    $tb_RetransmitTime.Text                      = "1000"
+    $tb_ReachableTime.Text                       = "37500"
+    $tb_DadRetransmitTime.Text                   = "1000"
+    $tb_DadTransmits.Text                        = "3"
+    $tb_NlMtu.Text                               = "1500"
+    if ($Groupbox7.Enabled -eq $true) { ApplyInterfaceSettings }
+
+    # ---- 4) ADVANCED ADAPTER SETTINGS ----
+    Write-Host "`n[4/7] Advanced Adapter Settings..." -ForegroundColor Yellow
+    $cb_flowcontrol.SelectedIndex             = 0  # 0 - Disabled
+    $cb_IPChecksumOffloadIPv4.SelectedIndex   = 0  # 0 - Disabled
+    $cb_TCPChecksumOffloadIPv4.SelectedIndex  = 0
+    $cb_TCPChecksumOffloadIPv6.SelectedIndex  = 0
+    $cb_UDPChecksumOffloadIPv4.SelectedIndex  = 0
+    $cb_UDPChecksumOffloadIPv6.SelectedIndex  = 0
+    $cb_LsoV1IPv4.SelectedIndex               = 0  # 0 - Disabled
+    $cb_LsoV2IPv4.SelectedIndex               = 0
+    $cb_LsoV2IPv6.SelectedIndex               = 0
+    $cb_PMARPOffload.SelectedIndex            = 0
+    $cb_PMNSOffload.SelectedIndex             = 0
+    $cb_PriorityVLANTag.SelectedIndex         = 3  # 3 - Packet priority and VLAN enabled
+    $cb_ReceiveBuffers.Text                   = "128"
+    $cb_TransmitBuffers.Text                  = "128"
+    $cb_InterruptModeration.SelectedIndex     = 0  # 0 - Disabled
+    $cb_InterruptModerationRate.SelectedIndex = 0  # 0 - Disabled
+    # TxIntDelay / PacketDirect / Coalesce / UdpTxScaling
+    if ($null -ne $tb_TxIntDelay)         { $tb_TxIntDelay.Text = "0" }
+    if ($null -ne $cb_PacketDirect)       { 
+        $idx = $cb_PacketDirect.Items.IndexOf(($cb_PacketDirect.Items | Where-Object {$_ -match "Enabled"}))
+        if ($idx -ge 0) { $cb_PacketDirect.SelectedIndex = $idx }
+    }
+    if ($null -ne $cb_EnableCoalesce)     { $cb_EnableCoalesce.SelectedIndex = 0 }
+    if ($null -ne $cb_EnableUdpTxScaling) { $cb_EnableUdpTxScaling.SelectedIndex = 0 }
+    applyadvsettings
+
+    # ---- 5) INTERRUPT SETTINGS ----
+    Write-Host "`n[5/7] Interrupt Settings..." -ForegroundColor Yellow
+    $cb_MsiMode.SelectedItem         = "Enabled"
+    # Interrupt Priority = High si disponible
+    $idx = $cb_InterruptPriority.Items.IndexOf("High")
+    if ($idx -ge 0) { $cb_InterruptPriority.SelectedIndex = $idx } else { $cb_InterruptPriority.SelectedItem = "Normal" }
+    $cb_DevicePolicy.SelectedItem    = "MachineDefault"
+    # CPU Affinity = CPU 2 uniquement
+    $cb_cpu0.Checked  = $false
+    $cb_cpu1.Checked  = $false
+    $cb_cpu2.Checked  = $true   # CPU 2 uniquement
+    $cb_cpu3.Checked  = $false
+    $cb_cpu4.Checked  = $false
+    $cb_cpu5.Checked  = $false
+    $cb_cpu6.Checked  = $false
+    $cb_cpu7.Checked  = $false
+    $cb_cpu8.Checked  = $false
+    if ($null -ne $cb_cpu11)  { $cb_cpu11.Checked  = $false }
+    if ($null -ne $cb_cpu12)  { $cb_cpu12.Checked  = $false }
+    if ($null -ne $cb_cpu13)  { $cb_cpu13.Checked  = $false }
+    if ($null -ne $cb_cpu14)  { $cb_cpu14.Checked  = $false }
+    if ($null -ne $cb_cpu15)  { $cb_cpu15.Checked  = $false }
+    Write-Host "  MSI Mode=Enabled | InterruptPriority=High | DevicePolicy=MachineDefault | CPU Affinity=CPU2" -ForegroundColor Green
+
+    # ---- 6) POWER SAVING SETTINGS ----
+    Write-Host "`n[6/7] Power Saving Settings..." -ForegroundColor Yellow
+    $cb_EnablePME.SelectedItem                  = "Disabled"
+    $cb_EnableDynamicPowerGating.SelectedItem   = "Disabled"
+    $cb_EnableConnectedPowerGating.SelectedItem = "Disabled"
+    $cb_AutoPowerSaveModeEnabled.SelectedItem   = "Disabled"
+    $cb_NicAutoPowerSaver.SelectedItem          = "Disabled"
+    $cb_DisableDelayedPowerUp.SelectedItem      = "Disabled"
+    $cb_ReduceSpeedOnPowerDown.SelectedItem     = "Disabled"
+    applypowersavingsettings
+
+    # ---- 7) DRIVER OPTIONS via Registry (best effort) ----
+    Write-Host "`n[7/7] Options driver via registre (best effort)..." -ForegroundColor Yellow
+    if ($Global:KeyPath) {
+        $driverDisableProps = @(
+            @{Name="EEELinkAdvertisement"; Value=0},  # Energy Efficient Ethernet
+            @{Name="GreenEthernetEnabled";  Value=0},  # Green Ethernet
+            @{Name="GigaLite";              Value=0},  # Gigabit Lite
+            @{Name="WakeOnLanEnabled";      Value=0},  # Wake on LAN
+            @{Name="PMWakeOnMagicPacket";   Value=0},
+            @{Name="PMWakeOnPattern";       Value=0},
+            @{Name="EnablePME";             Value=0},
+            @{Name="ARPOffloadEnabled";     Value=0},  # ARP Offload
+            @{Name="NSOffload";             Value=0},  # NS Offload
+            @{Name="JumboPacket";           Value=1514} # Jumbo Frame Disabled (standard MTU)
+        )
+        foreach ($prop in $driverDisableProps) {
+            $existing = Get-ItemProperty -Path $Global:KeyPath -Name $prop.Name -ErrorAction SilentlyContinue
+            if ($existing) {
+                New-ItemProperty -Path $Global:KeyPath -Name $prop.Name -PropertyType DWORD -Value $prop.Value -Force | Out-Null
+                Write-Host "  $($prop.Name) = $($prop.Value)" -ForegroundColor Green
+            }
+        }
+        # Vitesse & Duplex - chercher la valeur max disponible
+        $speedPropNames = @("SpeedDuplex","*SpeedDuplex*","Speed")
+        foreach ($propName in $speedPropNames) {
+            $existing = Get-ItemProperty -Path $Global:KeyPath -Name $propName -ErrorAction SilentlyContinue
+            if ($existing) {
+                Write-Host "  Veuillez regler manuellement SpeedDuplex sur 2.5Gbps Full ou 1Gbps Full dans les options avancees du pilote." -ForegroundColor Yellow
+		Write-Host "  Veuillez regler manuellement Profile sur ClosestStatic." -ForegroundColor Yellow
+                break
+            }
+        }
+    } else {
+        Write-Host "  Aucun adaptateur selectionne, options driver ignorees." -ForegroundColor DarkYellow
+    }
+
+    Write-Host "`n=============================================" -ForegroundColor Cyan
+    Write-Host " AUTO CONFIG TERMINE avec succes !" -ForegroundColor Cyan
+    Write-Host "=============================================" -ForegroundColor Cyan
+    [System.Windows.Forms.MessageBox]::Show("Auto Config applique avec succes !`n`nTous les parametres optimaux ont ete configures.`nRedemarrez l'adaptateur pour finaliser les changements.", "Auto Config - Succes", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)
+}
+
 function applyall{
     if($Groupbox7.Enabled -eq $False){
     Write-Host "Applying All Settings!" -ForegroundColor Yellow
@@ -3883,6 +4063,7 @@ $btn_applyglobal.Add_Click({cls; applyglobal })
 $btn_apply.Add_Click({ cls; applyrsssettings })
 # Source: https://community.spiceworks.com/topic/2239276-script-help-to-disable-power-management-on-network-cards
 $btn_applypowersettings.Add_Click({cls; applypowersavingsettings})
+$btn_autoconfig.Add_Click({cls; AutoConfig})
 $btn_applyall.Add_Click({cls; applyall})
 
 #Notes:
