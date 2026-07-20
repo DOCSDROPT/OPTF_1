@@ -33,30 +33,30 @@ $processNames = @("Spotify", "simplewall", "cmd", "explorer","Spotify", "waterfo
 foreach ($name in $processNames) {
     Get-Process -Name $name -ErrorAction SilentlyContinue | ForEach-Object {
         try {
-            # Méthode 1 : Standard .NET
+            # MÃ©thode 1 : Standard .NET
             $_.PriorityClass = [System.Diagnostics.ProcessPriorityClass]::BelowNormal
             
-            # Méthode 2 : API Windows native (si la première échoue)
+            # MÃ©thode 2 : API Windows native (si la premiÃ¨re Ã©choue)
             [PriorityUtils]::SetPriority($_, 8) # 8 = BelowNormal
             
-            # Vérification forcée
+            # VÃ©rification forcÃ©e
             $_.Refresh()
             
             if($_.PriorityClass -ne 'BelowNormal') {
-                Write-Warning "Échec critique pour $($_.ProcessName) (PID $($_.Id))"
-                $_.Kill() # Optionnel : redémarrage forcé (à utiliser avec prudence)
+                Write-Warning "Ãchec critique pour $($_.ProcessName) (PID $($_.Id))"
+                $_.Kill() # Optionnel : redÃ©marrage forcÃ© (Ã  utiliser avec prudence)
                 Start-Process -FilePath $_.Path -WindowStyle Hidden
             }
         }
         catch {
-            # Méthode 3 : Utilisation de WMI
+            # MÃ©thode 3 : Utilisation de WMI
             $wmiProcess = Get-WmiObject Win32_Process -Filter "ProcessId = $($_.Id)"
             $wmiProcess.SetPriority(16384) # 16384 = BelowNormal
         }
     }
 }
 
-# Vérification approfondie
+# VÃ©rification approfondie
 Get-WmiObject Win32_Process | Where-Object { 
     $processNames -contains $_.Name.Split('.')[0] 
 } | Select-Object Name, ProcessId, Priority |
